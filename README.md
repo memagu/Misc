@@ -1,4 +1,4 @@
 # Misc
-Miscellaneous projects
+Miscellaneous python projects
 
 ### Make sure to ``` pip install pygame ```!
