@@ -1,17 +1,17 @@
+import math
 import pygame
 import random
 
 pygame.init()
 
 resolution = (1200, 1200)
-planet_amount = 50
-planet_min_mass = 25
+planet_amount = 20
 planet_max_mass = 50
-player_mass = 10000
+player_mass = 200
 player = False
 run = True
 collide = True
-softening = 1000
+softening = 200
 f_scale = 100000
 color_r = (255, 0, 0)
 color_g = (0, 255, 0)
@@ -20,18 +20,16 @@ color_void = (0, 0, 0)
 color_white = (255, 255, 255)
 draw_triangles = False
 draw_forces = False
-high_contrast = False
 draw_resulting_forces = False
-draw_path = False
 
 display = pygame.display.set_mode(resolution)
 pygame.display.update()
 
 # G = 6.67 * 10 ** -11
-G = 0.01
+G = 0.001
+
 
 def newtonian_gravity(m1, m2, r):
-    global softening
     return (m1 * m2 * G) / (r ** 2 + softening)
 
 
@@ -46,7 +44,7 @@ def add_elements(arr1, arr2):
     return temp
 
 
-def unit_scale(vector, scale_factor = 1):
+def unit_scale(vector, scale_factor=1):
     length = (vector[0] ** 2 + vector[1] ** 2) ** 0.5
     if length == 0:
         return vector
@@ -70,10 +68,10 @@ class Planet:
         self.fg = 0
         self.a = 0
         self.vector = [0, 0]
-        self.vectors = []
+        self.saved = []
 
-    def clear_vectors(self):
-        self.vectors = []
+    def clear_saved(self):
+        self.saved = []
 
     def bounce(self, x, y):
         if x:
@@ -104,54 +102,38 @@ class Planet:
                     self.colliding = False
 
             if (resolution[0] - self.radius < self.position[0] or self.position[0] < self.radius) \
-                    and self.in_bounds:
+                    and self.in_bounds == True:
                 self.in_bounds = False
                 self.bounce(True, False)
             elif (resolution[0] - self.radius < self.position[1] or self.position[1] < self.radius) \
-                    and self.in_bounds:
+                    and self.in_bounds == True:
                 self.in_bounds = False
                 self.bounce(False, True)
             else:
                 self.in_bounds = True
 
         self.vector = unit_scale((self.dx, self.dy), self.fg * f_scale)
-        self.vectors.append([self.vector, other.color])
+        self.saved.append([self.vector, [self.dx, self.dy], [self.position, other.position], other.color, other])
 
+    def draw_triangles(self):
+        for save in self.saved:
+            pygame.draw.line(display, color_white, self.position, save[2][1])
+            pygame.draw.line(display, color_white, self.position, [self.position[0] + save[1][0], self.position[1]])
+            pygame.draw.line(display, color_white, [self.position[0] + save[1][0], self.position[1]], save[2][1])
 
-    def draw_triangles(self, other):
-        pygame.draw.line(display, color_white, self.position, other.position)
-        pygame.draw.line(display, color_white, self.position, [self.position[0] + self.dx, self.position[1]])
-        pygame.draw.line(display, color_white, [self.position[0] + self.dx, self.position[1]], other.position)
-
-    def draw_force(self, other):
-        if self == other:
-            pass
-        if high_contrast:
-            current_color = color_g
-        else:
-            current_color = other.color
-        pygame.draw.line(display, current_color, self.position, [self.position[0] + self.vector[0],
-                                                           self.position[1] + self.vector[1]])
+    def draw_force(self):
+        for save in self.saved:
+            pygame.draw.line(display, save[3], self.position, [self.position[0] + save[0][0],
+                                                               self.position[1] + save[0][1]])
 
     def draw_resulting_force(self):
+        for save in self.saved:
+            accx = 0
+            accy = 0
 
-        accx = 0
-        accy = 0
-
-        for vector in self.vectors:
-            accx += vector[0][0]
-            accy += vector[0][1]
-
-
-        pygame.draw.line(
-            display,
-            color_r,
-            self.position,
-            [
-                self.position[0] + accx,
-                self.position[1] + accy
-            ]
-        )
+            accx += save[0][0]
+            accy += save[0][1]
+        pygame.draw.line(display, color_r, self.position, [self.position[0] + accx, self.position[1] + accy])
 
     def update_position(self):
         self.position = add_elements(self.position, self.velocity)
@@ -160,23 +142,24 @@ class Planet:
         pygame.draw.circle(display, self.color, self.position, self.radius)
 
 
-def create_planet(i, min_mass, max_mass, res):
+def create_planet(i, max_mass, res):
     return Planet(chr(i + 48), (random.randint(max_mass, res[0] - max_mass),
                                 random.randint(max_mass, res[1] - max_mass)), [0.0001, 0.0001],
-                  random.randint(min_mass, max_mass), color_random())
+                  random.randint(1, max_mass), color_random())
 
 
-def create_planets(n, min_mass, max_mass, res):
+def create_planets(n, max_mass, res):
     planets = []
     for i in range(n):
-        planets.append(create_planet(i, min_mass, max_mass, res))
+        planets.append(create_planet(i, max_mass, res))
 
     return planets
 
 
-planets = create_planets(planet_amount, planet_min_mass, planet_max_mass, resolution)
-planets.sort(key=lambda x: x.mass, reverse=True)
-a = Planet("mouse", [0, 0], [0, 0], player_mass, color_g)
+
+
+planets = create_planets(planet_amount, planet_max_mass, resolution)
+a = Planet("player", [0, 0], [0, 0], player_mass, color_g)
 a.radius = 30
 
 while run:
@@ -187,6 +170,7 @@ while run:
         mouse_pos = pygame.mouse.get_pos()
         a.position = mouse_pos
         if event.type == pygame.KEYDOWN:
+            print(event.key)
             if event.key == pygame.K_SPACE:
                 player = not player
                 if player:
@@ -203,42 +187,31 @@ while run:
                 collide = not collide
             if event.key == pygame.K_UP:
                 planet_amount += 1
-                planets.append(create_planet(planet_amount, planet_min_mass, planet_max_mass, resolution))
-                planets.sort(key=lambda x: x.mass, reverse=True)
+                planets.append(create_planet(planet_amount, planet_max_mass, resolution))
             if event.key == pygame.K_DOWN and planet_amount > 1:
                 planet_amount -= 1
                 planets.pop()
-            if event.key == pygame.K_p:
-                draw_path = not draw_path
-            if event.key == pygame.K_LEFT:
-                G *= 10
-            if event.key == pygame.K_LEFT:
-                G /= 10
-            if event.key == pygame.K_h:
-                high_contrast = not high_contrast
 
-    if not draw_path:
-        display.fill(color_void)
+    for planet in planets:
+        planet.clear_saved()
+        if planet == a:
+            continue
+        for other_planet in planets:
+            planet.change_velocity(other_planet)
+            planet.update_position()
+
+    display.fill(color_void)
 
     if player:
         a.draw()
 
     for planet in planets:
-        drawn = False
-        planet.clear_vectors()
-        if planet == a:
-            continue
-        for other_planet in planets:
-            planet.change_velocity(other_planet)
-            if not drawn:
-                planet.draw()
-                drawn = True
-            if draw_triangles:
-                planet.draw_triangles(other_planet)
-            if draw_forces:
-                planet.draw_force(other_planet)
+        planet.draw()
+        if draw_triangles:
+            planet.draw_triangles()
+        if draw_forces:
+            planet.draw_force()
         if draw_resulting_forces:
             planet.draw_resulting_force()
-        planet.update_position()
 
     pygame.display.update()
