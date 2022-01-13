@@ -1,0 +1,74 @@
+apple jam: 5
+apple juice: 3
+bacon and egg: 6
+bacon pie: 6
+baked potato: 6
+bb jam: 6
+bb muffin: 2
+beewax: 10
+blue sweaters: 6
+bracelet: 4
+bread: 6
+brown sugar: 10
+butter pop: 6
+cafe latte: 6
+cafe mocha: 4
+caramel apple: 6
+casserole: 6
+cheese: 10
+cherry juice: 2
+chili pop: 6
+choco cake: 6
+choco ice cream: 6
+choco pop: 6
+corn bread: 4
+cotton shirt: 5
+cottonfabric: 5
+cream cake: 3
+duck feather: 5
+fdm pizza: 6
+feta pie: 6
+fish and chips: 6
+fish burger: 6
+fish pie: 6
+goat milk: 6
+gold bar: 15
+hamburger: 6
+honey apple cake: 3
+honey: 5
+hot chocolate: 5
+ice cream: 6
+iron bar: 4
+lobster skewer: 4
+lobster soup: 5
+lobster tail: 10
+necklace: 4
+pancake: 6
+pillow: 6
+pizza: 6
+platbars: 20
+poato feta cake: 6
+potato bread: 6
+pumpkin pie: 6
+pumpkin soup: 4
+rb mocha: 6
+rb muffin: 6
+red berry cake: 6
+red scarf: 4
+refined coal: 10
+roasted tomatoes: 6
+sb cake: 6
+sb candle: 6
+sb ice cream: 5
+sb jam: 3
+sesame ice cream: 4
+spicy pizza: 4
+syrup: 6
+tomato juice: 5
+tomato soup: 6
+violette dress: 2
+wool: 5
+wooly hat: 6
+
+Total number of items: 415
+Total number of unique items: 71
