@@ -1,4 +1,3 @@
-import time
 
 def is_prime(n):
     if n == 2:
@@ -30,22 +29,28 @@ def is_prime_slow(n):
     return True
 
 
-number_of_tests = 10
-primes_in_range = 1000000
+for i in range(1000):
+    if is_prime(i):
+        print(i)
 
 
-acc = []
-for i in range(number_of_tests):
-    start = time.perf_counter()
-    for i in range(primes_in_range):
-        # Function to test
-        is_prime(i)
 
-    stop = time.perf_counter()
-    acc.append(stop-start)
-    print(stop-start)
-
-print()
-print(sum(acc) / number_of_tests)
+# number_of_tests = 10
+# primes_in_range = 1000000
+#
+#
+# acc = []
+# for i in range(number_of_tests):
+#     start = time.perf_counter()
+#     for i in range(primes_in_range):
+#         # Function to test
+#         is_prime(i)
+#
+#     stop = time.perf_counter()
+#     acc.append(stop-start)
+#     print(stop-start)
+#
+# print()
+# print(sum(acc) / number_of_tests)
 
 
