@@ -15,11 +15,11 @@ count = 0
 drawn_graphics = False
 framerate = 100
 
-pygame.transform.scale(pygame.image.load("C:/Users/ab91394/PycharmProjects/pythonProject/snkae/snake head.png"), (TRANSFORM_RESOLUTION_X, TRANSFORM_RESOLUTION_Y))
+pygame.transform.scale(pygame.image.load("snake head.png"), (TRANSFORM_RESOLUTION_X, TRANSFORM_RESOLUTION_Y))
 
-image_head = pygame.transform.scale(pygame.image.load("C:/Users/ab91394/PycharmProjects/pythonProject/snkae/snake head.png"), (TRANSFORM_RESOLUTION_X, TRANSFORM_RESOLUTION_Y))
-image_segment = pygame.transform.scale(pygame.image.load("C:/Users/ab91394/PycharmProjects/pythonProject/snkae/snake segment.png"), (TRANSFORM_RESOLUTION_X, TRANSFORM_RESOLUTION_Y))
-image_apple = pygame.transform.scale(pygame.image.load("C:/Users/ab91394/PycharmProjects/pythonProject/snkae/apple.png"), (TRANSFORM_RESOLUTION_X, TRANSFORM_RESOLUTION_Y))
+image_head = pygame.transform.scale(pygame.image.load("snake head.png"), (TRANSFORM_RESOLUTION_X, TRANSFORM_RESOLUTION_Y))
+image_segment = pygame.transform.scale(pygame.image.load("snake segment.png"), (TRANSFORM_RESOLUTION_X, TRANSFORM_RESOLUTION_Y))
+image_apple = pygame.transform.scale(pygame.image.load("apple.png"), (TRANSFORM_RESOLUTION_X, TRANSFORM_RESOLUTION_Y))
 
 
 snake_length = 2

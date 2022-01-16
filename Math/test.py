@@ -1,8 +1,1 @@
-
-import powers
-
-base = 2
-exponent = -6
-
-print(str(powers.pow(base, exponent)))
-print(str(base ** exponent))
+# 1 1 2 3 5 8 13 21
