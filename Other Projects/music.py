@@ -62,5 +62,12 @@ def thunderstruck():
     # e d cs d b d a
 
 
-def
+def sub_bass():
+    winsound.Beep(D[1], 2000)
+    winsound.Beep(F[1], 2000)
+    winsound.Beep(A[1], 2000)
+    winsound.Beep(F[1], 2000)
+
+
+thunderstruck()
 

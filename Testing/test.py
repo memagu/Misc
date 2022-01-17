@@ -1,24 +1,20 @@
-while True:
-    P = int(input())
+import winsound
 
-    if P == 2:
-        print("Optimus Prime")
-        break
+tones = {}
+freqs = []
 
-    if P % 2 == 0:
-        print("Even Steven")
-        break
+with open("in.txt", "r") as f:
+    lines = f.readlines()
+    current_note = ""
+    for line in lines:
+        line = line.strip()
+        if line in ["A", "B", "C", "D", "E", "F", "G", "A#", "C#", "D#", "F#", "G#"]:
+            tones[current_note] = freqs
+            current_note = line
+            freqs = []
+            continue
+        freqs.append(int(line))
 
-    else:
-        for i in range(3, int(P ** 0.5 + 1), 2):
-            if P % i == 0:
-                print("Not Prime")
-                print(i)
-                break
-            print("Optimus Prime")
-            break
-
-    print()
-
-
-
+with open("out.txt", "w") as f:
+    for tone in tones:
+        f.write(str(tone) + " = " +  str(tones[tone]) + "\n")
