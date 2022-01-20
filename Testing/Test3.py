@@ -1,2 +1,2 @@
-import numpy as np
-np.a
+print(9 // 4)
+print(8 // 4)
