@@ -23,7 +23,7 @@ color_cyan = (0, 255, 255)
 color_blue = (0, 0, 255)
 
 scale = 40
-speed_multiplier = 40
+speed_multiplier = 30
 
 pygame.font.init()
 font = pygame.font.SysFont(None, WINDOW_RESOLUTION[0] // 32)
@@ -97,7 +97,7 @@ def make_objects(n, seed, min_mass, max_mass, min_vel, max_vel):
 
 
 # objects = [*make_objects(20, 1, 5, 100, -20, 20)]
-objects = [Object(2.5, 0, 300, color_green), Object(0.48, -5.4, 900, color_blue)]
+objects = [Object(3, 4, 300, color_green), Object(2, -3, 900, color_blue)]
 
 collisions = 0
 
