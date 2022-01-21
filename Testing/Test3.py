@@ -1,2 +1,1 @@
-print(9 // 4)
-print(8 // 4)
+print(len("-27.34"))

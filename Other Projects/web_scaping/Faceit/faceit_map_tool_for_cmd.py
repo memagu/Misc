@@ -78,14 +78,14 @@ for level in team_stats[team_keys[0]]:
 
 result.sort(key=lambda x: x[0], reverse=True)
 
-print("|----------------------------------------------------------|------------------------------------------|")
-print("|\t\t\t  BEST MAPS FOR " + team_keys[0] + ("\t" * (6 - (len(team_keys[1])-5) // 4)) + "   |\t\t\tSTATS FOR " + team_keys[1] + ("\t" * (3 - (len(team_keys[1])-5) // 4)) + "  |")
-print("|----------------------------------------------------------|------------------------------------------|")
-print("|\t   MAP\t\t| WINRATE | GAMES PLAYED | WIN PROBABILITY | WINRATE | GAMES PLAYED | WIN PROBABILITY |")
+print("|-------------------------------------------------------|-----------------------------------------------|")
+print("|BEST MAPS FOR " + team_keys[0] + ("\t" * (4 - (len(team_keys[1])-5) // 8)) + "|STATS FOR " + team_keys[1] + ("\t" * (4 - (len(team_keys[1])-5) // 8)) + "|")
+print("|-------------------------------------------------------|-----------------------------------------------|")
+print("|MAP\t\t|WINRATE|GAMES PLAYED\t|WIN PROBABILITY|WINRATE\t|GAMES PLAYED\t|WIN PROBABILITY|")
 for level in result:
-    t1 = "| " + level[1] + ("\t" if len(level[1]) > 9 else "\t\t") + "|  " + str(round(level[2][0], 1)) + "%  |\t   " + str(level[2][1]) + "\t\t |\t  " + str(round((level[0] - 0.5) * 100, 2)) + "% \t   "
-    t2 = "|  " + str(round(level[3][0], 1)) + "%  |\t   " + str(level[3][1]) + "\t\t|\t  " + str(round((1-(level[0] - 0.5)) * 100, 2)) + "% \t  |"
+    t1 = "|" + level[1] + "\t|" + str(round(level[2][0], 1)) + "%\t|" + str(level[2][1]) + "\t\t|" + str(round((level[0] - 0.5) * 100, 2)) + "%" + ("\t\t" if len(str(round((level[0] - 0.5) * 100, 2))) < 6 else "\t")
+    t2 = "|" + str(round(level[3][0], 1)) + "%\t\t|" + str(level[3][1]) + "\t\t|" + str(round((1-(level[0] - 0.5)) * 100, 2)) + "%" + ("\t\t" if len(str(round((1-(level[0] - 0.5)) * 100, 2))) < 6 else "\t") + "|"
     print(t1 + t2)
-print("|----------------------------------------------------------|------------------------------------------|")
+print("|-------------------------------------------------------|-----------------------------------------------|")
 
 _ = input()
