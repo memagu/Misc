@@ -4,6 +4,7 @@ Miscellaneous python projects
 ---
 
 ### Make sure to:
-- #### ``` pip install pygame ```
-- #### ``` pip install beautifulsoup4 ```
-- #### ``` pip install Flask ```
+- #### ``` pip3 install pygame ```
+- #### ``` pip3 install beautifulsoup4 ```
+- #### ``` pip3 install Flask ```
+- - #### ``` pip3 install windows-curses ```
