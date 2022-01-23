@@ -8,3 +8,4 @@ Miscellaneous python projects
 - #### ``` pip3 install beautifulsoup4 ```
 - #### ``` pip3 install Flask ```
 - #### ``` pip3 install windows-curses ```
+- #### ``` pip3 install noise ```
