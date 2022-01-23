@@ -27,6 +27,8 @@ speed_multiplier = 30
 
 pygame.font.init()
 font = pygame.font.SysFont(None, WINDOW_RESOLUTION[0] // 32)
+
+
 class Object:
     def __init__(self, mass, velocity, x, color):
         self.mass = mass

@@ -1,0 +1,6 @@
+Sort list | <True or False>:
+True
+
+Custom mapping | <old value> -> <new value>:
+7 -> 6
+8 -> 6

@@ -23,6 +23,21 @@ color_green = (0, 255, 0)
 color_cyan = (0, 255, 255)
 color_blue = (0, 0, 255)
 
+# Text
+pygame.font.init()
+font = pygame.font.SysFont(None, WINDOW_RESOLUTION[0] // 32)
+
+
+def show_fps(delta_time, text_color=(0, 255, 0), outline_color=(0, 0, 0)):
+    fps_text = font.render(f"FPS: {int(1 / delta_time)}", True, text_color)
+    fps_outline = font.render(f"FPS: {int(1 / delta_time)}", True, outline_color)
+    display.blit(fps_outline, (-1, -1))
+    display.blit(fps_outline, (-1, 1))
+    display.blit(fps_outline, (1, -1))
+    display.blit(fps_outline, (1, 1))
+    display.blit(fps_text, (0, 0))
+
+
 while run:
 
     # Calculate dt
@@ -45,6 +60,6 @@ while run:
 
     display.fill(color_black)
 
-
+    show_fps(dt)
     pygame.display.update()
     clock.tick(480)

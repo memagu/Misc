@@ -1,6 +1,0 @@
-Sort list:
-False
-
-Custom mapping:
-8 -> 6
-7 -> 6

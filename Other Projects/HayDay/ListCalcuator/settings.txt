@@ -1,4 +1,0 @@
-Sort list | <True or False>:
-True
-
-Custom mapping | <old value> -> <new value>:
