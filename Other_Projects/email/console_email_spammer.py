@@ -30,6 +30,5 @@ def loadingbar(progress, length=32, filler=chr(9608), background=chr(9617), pref
 for i in range(number_of_emails):
     loadingbar(i / number_of_emails, length=100, prefix=f"Sending emails {i}/{number_of_emails} (", suffix="% complete! )")
     server.sendmail(sender, receiver, message)
-    time.sleep(1)
 
 server.quit()

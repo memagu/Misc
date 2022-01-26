@@ -40,9 +40,11 @@ def make_level(offset=0, seed=0):
     return cols
 
 
-w1l1 = Level(make_level())
+offset = 0.1
 
 while run:
+    offset += 1
+    w1l1 = Level(make_level(offset))
     # Calculate dt
     time_now = time.time()
     dt = time_now - time_prev

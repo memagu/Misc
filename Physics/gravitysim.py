@@ -28,7 +28,7 @@ display = pygame.display.set_mode(resolution)
 pygame.display.update()
 
 # G = 6.67 * 10 ** -11
-G = 0.01
+G = 0.0667
 
 def newtonian_gravity(m1, m2, r):
     global softening

@@ -1,1 +1,9 @@
-print("\033[1;32;40m Bright Green")
+w1 = math.sn
+w2 =
+w3
+w4
+
+pygame.draw.rect(display, color, [x, w1+ w2 +w3])
+
+
+
