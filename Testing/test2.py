@@ -1,1 +1,4 @@
-print([3,3] == [3.0,3.0])
+arr = [1]
+
+head = arr[0]
+tail = arr[1:]

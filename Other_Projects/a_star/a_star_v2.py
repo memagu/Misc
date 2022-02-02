@@ -93,9 +93,16 @@ nodes = set_start_and_end(start, end)
 
 def search(start, end, nodes: [Node]):
     children = nodes[0].create_children()
-    while True:
+    search = True
+    while search:
         nodes += children
         children = children[0].create_children()
+        for child in children:
+            print(child.pos)
+            if child.pos == end:
+                search = False
+                break
+
         for node in nodes:
             node.draw(display)
             pygame.display.update()

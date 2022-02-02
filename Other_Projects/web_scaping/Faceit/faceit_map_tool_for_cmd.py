@@ -7,6 +7,7 @@ def match_to_api(match_url):
 
 def get_teams(api_url, api_key):
     data = requests.get(api_url, headers={f"Authorization": f"Bearer {api_key}"}).json()
+    print(data)
     teams = data["teams"]
 
     result = {}

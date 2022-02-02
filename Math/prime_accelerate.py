@@ -2,7 +2,7 @@ import sys
 
 max_num = sys.maxsize
 
-n = 1_000_000_000
+n = 1_000_000_0
 result = set()
 
 with open("prime_to_billion.txt", "w") as f:

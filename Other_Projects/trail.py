@@ -2,11 +2,10 @@ import pygame
 import time
 import math
 
-
 pygame.init()
 
-WINDOW_RESOLUTION = (1200, 900)
-image_resolution = [300, 900]
+WINDOW_RESOLUTION = (2560, 1440)
+image_resolution = [1200, 900]
 transform_resolution = (WINDOW_RESOLUTION[0] / image_resolution[0], WINDOW_RESOLUTION[1] / image_resolution[1])
 display = pygame.display.set_mode(WINDOW_RESOLUTION, pygame.RESIZABLE)
 pygame.display.set_caption(__file__.split("\\")[-1])
@@ -14,10 +13,6 @@ pygame.display.set_caption(__file__.split("\\")[-1])
 run = True
 time_prev = time.time()
 clock = pygame.time.Clock()
-
-offset_per_second = 20
-rectangle_height = 50
-amplitude = 100
 
 # Colors
 color_black = (0, 0, 0)
@@ -50,15 +45,44 @@ def rainbow(angle):
     return 255 * r, 255 * g, 255 * b
 
 
-offset = 0
+x = WINDOW_RESOLUTION[0] / 2
+y = WINDOW_RESOLUTION[1] / 2
+
+w = 8
+h = 8
+
+x_vel = 100
+y_vel = 100
+
+angle = 0
+angle_vel = 1
+
+trail_surface = pygame.Surface(WINDOW_RESOLUTION, pygame.SRCALPHA, 32)
+
+trail = []
+trail_length = 2048
+
 while run:
+
+    pos_prev = x, y
 
     # Calculate dt
     time_now = time.time()
-    dt = time_now - time_prev + 0.000_000_000_000_000_1
+    dt = time_now - time_prev + (2 ** -63)
     time_prev = time_now
 
-    offset += offset_per_second * dt
+    angle += angle_vel * dt
+    # x += x_vel * dt
+    # y += y_vel * dt
+
+    # if not 0 < x < WINDOW_RESOLUTION[0] - w:
+    #     x_vel *= -1
+    #     x += x_vel * dt
+    #
+    # if not 0 < y < WINDOW_RESOLUTION[1] - h:
+    #     y_vel *= -1
+    #     y += y_vel * dt
+
 
     # Event loop
     for event in pygame.event.get():
@@ -73,20 +97,23 @@ while run:
         # if event.type == pygame.KEYDOWN:
         # if event.key == pygame.K_1:
 
-    display.fill((29,29,29))
+        mousepos = pygame.mouse.get_pos()
 
-    for i in range(image_resolution[0]):
-        angle = (i * (WINDOW_RESOLUTION[0] / image_resolution[0])) / 3
-        center_y = WINDOW_RESOLUTION[1] / 2 - rectangle_height / 2
-        x = i * transform_resolution[0]
-        # sin(((x+offset)/(10)))*50 + sin(((x+offset)/(100)))*50 + cos(x)*100
-        w1 = math.sin((angle + offset) / 10) * amplitude
-        w2 = math.sin((angle + offset) / 100) * amplitude
-        w3 = math.cos(angle) * amplitude * 2
-        y = center_y + w1 + w2 + w3
-        # pygame.draw.line(display, color_white, (x + transform_resolution[0] / 2, center_y - amplitude), (x + transform_resolution[0] / 2, center_y + amplitude))
-        pygame.draw.rect(display, rainbow(angle + offset), [x, y, transform_resolution[0], rectangle_height])
+        x, y = mousepos
 
-    # show_fps(dt)
+    trail.append((pos_prev, (x, y), rainbow(angle)))
+    if trail_length < len(trail):
+        trail.pop(0)
+
+    display.fill(color_black)
+
+    # pygame.draw.circle(trail_surface, rainbow(angle), [x + w / 2, y + h / 2], (w + h) / 16)
+    for trail_segment in trail:
+        pygame.draw.aaline(display, trail_segment[2], (trail_segment[0][0] + w / 2, trail_segment[0][1] + h / 2), (trail_segment[1][0] + w / 2, trail_segment[1][1] + h / 2))
+    pygame.draw.circle(display, rainbow(angle), mousepos, w)
+    # display.blit(trail_surface, (0, 0))
+    # pygame.draw.rect(display, rainbow(angle), [x, y, w, h])
+
+    show_fps(dt)
     pygame.display.update()
     clock.tick(480)

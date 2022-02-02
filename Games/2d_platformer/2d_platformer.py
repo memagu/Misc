@@ -41,10 +41,10 @@ def make_level(offset=0, seed=0):
 
 
 offset = 0.1
+w1l1 = Level(make_level(offset))
 
 while run:
-    offset += 1
-    w1l1 = Level(make_level(offset))
+    offset += 0
     # Calculate dt
     time_now = time.time()
     dt = time_now - time_prev
