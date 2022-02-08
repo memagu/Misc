@@ -1,4 +1,3 @@
-arr = [1]
+import math
 
-head = arr[0]
-tail = arr[1:]
+math.
