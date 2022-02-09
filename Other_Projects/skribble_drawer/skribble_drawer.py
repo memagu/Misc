@@ -32,17 +32,24 @@ def closest_color_coord(rgb: (int, int, int)) -> (int, int):
             minimum[0] = dist
             minimum[1], minimum[2] = value[0], value[1]
 
+    print(key)
     return minimum[1:]
 
 
-scribble_window_size = (800, 600)
+scribble_window_size = (836, 627)
+
+brush_size = brush_sizes[1]
+step_length = brush_size
+
+print(f"brush_size = {brush_size}")
+print(f"step_length = {step_length}")
 
 google_images_download.googleimagesdownload().single_image(input('Enter image url: '))
 
 image = Image.open('downloads/' + os.listdir("downloads")[0], 'r').resize(scribble_window_size).convert('RGB')
 image_width, image_height = image.size
 
-for i in range(4, 0, -1):
+for i in range(6, 0, -1):
     print(f"Position mouse, drawing starts in {i} seconds!")
     time.sleep(1)
 
@@ -50,13 +57,18 @@ print('Starting to draw!')
 
 start_x, start_y = mouse.get_position()
 
-brush_size = brush_sizes[2]
 
-for y in range(0, image_height, brush_size):
-    for x in range(0, image_width, brush_size):
+
+def end_program():
+    shutil.rmtree('downloads', ignore_errors=False, onerror=None)
+    quit()
+
+
+for y in range(0, image_height, step_length):
+    for x in range(0, image_width, step_length):
 
         if keyboard.is_pressed('q'):
-            quit()
+            end_program()
 
         pixel = image.getpixel((x, y))
 
@@ -71,5 +83,4 @@ for y in range(0, image_height, brush_size):
 
         time.sleep(0.015)
 
-shutil.rmtree('downloads', ignore_errors=False, onerror=None)
-quit()
+end_program()
