@@ -60,6 +60,7 @@ while run:
 
     display.fill(color_black)
 
+
     show_fps(dt)
     pygame.display.update()
     clock.tick(480)

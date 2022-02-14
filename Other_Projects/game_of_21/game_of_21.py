@@ -1,35 +1,56 @@
-with open("out.txt", "w") as f:
-    def go21(nums):
-        operations = ['*', '+', '-', '/']
+def go21(nums, target=21):
+    operations = ['*', '+', '-', '/']
+    parenthesis = [['', '', '', '', '', '', '', '', '', ''],
+                   ['', '', '', '(', '', '', ')', '', '', ''],
+                   ['', '(', '', '(', '', '', ')', ')', '', ''],
+                   ['', '', '(', '(', '', '', ')', '', ')', ''],
+                   ['', '(', '', '', ')', '', '', '', '', ''],
+                   ['(', '(', '', '', ')', '', ')', '', '', ''],
+                   ['', '', '', '', '', '(', '', '', ')', ''],
+                   ['', '', '', '(', '', '(', '', '', ')', ')'],
+                   ['', '(', '', '', ')', '(', '', '', ')', '']]
 
-        for a in operations:
-            for b in operations:
-                for c in operations:
+    # 0 | 1 + 1 + 1 + 1
+    # 1 | 1 + (1 + 1) + 1
+    # 2 | (1 + (1 + 1)) + 1
+    # 3 | 1 + ((1 + 1) + 1)
+    # 4 | (1 + 1) + 1 + 1
+    # 5 | ((1 + 1) + 1) + 1
+    # 6 | 1 + 1 + (1 + 1)
+    # 7 | 1 + (1 + (1 + 1))
+    # 8 | (1 + 1) + (1 + 1)
 
-                    for i in range(4):
-                        for j in range(4):
-                            if j == i:
+    for a in operations:
+        for b in operations:
+            for c in operations:
+
+                for i in range(4):
+                    for j in range(4):
+                        if j == i:
+                            continue
+                        for k in range(4):
+                            if k in [i, j]:
                                 continue
-                            for k in range(4):
-                                if k in [i, j]:
+                            for l in range(4):
+                                if l in [i, j, k]:
                                     continue
-                                for l in range(4):
-                                    if l in [i, j, k]:
-                                        continue
 
-                                    combination = f"{nums[i]} {a} {nums[j]} {b} {nums[k]} {c} {nums[l]}"
-                                    # f.write(f"{combination} = {eval(combination)}\n")
+                                for configuration in parenthesis:
+                                    try:
+                                        combination = f"{configuration[0]}{configuration[1]}{nums[i]} {a} {configuration[2]}{configuration[3]}{nums[j]}{configuration[4]} {b} {configuration[5]}{nums[k]}{configuration[6]}{configuration[7]} {c} {nums[l]}{configuration[8]}{configuration[9]}"
 
-                                    # print(f"{combination} = {eval(combination)}")
+                                        # print(f"{combination} = {eval(combination)}")
+                                        if eval(combination) == target:
+                                            return f"{combination} = {target}"
+                                    except ZeroDivisionError:
+                                        pass
 
-                                    if eval(combination) == 21:
-                                        return f"{combination} = 21"
-
-        return "no solution"
+    return "no solution"
 
 
-    import random
+import random
 
+for i in range(10):
     nums = []
 
     for i in range(4):
@@ -37,3 +58,4 @@ with open("out.txt", "w") as f:
 
     print(nums)
     print(go21(nums))
+    print()

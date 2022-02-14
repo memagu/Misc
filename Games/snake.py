@@ -125,7 +125,6 @@ while gameOver != True:
 
     clock.tick(gameSpeed)
 
-    print(event)
 
 #Game over
 displayText("You lost at " + str(snakeLength) + "/" + str(int(resolution[0]/2)) + "points", colorRed)

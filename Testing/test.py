@@ -1,22 +1,39 @@
-def lengthOfLIS(nums: [int]) -> int:
-    def lis(nums: [int], index=0, d=0, memo={}):
+# Python3 program to
+# Print all combinations
+# of balanced parentheses
 
-        if index in memo:
-            return memo[index]
-
-        if nums:
-            sequences = []
-
-            for i, num in enumerate(nums):
-                tail = [n for n in nums[i + 1:] if n > num]
-                sequences.append(lis(tail, index + i + 1, d + 1))
-
-            memo[index] = max(sequences)
-            return memo[index]
-
-        return d
-
-    print(lis([3,5,6,2,5,4,19,5,6,7,12]))
+# Wrapper over _printParenthesis()
 
 
-lengthOfLIS([])
+def printParenthesis(str, n):
+    if (n > 0):
+        _printParenthesis(str, 0,
+                          n, 0, 0)
+    return
+
+
+def _printParenthesis(str, pos, n,
+                      open, close):
+    if (close == n):
+        for i in str:
+            print(i, end="")
+        print()
+        return
+    else:
+        if (open > close):
+            str[pos] = ')'
+            _printParenthesis(str, pos + 1, n,
+                              open, close + 1)
+        if (open < n):
+            str[pos] = '('
+            _printParenthesis(str, pos + 1, n,
+                              open + 1, close)
+
+
+# Driver Code
+n = 3
+str = [""] * 2 * n
+printParenthesis(str, n)
+
+# This Code is contributed
+# by mits.

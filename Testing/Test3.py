@@ -1,39 +1,61 @@
-# Python3 program to
-# Print all combinations
-# of balanced parentheses
+with open("out.txt", "w") as f:
+    def go21(nums):
+        operations = ['*', '+', '-', '/']
+        parenthesis = [['', '', '', '', '', '', '', '', '', ''],
+                       ['', '', '', '(', '', '', ')', '', '', ''],
+                       ['', '(', '', '(', '', '', ')', ')', '', ''],
+                       ['', '', '(', '(', '', '', ')', '', ')', ''],
+                       ['', '(', '', '', ')', '', '', '', '', ''],
+                       ['(', '(', '', '', ')', '', ')', '', '', ''],
+                       ['', '', '', '', '', '(', '', '', ')', ''],
+                       ['', '', '', '(', '', '(', '', '', ')', ')'],
+                       ['', '(', '', '', ')', '(', '', '', ')', '']]
 
-# Wrapper over _printParenthesis()
+        # 0 | 1 + 1 + 1 + 1
+        # 1 | 1 + (1 + 1) + 1
+        # 2 | (1 + (1 + 1)) + 1
+        # 3 | 1 + ((1 + 1) + 1)
+        # 4 | (1 + 1) + 1 + 1
+        # 5 | ((1 + 1) + 1) + 1
+        # 6 | 1 + 1 + (1 + 1)
+        # 7 | 1 + (1 + (1 + 1))
+        # 8 | (1 + 1) + (1 + 1)
+
+        for a in operations:
+            for b in operations:
+                for c in operations:
+
+                    for i in range(4):
+                        for j in range(4):
+                            if j == i:
+                                continue
+                            for k in range(4):
+                                if k in [i, j]:
+                                    continue
+                                for l in range(4):
+                                    if l in [i, j, k]:
+                                        continue
+
+                                    for configuration in parenthesis:
+                                        try:
+                                            combination = f"{configuration[0]}{configuration[1]}{nums[i]} {a} {configuration[2]}{configuration[3]}{nums[j]}{configuration[4]} {b} {configuration[5]}{nums[k]}{configuration[6]}{configuration[7]} {c} {nums[l]}{configuration[8]}{configuration[9]}"
+                                            f.write(f"{combination} = {eval(combination)}\n")
+
+                                            # print(f"{combination} = {eval(combination)}")
+                                            if eval(combination) == 21:
+                                                return f"{combination} = 21"
+                                        except ZeroDivisionError:
+                                            pass
+
+        return "no solution"
 
 
-def printParenthesis(str, n):
-    if (n > 0):
-        _printParenthesis(str, 0,
-                          n, 0, 0)
-    return
+    import random
 
+    nums = []
 
-def _printParenthesis(str, pos, n,
-                      open, close):
-    if (close == n):
-        for i in str:
-            print(i, end="")
-        print()
-        return
-    else:
-        if (open > close):
-            str[pos] = ')'
-            _printParenthesis(str, pos + 1, n,
-                              open, close + 1)
-        if (open < n):
-            str[pos] = '('
-            _printParenthesis(str, pos + 1, n,
-                              open + 1, close)
+    for i in range(4):
+        nums.append(random.randint(1, 13))
 
-
-# Driver Code
-n = 4
-str = [""] * 2 * n
-printParenthesis(str, n)
-
-# This Code is contributed
-# by mits.
+    print(nums)
+    print(go21(nums))

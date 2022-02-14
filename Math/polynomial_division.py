@@ -1,4 +1,4 @@
-numerator = [1, -4, 9, -5, 22]  # x^4 - 4x^3 + 9x^2 - 4x + 9
+numerator = [1, -4, 9, -4, 8]  # x^4 - 4x^3 + 9x^2 - 4x + 8
 
 numerator_grade = len(numerator) - 1
 numerator_for_print = [*numerator][::-1]
@@ -63,17 +63,13 @@ denominator_out = polynomial_list_to_string(denominator_for_print)
 result_out = polynomial_list_to_string(result)
 rest_out = polynomial_list_to_string(numerator[::-1])
 
-# print("  " + numerator_out)
-# print('-' * (len(numerator_out) + 4) + " = " + polynomial_list_to_string(result) + ((" | " + result_out) if len(set(numerator)) != 1 else ''))
-# print(" " * ((len(numerator_out) + 2) // 2 - len(denominator_out) // 2) + denominator_out)
-
-numerator_string_out = "  " + (numerator_out + (' ' * (9 + len(result_out)) + " " * (
-            (len(denominator_out) + 2) // 2 - len(rest_out) // 2) + rest_out) if len(set(numerator)) != 1 else '')
+numerator_string_out = "  " + (numerator_out + ((' ' * (9 + len(result_out)) + " " * (
+            (len(denominator_out) + 2) // 2 - len(rest_out) // 2) + rest_out) if not all(coefficient == 0 for coefficient in numerator) else ''))
 
 result_string_out = '-' * (len(numerator_out) + 4) + " = " + polynomial_list_to_string(result) + (
-    (" | " + '-' * (len(denominator_out) + 4)) if len(set(numerator)) != 1 else '')
+    (" | " + '-' * (len(denominator_out) + 4)) if not all(coefficient == 0 for coefficient in numerator) else '')
 
-denominator_string_out = " " * ((len(numerator_out) + 4) // 2 - len(denominator_out) // 2) + denominator_out + ((' ' * (len(numerator_out) + 4 - (((len(numerator_out) + 2) // 2 - len(denominator_out) // 2)) + len(result_out)) + denominator_out) if len(set(numerator)) != 1 else '')
+denominator_string_out = " " * ((len(numerator_out) + 4) // 2 - len(denominator_out) // 2) + denominator_out + ((' ' * (len(numerator_out) + 4 - (((len(numerator_out) + 2) // 2 - len(denominator_out) // 2)) + len(result_out)) + denominator_out) if not all(coefficient == 0 for coefficient in numerator) else '')
 
 print(numerator_string_out)
 print(result_string_out)
