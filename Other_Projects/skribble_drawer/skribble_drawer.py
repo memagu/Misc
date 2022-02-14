@@ -38,7 +38,7 @@ def closest_color_coord(rgb: (int, int, int)) -> (int, int):
 
 scribble_window_size = (836, 627)
 
-brush_size = brush_sizes[1]
+brush_size = brush_sizes[2]
 step_length = brush_size
 
 print(f"brush_size = {brush_size}")

@@ -98,8 +98,8 @@ def make_objects(n, seed, min_mass, max_mass, min_vel, max_vel):
     return objects
 
 
-# objects = [*make_objects(20, 1, 5, 100, -20, 20)]
-objects = [Object(3, 4, 300, color_green), Object(2, -3, 900, color_blue)]
+objects = [*make_objects(5, 1, 5, 100, -20, 20)]
+# objects = [Object(3, 4, 300, color_green), Object(2, -3, 900, color_blue)]
 
 collisions = 0
 

@@ -4,7 +4,7 @@ import random
 
 pygame.init()
 
-WINDOW_RESOLUTION = (2560, 1376)
+WINDOW_RESOLUTION = (1200, 900)
 char_height = 16
 image_resolution = [WINDOW_RESOLUTION[0] // char_height * 2, WINDOW_RESOLUTION[1] // char_height]
 transform_resolution = (WINDOW_RESOLUTION[0] / image_resolution[0], WINDOW_RESOLUTION[1] / image_resolution[1])
@@ -147,6 +147,8 @@ while run:
             code_drop.update_position()
 
         code_drop.draw(font, transform_resolution)
+        if random.randint(0, 750) == 0:
+            code_drop.update_char(charachters)
 
         code_drop.update_color(dt)
 

@@ -1,4 +1,4 @@
-numerator = [1, -4, 9, -4, 22]  # x^4 - 4x^3 + 9x^2 - 4x + 9
+numerator = [1, -4, 9, -5, 22]  # x^4 - 4x^3 + 9x^2 - 4x + 9
 
 numerator_grade = len(numerator) - 1
 numerator_for_print = [*numerator][::-1]

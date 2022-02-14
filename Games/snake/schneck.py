@@ -13,7 +13,7 @@ TRANSFORM_RESOLUTION_Y = WINDOW_RESOLUTION[1] // GAME_RESOLUTION[1]
 display = pygame.display.set_mode(WINDOW_RESOLUTION, 0, 32)
 count = 0
 drawn_graphics = False
-framerate = 100
+framerate = 30
 
 pygame.transform.scale(pygame.image.load("snake head.png"), (TRANSFORM_RESOLUTION_X, TRANSFORM_RESOLUTION_Y))
 

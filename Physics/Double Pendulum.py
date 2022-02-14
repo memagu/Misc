@@ -92,8 +92,8 @@ while run:
             if event.key == pygame.K_t:
                 None
 
-    a1_a = acc1_new() * dt
-    a2_a = acc2_new() * dt
+    a1_a = acc1() * dt
+    a2_a = acc2() * dt
 
     a1_v += a1_a
     a2_v += a2_a
