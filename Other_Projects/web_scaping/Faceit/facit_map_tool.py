@@ -1,4 +1,5 @@
 import requests
+import credentials
 
 
 def match_to_api(match_url):
@@ -36,7 +37,7 @@ def get_level_stats(player_id, api_key):
     return level_stats
 
 
-API_key = "b3725f7a-6fa3-4517-a08d-a812b807b7f2"
+API_key = credentials.api_key
 #match_url = "https://www.faceit.com/en/csgo/room/1-cccbc7ec-ddfc-48e6-986b-1ed8b8f41559"
 match_url = input("Input match URL: ")
 

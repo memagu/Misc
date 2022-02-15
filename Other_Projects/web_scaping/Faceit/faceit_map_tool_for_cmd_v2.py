@@ -1,6 +1,7 @@
 import requests
 import curses
 from curses.textpad import Textbox, rectangle
+import credentials
 
 
 def match_to_api(match_url):
@@ -80,7 +81,7 @@ def compile_data(match_url, api_key):
     return result, team_keys
 
 
-API_key = "b3725f7a-6fa3-4517-a08d-a812b807b7f2"
+API_key = credentials.api_key
 stdscr = curses.initscr()
 
 
