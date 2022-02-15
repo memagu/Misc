@@ -1,6 +1,3 @@
-# Custom
-Other_Projects/email/credentials.py
-
 # Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,python,pycharm,c++
 # Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,python,pycharm,c++
 
@@ -322,3 +319,7 @@ cython_debug/
 # Support for Project snippet scope
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,python,pycharm,c++
+
+# Custom
+Other_Projects/email/credentials.py
+Other_Projects/web_scaping/Faceit/credentials.py
