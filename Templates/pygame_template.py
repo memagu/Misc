@@ -11,6 +11,7 @@ display = pygame.display.set_mode(WINDOW_RESOLUTION, pygame.RESIZABLE)
 pygame.display.set_caption(__file__.split("\\")[-1])
 
 run = True
+fps = 480  # 0 for unlimited
 time_prev = time.time()
 clock = pygame.time.Clock()
 
@@ -25,7 +26,7 @@ color_blue = (0, 0, 255)
 
 # Text
 pygame.font.init()
-font = pygame.font.SysFont(None, WINDOW_RESOLUTION[0] // 32)
+font = pygame.font.SysFont(None, WINDOW_RESOLUTION[1] // 32)
 
 
 def show_fps(delta_time, text_color=(0, 255, 0), outline_color=(0, 0, 0)):
@@ -58,9 +59,11 @@ while run:
         # if event.type == pygame.KEYDOWN:
         # if event.key == pygame.K_1:
 
+    # Draw
     display.fill(color_black)
 
 
     show_fps(dt)
     pygame.display.update()
-    clock.tick(480)
+    if fps > 0:
+        clock.tick(fps)
