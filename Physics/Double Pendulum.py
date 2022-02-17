@@ -92,11 +92,11 @@ while run:
             if event.key == pygame.K_t:
                 None
 
-    a1_a = acc1() * dt
-    a2_a = acc2() * dt
+    a1_a = acc1()
+    a2_a = acc2()
 
-    a1_v += a1_a
-    a2_v += a2_a
+    a1_v += a1_a * dt
+    a2_v += a2_a * dt
 
     a1 += a1_v
     a2 += a2_v
@@ -104,7 +104,7 @@ while run:
     mousepos = pygame.mouse.get_pos()
 
     if pygame.mouse.get_pressed()[0]:
-        a1 = atan(-1 * (mousepos[1] - center[1] + 2**-64) / (mousepos[0] - center[0] + 2**-64)) + pi / 2
+        a1 = atan(-1 * (mousepos[1] - center[1] + 2**-64) / (mousepos[0] - center[0] + (2 >> 31))) + pi / 2
         if mousepos[0] < center[0]:
             a1 += pi
         a1_v = 0
