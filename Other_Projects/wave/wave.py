@@ -84,6 +84,7 @@ while run:
         w2 = math.sin((angle + offset) / 100) * amplitude
         w3 = math.cos(angle) * amplitude * 2
         y = center_y + w1 + w2 + w3
+        # y = center_y + math.sin((angle + offset) / 10) * amplitude
         # pygame.draw.line(display, color_white, (x + transform_resolution[0] / 2, center_y - amplitude), (x + transform_resolution[0] / 2, center_y + amplitude))
         pygame.draw.rect(display, rainbow(angle + offset), [x, y, transform_resolution[0], rectangle_height])
 
