@@ -17,7 +17,7 @@ def radio_tower(numbers, multipliers, target):
 
                             combination = f"{numbers[i]} * {multipliers[l]} + {numbers[j]} * {multipliers[m]} + {numbers[k]} * {multipliers[n]}"
                             if eval(combination) == target:
-                                return f"{numbers[i]} * {multipliers[l]}\t\\\n{numbers[j]} * {multipliers[m]}\t --\t{target}\n{numbers[k]} * {multipliers[n]}\t/"
+                                return f"{numbers[i]} * {multipliers[l]}\t\\\n{numbers[j]} * {multipliers[m]}\t --  {target}\n{numbers[k]} * {multipliers[n]}\t/"
     return "No solution."
 
 
@@ -39,5 +39,5 @@ while True:
 
     print(f"\nnumbers = {' '.join([str(e) for e in nums])}\nmultipliers = {' '.join([str(e) for e in muls])}\n")
     print(f"{radio_tower(nums, muls, target)}")
-    print(f"\n{'-'*16}\n")
+    print(f"\n{'-'*32}\n")
 

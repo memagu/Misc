@@ -4,7 +4,7 @@ from helpers import *
 
 pygame.init()
 
-WINDOW_RESOLUTION = (1200, 800)
+WINDOW_RESOLUTION = (1024, 768)
 display = pygame.display.set_mode(WINDOW_RESOLUTION, pygame.RESIZABLE)
 pygame.display.set_caption(__file__.split("\\")[-1])
 
@@ -56,14 +56,35 @@ def draw_scores(surface, font, score_1, score_2, color):
 score_p1 = 0
 score_p2 = 0
 
-player_1 = Paddle([x_padding, WINDOW_RESOLUTION[1] >> 1], 256, [x_padding >> 1, WINDOW_RESOLUTION[1] >> 3], "w", "s",
+player_1 = Paddle([x_padding, WINDOW_RESOLUTION[1] >> 1],
+                  512,
+                  1 / 3,
+                  [x_padding >> 1, (WINDOW_RESOLUTION[1] >> 3) * 1.5],
+                  "w",
+                  "s",
                   (2, 2, 2))
-player_2 = Paddle([WINDOW_RESOLUTION[0] - 1.5 * x_padding, WINDOW_RESOLUTION[1] >> 1], 256,
-                  [x_padding >> 1, WINDOW_RESOLUTION[1] >> 3], "UP", "DOWN", (128, 0, 0))
+
+player_2 = Paddle([WINDOW_RESOLUTION[0] - 1.5 * x_padding,
+                   WINDOW_RESOLUTION[1] >> 1],
+                  512,
+                  1 / 3,
+                  [x_padding >> 1, (WINDOW_RESOLUTION[1] >> 3) * 1.5],
+                  "UP",
+                  "DOWN",
+                  (192, 0, 0))
+
 players = [player_1, player_2]
 
-ball_1 = Ball([WINDOW_RESOLUTION[0] >> 1, WINDOW_RESOLUTION[1] >> 1], [200, 134], x_padding >> 1, color_white)
+ball_1 = Ball([WINDOW_RESOLUTION[0] >> 1,
+               WINDOW_RESOLUTION[1] >> 1],
+              [256, 0],
+              x_padding >> 1,
+              color_white)
+
 balls = [ball_1]
+
+for ball in balls:
+    ball.reset(WINDOW_RESOLUTION, -256, 256)
 
 while run:
 
@@ -93,30 +114,33 @@ while run:
     # Keypresses
     keys = pygame.key.get_pressed()
     for player in players:
+        player.moving = 0
         if keys[player.up_key] and player.y > y_padding:
             player.move_up(dt)
+            player.moving = -player.velocity
 
         if keys[player.down_key] and player.y + player.height < WINDOW_RESOLUTION[1] - y_padding:
             player.move_down(dt)
+            player.moving = player.velocity
 
     for ball in balls:
         if ball.collides_with_paddle(players):
+            paddle = ball.collides_with_paddle(players)
+            ball.y_vel += paddle.moving * paddle.grip
+            ball.x = paddle.x + paddle.width + ball.radius if ball.x_vel < 0 else paddle.x - ball.radius
             ball.x_vel *= -1
             ball.update_position(dt)
-            print(True)
 
         if ball.y - ball.radius <= y_padding >> 1 or ball.y + ball.radius >= WINDOW_RESOLUTION[1] - (y_padding >> 1):
             ball.y_vel *= -1
             ball.update_position(dt)
 
         if ball.x <= 0:
-            ball.x = WINDOW_RESOLUTION[0] >> 1
-            ball.y = WINDOW_RESOLUTION[1] >> 1
+            ball.reset(WINDOW_RESOLUTION, -256, 256)
             score_p2 += 1
 
         if ball.x >= WINDOW_RESOLUTION[0]:
-            ball.x = WINDOW_RESOLUTION[0] >> 1
-            ball.y = WINDOW_RESOLUTION[1] >> 1
+            ball.reset(WINDOW_RESOLUTION, -256, 256)
             score_p1 += 1
 
         ball.update_position(dt)
