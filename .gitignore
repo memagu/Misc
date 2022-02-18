@@ -323,3 +323,4 @@ cython_debug/
 # Custom
 Other_Projects/email/credentials.py
 Other_Projects/web_scaping/Faceit/credentials.py
+secrets.py
