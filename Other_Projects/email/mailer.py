@@ -1,4 +1,4 @@
-from Other_Projects import loadingbar
+from Other_Projects.Other import loadingbar
 import smtplib
 import credentials as c
 
