@@ -141,8 +141,8 @@ while run:
     display.fill(color_black)
 
     #
-    # for i in range(WINDOW_RESOLUTION[0]):
-    #     pygame.draw.rect(display, color_white, [0, WINDOW_RESOLUTION[1] / 2, WINDOW_RESOLUTION[0], 1])
+    # for i in range(window_resolution[0]):
+    #     pygame.draw.rect(display, color_white, [0, window_resolution[1] / 2, window_resolution[0], 1])
 
 
 
@@ -178,8 +178,8 @@ while run:
 
 
 
-        # for i in range(WINDOW_RESOLUTION[1]):
-        #     pygame.draw.rect(display, color_white, [perlin_noise(i / (WINDOW_RESOLUTION[1]), samples2) * 100 + 600, i, 1, 1])
+        # for i in range(window_resolution[1]):
+        #     pygame.draw.rect(display, color_white, [perlin_noise(i / (window_resolution[1]), samples2) * 100 + 600, i, 1, 1])
 
 
 

@@ -25,7 +25,7 @@ color_walnut = (93, 67, 44)
 color_select_blue = (37, 122, 253)
 
 pygame.font.init()
-font = pygame.font.SysFont(None, WINDOW_RESOLUTION[0] // 32)
+font = pygame.font.SysFont('leelawadeeuisemilight', WINDOW_RESOLUTION[0] // 64)
 
 
 class Piece(metaclass=abc.ABCMeta):
@@ -36,6 +36,9 @@ class Piece(metaclass=abc.ABCMeta):
 
     def __str__(self):
         return self.__dict__['name']
+
+    def __repr__(self):
+        return self.__dict__
 
     @abc.abstractmethod
     def possible(self, target_pos):
@@ -111,6 +114,22 @@ class Pawn(Movable):
         super().__init__(pos, team, f"Resources/pieces/{team[0]}-{self.name.lower()}.png")
 
     def possible(self, target_pos):
+        if target_pos[0] != self.pos[0]:
+            return False
+
+        if self.team == "white":
+            if (self.pos[1] - target_pos[1] == 1) or (self.pos[1] == 6 and target_pos[1] == 4):
+                return True
+
+            if self.pos[1] - target_pos[1] == 1 and \
+                    ((target_pos[0] - self.pos[0]) ** 2 + (target_pos[1] - self.pos[1]) ** 2) ** 0.5 == 2 ** 0.5 \
+                    and (b.board[target_pos[1]][target_pos[0]] and b.board[target_pos[1]][target_pos[0]].team == "black"):
+                return True
+
+            return False
+
+        if (target_pos[1] - self.pos[1] == 1) or (self.pos[1] == 1 and target_pos[1] == 3):
+            return True
         return False
 
 
@@ -167,6 +186,7 @@ class Board:
             Knight([1, 7], "white"), Knight([6, 7], "white"),
             *[Pawn([x, 1], "black") for x in range(8)],
             *[Pawn([x, 6], "white") for x in range(8)],
+            Pawn([4, 3], "black"), Pawn([3, 4], "white")
         ]
     # rnbqkbkrpppppppp000000000000000000000000000000000000000000000000pppppppppprnbqkbkr
 
@@ -201,8 +221,9 @@ while run:
         b.select_by_pos(cursor_on)
 
     # Keypresses
-    # if event.type == pygame.KEYDOWN:
-    # if event.key == pygame.K_1:
+    if event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_1:
+            pass
 
     display.fill(color_black)
 

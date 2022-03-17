@@ -47,7 +47,7 @@ def rainbow(angle):
     r = (math.sin(angle) + 1) / 2
     g = (math.sin(angle + math.pi / 1.5) + 1) / 2
     b = (math.sin(angle + 2 * math.pi / 1.5) + 1) / 2
-    return 255 * r, 255 * g, 255 * b
+    return [255 * r, 255 * g, 255 * b]
 
 
 offset = 0

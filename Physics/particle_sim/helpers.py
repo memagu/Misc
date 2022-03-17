@@ -22,33 +22,6 @@ def show_fps(surface, delta_time, font, text_color=(0, 255, 0), outline_color=(0
     surface.blit(fps_text, (0, 0))
 
 
-class Paddle:
-    def __init__(self, position, velocity, grip, dimensions, up_key, down_key, color, moving=0):
-        self.position = position
-        self.x = position[0]
-        self.y = position[1]
-        self.velocity = velocity
-        self.grip = grip
-        self.dimensions = dimensions
-        self.width = dimensions[0]
-        self.height = dimensions[1]
-        self.up_key = eval(f"pygame.K_{up_key}")
-        self.down_key = eval(f"pygame.K_{down_key}")
-        self.color = color
-        self.moving = moving
-
-    def move_up(self, dt):
-        self.y -= self.velocity * dt
-        self.position = [self.x, self.y]
-
-    def move_down(self, dt):
-        self.y += self.velocity * dt
-        self.position = [self.x, self.y]
-
-    def draw(self, surface):
-        pygame.draw.rect(surface, self.color, [self.x, self.y, self.width, self.height])
-
-
 class Ball:
     def __init__(self, position, velocity, radius, color):
         self.position = position
@@ -68,7 +41,7 @@ class Ball:
                     return other
         return
 
-    def bounce(self, other, do_other=True):
+    def bounce(self, other, elasticity, do_other=True):
         sum_m = self.radius + other.radius
         p1_1_x = ((self.radius - other.radius) / sum_m) * self.x_vel
         p1_2_x = (other.radius * 2 / sum_m) * other.x_vel
@@ -77,7 +50,7 @@ class Ball:
         p1_2_y = (other.radius * 2 / sum_m) * other.y_vel
 
         if do_other:
-            other.bounce(self, False)
+            other.bounce(self, elasticity, False)
             try:
                 angle = math.atan((other.y - self.y) / (other.x - self.x))
             except ZeroDivisionError:
@@ -88,19 +61,13 @@ class Ball:
             self.y = other.y + math.sin(angle) * (self.radius + other.radius + (2 >> 31))
             self.position = [self.x, self.y]
 
-        self.x_vel = p1_1_x + p1_2_x
-        self.y_vel = p1_1_y + p1_2_y
-
-    def collides_with_paddle(self, paddles: []):
-        for paddle in paddles:
-            if paddle.y < self.y < paddle.y + paddle.height and abs(
-                    self.x - (paddle.x + (paddle.width >> 1))) <= self.radius + (paddle.width >> 1):
-                return paddle
-        return
+        self.x_vel = (p1_1_x + p1_2_x) * elasticity
+        self.y_vel = (p1_1_y + p1_2_y) * elasticity
 
     def update_position(self, dt):
         self.x += self.x_vel * dt
         self.y += self.y_vel * dt
+        self.y_vel += 982 * dt
         self.position = [self.x, self.y]
 
     def reset(self, window_resolution, new_vel_min, new_vel_max):
