@@ -1,3 +1,5 @@
+import random
+
 import pygame
 import time
 from helpers import *
@@ -75,16 +77,22 @@ player_2 = Paddle([WINDOW_RESOLUTION[0] - 1.5 * x_padding,
 
 players = [player_1, player_2]
 
-ball_1 = Ball([WINDOW_RESOLUTION[0] >> 1,
-               WINDOW_RESOLUTION[1] >> 1],
-              [256, 0],
-              x_padding >> 1,
-              color_white)
+# ball_1 = Ball([window_resolution[0] >> 1,
+#                window_resolution[1] >> 1],
+#               [256, 0],
+#               x_padding >> 1,
+#               color_white)
+#
+# ball_2 = Ball([window_resolution[0] >> 2,
+#                window_resolution[1] >> 2],
+#               [256, 0],
+#               x_padding >> 1,
+#               color_cyan)
 
-balls = [ball_1]
+balls = []
 
-for ball in balls:
-    ball.reset(WINDOW_RESOLUTION, -256, 256)
+# for ball in balls:
+#     ball.reset(window_resolution, -256, 256)
 
 while run:
 
@@ -97,6 +105,19 @@ while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
+
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
+                new_ball = Ball([WINDOW_RESOLUTION[0] >> 1,
+                                   WINDOW_RESOLUTION[1] >> 1],
+                                  [256 * random.choice([1, -1]), 0],
+                                  x_padding >> 1,
+                                  color_white)
+                new_ball.reset(WINDOW_RESOLUTION, -256, 256)
+                balls.append(new_ball)
+
+            if event.key == pygame.K_q and len(balls) > 0:
+                balls.pop()
 
         # Resize window event
         if event.type == pygame.VIDEORESIZE:
@@ -113,6 +134,7 @@ while run:
 
     # Keypresses
     keys = pygame.key.get_pressed()
+
     for player in players:
         player.moving = 0
         if keys[player.up_key] and player.y > y_padding:
@@ -130,6 +152,9 @@ while run:
             ball.x = paddle.x + paddle.width + ball.radius if ball.x_vel < 0 else paddle.x - ball.radius
             ball.x_vel *= -1
             ball.update_position(dt)
+
+        if ball.collides_with_ball(balls):
+            ball.bounce(ball.collides_with_ball(balls))
 
         if ball.y - ball.radius <= y_padding >> 1 or ball.y + ball.radius >= WINDOW_RESOLUTION[1] - (y_padding >> 1):
             ball.y_vel *= -1

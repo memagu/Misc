@@ -32,7 +32,7 @@ color_blue = (0, 0, 255)
 player_move_velocity = 20
 player_rotation_velocity = 5
 
-number_of_rays = 900
+number_of_rays = 100
 field_of_view = math.pi / 3
 
 bounces = 8
@@ -271,7 +271,7 @@ while run:
             )
 
         # pygame.draw.rect(display, color_black,
-        # [0, 0, WINDOW_RESOLUTION[0] * minimap_ratio, WINDOW_RESOLUTION[1] * minimap_ratio])
+        # [0, 0, window_resolution[0] * minimap_ratio, window_resolution[1] * minimap_ratio])
 
         ray.draw(hit_point)
 

@@ -75,11 +75,11 @@ while run:
     # x += x_vel * dt
     # y += y_vel * dt
 
-    # if not 0 < x < WINDOW_RESOLUTION[0] - w:
+    # if not 0 < x < window_resolution[0] - w:
     #     x_vel *= -1
     #     x += x_vel * dt
     #
-    # if not 0 < y < WINDOW_RESOLUTION[1] - h:
+    # if not 0 < y < window_resolution[1] - h:
     #     y_vel *= -1
     #     y += y_vel * dt
 

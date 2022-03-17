@@ -1,7 +1,8 @@
 import requests
 import curses
 from curses.textpad import Textbox, rectangle
-import credentials
+# from Other_Projects.my_secrets import Faceit
+
 
 
 def match_to_api(match_url):
@@ -81,7 +82,7 @@ def compile_data(match_url, api_key):
     return result, team_keys
 
 
-API_key = credentials.api_key
+API_key = 'b3725f7a-6fa3-4517-a08d-a812b807b7f2'
 stdscr = curses.initscr()
 
 
