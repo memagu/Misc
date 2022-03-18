@@ -48,7 +48,7 @@ class Slider:
         self.min_value = min_value
         self.max_value = max_value
         self.value = value
-        self.value_amplitude = (self.value - self.min_value) / (self.max_value - self.min_value) * self.length
+        self.value_amplitude = self.value / self.max_value * self.length
         self.value_pos = [self.pos[0] + math.cos(self.angle) * self.value_amplitude,
                           self.pos[1] + math.sin(self.angle) * self.value_amplitude]
         self.font = pygame.font.SysFont("leelawadeeuisemilight", 16)
@@ -56,33 +56,18 @@ class Slider:
     def draw_slider(self, surface, color: [int, int, int] = color_white,):
         pygame.draw.aaline(surface, color, self.pos, self.end)
         pygame.draw.circle(surface, color, self.value_pos, 8)
-
-        value_text = self.font.render(str(round(self.value, 3)), True, color)
+        value_text = self.font.render(str(round(self.value, 2)), True, color)
         value_text_rect = value_text.get_rect(center=[self.value_pos[0], self.value_pos[1] - 24])
         surface.blit(value_text, value_text_rect)
-
         tag_text = self.font.render(self.tag, True, color)
         tag_text_rect = tag_text.get_rect(center=[(self.pos[0] + self.end[0]) / 2,
-                                                  (self.pos[1] + self.end[1]) / 2 + 24])
+                                                    (self.pos[1] + self.end[1]) / 2 + 24])
         surface.blit(tag_text, tag_text_rect)
 
     def pos_to_value(self, pos):
         d1 = ((pos[0] - self.pos[0]) ** 2 + (pos[1] - self.pos[1]) ** 2) ** 0.5
         d2 = ((self.end[0] - self.pos[0]) ** 2 + (self.end[1] - self.pos[1]) ** 2) ** 0.5
-        return d1 / d2 * (self.max_value - self.min_value) - abs(self.min_value)
-
-    def update(self):
-        mouse_pos = pygame.mouse.get_pos()
-        if pygame.mouse.get_pressed()[0] and distance(mouse_pos, self.value_pos) <= 32:
-            self.value = max(min(self.pos_to_value(mouse_pos), self.max_value), self.min_value)
-            self.value_amplitude = (self.value - self.min_value) / (self.max_value - self.min_value) * self.length
-            self.value_pos = [self.pos[0] + math.cos(self.angle) * self.value_amplitude,
-                              self.pos[1] + math.sin(self.angle) * self.value_amplitude]
-
-    def pos_to_value(self, pos):
-        d1 = ((pos[0] - self.pos[0]) ** 2 + (pos[1] - self.pos[1]) ** 2) ** 0.5
-        d2 = ((self.end[0] - self.pos[0]) ** 2 + (self.end[1] - self.pos[1]) ** 2) ** 0.5
-        return d1 / d2 * (self.max_value - self.min_value) - abs(self.min_value)
+        return d1 / d2 * self.max_value
 
     def update(self):
         mouse_pos = pygame.mouse.get_pos()
@@ -94,7 +79,6 @@ class Slider:
 
 
 # Your code here
-
 
 if __name__ == "__main__":
     print(__file__.split("\\")[-1])

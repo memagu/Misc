@@ -18,8 +18,11 @@ clock = pygame.time.Clock()
 pygame.font.init()
 fps_font = pygame.font.SysFont("leelawadeeuisemilight", window_resolution[1] // 32)
 
-while run:
+s1 = Slider([100, 100], "circle diameter")
+s2 = Slider([400, 200], "rect height", math.pi / 3)
+print(s1.pos_to_value((200, 100)))
 
+while run:
     time_now = time.time()
     dt = time_now - prev_time + (1 / 2 ** 32)
     prev_time = time_now
@@ -33,8 +36,8 @@ while run:
         if event.type == pygame.VIDEORESIZE:
             display = pygame.display.set_mode((event.w, event.h), pygame.RESIZABLE)
             window_resolution = [event.w, event.h]
-            transform_resolution = (window_resolution[0] / image_resolution[0], window_resolution[1] / image_resolution[1])
-
+            transform_resolution = (
+            window_resolution[0] / image_resolution[0], window_resolution[1] / image_resolution[1])
 
         # Keypresses
         # if event.type == pygame.KEYDOWN:
@@ -42,6 +45,11 @@ while run:
 
     # Draw
     display.fill(color_black)
+
+    s1.draw_slider(display, color_white)
+    s2.draw_slider(display, color_white)
+    s1.update()
+    s2.update()
 
     show_fps(display, fps_font, dt)
     pygame.display.update()
