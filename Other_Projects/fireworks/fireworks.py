@@ -34,6 +34,8 @@ particles = []
 
 while run:
 
+    print(len(particles))
+
     # Calculate dt
     time_now = time.time()
     dt = time_now - time_prev

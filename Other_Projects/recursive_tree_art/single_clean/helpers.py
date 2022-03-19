@@ -186,44 +186,6 @@ def draw_branch_polygon(root: Branch, surface: pygame.surface, base_width_ratio:
         pygame.draw.circle(surface, color, root.end, 5)
 
 
-def main():
-    display = pygame.display.set_mode([1600, 1200], pygame.RESIZABLE)
-
-    root = Branch([1600 / 2, 1200 - (1200 >> 3)],
-                  3 / 4 * 1200 / sum(
-                      [0.7 ** i for i in range(12)]),
-                  math.pi / 2)
-
-    tree = construct_tree(root,
-                          12,
-                          1,
-                          0.3,
-                          0.7,
-                          math.pi / 4,
-                          7 * math.pi / 4)
-
-    for i in range(100):
-        display.fill(color_black)
-        # draw_tree(tree, display, color_white, True)
-        traverse_tree(root, draw_branch_polygon, display, 0.2, color_white, True)
-        pygame.display.update()
-
-
-
 if __name__ == "__main__":
     print(__file__.split("\\")[-1])
-
-    import cProfile
-    cProfile.run("main()", "output.dat")
-
-    import pstats
-    from pstats import SortKey
-
-    with open("output_time.txt", "w") as f:
-        p = pstats.Stats("output.dat", stream=f)
-        p.sort_stats("time").print_stats()
-
-    with open("output_calls.txt", "w") as f:
-        p = pstats.Stats("output.dat", stream=f)
-        p.sort_stats("calls").print_stats()
 

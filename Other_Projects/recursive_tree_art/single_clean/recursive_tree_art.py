@@ -91,29 +91,10 @@ while run:
                               [sliders[1].value ** i for i in range(int(sliders[0].value))]),
                           math.pi / 2)
 
-        # Keypresses
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE:
-                seed += 1
-            if event.key == pygame.K_c:
-                seed -= 1
-
-    keys = pygame.key.get_pressed()
-    if keys[pygame.K_UP]:
-        left_branch_angle += math.pi / 8 * dt
-    if keys[pygame.K_DOWN]:
-        left_branch_angle -= math.pi / 8 * dt
-    if keys[pygame.K_RIGHT]:
-        right_branch_angle += math.pi / 8 * dt
-    if keys[pygame.K_LEFT]:
-        right_branch_angle -= math.pi / 8 * dt
-
 
     # Draw
     display.fill((29, 29, 29))
 
-    # draw_tree(tree, display, color_white, True)
-    # traverse_tree(root, draw_branch, display, color_white, True)
     traverse_tree(root, draw_branch_polygon, display, sliders[9].value, color_white, True)
     for slider in sliders:
         slider.update()

@@ -44,7 +44,7 @@ class Piece:
         return f"{self.team} {self.type}"
 
     def __repr__(self):
-        return self.__dict__
+        return str(self.__dict__)
 
 
 class King(Piece):
@@ -186,5 +186,6 @@ if __name__ == "__main__":
     b.set_piece([3, 0], King("black"))
     print(b.generate_board_code())
     b.set_board_from_code("rnbqkbnr/pppppppp/00000000/00000000/00000000/00000000/PPPPPPPP/RNBQKBNR")
+    print(repr(b.get_piece([1, 0])))
     print(b)
 
