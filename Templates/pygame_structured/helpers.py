@@ -1,10 +1,11 @@
 import pygame
 import time
 import math
+import random
+
+# Misc variables
 
 # Colors
-import pygame.font
-
 color_black = (0, 0, 0)
 color_white = (255, 255, 255)
 color_red = (255, 0, 0)
@@ -25,7 +26,7 @@ def show_fps(surface, font, dt, text_color=(0, 255, 0), outline_color=(0, 0, 0))
     surface.blit(fps_text, (0, 0))
 
 
-def rainbow(angle):
+def color_rainbow(angle):
     r = (math.sin(angle) + 1) / 2
     g = (math.sin(angle + math.pi / 1.5) + 1) / 2
     b = (math.sin(angle + 2 * math.pi / 1.5) + 1) / 2
@@ -34,6 +35,10 @@ def rainbow(angle):
 
 def distance(point: [int], point2: [int]) -> float:
     return sum([(point2[i] - point[i]) ** 2 for i in range(len(point))]) ** 0.5
+
+
+def distance_squared(point: [int], point2: [int]) -> float:
+    return sum([(point2[i] - point[i]) ** 2 for i in range(len(point))])
 
 
 # Classes
@@ -67,30 +72,23 @@ class Slider:
         surface.blit(tag_text, tag_text_rect)
 
     def pos_to_value(self, pos):
-        d1 = ((pos[0] - self.pos[0]) ** 2 + (pos[1] - self.pos[1]) ** 2) ** 0.5
-        d2 = ((self.end[0] - self.pos[0]) ** 2 + (self.end[1] - self.pos[1]) ** 2) ** 0.5
-        return d1 / d2 * (self.max_value - self.min_value) - abs(self.min_value)
+        d1 = distance_squared(self.pos, pos) if distance_squared(pos, self.end) <= self.length ** 2 else 0
+        d2 = distance(self.pos, self.end)
+        return d1 ** 0.5 / d2 * (self.max_value - self.min_value) - abs(self.min_value)
 
     def update(self):
         mouse_pos = pygame.mouse.get_pos()
-        if pygame.mouse.get_pressed()[0] and distance(mouse_pos, self.value_pos) <= 32:
+        if pygame.mouse.get_pressed()[0] and distance_squared(mouse_pos, self.value_pos) <= 32 ** 2:
             self.value = max(min(self.pos_to_value(mouse_pos), self.max_value), self.min_value)
             self.value_amplitude = (self.value - self.min_value) / (self.max_value - self.min_value) * self.length
             self.value_pos = [self.pos[0] + math.cos(self.angle) * self.value_amplitude,
                               self.pos[1] + math.sin(self.angle) * self.value_amplitude]
 
-    def pos_to_value(self, pos):
-        d1 = ((pos[0] - self.pos[0]) ** 2 + (pos[1] - self.pos[1]) ** 2) ** 0.5
-        d2 = ((self.end[0] - self.pos[0]) ** 2 + (self.end[1] - self.pos[1]) ** 2) ** 0.5
-        return d1 / d2 * (self.max_value - self.min_value) - abs(self.min_value)
+    def update_angle(self):
+        self.end = [self.pos[0] + math.cos(self.angle) * self.length, self.pos[1] + math.sin(self.angle) * self.length]
+        self.value_pos = [self.pos[0] + math.cos(self.angle) * self.value_amplitude,
+                          self.pos[1] + math.sin(self.angle) * self.value_amplitude]
 
-    def update(self):
-        mouse_pos = pygame.mouse.get_pos()
-        if pygame.mouse.get_pressed()[0] and distance(mouse_pos, self.value_pos) <= 32:
-            self.value = max(min(self.pos_to_value(mouse_pos), self.max_value), self.min_value)
-            self.value_amplitude = self.value / self.max_value * self.length
-            self.value_pos = [self.pos[0] + math.cos(self.angle) * self.value_amplitude,
-                              self.pos[1] + math.sin(self.angle) * self.value_amplitude]
 
 
 # Your code here

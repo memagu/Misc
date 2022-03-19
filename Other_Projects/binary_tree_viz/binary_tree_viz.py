@@ -15,8 +15,8 @@ clock = pygame.time.Clock()
 tree_depth = 7
 
 root = Node('s')
-#tree = construct_binary_tree(root, tree_depth)
-tree = construct_random_binary_tree(root, tree_depth, 1)
+tree = construct_binary_tree(root, tree_depth)
+# tree = construct_random_binary_tree(root, tree_depth, 1)
 print_binary_tree(tree)
 position_list = binary_tree_position_list(tree)
 
@@ -53,8 +53,8 @@ while run:
                 tree_depth += 1
             if event.key == pygame.K_DOWN:
                 tree_depth -= 1
-            # tree = construct_binary_tree(root, tree_depth)
-            tree = construct_random_binary_tree(root, tree_depth, 1)
+            tree = construct_binary_tree(root, tree_depth)
+            # tree = construct_random_binary_tree(root, tree_depth, 1)
             stats_font = pygame.font.SysFont('leelawadeeuisemilight', int(window_resolution[1] / (tree_depth + 1)) >> 1)
 
     # Draw
