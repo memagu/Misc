@@ -271,7 +271,7 @@ while run:
             )
 
         # pygame.draw.rect(display, color_black,
-        # [0, 0, WINDOW_RESOLUTION[0] * minimap_ratio, WINDOW_RESOLUTION[1] * minimap_ratio])
+        # [0, 0, window_resolution[0] * minimap_ratio, window_resolution[1] * minimap_ratio])
 
         ray.draw(hit_point)
 
