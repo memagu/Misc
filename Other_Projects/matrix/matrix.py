@@ -4,7 +4,7 @@ import random
 
 pygame.init()
 
-WINDOW_RESOLUTION = (1200, 900)
+WINDOW_RESOLUTION = (2560, 1440)
 char_height = 16
 image_resolution = [WINDOW_RESOLUTION[0] // char_height * 2, WINDOW_RESOLUTION[1] // char_height]
 transform_resolution = (WINDOW_RESOLUTION[0] / image_resolution[0], WINDOW_RESOLUTION[1] / image_resolution[1])
@@ -33,13 +33,13 @@ fps_font = pygame.font.SysFont(None, WINDOW_RESOLUTION[0] // 32)
 
 
 
-# charachters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U',
-#                'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
-#                'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '$',
-#                '+', '-', '*', '/', '=', '"', "'", '#', '&', '_', '(', ')', ',', '.', ';', ':', '?', '!', '\\', '|', '{',
-#                '}', '<', '>', '[', ']', '^', '~']
+charachters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U',
+               'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
+               'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '$',
+               '+', '-', '*', '/', '=', '"', "'", '#', '&', '_', '(', ')', ',', '.', ';', ':', '?', '!', '\\', '|', '{',
+               '}', '<', '>', '[', ']', '^', '~']
 
-charachters = ['0', '1']
+# charachters = ['0', '1']
 
 print(font.size("M"))
 
@@ -128,10 +128,10 @@ while run:
 
     # for i in range(image_resolution[0]):
     #     pygame.draw.line(display, (29, 29, 29), (i * transform_resolution[0], 0),
-    #                      (i * transform_resolution[0], WINDOW_RESOLUTION[1]))
+    #                      (i * transform_resolution[0], window_resolution[1]))
     # for i in range(image_resolution[1]):
     #     pygame.draw.line(display, (29, 29, 29), (0, i * transform_resolution[1]),
-    #                      (WINDOW_RESOLUTION[0], i * transform_resolution[1]))
+    #                      (window_resolution[0], i * transform_resolution[1]))
 
     temp_add = []
     temp_remove = []
