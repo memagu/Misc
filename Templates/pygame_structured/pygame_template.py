@@ -18,19 +18,11 @@ clock = pygame.time.Clock()
 pygame.font.init()
 fps_font = pygame.font.SysFont("leelawadeeuisemilight", window_resolution[1] // 32)
 
-s = Slider([600, 450], "test", math.pi)
-
-angle_vel = 0
-
-
 while run:
 
     time_now = time.time()
     dt = time_now - prev_time + (1 / 2 ** 32)
     prev_time = time_now
-
-    s.angle += angle_vel * dt
-    s.update_angle()
 
     # Event loop
     for event in pygame.event.get():
@@ -50,9 +42,6 @@ while run:
 
     # Draw
     display.fill(color_black)
-
-    s.update()
-    s.draw_slider(display)
 
     show_fps(display, fps_font, dt)
     pygame.display.update()
