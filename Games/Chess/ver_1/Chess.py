@@ -105,7 +105,7 @@ class Knight(Piece):
         super().__init__(pos, team, f"../Resources/pieces/{team[0]}-{self.name.lower()}.png")
 
     def possible(self, target_pos):
-        return ((target_pos[0] - self.pos[0]) ** 2 + (target_pos[1] - self.pos[1]) ** 2) ** 0.5 == 5 ** 0.5
+        return (target_pos[0] - self.pos[0]) ** 2 + (target_pos[1] - self.pos[1]) ** 2 == 25
 
 
 class Pawn(Movable):

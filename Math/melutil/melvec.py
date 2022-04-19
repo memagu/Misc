@@ -5,7 +5,7 @@ import math
 
 class Vector(ABC):
     def __str__(self):
-        return str(self.__dict__)
+        return self.__class__.__name__ + str(self.__dict__)
 
     @abstractmethod
     def __add__(self, other):
@@ -225,7 +225,7 @@ class Vec3(Vector):
         return self.x ** 2 + self.y ** 2 + self.z ** 2
 
     def normalize(self) -> Vector:
-        return self / self.magnitude()
+        return self / (self.magnitude() if self.magnitude() else 1)
 
     def dot(self, other) -> float:
         return self.x * other.x + self.y * other.y + self.z * other.z
