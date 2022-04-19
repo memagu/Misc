@@ -1,6 +1,3 @@
-import math
-
-
 # Below function will print the
 # all prime factor of given number
 def prime_factors(num):
@@ -9,7 +6,7 @@ def prime_factors(num):
         print(2, )
         num = num / 2
 
-    for i in range(3, int(math.sqrt(num)) + 1, 2):
+    for i in range(3, int(num ** 0.5) + 1, 2):
 
         # while i divides n , print i ad divide n
         while num % i == 0:
