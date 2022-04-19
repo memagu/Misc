@@ -2,7 +2,6 @@ import pygame
 import time
 import math
 import random
-from Math.melutil.melvec import *
 
 # Misc variables
 
@@ -91,34 +90,8 @@ class Slider:
                           self.pos[1] + math.sin(self.angle) * self.value_amplitude]
 
 
+
 # Your code here
-
-
-class Planet:
-    def __init__(self, pos: Vec2, vel: Vec2, mass, color: Vec3):
-        self.pos = pos
-        self.vel = vel
-        self.acc = Vec2()
-        self.mass = mass
-        self.radius = math.sqrt(mass/math.pi)
-        self.color = color
-
-    def calc_force(self, other, G=6.67*10**-11, padding=10):
-        return G * self.mass * other.mass / (self.pos.distance_to_squared(other.pos) + padding)
-
-    def calculate_acceleration(self, others, G=6.67*10**-11, padding=10):
-        self.acc *= 0
-        for other in others:
-            if other != self:
-                self.acc += (other.pos - self.pos).normalize() * (self.calc_force(other, G, padding) / self.mass)
-
-    def update(self, dt):
-        self.vel += self.acc * dt
-        self.pos += self.vel * dt
-
-    def draw(self, surface):
-        pygame.draw.circle(surface, self.color.as_list(), self.pos.as_list(), self.radius)
-
 
 
 if __name__ == "__main__":
