@@ -1,0 +1,931 @@
+class Element:
+    def __init__(self, label, protons, nucleons, mass, half_life, decay):
+        self.label = label
+        self.protons = protons
+        self.nucleons = nucleons
+        self.electrons = protons
+        self.mass = mass
+        self.half_life = half_life
+        self.decay = decay
+
+    def __str__(self):
+        return str(self.__dict__)
+
+    @staticmethod
+    def usage_help():
+        print("label = label of element")
+        print("protons = number of protons")
+        print("nucleons = sum of protons and neutrons")
+        print("nuclear_mass = mass of element")
+        print("half_life = time for half of the particles to decay")
+        print("decay = decay method")
+
+
+# n = Element("n", 0, 1, 1.0086649158, 613.8, "β-")
+#
+# H1 = Element("H1", 1, 1, 1.0078250322, 0, "stable")
+# H2 = Element("H2", 1, 2, 2.0141017781, 0, "stable")
+# H3 = Element("H3", 1, 3, 3.0160492820, 3.90683*10**8, "β-")
+#
+# He1 = Element("He1", 2, 3, 3.0160293227, 0, "stable")
+# He2 = Element("He2", 2, 4, 4.0026032541, 0, "stable")
+# He3 = Element("He3", 2, 5, 5.012057, 7*10**-22, "n")
+# He4 = Element("He4", 2, 6, 6.0188859, 0.8067, "β-")
+#
+# Li5 = Element("Li5", 3, 5, 5.0125540, 3.7*10**-22, "p")
+# Li6 = Element("Li6", 3, 6, 6.015122887, 0, "stable")
+# Li7 = Element("Li6", 3, 7, 7.01600334, 0, "stable")
+# Li8 = Element("Li6", 3, 8, 8.02248625, 0.8403, "β-")
+#
+# Be7 = Element("Be7", 4, 7, 7.01692872, 4598208, "ε, γ")
+# Be8 = Element("Be8", 4, 8, 8.00530510, 6.7*10**-17, "α")
+# Be9 = Element("Be9", 4, 9, 9.0121831, 0, "stable")
+# Be10 = Element("Be10", 4, 10, 10.0135347, 4.76509582*10**13, "β-")
+
+e = Element('e', -1, 0, 0.00054858, 'None', 'None')
+p = Element('e', 1, 1, 1.007276, 'None', 'None')
+n = Element('e', 0, 1, 1.0086649, '613.9', 'Beta-')
+
+H1 = Element('H1', 1, 1, 1.00782503223, 'stable', 'None')
+H2 = Element('H2', 1, 2, 2.01410177812, 'stable', 'None')
+H3 = Element('H3', 1, 3, 3.0160492779, '12.32 years', 'beta-')
+H4 = Element('H4', 1, 4, 4.02643, 'None', 'n')
+
+He3 = Element('He3', 2, 3, 3.0160293201, 'stable', 'None')
+He4 = Element('He4', 2, 4, 4.00260325413, 'stable', 'None')
+He5 = Element('He5', 2, 5, 5.012057, 'None', 'n, alpha')
+He6 = Element('He6', 2, 6, 6.018885891, 'None', 'beta-')
+
+Li5 = Element('Li5', 3, 5, 5.012538, 'None', 'P')
+Li6 = Element('Li6', 3, 6, 6.0151228874, 'stable', 'None')
+Li7 = Element('Li7', 3, 7, 7.0160034366, 'stable', 'None')
+Li8 = Element('Li8', 3, 8, 8.022486246, '839.9 ms', 'beta-')
+
+Be7 = Element('Be7', 4, 7, 7.016928717, '53.22 d', 'epsilon')
+Be8 = Element('Be8', 4, 8, 8.005305102, 'None', 'alpha')
+Be9 = Element('Be9', 4, 9, 9.012183065, 'stable', 'None')
+Be10 = Element('Be10', 4, 10, 10.013534695, '1.51E+6 years', 'beta-')
+
+B8 = Element('B8', 5, 8, 8.0246073, '770 ms', 'beta+')
+B9 = Element('B9', 5, 9, 9.01332965, 'None', 'P')
+B10 = Element('B10', 5, 10, 10.01293695, 'stable', 'None')
+B11 = Element('B11', 5, 11, 11.00930536, 'stable', 'None')
+B12 = Element('B12', 5, 12, 12.0143527, '20.20 ms', 'beta-')
+
+C10 = Element('C10', 6, 10, 10.01685331, '19.308 s', 'beta+')
+C11 = Element('C11', 6, 11, 11.0114336, '20.364 m', 'beta+')
+C12 = Element('C12', 6, 12, 12.0, 'stable', 'None')
+C13 = Element('C13', 6, 13, 13.00335483507, 'stable', 'None')
+C14 = Element('C14', 6, 14, 14.0032419884, '5700 years', 'beta-')
+C15 = Element('C15', 6, 15, 15.01059926, '2.449 s', 'beta-')
+
+N13 = Element('N13', 7, 13, 13.00573861, '9.965 m', 'beta+')
+N14 = Element('N14', 7, 14, 14.00307400443, 'stable', 'None')
+N15 = Element('N15', 7, 15, 15.00010889888, 'stable', 'None')
+N16 = Element('N16', 7, 16, 16.0061019, '7.13 s', 'beta-')
+N17 = Element('N17', 7, 17, 17.008449, '4171 ms', 'beta-')
+N18 = Element('N18', 7, 18, 18.014078, '619 ms', 'beta-')
+
+O14 = Element('O14', 8, 14, 14.00859636, '70.620 s', 'beta+')
+O15 = Element('O15', 8, 15, 15.00306562, '122.24 s', 'beta+')
+O16 = Element('O16', 8, 16, 15.99491461957, 'stable', 'None')
+O17 = Element('O17', 8, 17, 16.9991317565, 'stable', 'None')
+O18 = Element('O18', 8, 18, 17.99915961286, 'stable', 'None')
+O19 = Element('O19', 8, 19, 19.003578, '26.88 s', 'beta-')
+
+F17 = Element('F17', 9, 17, 17.00209524, '64.49 s', 'beta+')
+F18 = Element('F18', 9, 18, 18.00093733, '109.77 m', 'beta+')
+F19 = Element('F19', 9, 19, 18.99840316273, 'stable', 'None')
+F20 = Element('F20', 9, 20, 19.999981252, '11.07 s', 'beta-')
+
+Ne19 = Element('Ne19', 10, 19, 19.00188091, '17.22 s', 'beta+')
+Ne20 = Element('Ne20', 10, 20, 19.9924401762, 'stable', 'None')
+Ne21 = Element('Ne21', 10, 21, 20.993846685, 'stable', 'None')
+Ne22 = Element('Ne22', 10, 22, 21.991385114, 'stable', 'None')
+Ne23 = Element('Ne23', 10, 23, 22.99446691, '37.24 s', 'beta-')
+Ne24 = Element('Ne24', 10, 24, 23.99361065, '3.38 m', 'beta-')
+
+Na21 = Element('Na21', 11, 21, 20.99765469, '22.49 s', 'beta+')
+Na22 = Element('Na22', 11, 22, 21.99443741, '2.6018 years', 'beta+')
+Na23 = Element('Na23', 11, 23, 22.989769282, 'stable', 'None')
+Na24 = Element('Na24', 11, 24, 23.99096295, '14.997 h', 'beta-')
+Na25 = Element('Na25', 11, 25, 24.989954, '59.1 s', 'beta-')
+
+Mg22 = Element('Mg22', 12, 22, 21.99957065, '3.8755 s', 'beta+')
+Mg23 = Element('Mg23', 12, 23, 22.99412421, '11.317 s', 'beta+')
+Mg24 = Element('Mg24', 12, 24, 23.985041697, 'stable', 'None')
+Mg25 = Element('Mg25', 12, 25, 24.985836976, 'stable', 'None')
+Mg26 = Element('Mg26', 12, 26, 25.982592968, 'stable', 'None')
+Mg27 = Element('Mg27', 12, 27, 26.984340624, '9.458 m', 'beta-')
+
+Al25 = Element('Al25', 13, 25, 24.9904281, '7.183 s', 'beta+')
+Al26 = Element('Al26', 13, 26, 25.986891904, '7.17E+05 years', 'beta+')
+Al27 = Element('Al27', 13, 27, 26.98153853, 'stable', 'None')
+Al28 = Element('Al28', 13, 28, 27.98191021, '2.245 m', 'beta-')
+
+Si26 = Element('Si26', 14, 26, 25.99233384, '2.2453 S', 'beta+')
+Si27 = Element('Si27', 14, 27, 26.98670481, '4.15 s', 'beta+')
+Si28 = Element('Si28', 14, 28, 27.97692653465, 'stable', 'None')
+Si29 = Element('Si29', 14, 29, 28.9764946649, 'stable', 'None')
+Si30 = Element('Si30', 14, 30, 29.973770136, 'stable', 'None')
+Si31 = Element('Si31', 14, 31, 30.975363194, '157.36 m', 'beta-')
+
+P30 = Element('P30', 15, 30, 29.97831375, '2.498 m', 'beta+')
+P31 = Element('P31', 15, 31, 30.97376199842, 'stable', 'None')
+P32 = Element('P32', 15, 32, 31.973907643, '14.268 d', 'beta-')
+P33 = Element('P33', 15, 33, 32.9717257, '25.35 d', 'beta-')
+P34 = Element('P34', 15, 34, 33.97364589, '12.43 s', 'beta-')
+
+S31 = Element('S31', 16, 31, 30.97955701, '2.5534 s', 'beta+')
+S32 = Element('S32', 16, 32, 31.9720711744, 'stable', 'None')
+S33 = Element('S33', 16, 33, 32.9714589098, 'stable', 'None')
+S34 = Element('S34', 16, 34, 33.967867004, 'stable', 'None')
+S35 = Element('S35', 16, 35, 34.96903231, '87.37 d', 'beta-')
+S36 = Element('S36', 16, 36, 35.96708071, 'stable', 'None')
+
+Cl35 = Element('Cl35', 17, 35, 34.968852682, 'stable', 'None')
+Cl36 = Element('Cl36', 17, 36, 35.968306809, '3.01E+5 years', 'beta-, beta+')
+Cl37 = Element('Cl37', 17, 37, 36.965902602, 'stable', 'None')
+Cl38 = Element('Cl38', 17, 38, 37.96801044, '37.24 m', 'beta-')
+
+Ar35 = Element('Ar35', 18, 35, 34.97525759, '1.7756 s', 'beta+')
+Ar36 = Element('Ar36', 18, 36, 35.967545105, 'stable', 'None')
+Ar37 = Element('Ar37', 18, 37, 36.96677633, '35.04 d', 'epsilon')
+Ar38 = Element('Ar38', 18, 38, 37.96273211, 'stable', 'None')
+Ar39 = Element('Ar39', 18, 39, 38.964313, '269 years', 'beta-')
+Ar40 = Element('Ar40', 18, 40, 39.9623831237, 'stable', 'None')
+
+K38 = Element('K38', 19, 38, 37.96908112, '7.636 m', 'beta+')
+K39 = Element('K39', 19, 39, 38.9637064864, 'stable', 'None')
+K40 = Element('K40', 19, 40, 39.963998166, '1.248E+9 years', 'beta-')
+K41 = Element('K41', 19, 41, 40.9618252579, 'stable', 'None')
+K42 = Element('K42', 19, 42, 41.96240231, '12.355 h', 'beta-')
+K43 = Element('K43', 19, 43, 42.9607347, '22.3 h', 'beta-')
+
+Ca39 = Element('Ca39', 20, 39, 38.97071081, '859.6 ms', 'beta+')
+Ca40 = Element('Ca40', 20, 40, 39.962590863, '3.0E+21 years', '2 beta+')
+Ca41 = Element('Ca41', 20, 41, 40.96227792, '9.94E4 years', 'epsilon')
+Ca42 = Element('Ca42', 20, 42, 41.95861783, 'stable', 'None')
+Ca43 = Element('Ca43', 20, 43, 42.95876644, 'stable', 'None')
+Ca44 = Element('Ca44', 20, 44, 43.95548156, 'stable', 'None')
+Ca45 = Element('Ca45', 20, 45, 44.95618635, '162.61 d', 'beta-')
+Ca46 = Element('Ca46', 20, 46, 45.953689, '0.28E+16 years', '2beta-')
+Ca47 = Element('Ca47', 20, 47, 46.9545424, '4.536 d', 'beta-')
+Ca48 = Element('Ca48', 20, 48, 47.95252276, '5.8E22 years', '2beta-')
+Ca49 = Element('Ca49', 20, 49, 48.95566274, '8.718 m', 'beta-')
+Ca50 = Element('Ca50', 20, 50, 49.9574992, '13.9 s', 'beta-')
+
+Sc44 = Element('Sc44', 21, 44, 43.9594029, '3.97 h', 'beta+')
+Sc45 = Element('Sc45', 21, 45, 44.95590828, 'stable', 'None')
+Sc46 = Element('Sc46', 21, 46, 45.95516826, '83.79 d', 'beta-')
+Sc47 = Element('Sc47', 21, 47, 46.9524037, '3.3492 d', 'beta-')
+
+Ti44 = Element('Ti44', 22, 44, 43.95968995, '60.0 years', 'epsilon')
+Ti45 = Element('Ti45', 22, 45, 44.95812198, '184.8 m', 'beta+')
+Ti46 = Element('Ti46', 22, 46, 45.95262772, 'stable', 'None')
+Ti47 = Element('Ti47', 22, 47, 46.95175879, 'stable', 'None')
+Ti48 = Element('Ti48', 22, 48, 47.94794198, 'stable', 'None')
+Ti49 = Element('Ti49', 22, 49, 48.94786568, 'stable', 'None')
+Ti50 = Element('Ti50', 22, 50, 49.94478689, 'stable', 'None')
+Ti51 = Element('Ti51', 22, 51, 50.94661065, '5.76 m', 'beta-')
+
+V48 = Element('V48', 23, 48, 47.9522522, '15.9735 d', 'beta+')
+V49 = Element('V49', 23, 49, 48.9485118, '330 d', 'epsilon')
+V50 = Element('V50', 23, 50, 49.94715601, '2.1E+17 years', 'beta+ , beta-')
+V51 = Element('V51', 23, 51, 50.94395704, 'stable', 'None')
+V52 = Element('V52', 23, 52, 51.94477301, '3.743 m', 'beta-')
+
+Cr49 = Element('Cr49', 24, 49, 48.9513333, '42.3 m', 'beta+')
+Cr50 = Element('Cr50', 24, 50, 49.94604183, '1.3E+18 years', '2beta+')
+Cr51 = Element('Cr51', 24, 51, 50.94476502, '27.7025 d', 'epsilon')
+Cr52 = Element('Cr52', 24, 52, 51.94050623, 'stable', 'None')
+Cr53 = Element('Cr53', 24, 53, 52.94064815, 'stable', 'None')
+Cr54 = Element('Cr54', 24, 54, 53.93887916, 'stable', 'None')
+Cr55 = Element('Cr55', 24, 55, 54.94083843, '3.497 m', 'beta-')
+Cr56 = Element('Cr56', 24, 56, 55.9406531, '5.94 m', 'beta-')
+
+Mn52 = Element('Mn52', 25, 52, 51.9455639, '5.591 d', 'beta+')
+Mn53 = Element('Mn53', 25, 53, 52.94128889, '3.74E+6 years', 'epsilon')
+Mn54 = Element('Mn54', 25, 54, 53.9403576, '312.20 d', 'epsilon')
+Mn55 = Element('Mn55', 25, 55, 54.93804391, 'stable', 'None')
+Mn56 = Element('Mn56', 25, 56, 55.93890369, '2.5789 h', 'beta-')
+
+Fe53 = Element('Fe53', 26, 53, 52.9453064, '8.51 m', 'beta+')
+Fe54 = Element('Fe54', 26, 54, 53.93960899, 'stable', 'None')
+Fe55 = Element('Fe55', 26, 55, 54.93829199, '2.744 years', 'epsilon')
+Fe56 = Element('Fe56', 26, 56, 55.93493633, 'stable', 'None')
+Fe57 = Element('Fe57', 26, 57, 56.93539284, 'stable', 'None')
+Fe58 = Element('Fe58', 26, 58, 57.93327443, 'stable', 'None')
+Fe59 = Element('Fe59', 26, 59, 58.93487434, '44.495 d', 'beta-')
+Fe60 = Element('Fe60', 26, 60, 59.9340711, '2.62E+6 years', 'beta-')
+
+Co56 = Element('Co56', 27, 56, 55.9398388, '77.236 d', 'beta+')
+Co57 = Element('Co57', 27, 57, 56.93629057, '271.74 d', 'epsilon')
+Co58 = Element('Co58', 27, 58, 57.9357521, '70.86 d', 'beta+')
+Co59 = Element('Co59', 27, 59, 58.93319429, 'stable', 'None')
+Co60 = Element('Co60', 27, 60, 59.9338163, '1925.28 d', 'beta-')
+
+Ni57 = Element('Ni57', 28, 57, 56.93979218, '35.60 h', 'beta+')
+Ni58 = Element('Ni58', 28, 58, 57.93534241, 'stable', 'None')
+Ni59 = Element('Ni59', 28, 59, 58.9343462, '7.6E+4 years', 'beta+')
+Ni60 = Element('Ni60', 28, 60, 59.93078588, 'stable', 'None')
+Ni61 = Element('Ni61', 28, 61, 60.93105557, 'stable', 'None')
+Ni62 = Element('Ni62', 28, 62, 61.92834537, 'stable', 'None')
+Ni63 = Element('Ni63', 28, 63, 62.92966963, '101.2 years', 'beta-')
+Ni64 = Element('Ni64', 28, 64, 63.92796682, 'stable', 'None')
+Ni65 = Element('Ni65', 28, 65, 64.93008517, '2.5175 h', 'beta-')
+
+Cu62 = Element('Cu62', 29, 62, 61.93259541, '9.673 m', 'beta+')
+Cu63 = Element('Cu63', 29, 63, 62.92959772, 'stable', 'None')
+Cu64 = Element('Cu64', 29, 64, 63.92976434, '12.701 h', 'beta+ , beta-')
+Cu65 = Element('Cu65', 29, 65, 64.9277897, 'stable', 'None')
+Cu66 = Element('Cu66', 29, 66, 65.92886903, '5.120 m', 'beta-')
+
+Zn63 = Element('Zn63', 30, 63, 62.9332115, '38.47 m', 'beta+')
+Zn64 = Element('Zn64', 30, 64, 63.92914201, '7.0E20 years', '2beta+')
+Zn65 = Element('Zn65', 30, 65, 64.92924077, '243.93 d', 'beta+')
+Zn66 = Element('Zn66', 30, 66, 65.92603381, 'stable', 'None')
+Zn67 = Element('Zn67', 30, 67, 66.92712775, 'stable', 'None')
+Zn68 = Element('Zn68', 30, 68, 67.92484455, 'stable', 'None')
+Zn69 = Element('Zn69', 30, 69, 68.9265507, '56.4 m', 'beta-')
+Zn70 = Element('Zn70', 30, 70, 69.9253192, '2.3E+17 years', '2beta-')
+Zn71 = Element('Zn71', 30, 71, 70.9277196, '2.45 m', 'beta-')
+
+Ga68 = Element('Ga68', 31, 68, 67.9279805, '67.71 m', 'beta+')
+Ga69 = Element('Ga69', 31, 69, 68.9255735, 'stable', 'None')
+Ga70 = Element('Ga70', 31, 70, 69.9260219, '21.14 m', 'beta-')
+Ga71 = Element('Ga71', 31, 71, 70.92470258, 'stable', 'None')
+Ga72 = Element('Ga72', 31, 72, 71.92636747, '14.10 h', 'beta-')
+
+Ge69 = Element('Ge69', 32, 69, 68.9279645, '39.05 h', 'beta+')
+Ge70 = Element('Ge70', 32, 70, 69.92424875, 'stable', 'None')
+Ge71 = Element('Ge71', 32, 71, 70.92495233, '11.43 d', 'epsilon')
+Ge72 = Element('Ge72', 32, 72, 71.922075826, 'stable', 'None')
+Ge73 = Element('Ge73', 32, 73, 72.923458956, 'stable', 'None')
+Ge74 = Element('Ge74', 32, 74, 73.921177761, 'stable', 'None')
+Ge75 = Element('Ge75', 32, 75, 74.92285837, '82.78 m', 'beta-')
+Ge76 = Element('Ge76', 32, 76, 75.921402726, 'stable', 'None')
+Ge77 = Element('Ge77', 32, 77, 76.923549843, '11.30 h', 'beta-')
+
+As73 = Element('As73', 33, 73, 72.9238291, '80.30 d', 'epsilon')
+As74 = Element('As74', 33, 74, 73.9239286, '17.77 d', 'beta+ , beta-')
+As75 = Element('As75', 33, 75, 74.92159457, 'stable', 'None')
+As76 = Element('As76', 33, 76, 75.92239202, '1.0942 d', 'beta-')
+
+Se73 = Element('Se73', 34, 73, 72.9267549, '7.15 h', 'beta+')
+Se74 = Element('Se74', 34, 74, 73.922475934, 'stable', 'None')
+Se75 = Element('Se75', 34, 75, 74.92252287, '119.78 d', 'epsilon')
+Se76 = Element('Se76', 34, 76, 75.919213704, 'stable', 'None')
+Se77 = Element('Se77', 34, 77, 76.919914154, 'stable', 'None')
+Se78 = Element('Se78', 34, 78, 77.91730928, 'stable', 'None')
+Se79 = Element('Se79', 34, 79, 78.91849929, '3.26E+5 years', 'beta-')
+Se80 = Element('Se80', 34, 80, 79.9165218, 'stable', '2beta-')
+Se81 = Element('Se81', 34, 81, 80.917993, '18.45 m', 'beta-')
+Se82 = Element('Se82', 34, 82, 81.9166995, 'stable', 'None')
+Se83 = Element('Se83', 34, 83, 82.9191186, '70.1 s', 'beta-')
+
+Br78 = Element('Br78', 35, 78, 77.9211459, '6.45 m', 'beta+ , beta-')
+Br79 = Element('Br79', 35, 79, 78.9183376, 'stable', 'None')
+Br80 = Element('Br80', 35, 80, 79.9185298, '17.68 m', 'beta-, beta+')
+Br81 = Element('Br81', 35, 81, 80.9162897, 'stable', 'None')
+Br82 = Element('Br82', 35, 82, 81.9168032, '35.282 h', 'beta-')
+
+Kr78 = Element('Kr78', 36, 78, 77.92036494, '1.5E+21 years', '2beta+')
+Kr79 = Element('Kr79', 36, 79, 78.9200829, '35.04 h', 'beta+')
+Kr80 = Element('Kr80', 36, 80, 79.91637808, 'stable', 'None')
+Kr81 = Element('Kr81', 36, 81, 80.9165912, '2.29E+5 years', 'epsilon')
+Kr82 = Element('Kr82', 36, 82, 81.91348273, 'stable', 'None')
+Kr83 = Element('Kr83', 36, 83, 82.91412716, 'stable', 'None')
+Kr84 = Element('Kr84', 36, 84, 83.9114977282, 'stable', 'None')
+Kr85 = Element('Kr85', 36, 85, 84.9125273, '10.739 years', 'beta-')
+Kr86 = Element('Kr86', 36, 86, 85.9106106269, 'stable', 'None')
+Kr87 = Element('Kr87', 36, 87, 86.91335476, '76.3 m', 'beta-')
+Kr88 = Element('Kr88', 36, 88, 87.9144479, '2.825 h', 'beta-')
+Kr89 = Element('Kr89', 36, 89, 88.9178355, '3.15 m', 'beta-')
+Kr90 = Element('Kr90', 36, 90, 89.9195279, '32.32 s', 'beta-')
+Kr91 = Element('Kr91', 36, 91, 90.9238063, '8.57 s', 'beta-')
+Kr92 = Element('Kr92', 36, 92, 91.9261731, '1.840 s', 'beta-')
+
+Rb84 = Element('Rb84', 37, 84, 83.9143752, '32.82 d', 'beta+ , beta-')
+Rb85 = Element('Rb85', 37, 85, 84.9117897379, 'stable', 'None')
+Rb86 = Element('Rb86', 37, 86, 85.91116743, '18.642 d', 'beta-, epsilon')
+Rb87 = Element('Rb87', 37, 87, 86.909180531, '4.97E10 years', 'beta-')
+
+Sr84 = Element('Sr84', 38, 84, 83.9134191, 'stable', 'None')
+Sr85 = Element('Sr85', 38, 85, 84.912932, '64.849 d', 'epsilon')
+Sr86 = Element('Sr86', 38, 86, 85.9092606, 'stable', 'None')
+Sr87 = Element('Sr87', 38, 87, 86.9088775, 'stable', 'None')
+Sr88 = Element('Sr88', 38, 88, 87.9056125, 'stable', 'None')
+Sr89 = Element('Sr89', 38, 89, 88.9074511, '50.563 d', 'beta-')
+Sr90 = Element('Sr90', 38, 90, 89.90773, '28.90 years', 'beta-')
+Sr91 = Element('Sr91', 38, 91, 90.9101954, '9.65 h', 'beta-')
+Sr92 = Element('Sr92', 38, 92, 91.9110382, '2.66 h', 'beta-')
+Sr93 = Element('Sr93', 38, 93, 92.9140242, '7.43 m', 'beta-')
+Sr94 = Element('Sr94', 38, 94, 93.9153556, '75.3 s', 'beta-')
+
+Y88 = Element('Y88', 39, 88, 87.9095016, '106.626 d', 'beta+')
+Y89 = Element('Y89', 39, 89, 88.9058403, 'stable', 'None')
+Y90 = Element('Y90', 39, 90, 89.9071439, '64.053 h', 'beta-')
+Y91 = Element('Y91', 39, 91, 90.9072974, '58.51 d', 'beta-')
+Y92 = Element('Y92', 39, 92, 91.9089451, '3.54 h', 'beta-')
+Y93 = Element('Y93', 39, 93, 92.909578, '10.18 h', 'beta-')
+Y94 = Element('Y94', 39, 94, 93.9115906, '18.7 m', 'beta-')
+Y95 = Element('Y95', 39, 95, 94.9128161, '10.3 m', 'beta-')
+
+Zr89 = Element('Zr89', 40, 89, 88.9088814, '78.41 h', 'beta+')
+Zr90 = Element('Zr90', 40, 90, 89.9046977, 'stable', 'None')
+Zr91 = Element('Zr91', 40, 91, 90.9056396, 'stable', 'None')
+Zr92 = Element('Zr92', 40, 92, 91.9050347, 'stable', 'None')
+Zr93 = Element('Zr93', 40, 93, 92.9064699, '1.61E+6 years', 'beta-')
+Zr94 = Element('Zr94', 40, 94, 93.9063108, 'stable', 'None')
+Zr95 = Element('Zr95', 40, 95, 94.9080385, '64.032 d', 'beta-')
+Zr96 = Element('Zr96', 40, 96, 95.9082714, '2.35E+19 years', '2beta-')
+
+Nb90 = Element('Nb90', 41, 90, 89.9112584, '14.60 h', 'beta+')
+Nb91 = Element('Nb91', 41, 91, 90.9069897, '6.8E+2 years', 'epsilon')
+Nb92 = Element('Nb92', 41, 92, 91.9071881, '3.47E+7 years', 'beta+ , beta-')
+Nb93 = Element('Nb93', 41, 93, 92.906373, 'stable', 'None')
+Nb94 = Element('Nb94', 41, 94, 93.9072788, '2.03E+4 years', 'beta-')
+
+Mo92 = Element('Mo92', 42, 92, 91.90680796, 'stable', 'None')
+Mo93 = Element('Mo93', 42, 93, 92.90680958, '4.0E+3 years', 'epsilon')
+Mo94 = Element('Mo94', 42, 94, 93.9050849, 'stable', 'None')
+Mo95 = Element('Mo95', 42, 95, 94.90583877, 'stable', 'None')
+Mo96 = Element('Mo96', 42, 96, 95.90467612, 'stable', 'None')
+Mo97 = Element('Mo97', 42, 97, 96.90601812, 'stable', 'None')
+Mo98 = Element('Mo98', 42, 98, 97.90540482, 'stable', 'None')
+Mo99 = Element('Mo99', 42, 99, 98.90770851, '65.976 h', 'beta-')
+Mo100 = Element('Mo100', 42, 100, 99.9074718, '7.3E+18 years', '2beta-')
+
+Tc96 = Element('Tc96', 43, 96, 95.907868, '4.28 d', 'beta+')
+Tc97 = Element('Tc97', 43, 97, 96.9063667, '4.21E+6 years', 'epsilon')
+Tc98 = Element('Tc98', 43, 98, 97.9072124, '4.2E+6 years', 'beta-')
+Tc99 = Element('Tc99', 43, 99, 98.9062508, '2.111E+5 years', 'beta-')
+Tc100 = Element('Tc100', 43, 100, 99.9076539, '15.46 s', 'beta-, epsilon')
+
+Ru95 = Element('Ru95', 44, 95, 94.910406, '1.643 h', 'beta+')
+Ru96 = Element('Ru96', 44, 96, 95.90759025, 'stable', 'None')
+Ru97 = Element('Ru97', 44, 97, 96.9075471, '2.83 d', 'beta+')
+Ru98 = Element('Ru98', 44, 98, 97.9052868, 'stable', 'None')
+Ru99 = Element('Ru99', 44, 99, 98.9059341, 'stable', 'None')
+Ru100 = Element('Ru100', 44, 100, 99.9042143, 'stable', 'None')
+Ru101 = Element('Ru101', 44, 101, 100.9055769, 'stable', 'None')
+Ru102 = Element('Ru102', 44, 102, 101.9043441, 'stable', 'None')
+Ru103 = Element('Ru103', 44, 103, 102.9063186, '39.247 d', 'beta-')
+Ru104 = Element('Ru104', 44, 104, 103.9054275, 'stable', 'None')
+Ru105 = Element('Ru105', 44, 105, 104.9077476, '4.44 h', 'beta-')
+Ru106 = Element('Ru106', 44, 106, 105.9073291, '371.8 d', 'beta-')
+
+Rh101 = Element('Rh101', 45, 101, 100.9061606, '3.3 years', 'epsilon')
+Rh102 = Element('Rh102', 45, 102, 101.9068374, '207.3 d', 'beta+ , beta-')
+Rh103 = Element('Rh103', 45, 103, 102.905498, 'stable', 'None')
+Rh104 = Element('Rh104', 45, 104, 103.9066492, '42.3 s', 'beta-, beta+')
+
+Pd100 = Element('Pd100', 46, 100, 99.908505, '3.63 d', 'epsilon')
+Pd101 = Element('Pd101', 46, 101, 100.9082864, '8.47 h', 'beta+')
+Pd102 = Element('Pd102', 46, 102, 101.9056022, 'stable', 'None')
+Pd103 = Element('Pd103', 46, 103, 102.9060809, '16.991 d', 'epsilon')
+Pd104 = Element('Pd104', 46, 104, 103.9040305, 'stable', 'None')
+Pd105 = Element('Pd105', 46, 105, 104.9050796, 'stable', 'None')
+Pd106 = Element('Pd106', 46, 106, 105.9034804, 'stable', 'None')
+Pd107 = Element('Pd107', 46, 107, 106.9051282, '6.5E+6 years', 'beta-')
+Pd108 = Element('Pd108', 46, 108, 107.9038916, 'stable', 'None')
+Pd109 = Element('Pd109', 46, 109, 108.9059504, '13.7012 h', 'beta-')
+Pd110 = Element('Pd110', 46, 110, 109.9051722, 'stable', 'None')
+
+Ag105 = Element('Ag105', 47, 105, 104.9065256, '41.29 d', 'beta+')
+Ag106 = Element('Ag106', 47, 106, 105.9066636, '23.96 m', 'beta+ , beta-')
+Ag107 = Element('Ag107', 47, 107, 106.9050916, 'stable', 'None')
+Ag108 = Element('Ag108', 47, 108, 107.9059503, '2.382 m', 'beta-, beta+')
+Ag109 = Element('Ag109', 47, 109, 108.9047553, 'stable', 'None')
+Ag110 = Element('Ag110', 47, 110, 109.9061102, '24.6 s', 'beta-, epsilon')
+
+Cd105 = Element('Cd105', 48, 105, 104.9094639, '55.5 m', 'beta+')
+Cd106 = Element('Cd106', 48, 106, 105.9064599, '3.6E+20 years', '2beta+')
+Cd107 = Element('Cd107', 48, 107, 106.9066121, '6.50 h', 'beta+')
+Cd108 = Element('Cd108', 48, 108, 107.9041834, '1.9E+18 years', '2beta+')
+Cd109 = Element('Cd109', 48, 109, 108.9049867, '461.4 d', 'epsilon')
+Cd110 = Element('Cd110', 48, 110, 109.90300661, 'stable', 'None')
+Cd111 = Element('Cd111', 48, 111, 110.90418287, 'stable', 'None')
+Cd112 = Element('Cd112', 48, 112, 111.90276287, 'stable', 'None')
+Cd113 = Element('Cd113', 48, 113, 112.90440813, '8.00E15 years', 'beta-')
+Cd114 = Element('Cd114', 48, 114, 113.90336509, '2.1E18 years', '2beta-')
+Cd115 = Element('Cd115', 48, 115, 114.90543751, '53.46 h', 'beta-')
+Cd116 = Element('Cd116', 48, 116, 115.90476315, '3.3E+19 years', '2beta-')
+
+In112 = Element('In112', 49, 112, 111.9055377, '14.88 m', 'beta+ , beta-')
+In113 = Element('In113', 49, 113, 112.90406184, 'stable', 'None')
+In114 = Element('In114', 49, 114, 113.90491791, '71.9 s', 'beta-, beta+')
+In115 = Element('In115', 49, 115, 114.903878776, '4.41E+14 years', 'beta-')
+
+Sn112 = Element('Sn112', 50, 112, 111.90482387, '1.3E+21 years', '2beta+')
+Sn113 = Element('Sn113', 50, 113, 112.9051757, '115.09 d', 'beta+')
+Sn114 = Element('Sn114', 50, 114, 113.9027827, 'stable', 'None')
+Sn115 = Element('Sn115', 50, 115, 114.903344699, 'stable', 'None')
+Sn116 = Element('Sn116', 50, 116, 115.9017428, 'stable', 'None')
+Sn117 = Element('Sn117', 50, 117, 116.90295398, 'stable', 'None')
+Sn118 = Element('Sn118', 50, 118, 117.90160657, 'stable', 'None')
+Sn119 = Element('Sn119', 50, 119, 118.90331117, 'stable', 'None')
+Sn120 = Element('Sn120', 50, 120, 119.90220163, 'stable', 'None')
+Sn121 = Element('Sn121', 50, 121, 120.9042426, '27.03 h', 'beta-')
+Sn122 = Element('Sn122', 50, 122, 121.9034438, 'stable', 'None')
+Sn123 = Element('Sn123', 50, 123, 122.9057252, '129.2 d', 'beta-')
+Sn124 = Element('Sn124', 50, 124, 123.9052766, '1.2E+21 years', '2beta-')
+
+Sb120 = Element('Sb120', 51, 120, 119.9050794, '15.89 m', 'beta+')
+Sb121 = Element('Sb121', 51, 121, 120.903812, 'stable', 'None')
+Sb122 = Element('Sb122', 51, 122, 121.9051699, '2.7238 d', 'beta-, beta+')
+Sb123 = Element('Sb123', 51, 123, 122.9042132, 'stable', 'None')
+Sb124 = Element('Sb124', 51, 124, 123.905935, '60.20 d', 'beta-')
+Sb125 = Element('Sb125', 51, 125, 124.905253, '2.75856 years', 'beta-')
+
+Te120 = Element('Te120', 52, 120, 119.9040593, 'stable', 'None')
+Te121 = Element('Te121', 52, 121, 120.904944, '19.17 d', 'beta+')
+Te122 = Element('Te122', 52, 122, 121.9030435, 'stable', 'None')
+Te123 = Element('Te123', 52, 123, 122.9042698, '9.2E+16 years', 'epsilon')
+Te124 = Element('Te124', 52, 124, 123.9028171, 'stable', 'None')
+Te125 = Element('Te125', 52, 125, 124.9044299, 'stable', 'None')
+Te126 = Element('Te126', 52, 126, 125.9033109, 'stable', 'None')
+Te127 = Element('Te127', 52, 127, 126.9052257, '9.35 h', 'beta-')
+Te128 = Element('Te128', 52, 128, 127.90446128, '2.41E+24 years', '2beta-')
+Te129 = Element('Te129', 52, 129, 128.90659646, '69.9 m', 'beta-')
+Te130 = Element('Te130', 52, 130, 129.906222748, '3.0E+24 years', '2beta-')
+
+I125 = Element('I125', 53, 125, 124.9046294, '59.407 d', 'epsilon')
+I126 = Element('I126', 53, 126, 125.9056233, '12.93 d', 'beta+ , beta-')
+I127 = Element('I127', 53, 127, 126.9044719, 'stable', 'None')
+I128 = Element('I128', 53, 128, 127.9058086, '24.99 m', 'beta-, beta+')
+I129 = Element('I129', 53, 129, 128.9049837, '1.57E+7 years', 'beta-')
+I130 = Element('I130', 53, 130, 129.9066702, '12.36 h', 'beta-')
+I131 = Element('I131', 53, 131, 130.9061263, '8.0252 d', 'beta-')
+I132 = Element('I132', 53, 132, 131.9079935, '2.295 h', 'beta-')
+I133 = Element('I133', 53, 133, 132.907797, '20.83 h', 'beta-')
+I134 = Element('I134', 53, 134, 133.9097588, '52.5 m', 'beta-')
+I135 = Element('I135', 53, 135, 134.9100488, '6.58 h', 'beta-')
+I136 = Element('I136', 53, 136, 135.914604, '83.4 s', 'beta-')
+
+Xe124 = Element('Xe124', 54, 124, 123.905892, '1.6E+14 years', '2beta+')
+Xe125 = Element('Xe125', 54, 125, 124.9063944, '16.9 h', 'beta+')
+Xe126 = Element('Xe126', 54, 126, 125.9042983, 'stable', 'None')
+Xe127 = Element('Xe127', 54, 127, 126.9051829, '36.346 d', 'epsilon')
+Xe128 = Element('Xe128', 54, 128, 127.903531, 'stable', 'None')
+Xe129 = Element('Xe129', 54, 129, 128.9047808611, 'stable', 'None')
+Xe130 = Element('Xe130', 54, 130, 129.903509349, 'stable', 'None')
+Xe131 = Element('Xe131', 54, 131, 130.90508406, 'stable', 'None')
+Xe132 = Element('Xe132', 54, 132, 131.9041550856, 'stable', 'None')
+Xe133 = Element('Xe133', 54, 133, 132.9059108, '5.2475 d', 'beta-')
+Xe134 = Element('Xe134', 54, 134, 133.90539466, '5.8E+22 years', '2beta-')
+Xe135 = Element('Xe135', 54, 135, 134.9072278, '9.14 h', 'beta-')
+Xe136 = Element('Xe136', 54, 136, 135.907214484, '2.4E+21 years', '2beta-')
+
+Cs132 = Element('Cs132', 55, 132, 131.9064339, '6.480 d', 'beta+ , beta-')
+Cs133 = Element('Cs133', 55, 133, 132.905451961, 'stable', 'None')
+Cs134 = Element('Cs134', 55, 134, 133.906718503, '2.0652 years', 'beta-, epsilon')
+Cs135 = Element('Cs135', 55, 135, 134.905977, '2.3E+6 years', 'beta-')
+Cs136 = Element('Cs136', 55, 136, 135.9073114, '13.04 d', 'beta-')
+Cs137 = Element('Cs137', 55, 137, 136.90708923, '30.08 years', 'beta-')
+
+Ba130 = Element('Ba130', 56, 130, 129.9063207, 'stable', '2beta+')
+Ba131 = Element('Ba131', 56, 131, 130.906941, '11.50 d', 'beta+')
+Ba132 = Element('Ba132', 56, 132, 131.9050611, '3.0E+21 years', '2beta+')
+Ba133 = Element('Ba133', 56, 133, 132.9060074, '10.551 years', 'epsilon')
+Ba134 = Element('Ba134', 56, 134, 133.90450818, 'stable', 'None')
+Ba135 = Element('Ba135', 56, 135, 134.90568838, 'stable', 'None')
+Ba136 = Element('Ba136', 56, 136, 135.90457573, 'stable', 'None')
+Ba137 = Element('Ba137', 56, 137, 136.90582714, 'stable', 'None')
+Ba138 = Element('Ba138', 56, 138, 137.905247, 'stable', 'None')
+Ba139 = Element('Ba139', 56, 139, 138.9088411, '83.06 m', 'beta-')
+Ba140 = Element('Ba140', 56, 140, 139.9106057, '12.7527 d', 'beta-')
+Ba141 = Element('Ba141', 56, 141, 140.9144033, '18.27 m', 'beta-')
+Ba142 = Element('Ba142', 56, 142, 141.9164324, '10.6 m', 'beta-')
+Ba143 = Element('Ba143', 56, 143, 142.9206253, '14.5 s', 'beta-')
+
+La137 = Element('La137', 57, 137, 136.9064504, '6E+4 years', 'epsilon')
+La138 = Element('La138', 57, 138, 137.9071149, '1.02E+11 years', 'beta+ , beta-')
+La139 = Element('La139', 57, 139, 138.9063563, 'stable', 'None')
+La140 = Element('La140', 57, 140, 139.9094806, '1.67855 d', 'beta-')
+
+Ce136 = Element('Ce136', 58, 136, 135.90712921, '0.7E+14 years', '2beta+')
+Ce137 = Element('Ce137', 58, 137, 136.90776236, '9.0 h', 'beta+')
+Ce138 = Element('Ce138', 58, 138, 137.905991, '0.9E+14 years', '2beta+')
+Ce139 = Element('Ce139', 58, 139, 138.9066551, '137.641 d', 'epsilon')
+Ce140 = Element('Ce140', 58, 140, 139.9054431, 'stable', 'None')
+Ce141 = Element('Ce141', 58, 141, 140.9082807, '32.511 d', 'beta-')
+Ce142 = Element('Ce142', 58, 142, 141.9092504, '5E+16 years', '2beta-')
+Ce143 = Element('Ce143', 58, 143, 142.9123921, '33.039 h', 'beta-')
+
+Pr140 = Element('Pr140', 59, 140, 139.9090803, '3.39 m', 'beta+')
+Pr141 = Element('Pr141', 59, 141, 140.9076576, 'stable', 'None')
+Pr142 = Element('Pr142', 59, 142, 141.9100496, '19.12 h', 'beta-, epsilon')
+
+Nd142 = Element('Nd142', 60, 142, 141.907729, 'stable', 'None')
+Nd143 = Element('Nd143', 60, 143, 142.90982, 'stable', 'None')
+Nd144 = Element('Nd144', 60, 144, 143.910093, '2.29E+15 years', 'alpha')
+Nd145 = Element('Nd145', 60, 145, 144.9125793, 'stable', 'None')
+Nd146 = Element('Nd146', 60, 146, 145.9131226, 'stable', 'None')
+Nd147 = Element('Nd147', 60, 147, 146.9161061, '10.98 d', 'beta-')
+Nd148 = Element('Nd148', 60, 148, 147.9168993, 'stable', 'None')
+Nd149 = Element('Nd149', 60, 149, 148.9201548, '1.728 h', 'beta-')
+Nd150 = Element('Nd150', 60, 150, 149.9209022, '0.91E19 years', '2beta-')
+
+Pm154 = Element('Pm154', 61, 154, 153.926472, '2.68 m', 'beta-')
+Pm155 = Element('Pm155', 61, 155, 154.928137, '41.5 s', 'beta-')
+
+Sm144 = Element('Sm144', 62, 144, 143.9120065, 'stable', 'None')
+Sm145 = Element('Sm145', 62, 145, 144.9134173, '340 d', 'epsilon')
+Sm146 = Element('Sm146', 62, 146, 145.913047, '10.3E+7 years', 'alpha')
+Sm147 = Element('Sm147', 62, 147, 146.9149044, '1.060E11 years', 'alpha')
+Sm148 = Element('Sm148', 62, 148, 147.9148292, '7E+15 years', 'alpha')
+Sm149 = Element('Sm149', 62, 149, 148.9171921, 'stable', 'None')
+Sm150 = Element('Sm150', 62, 150, 149.9172829, 'stable', 'None')
+Sm151 = Element('Sm151', 62, 151, 150.9199398, '90 years', 'beta-')
+Sm152 = Element('Sm152', 62, 152, 151.9197397, 'stable', 'None')
+Sm153 = Element('Sm153', 62, 153, 152.9221047, '46.284 h', 'beta-')
+Sm154 = Element('Sm154', 62, 154, 153.9222169, 'stable', 'None')
+
+Eu150 = Element('Eu150', 63, 150, 149.9197077, '36.9 years', 'beta+')
+Eu151 = Element('Eu151', 63, 151, 150.9198578, '1.7E+18 years', 'alpha')
+Eu152 = Element('Eu152', 63, 152, 151.9217522, '13.517 years', 'beta+ , beta-')
+Eu153 = Element('Eu153', 63, 153, 152.921238, 'stable', 'None')
+Eu154 = Element('Eu154', 63, 154, 153.922987, '8.601 years', 'beta-, epsilon')
+
+Gd152 = Element('Gd152', 64, 152, 151.9197995, '1.08E+14 years', 'alpha')
+Gd153 = Element('Gd153', 64, 153, 152.921758, '240.4 d', 'epsilon')
+Gd154 = Element('Gd154', 64, 154, 153.9208741, 'stable', 'None')
+Gd155 = Element('Gd155', 64, 155, 154.9226305, 'stable', 'None')
+Gd156 = Element('Gd156', 64, 156, 155.9221312, 'stable', 'None')
+Gd157 = Element('Gd157', 64, 157, 156.9239686, 'stable', 'None')
+Gd158 = Element('Gd158', 64, 158, 157.9241123, 'stable', 'None')
+Gd159 = Element('Gd159', 64, 159, 158.926397, '18.479 h', 'beta-')
+Gd160 = Element('Gd160', 64, 160, 159.9270624, '3.1E+19 years', '2beta-')
+
+Tb158 = Element('Tb158', 65, 158, 157.9254209, '180 years', 'beta+ , beta-')
+Tb159 = Element('Tb159', 65, 159, 158.9253547, 'stable', 'None')
+Tb160 = Element('Tb160', 65, 160, 159.9271756, '72.3 d', 'beta-')
+
+Dy156 = Element('Dy156', 66, 156, 155.9242847, 'stable', 'None')
+Dy157 = Element('Dy157', 66, 157, 156.9254707, '8.14 h', 'beta+')
+Dy158 = Element('Dy158', 66, 158, 157.9244159, 'stable', 'None')
+Dy159 = Element('Dy159', 66, 159, 158.925747, '144.4 d', 'epsilon')
+Dy160 = Element('Dy160', 66, 160, 159.9252046, 'stable', 'None')
+Dy161 = Element('Dy161', 66, 161, 160.9269405, 'stable', 'None')
+Dy162 = Element('Dy162', 66, 162, 161.9268056, 'stable', 'None')
+Dy163 = Element('Dy163', 66, 163, 162.9287383, 'stable', 'None')
+Dy164 = Element('Dy164', 66, 164, 163.9291819, 'stable', 'None')
+Dy165 = Element('Dy165', 66, 165, 164.9317105, '2.334 h', 'beta-')
+
+Ho164 = Element('Ho164', 67, 164, 163.9302403, '29 m', 'epsilon, beta-')
+Ho165 = Element('Ho165', 67, 165, 164.9303288, 'stable', 'None')
+Ho166 = Element('Ho166', 67, 166, 165.9322909, '26.824 h', 'beta-')
+
+Er162 = Element('Er162', 68, 162, 161.9287884, 'stable', 'None')
+Er163 = Element('Er163', 68, 163, 162.9300408, '75.0 m', 'beta+')
+Er164 = Element('Er164', 68, 164, 163.9292088, 'stable', 'None')
+Er165 = Element('Er165', 68, 165, 164.9307345, '10.36 h', 'epsilon')
+Er166 = Element('Er166', 68, 166, 165.9302995, 'stable', 'None')
+Er167 = Element('Er167', 68, 167, 166.9320546, 'stable', 'None')
+Er168 = Element('Er168', 68, 168, 167.9323767, 'stable', 'None')
+Er169 = Element('Er169', 68, 169, 168.9345968, '9.392 d', 'beta-')
+Er170 = Element('Er170', 68, 170, 169.9354702, 'stable', 'None')
+
+Tm168 = Element('Tm168', 69, 168, 167.9341774, '93.1 d', 'beta+ , beta-')
+Tm169 = Element('Tm169', 69, 169, 168.9342179, 'stable', 'None')
+Tm170 = Element('Tm170', 69, 170, 169.935806, '128.6 d', 'beta-, epsilon')
+
+Yb168 = Element('Yb168', 70, 168, 167.9338896, 'stable', 'None')
+Yb169 = Element('Yb169', 70, 169, 168.9351825, '32.018 d', 'epsilon')
+Yb170 = Element('Yb170', 70, 170, 169.9347664, 'stable', 'None')
+Yb171 = Element('Yb171', 70, 171, 170.9363302, 'stable', 'None')
+Yb172 = Element('Yb172', 70, 172, 171.9363859, 'stable', 'None')
+Yb173 = Element('Yb173', 70, 173, 172.9382151, 'stable', 'None')
+Yb174 = Element('Yb174', 70, 174, 173.9388664, 'stable', 'None')
+Yb175 = Element('Yb175', 70, 175, 174.9412808, '4.185 d', 'beta-')
+Yb176 = Element('Yb176', 70, 176, 175.9425764, 'stable', 'None')
+
+Lu163 = Element('Lu163', 71, 163, 162.941179, '3.97 m', 'beta+')
+Lu164 = Element('Lu164', 71, 164, 163.941339, '3.14 m', 'beta+')
+Lu175 = Element('Lu175', 71, 175, 174.9407752, 'stable', 'None')
+Lu176 = Element('Lu176', 71, 176, 175.9426897, '3.76E+10 years', 'beta-')
+
+Hf161 = Element('Hf161', 72, 161, 160.950278, '18.4 s', 'beta+ , alpha')
+Hf162 = Element('Hf162', 72, 162, 161.9472148, '39.4 s', 'beta+ , alpha')
+Hf163 = Element('Hf163', 72, 163, 162.947113, '40.0 s', 'beta+ , alpha')
+Hf164 = Element('Hf164', 72, 164, 163.944371, '111 s', 'beta+')
+Hf165 = Element('Hf165', 72, 165, 164.944567, '76 s', 'beta+')
+Hf166 = Element('Hf166', 72, 166, 165.94218, '6.77 m', 'beta+')
+Hf174 = Element('Hf174', 72, 174, 173.9400461, '2.0E+15 years', 'alpha')
+Hf175 = Element('Hf175', 72, 175, 174.9415092, '70 d', 'epsilon')
+Hf176 = Element('Hf176', 72, 176, 175.9414076, 'stable', 'None')
+Hf177 = Element('Hf177', 72, 177, 176.9432277, 'stable', 'None')
+Hf178 = Element('Hf178', 72, 178, 177.9437058, 'stable', 'None')
+Hf179 = Element('Hf179', 72, 179, 178.9458232, 'stable', 'None')
+Hf180 = Element('Hf180', 72, 180, 179.946557, 'stable', 'None')
+
+Ta180 = Element('Ta180', 73, 180, 179.9474648, '8.154 h', 'epsilon, beta-')
+Ta181 = Element('Ta181', 73, 181, 180.9479958, 'stable', 'None')
+Ta182 = Element('Ta182', 73, 182, 181.9501519, '114.74 d', 'beta-')
+
+W179 = Element('W179', 74, 179, 178.947077, '37.05 m', 'beta+')
+W180 = Element('W180', 74, 180, 179.9467108, '6.6E+17 years', '2beta+')
+W181 = Element('W181', 74, 181, 180.9481978, '121.2 d', 'epsilon')
+W182 = Element('W182', 74, 182, 181.94820394, 'stable', 'None')
+W183 = Element('W183', 74, 183, 182.95022275, '6.7E+20 years', 'alpha')
+W184 = Element('W184', 74, 184, 183.95093092, 'stable', 'None')
+
+Re183 = Element('Re183', 75, 183, 182.9508196, '70.0 d', 'epsilon')
+Re184 = Element('Re184', 75, 184, 183.9525228, '35.4 d', 'beta+')
+Re185 = Element('Re185', 75, 185, 184.9529545, 'stable', 'None')
+Re186 = Element('Re186', 75, 186, 185.9549856, '3.7186 d', 'beta-, epsilon')
+Re187 = Element('Re187', 75, 187, 186.9557501, '4.33E+10 years', 'beta-, alpha')
+
+Os184 = Element('Os184', 76, 184, 183.9524885, '5.6E13 years', 'alpha')
+Os185 = Element('Os185', 76, 185, 184.9540417, '93.6 d', 'epsilon')
+Os186 = Element('Os186', 76, 186, 185.953835, '2.0E+15 years', 'alpha')
+Os187 = Element('Os187', 76, 187, 186.9557474, 'stable', 'None')
+Os188 = Element('Os188', 76, 188, 187.9558352, 'stable', 'None')
+Os189 = Element('Os189', 76, 189, 188.9581442, 'stable', 'None')
+Os190 = Element('Os190', 76, 190, 189.9584437, 'stable', 'None')
+Os191 = Element('Os191', 76, 191, 190.9609264, '15.4 d', 'beta-')
+Os192 = Element('Os192', 76, 192, 191.961477, 'stable', 'None')
+
+Ir190 = Element('Ir190', 77, 190, 189.9605412, '11.78 d', 'beta+')
+Ir191 = Element('Ir191', 77, 191, 190.9605893, 'stable', 'None')
+Ir192 = Element('Ir192', 77, 192, 191.9626002, '73.829 d', 'beta-, epsilon')
+Ir193 = Element('Ir193', 77, 193, 192.9629216, 'stable', 'None')
+
+Pt190 = Element('Pt190', 78, 190, 189.9599297, '6.5E+11 years', 'alpha')
+Pt191 = Element('Pt191', 78, 191, 190.9616729, '2.83 d', 'epsilon')
+Pt192 = Element('Pt192', 78, 192, 191.9610387, 'stable', 'None')
+Pt193 = Element('Pt193', 78, 193, 192.9629824, '50 years', 'epsilon')
+Pt194 = Element('Pt194', 78, 194, 193.9626809, 'stable', 'None')
+Pt195 = Element('Pt195', 78, 195, 194.9647917, 'stable', 'None')
+Pt196 = Element('Pt196', 78, 196, 195.96495209, 'stable', 'None')
+Pt197 = Element('Pt197', 78, 197, 196.96734069, '19.8915 h', 'beta-')
+Pt198 = Element('Pt198', 78, 198, 197.9678949, 'stable', 'None')
+
+Au196 = Element('Au196', 79, 196, 195.9665699, '6.1669 d', 'beta+ , beta-')
+Au197 = Element('Au197', 79, 197, 196.96656879, 'stable', 'None')
+Au198 = Element('Au198', 79, 198, 197.96824242, '2.6941 d', 'beta-')
+
+Hg196 = Element('Hg196', 80, 196, 195.9658326, 'stable', 'None')
+Hg197 = Element('Hg197', 80, 197, 196.9672128, '64.14 h', 'epsilon')
+Hg198 = Element('Hg198', 80, 198, 197.9667686, 'stable', 'None')
+Hg199 = Element('Hg199', 80, 199, 198.96828064, 'stable', 'None')
+Hg200 = Element('Hg200', 80, 200, 199.96832659, 'stable', 'None')
+Hg201 = Element('Hg201', 80, 201, 200.97030284, 'stable', 'None')
+Hg202 = Element('Hg202', 80, 202, 201.9706434, 'stable', 'None')
+Hg203 = Element('Hg203', 80, 203, 202.9728728, '46.594 d', 'beta-')
+Hg204 = Element('Hg204', 80, 204, 203.97349398, 'stable', 'None')
+
+Tl202 = Element('Tl202', 81, 202, 201.972102, '12.31 d', 'beta+')
+Tl203 = Element('Tl203', 81, 203, 202.9723446, 'stable', 'None')
+Tl204 = Element('Tl204', 81, 204, 203.9738639, '3.783 years', 'beta-, epsilon')
+Tl205 = Element('Tl205', 81, 205, 204.9744278, 'stable', 'None')
+
+Pb203 = Element('Pb203', 82, 203, 202.9733911, '51.92 h', 'epsilon')
+Pb204 = Element('Pb204', 82, 204, 203.973044, '1.4E+17 years', 'alpha')
+Pb205 = Element('Pb205', 82, 205, 204.9744822, '1.73E+7 years', 'epsilon')
+Pb206 = Element('Pb206', 82, 206, 205.9744657, 'stable', 'None')
+Pb207 = Element('Pb207', 82, 207, 206.9758973, 'stable', 'None')
+Pb208 = Element('Pb208', 82, 208, 207.9766525, 'stable', 'None')
+Pb209 = Element('Pb209', 82, 209, 208.9810905, '3.234 h', 'beta-')
+Pb210 = Element('Pb210', 82, 210, 209.9841889, '22.20 years', 'beta-, alpha')
+
+Bi206 = Element('Bi206', 83, 206, 205.9784993, '6.243 d', 'beta+')
+Bi207 = Element('Bi207', 83, 207, 206.978471, '31.55 years', 'beta+')
+Bi208 = Element('Bi208', 83, 208, 207.9797425, '3.68E+5 years', 'beta+')
+Bi209 = Element('Bi209', 83, 209, 208.9803991, 'stable', 'None')
+Bi210 = Element('Bi210', 83, 210, 209.9841207, '5.012 d', 'beta-, alpha')
+Bi211 = Element('Bi211', 83, 211, 210.9872697, '2.14 m', 'alpha, beta-')
+
+Po207 = Element('Po207', 84, 207, 206.9815938, '5.80 h', 'beta+ , alpha')
+Po208 = Element('Po208', 84, 208, 207.9812461, '2.898 years', 'alpha, beta+')
+Po209 = Element('Po209', 84, 209, 208.9824308, '124 years', 'alpha, beta+')
+Po210 = Element('Po210', 84, 210, 209.9828741, '138.376 d', 'alpha')
+Po211 = Element('Po211', 84, 211, 210.9866536, '0.516 s', 'alpha')
+Po212 = Element('Po212', 84, 212, 211.9888684, '0.299 µs', 'alpha')
+Po213 = Element('Po213', 84, 213, 212.9928576, '3.72 µs', 'alpha')
+Po214 = Element('Po214', 84, 214, 213.9952017, '163.6 µs', 'alpha')
+Po215 = Element('Po215', 84, 215, 214.9994201, '1.781 ms', 'alpha, beta-')
+Po216 = Element('Po216', 84, 216, 216.0019152, '0.145 s', 'alpha')
+
+At210 = Element('At210', 85, 210, 209.9871479, '8.1 h', 'beta+ , alpha')
+At211 = Element('At211', 85, 211, 210.9874966, '7.214 h', 'epsilon, alpha')
+At212 = Element('At212', 85, 212, 211.9907377, '0.314 s', 'alpha, beta+ , beta-')
+At213 = Element('At213', 85, 213, 212.992937, '125 ns', 'alpha')
+At214 = Element('At214', 85, 214, 213.9963721, '558 ns', 'alpha')
+At215 = Element('At215', 85, 215, 214.9986528, '0.10 ms', 'alpha')
+
+Rn220 = Element('Rn220', 86, 220, 220.0113941, '55.6 s', 'alpha')
+Rn221 = Element('Rn221', 86, 221, 221.0155371, '25 m', 'beta-, alpha')
+Rn222 = Element('Rn222', 86, 222, 222.0175782, '3.8235 d', 'alpha')
+Rn223 = Element('Rn223', 86, 223, 223.0218893, '24.3 m', 'beta-')
+
+Fr221 = Element('Fr221', 87, 221, 221.0142552, '286.1 s', 'alpha, beta-')
+Fr222 = Element('Fr222', 87, 222, 222.017552, '14.2 m', 'beta-')
+Fr223 = Element('Fr223', 87, 223, 223.019736, '22.00 m', 'beta-, alpha')
+Fr224 = Element('Fr224', 87, 224, 224.023398, '3.33 m', 'beta-')
+Fr225 = Element('Fr225', 87, 225, 225.025573, '3.95 m', 'beta-')
+Fr226 = Element('Fr226', 87, 226, 226.029566, '49 s', 'beta-')
+
+Ra222 = Element('Ra222', 88, 222, 222.0153748, '38.0 s', 'alpha, 14C')
+Ra223 = Element('Ra223', 88, 223, 223.0185023, '11.43 d', 'alpha, 14C')
+Ra224 = Element('Ra224', 88, 224, 224.020212, '3.6319 d', 'alpha, 14C')
+Ra225 = Element('Ra225', 88, 225, 225.0236119, '14.9 d', 'beta-')
+Ra226 = Element('Ra226', 88, 226, 226.0254103, '1600 years', 'alpha, 14C')
+Ra227 = Element('Ra227', 88, 227, 227.0291783, '42.2 m', 'beta-')
+Ra228 = Element('Ra228', 88, 228, 228.0310707, '5.75 years', 'beta-')
+Ra229 = Element('Ra229', 88, 229, 229.034942, '4.0 m', 'beta-')
+
+Ac224 = Element('Ac224', 89, 224, 224.0217232, '2.78 h', 'beta+ , alpha')
+Ac225 = Element('Ac225', 89, 225, 225.02323, '10.0 d', 'alpha, 14C')
+Ac226 = Element('Ac226', 89, 226, 226.0260984, '29.37 h', 'beta-, epsilon, alpha')
+Ac227 = Element('Ac227', 89, 227, 227.0277523, '21.772 years', 'beta-, alpha')
+Ac228 = Element('Ac228', 89, 228, 228.0310215, '6.15 h', 'beta-')
+Ac229 = Element('Ac229', 89, 229, 229.032956, '62.7 m', 'beta-')
+
+Th224 = Element('Th224', 90, 224, 224.021464, '1.04 s', 'alpha')
+Th225 = Element('Th225', 90, 225, 225.0239514, '8.75 m', 'alpha, epsilon')
+Th226 = Element('Th226', 90, 226, 226.0249034, '30.57 m', 'alpha')
+Th227 = Element('Th227', 90, 227, 227.0277042, '18.697 d', 'alpha')
+Th228 = Element('Th228', 90, 228, 228.0287413, '1.9125 years', 'alpha, 20O')
+Th229 = Element('Th229', 90, 229, 229.0317627, '7932 years', 'alpha')
+Th230 = Element('Th230', 90, 230, 230.0331341, '7.54E+4 years', 'alpha, 24ne, SF')
+Th231 = Element('Th231', 90, 231, 231.0363046, '25.52 h', 'beta-, alpha')
+Th232 = Element('Th232', 90, 232, 232.0380558, '1.40E+10 years', 'alpha, SF')
+Th233 = Element('Th233', 90, 233, 233.0415823, '21.83 m', 'beta-')
+Th234 = Element('Th234', 90, 234, 234.0436014, '24.10 d', 'beta-')
+Th235 = Element('Th235', 90, 235, 235.047255, '7.1 m', 'beta-')
+
+Pa227 = Element('Pa227', 91, 227, 227.0288054, '38.3 m', 'alpha, epsilon')
+Pa228 = Element('Pa228', 91, 228, 228.0310517, '22 h', 'beta+ , alpha')
+Pa229 = Element('Pa229', 91, 229, 229.0320972, '1.50 d', 'epsilon, alpha')
+Pa230 = Element('Pa230', 91, 230, 230.034541, '17.4 d', 'beta+ , beta-, alpha')
+Pa231 = Element('Pa231', 91, 231, 231.0358842, '3.276E+4 years', 'alpha, SF')
+Pa232 = Element('Pa232', 91, 232, 232.0385917, '1.32 d', 'beta-, epsilon')
+Pa233 = Element('Pa233', 91, 233, 233.0402473, '27.0 d', 'beta-')
+
+U231 = Element('U231', 92, 231, 231.0362939, '4.2 d', 'epsilon, alpha')
+U232 = Element('U232', 92, 232, 232.0371563, '68.9 years', 'alpha, SF')
+U233 = Element('U233', 92, 233, 233.0396355, '1.592E+5 years', 'alpha, SF')
+U234 = Element('U234', 92, 234, 234.0409523, '2.455E+5 years', 'alpha, SF')
+U235 = Element('U235', 92, 235, 235.0439301, '7.04E+8 years', 'alpha, SF')
+U236 = Element('U236', 92, 236, 236.0455682, '2.342E+7 years', 'alpha, SF')
+U237 = Element('U237', 92, 237, 237.0487304, '6.75 d', 'beta-')
+U238 = Element('U238', 92, 238, 238.0507884, '4.468E+9 years', 'alpha, SF')
+U239 = Element('U239', 92, 239, 239.0542935, '23.45 m', 'beta-')
+U240 = Element('U240', 92, 240, 240.0565934, '14.1 h', 'beta-')
+
+Np234 = Element('Np234', 93, 234, 234.0428953, '4.4 d', 'beta+')
+Np235 = Element('Np235', 93, 235, 235.0440635, '396.1 d', 'epsilon, alpha')
+Np236 = Element('Np236', 93, 236, 236.04657, '153000 years', 'epsilon, beta-, alpha')
+Np237 = Element('Np237', 93, 237, 237.0481736, '2.144E+6 years', 'alpha, SF')
+Np238 = Element('Np238', 93, 238, 238.0509466, '2.117 d', 'beta-')
+Np239 = Element('Np239', 93, 239, 239.0529392, '2.356 d', 'beta-')
+
+Pu235 = Element('Pu235', 94, 235, 235.045286, '25.3 m', 'beta+ , alpha')
+Pu236 = Element('Pu236', 94, 236, 236.0460581, '2.858 years', 'alpha, SF')
+Pu237 = Element('Pu237', 94, 237, 237.0484098, '45.64 d', 'epsilon, alpha')
+Pu238 = Element('Pu238', 94, 238, 238.0495601, '87.7 years', 'alpha, SF')
+Pu239 = Element('Pu239', 94, 239, 239.0521636, '24110 years', 'alpha, SF')
+Pu240 = Element('Pu240', 94, 240, 240.0538138, '6561 years', 'alpha, SF')
+Pu241 = Element('Pu241', 94, 241, 241.0568517, '14.329 years', 'beta-, alpha, SF')
+Pu242 = Element('Pu242', 94, 242, 242.0587428, '3.75E+5 years', 'alpha, SF')
+Pu243 = Element('Pu243', 94, 243, 243.0620036, '4.956 h', 'beta-')
+Pu244 = Element('Pu244', 94, 244, 244.0642053, '8.00E+7 years', 'alpha, SF')
+Pu245 = Element('Pu245', 94, 245, 245.067826, '10.5 h', 'beta-')
+
+Am240 = Element('Am240', 95, 240, 240.0553, '50.8 h', 'beta+ , alpha')
+Am241 = Element('Am241', 95, 241, 241.0568293, '432.6 years', 'alpha, SF')
+Am242 = Element('Am242', 95, 242, 242.0595494, '16.02 h', 'beta-, epsilon')
+Am243 = Element('Am243', 95, 243, 243.0613813, '7364 years', 'alpha, SF')
+Am244 = Element('Am244', 95, 244, 244.0642851, '10.1 h', 'beta-, SF')
+
+Cm242 = Element('Cm242', 96, 242, 242.058836, '162.8 d', 'alpha, SF')
+Cm243 = Element('Cm243', 96, 243, 243.0613893, '29.1 years', 'alpha, epsilon, SF')
+Cm244 = Element('Cm244', 96, 244, 244.0627528, '18.1 years', 'alpha, SF')
+Cm245 = Element('Cm245', 96, 245, 245.0654915, '8423 years', 'alpha, SF')
+Cm246 = Element('Cm246', 96, 246, 246.0672238, '4706 years', 'alpha, SF')
+Cm247 = Element('Cm247', 96, 247, 247.0703541, '1.56E+7 years', 'alpha')
+Cm248 = Element('Cm248', 96, 248, 248.0723499, '3.48E+5 years', 'alpha, SF')
+Cm249 = Element('Cm249', 96, 249, 249.0759548, '64.15 m', 'beta-')
+Cm250 = Element('Cm250', 96, 250, 250.078358, '8.3E+3 years', 'SF, alpha, beta-')
+Cm251 = Element('Cm251', 96, 251, 251.082286, '16.8 m', 'beta-')
+
+Bk246 = Element('Bk246', 97, 246, 246.068673, '1.80 d', 'beta+')
+Bk247 = Element('Bk247', 97, 247, 247.0703073, '1380 years', 'alpha')
+Bk248 = Element('Bk248', 97, 248, 248.073088, '9 years', 'alpha')
+Bk249 = Element('Bk249', 97, 249, 249.0749877, '330 d', 'beta-, alpha, SF')
+Bk250 = Element('Bk250', 97, 250, 250.0783167, '3.212 h', 'beta-')
+
+Cf248 = Element('Cf248', 98, 248, 248.0721851, '333.5 d', 'alpha, SF')
+Cf249 = Element('Cf249', 98, 249, 249.0748539, '351 years', 'alpha, SF')
+Cf250 = Element('Cf250', 98, 250, 250.0764062, '13.08 years', 'alpha, SF')
+Cf251 = Element('Cf251', 98, 251, 251.0795886, '898 years', 'alpha, SF')
+Cf252 = Element('Cf252', 98, 252, 252.0816272, '2.645 years', 'alpha, SF')
+Cf253 = Element('Cf253', 98, 253, 253.0851345, '17.81 d', 'beta-, alpha')
+
+Es251 = Element('Es251', 99, 251, 251.0799936, '33 h', 'epsilon, alpha')
+Es252 = Element('Es252', 99, 252, 252.08298, '471.7 d', 'alpha, epsilon')
+Es253 = Element('Es253', 99, 253, 253.0848257, '20.47 d', 'alpha, SF')
+
+Fm256 = Element('Fm256', 100, 256, 256.0917745, '157.6 m', 'SF, alpha')
+Fm257 = Element('Fm257', 100, 257, 257.0951061, '100.5 d', 'alpha, SF')
+Fm258 = Element('Fm258', 100, 258, 258.09708, '370 µs', 'SF')
+
+Md256 = Element('Md256', 101, 256, 256.09389, '77 m', 'beta+ , alpha, SF')
+Md257 = Element('Md257', 101, 257, 257.0955424, '5.52 h', 'epsilon, alpha, SF')
+Md258 = Element('Md258', 101, 258, 258.0984315, '51.5 d', 'alpha, beta-, beta+')
+Md259 = Element('Md259', 101, 259, 259.10051, '1.6 h', 'SF, alpha')
+
+No258 = Element('No258', 102, 258, 258.09821, '1.2 ms', 'SF')
+No259 = Element('No259', 102, 259, 259.10103, '58 m', 'alpha, epsilon, SF')
+
+Lr261 = Element('Lr261', 103, 261, 261.10688, '39 m', 'SF')
+Lr262 = Element('Lr262', 103, 262, 262.10961, '4 h', 'epsilon, alpha, SF')
+
+Rf262 = Element('Rf262', 104, 262, 262.10992, '2.3 s', 'SF, alpha')
+Rf263 = Element('Rf263', 104, 263, 263.11249, '10 m', 'SF, alpha')
+Rf264 = Element('Rf264', 104, 264, 264.11388, 'None', 'alpha')
+
+Db263 = Element('Db263', 105, 263, 263.11499, '27 s', 'SF, alpha, beta+')
+Db268 = Element('Db268', 105, 268, 268.12567, '32 h', 'SF')
+
+Sg266 = Element('Sg266', 106, 266, 266.12198, '21 s', 'alpha')
+Sg271 = Element('Sg271', 106, 271, 271.13393, '2.4 m', 'alpha, SF')
+
+Bh264 = Element('Bh264', 107, 264, 264.12459, '0.44 s', 'alpha')
+Bh271 = Element('Bh271', 107, 271, 271.13526, 'None', 'alpha')
+Bh272 = Element('Bh272', 107, 272, 272.13826, '10 s', 'alpha')
+
+Hs269 = Element('Hs269', 108, 269, 269.13375, '9.7 s', 'alpha')
+Hs276 = Element('Hs276', 108, 276, 276.14846, 'None', 'alpha, SF')
+Hs277 = Element('Hs277', 108, 277, 277.1519, '3 ms', 'alpha')
+
+Mt268 = Element('Mt268', 109, 268, 268.13865, '21 ms', 'alpha')
+Mt276 = Element('Mt276', 109, 276, 276.15159, '0.72 s', 'alpha')
+Mt277 = Element('Mt277', 109, 277, 277.15327, '5 s', 'SF, alpha')
+
+Ds273 = Element('Ds273', 110, 273, 273.14856, '0.17 ms', 'alpha')
+Ds280 = Element('Ds280', 110, 280, 280.16131, 'None', 'None')
+Ds281 = Element('Ds281', 110, 281, 281.16451, '13 s', 'alpha, SF')
+
+Rg280 = Element('Rg280', 111, 280, 280.16514, '3.6 s', 'alpha')
+Rg281 = Element('Rg281', 111, 281, 281.16636, '17 s', 'SF, alpha')
+
+Cn277 = Element('Cn277', 112, 277, 277.16364, 'None', 'None')
+Cn285 = Element('Cn285', 112, 285, 285.17712, '30 s', 'alpha')
+
+elements = [H1, H2, H3, H4, He3, He4, He5, He6, Li5, Li6, Li7, Li8, Be7, Be8, Be9, Be10, B8, B9, B10, B11, B12, C10,
+            C11, C12, C13, C14, C15, N13, N14, N15, N16, N17, N18, O14, O15, O16, O17, O18, O19, F17, F18, F19, F20,
+            Ne19, Ne20, Ne21, Ne22, Ne23, Ne24, Na21, Na22, Na23, Na24, Na25, Mg22, Mg23, Mg24, Mg25, Mg26, Mg27, Al25,
+            Al26, Al27, Al28, Si26, Si27, Si28, Si29, Si30, Si31, P30, P31, P32, P33, P34, S31, S32, S33, S34, S35, S36,
+            Cl35, Cl36, Cl37, Cl38, Ar35, Ar36, Ar37, Ar38, Ar39, Ar40, K38, K39, K40, K41, K42, K43, Ca39, Ca40, Ca41,
+            Ca42, Ca43, Ca44, Ca45, Ca46, Ca47, Ca48, Ca49, Ca50, Sc44, Sc45, Sc46, Sc47, Ti44, Ti45, Ti46, Ti47, Ti48,
+            Ti49, Ti50, Ti51, V48, V49, V50, V51, V52, Cr49, Cr50, Cr51, Cr52, Cr53, Cr54, Cr55, Cr56, Mn52, Mn53, Mn54,
+            Mn55, Mn56, Fe53, Fe54, Fe55, Fe56, Fe57, Fe58, Fe59, Fe60, Co56, Co57, Co58, Co59, Co60, Ni57, Ni58, Ni59,
+            Ni60, Ni61, Ni62, Ni63, Ni64, Ni65, Cu62, Cu63, Cu64, Cu65, Cu66, Zn63, Zn64, Zn65, Zn66, Zn67, Zn68, Zn69,
+            Zn70, Zn71, Ga68, Ga69, Ga70, Ga71, Ga72, Ge69, Ge70, Ge71, Ge72, Ge73, Ge74, Ge75, Ge76, Ge77, As73, As74,
+            As75, As76, Se73, Se74, Se75, Se76, Se77, Se78, Se79, Se80, Se81, Se82, Se83, Br78, Br79, Br80, Br81, Br82,
+            Kr78, Kr79, Kr80, Kr81, Kr82, Kr83, Kr84, Kr85, Kr86, Kr87, Kr88, Kr89, Kr90, Kr91, Kr92, Rb84, Rb85, Rb86,
+            Rb87, Sr84, Sr85, Sr86, Sr87, Sr88, Sr89, Sr90, Sr91, Sr92, Sr93, Sr94, Y88, Y89, Y90, Y91, Y92, Y93, Y94,
+            Y95, Zr89, Zr90, Zr91, Zr92, Zr93, Zr94, Zr95, Zr96, Nb90, Nb91, Nb92, Nb93, Nb94, Mo92, Mo93, Mo94, Mo95,
+            Mo96, Mo97, Mo98, Mo99, Mo100, Tc96, Tc97, Tc98, Tc99, Tc100, Ru95, Ru96, Ru97, Ru98, Ru99, Ru100, Ru101,
+            Ru102, Ru103, Ru104, Ru105, Ru106, Rh101, Rh102, Rh103, Rh104, Pd100, Pd101, Pd102, Pd103, Pd104, Pd105,
+            Pd106, Pd107, Pd108, Pd109, Pd110, Ag105, Ag106, Ag107, Ag108, Ag109, Ag110, Cd105, Cd106, Cd107, Cd108,
+            Cd109, Cd110, Cd111, Cd112, Cd113, Cd114, Cd115, Cd116, In112, In113, In114, In115, Sn112, Sn113, Sn114,
+            Sn115, Sn116, Sn117, Sn118, Sn119, Sn120, Sn121, Sn122, Sn123, Sn124, Sb120, Sb121, Sb122, Sb123, Sb124,
+            Sb125, Te120, Te121, Te122, Te123, Te124, Te125, Te126, Te127, Te128, Te129, Te130, I125, I126, I127, I128,
+            I129, I130, I131, I132, I133, I134, I135, I136, Xe124, Xe125, Xe126, Xe127, Xe128, Xe129, Xe130, Xe131,
+            Xe132, Xe133, Xe134, Xe135, Xe136, Cs132, Cs133, Cs134, Cs135, Cs136, Cs137, Ba130, Ba131, Ba132, Ba133,
+            Ba134, Ba135, Ba136, Ba137, Ba138, Ba139, Ba140, Ba141, Ba142, Ba143, La137, La138, La139, La140, Ce136,
+            Ce137, Ce138, Ce139, Ce140, Ce141, Ce142, Ce143, Pr140, Pr141, Pr142, Nd142, Nd143, Nd144, Nd145, Nd146,
+            Nd147, Nd148, Nd149, Nd150, Pm154, Pm155, Sm144, Sm145, Sm146, Sm147, Sm148, Sm149, Sm150, Sm151, Sm152,
+            Sm153, Sm154, Eu150, Eu151, Eu152, Eu153, Eu154, Gd152, Gd153, Gd154, Gd155, Gd156, Gd157, Gd158, Gd159,
+            Gd160, Tb158, Tb159, Tb160, Dy156, Dy157, Dy158, Dy159, Dy160, Dy161, Dy162, Dy163, Dy164, Dy165, Ho164,
+            Ho165, Ho166, Er162, Er163, Er164, Er165, Er166, Er167, Er168, Er169, Er170, Tm168, Tm169, Tm170, Yb168,
+            Yb169, Yb170, Yb171, Yb172, Yb173, Yb174, Yb175, Yb176, Lu163, Lu164, Lu175, Lu176, Hf161, Hf162, Hf163,
+            Hf164, Hf165, Hf166, Hf174, Hf175, Hf176, Hf177, Hf178, Hf179, Hf180, Ta180, Ta181, Ta182, W179, W180, W181,
+            W182, W183, W184, Re183, Re184, Re185, Re186, Re187, Os184, Os185, Os186, Os187, Os188, Os189, Os190, Os191,
+            Os192, Ir190, Ir191, Ir192, Ir193, Pt190, Pt191, Pt192, Pt193, Pt194, Pt195, Pt196, Pt197, Pt198, Au196,
+            Au197, Au198, Hg196, Hg197, Hg198, Hg199, Hg200, Hg201, Hg202, Hg203, Hg204, Tl202, Tl203, Tl204, Tl205,
+            Pb203, Pb204, Pb205, Pb206, Pb207, Pb208, Pb209, Pb210, Bi206, Bi207, Bi208, Bi209, Bi210, Bi211, Po207,
+            Po208, Po209, Po210, Po211, Po212, Po213, Po214, Po215, Po216, At210, At211, At212, At213, At214, At215,
+            Rn220, Rn221, Rn222, Rn223, Fr221, Fr222, Fr223, Fr224, Fr225, Fr226, Ra222, Ra223, Ra224, Ra225, Ra226,
+            Ra227, Ra228, Ra229, Ac224, Ac225, Ac226, Ac227, Ac228, Ac229, Th224, Th225, Th226, Th227, Th228, Th229,
+            Th230, Th231, Th232, Th233, Th234, Th235, Pa227, Pa228, Pa229, Pa230, Pa231, Pa232, Pa233, U231, U232, U233,
+            U234, U235, U236, U237, U238, U239, U240, Np234, Np235, Np236, Np237, Np238, Np239, Pu235, Pu236, Pu237,
+            Pu238, Pu239, Pu240, Pu241, Pu242, Pu243, Pu244, Pu245, Am240, Am241, Am242, Am243, Am244, Cm242, Cm243,
+            Cm244, Cm245, Cm246, Cm247, Cm248, Cm249, Cm250, Cm251, Bk246, Bk247, Bk248, Bk249, Bk250, Cf248, Cf249,
+            Cf250, Cf251, Cf252, Cf253, Es251, Es252, Es253, Fm256, Fm257, Fm258, Md256, Md257, Md258, Md259, No258,
+            No259, Lr261, Lr262, Rf262, Rf263, Rf264, Db263, Db268, Sg266, Sg271, Bh264, Bh271, Bh272, Hs269, Hs276,
+            Hs277, Mt268, Mt276, Mt277, Ds273, Ds280, Ds281, Rg280, Rg281, Cn277, Cn285]
+
+
+def get_element(protons, nucleons):
+    for element in elements:
+        if element.protons == protons and element.nucleons == nucleons:
+            return element
+
+print(get_element(U238.protons - He4.protons, U238.nucleons - He4.nucleons))
+print(1E10+20)
