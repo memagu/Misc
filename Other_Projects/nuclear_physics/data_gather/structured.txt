@@ -1,0 +1,718 @@
+1	H	1	1,007 825 032 23	stable	None	99,988 5
+None	None	2	2,014 101 778 12	stable	None	0,011 5
+None	None	3	3,016 049 277 9	12,32 years	beta-	None
+None	None	4	4,026 43	None	n	None
+2	He	3	3,016 029 320 1	stable	None	0,000 134
+None	None	4	4,002 603 254 13	stable	None	99,999 866
+None	None	5	5,012 057	None	n, alpha	None
+None	None	6	6,018 885 891	None	beta-	None
+3	Li	5	5,012 538	None	P	None
+None	None	6	6,015 122 887 4	stable	None	7,59
+None	None	7	7,016 003 436 6	stable	None	92,41
+None	None	8	8,022 486 246	839,9 ms	beta-	None
+4	Be	7	7,016 928 717	53,22 d	epsilon	None
+None	None	8	8,005 305 102	None	alpha	None
+None	None	9	9,012 183 065	stable	None	100,0
+None	None	10	10,013 534 695	1,51E+6 years	beta-	None
+5	B	8	8,024 607 3	770 ms	beta+	None
+None	None	9	9,013 329 65	None	P	None
+None	None	10	10,012 936 95	stable	None	19,9
+None	None	11	11,009 305 36	stable	None	80,1
+None	None	12	12,014 352 7	20,20 ms	beta-	None
+6	C	10	10,016 853 31	19,308 s	beta+	None
+None	None	11	11,011 433 6	20,364 m	beta+	None
+None	None	12	12	stable	None	98,93
+None	None	13	13,003 354 835 07	stable	None	1,07
+None	None	14	14,003 241 988 4	5700 years	beta-	None
+None	None	15	15,010 599 26	2,449 s	beta-	None
+7	N	13	13,005 738 61	9,965 m	beta+	None
+None	None	14	14,003 074 004 43	stable	None	99,636
+None	None	15	15,000 108 898 88	stable	None	0,364
+None	None	16	16,006 101 9	7,13 s	beta-	None
+None	None	17	17,008 449	4171 ms	beta-	None
+None	None	18	18,014 078	619 ms	beta-	None
+8	O	14	14,008 596 36	70,620 s	beta+	None
+None	None	15	15,003 065 62	122,24 s	beta+	None
+None	None	16	15,994 914 619 57	stable	None	99,757
+None	None	17	16,999 131 756 5	stable	None	0,038
+None	None	18	17,999 159 612 86	stable	None	0,205
+None	None	19	19,003 578	26,88 s	beta-	None
+9	F	17	17,002 095 24	64,49 s	beta+	None
+None	None	18	18,000 937 33	109,77 m	beta+	None
+None	None	19	18,998 403 162 73	stable	None	100,0
+None	None	20	19,999 981 252	11,07 s	beta-	None
+10	Ne	19	19,001 880 91	17,22 s	beta+	None
+None	None	20	19,992 440 176 2	stable	None	90,48
+None	None	21	20,993 846 685	stable	None	0,27
+None	None	22	21,991 385 114	stable	None	9,25
+None	None	23	22,994 466 91	37,24 s	beta-	None
+None	None	24	23,993 610 65	3,38 m	beta-	None
+11	Na	21	20,997 654 69	22,49 s	beta+	None
+None	None	22	21,994 437 41	2,6018 years	beta+	None
+None	None	23	22,989 769 282	stable	None	100,0
+None	None	24	23,990 962 95	14,997 h	beta-	None
+None	None	25	24,989 954	59,1 s	beta-	None
+12	Mg	22	21,999 570 65	3,8755 s	beta+	None
+None	None	23	22,994 124 21	11,317 s	beta+	None
+None	None	24	23,985 041 697	stable	None	78,99
+None	None	25	24,985 836 976	stable	None	10,0
+None	None	26	25,982 592 968	stable	None	11,01
+None	None	27	26,984 340 624	9,458 m	beta-	None
+13	Al	25	24,990 428 1	7,183 s	beta+	None
+None	None	26	25,986 891 904	7,17E+05 years	beta+	None
+None	None	27	26,981 538 53	stable	None	100,0
+None	None	28	27,981 910 21	2,245 m	beta-	None
+14	Si	26	25,992 333 84	2,2453 S	beta+	None
+None	None	27	26,986 704 81	4,15 s	beta+	None
+None	None	28	27,976 926 534 65	stable	None	92,223
+None	None	29	28,976 494 664 9	stable	None	4,685
+None	None	30	29,973 770 136	stable	None	3,092
+None	None	31	30,975 363 194	157,36 m	beta-	None
+15	P	30	29,978 313 75	2,498 m	beta+	None
+None	None	31	30,973 761 998 42	stable	None	100,0
+None	None	32	31,973 907 643	14,268 d	beta-	None
+None	None	33	32,971 725 7	25,35 d	beta-	None
+None	None	34	33,973 645 89	12,43 s	beta-	None
+16	S	31	30,979 557 01	2,5534 s	beta+	None
+None	None	32	31,972 071 174 4	stable	None	94,99
+None	None	33	32,971 458 909 8	stable	None	0,75
+None	None	34	33,967 867 004	stable	None	4,25
+None	None	35	34,969 032 31	87,37 d	beta-	None
+None	None	36	35,967 080 71	stable	None	0,01
+17	Cl	35	34,968 852 682	stable	None	75,76
+None	None	36	35,968 306 809	3,01E+5 years	beta-, beta+	None
+None	None	37	36,965 902 602	stable	None	24,24
+None	None	38	37,968 010 44	37,24 m	beta-	None
+18	Ar	35	34,975 257 59	1,7756 s	beta+	None
+None	None	36	35,967 545 105	stable	None	0,333 6
+None	None	37	36,966 776 33	35,04 d	epsilon	None
+None	None	38	37,962 732 11	stable	None	0,062 9
+None	None	39	38,964 313	269 years	beta-	None
+None	None	40	39,962 383 123 7	stable	None	99,603 5
+19	K	38	37,969 081 12	7,636 m	beta+	None
+None	None	39	38,963 706 486 4	stable	None	93,258 1
+None	None	40	39,963 998 166	1,248E+9 years	beta-	0,011 7
+None	None	41	40,961 825 257 9	stable	None	6,730 2
+None	None	42	41,962 402 31	12,355 h	beta-	None
+None	None	43	42,960 734 7	22,3 h	beta-	None
+20	Ca	39	38,970 710 81	859,6 ms	beta+	None
+None	None	40	39,962 590 863	3,0E+21 years	2 beta+	96,941
+None	None	41	40,962 277 92	9,94E4 years	epsilon	None
+None	None	42	41,958 617 83	stable	None	0,647
+None	None	43	42,958 766 44	stable	None	0,135
+None	None	44	43,955 481 56	stable	None	2,086
+None	None	45	44,956 186 35	162,61 d	beta-	None
+None	None	46	45,953 689	0,28E+16 years	2beta-	0,004
+None	None	47	46,954 542 4	4,536 d	beta-	None
+None	None	48	47,952 522 76	5,8E22 years	2beta-	0,187
+None	None	49	48,955 662 74	8,718 m	beta-	None
+None	None	50	49,957 499 2	13,9 s	beta-	None
+21	Sc	44	43,959 402 9	3,97 h	beta+	None
+None	None	45	44,955 908 28	stable	None	100,0
+None	None	46	45,955 168 26	83,79 d	beta-	None
+None	None	47	46,952 403 7	3,3492 d	beta-	None
+22	Ti	44	43,959 689 95	60,0 years	epsilon	None
+None	None	45	44,958 121 98	184,8 m	beta+	None
+None	None	46	45,952 627 72	stable	None	8,25
+None	None	47	46,951 758 79	stable	None	7,44
+None	None	48	47,947 941 98	stable	None	73,72
+None	None	49	48,947 865 68	stable	None	5,41
+None	None	50	49,944 786 89	stable	None	5,18
+None	None	51	50,946 610 65	5,76 m	beta-	None
+23	V	48	47,952 252 2	15,9735 d	beta+	None
+None	None	49	48,948 511 8	330 d	epsilon	None
+None	None	50	49,947 156 01	2,1E+17 years	beta+ , beta-	0,25
+None	None	51	50,943 957 04	stable	None	99,75
+None	None	52	51,944 773 01	3,743 m	beta-	None
+24	Cr	49	48,951 333 3	42,3 m	beta+	None
+None	None	50	49,946 041 83	1,3E+18 years	2beta+	4,345
+None	None	51	50,944 765 02	27,7025 d	epsilon	None
+None	None	52	51,940 506 23	stable	None	83,789
+None	None	53	52,940 648 15	stable	None	9,501
+None	None	54	53,938 879 16	stable	None	2,365
+None	None	55	54,940 838 43	3,497 m	beta-	None
+None	None	56	55,940 653 1	5,94 m	beta-	None
+25	Mn	52	51,945 5639	5,591 d	beta+	None
+None	None	53	52,941 288 89	3,74E+6 years	epsilon	None
+None	None	54	53,940 357 6	312,20 d	epsilon	None
+None	None	55	54,938 043 91	stable	None	100,0
+None	None	56	55,938 903 69	2,5789 h	beta-	None
+26	Fe	53	52,945 306 4	8,51 m	beta+	None
+None	None	54	53,939 608 99	stable	None	5,845
+None	None	55	54,938 291 99	2,744 years	epsilon	None
+None	None	56	55,934 936 33	stable	None	91,754
+None	None	57	56,935 392 84	stable	None	2,119
+None	None	58	57,933 274 43	stable	None	0,282
+None	None	59	58,934 874 34	44,495 d	beta-	None
+None	None	60	59,934 071 1	2,62E+6 years	beta-	None
+27	Co	56	55,939 838 8	77,236 d	beta+	None
+None	None	57	56,936 290 57	271,74 d	epsilon	None
+None	None	58	57,935 752 1	70,86 d	beta+	None
+None	None	59	58,933 194 29	stable	None	100,0
+None	None	60	59,933 816 3	1925,28 d	beta-	None
+28	Ni	57	56,939 792 18	35,60 h	beta+	None
+None	None	58	57,935 342 41	stable	None	68,077
+None	None	59	58,934 346 2	7,6E+4 years	beta+	None
+None	None	60	59,930 785 88	stable	None	26,223
+None	None	61	60,931 055 57	stable	None	1,139 9
+None	None	62	61,928 345 37	stable	None	3,634 6
+None	None	63	62,929 669 63	101,2 years	beta-	None
+None	None	64	63,927 966 82	stable	None	0,925 5
+None	None	65	64,930 085 17	2,5175 h	beta-	None
+29	Cu	62	61,932 595 41	9,673 m	beta+	None
+None	None	63	62,929 597 72	stable	None	69,15
+None	None	64	63,929 764 34	12,701 h	beta+ , beta-	None
+None	None	65	64,927 789 7	stable	None	30,85
+None	None	66	65,928 869 03	5,120 m	beta-	None
+30	Zn	63	62,933 211 5	38,47 m	beta+	None
+None	None	64	63,929 142 01	7,0E20 years	2beta+	49,17
+None	None	65	64,929 240 77	243,93 d	beta+	None
+None	None	66	65,926 033 81	stable	None	27,73
+None	None	67	66,927 127 75	stable	None	4,04
+None	None	68	67,924 844 55	stable	None	18,45
+None	None	69	68,926 550 7	56,4 m	beta-	None
+None	None	70	69,925 319 2	2,3E+17 years	2beta-	0,61
+None	None	71	70,927 719 6	2,45 m	beta-	None
+31	Ga	68	67,927 980 5	67,71 m	beta+	None
+None	None	69	68,925 573 5	stable	None	60,108
+None	None	70	69,926 021 9	21,14 m	beta-	None
+None	None	71	70,924 702 58	stable	None	39,892
+None	None	72	71,926 367 47	14,10 h	beta-	None
+32	Ge	69	68,927 964 5	39,05 h	beta+	None
+None	None	70	69,924 248 75	stable	None	20,57
+None	None	71	70,924 952 33	11,43 d	epsilon	None
+None	None	72	71,922 075 826	stable	None	27,45
+None	None	73	72,923 458 956	stable	None	7,75
+None	None	74	73,921 177 761	stable	None	36,5
+None	None	75	74,922 858 37	82,78 m	beta-	None
+None	None	76	75,921 402 726	stable	None	7,73
+None	None	77	76,923 549 843	11,30 h	beta-	None
+33	As	73	72,923 829 1	80,30 d	epsilon	None
+None	None	74	73,923 928 6	17,77 d	beta+ , beta-	None
+None	None	75	74,921 594 57	stable	None	100,0
+None	None	76	75,922 392 02	1,0942 d	beta-	None
+34	Se	73	72,926 754 9	7,15 h	beta+	None
+None	None	74	73,922 475 934	stable	None	0,89
+None	None	75	74,922 522 87	119,78 d	epsilon	None
+None	None	76	75,919 213 704	stable	None	9,37
+None	None	77	76,919 914 154	stable	None	7,63
+None	None	78	77,917 309 28	stable	None	23,77
+None	None	79	78,918 499 29	3,26E+5 years	beta-	None
+None	None	80	79,916 521 8	stable	2beta-	49,61
+None	None	81	80,917 993	18,45 m	beta-	None
+None	None	82	81,916 699 5	stable	None	8,73
+None	None	83	82,919 118 6	70,1 s	beta-	None
+35	Br	78	77,921 145 9	6,45 m	beta+ , beta-	None
+None	None	79	78,918 337 6	stable	None	50,69
+None	None	80	79,918 529 8	17,68 m	beta-, beta+	None
+None	None	81	80,916 289 7	stable	None	49,31
+None	None	82	81,916 803 2	35,282 h	beta-	None
+36	Kr	78	77,920 364 94	1,5E+21 years	2beta+	0,355
+None	None	79	78,920 082 9	35,04 h	beta+	None
+None	None	80	79,916 378 08	stable	None	2,286
+None	None	81	80,916 591 2	2,29E+5 years	epsilon	None
+None	None	82	81,913 482 73	stable	None	11,593
+None	None	83	82,914 127 16	stable	None	11,5
+None	None	84	83,911 497 728 2	stable	None	56,987
+None	None	85	84,912 527 3	10,739 years	beta-	None
+None	None	86	85,910 610 626 9	stable	None	17,279
+None	None	87	86,913 354 76	76,3 m	beta-	None
+None	None	88	87,914 447 9	2,825 h	beta-	None
+None	None	89	88,917 835 5	3,15 m	beta-	None
+None	None	90	89,919 527 9	32,32 s	beta-	None
+None	None	91	90,923 806 3	8,57 s	beta-	None
+None	None	92	91,926 173 1	1,840 s	beta-	None
+37	Rb	84	83,914 375 2	32,82 d	beta+ , beta-	None
+None	None	85	84,911 789 737 9	stable	None	72,17
+None	None	86	85,911 167 43	18,642 d	beta-, epsilon	None
+None	None	87	86,909 180 531	4,97E10 years	beta-	27,83
+38	Sr	84	83,913 419 1	stable	None	0,56
+None	None	85	84,912 932	64,849 d	epsilon	None
+None	None	86	85,909 260 6	stable	None	9,86
+None	None	87	86,908 877 5	stable	None	7
+None	None	88	87,905 612 5	stable	None	82,58
+None	None	89	88,907 451 1	50,563 d	beta-	None
+None	None	90	89,907 73	28,90 years	beta-	None
+None	None	91	90,910 195 4	9,65 h	beta-	None
+None	None	92	91,911 038 2	2,66 h	beta-	None
+None	None	93	92,914 024 2	7,43 m	beta-	None
+None	None	94	93,915 355 6	75,3 s	beta-	None
+39	Y	88	87,909 501 6	106,626 d	beta+	None
+None	None	89	88,905 840 3	stable	None	100
+None	None	90	89,907 143 9	64,053 h	beta-	None
+None	None	91	90,907 297 4	58,51 d	beta-	None
+None	None	92	91,908 945 1	3,54 h	beta-	None
+None	None	93	92,909 578	10,18 h	beta-	None
+None	None	94	93,911 590 6	18,7 m	beta-	None
+None	None	95	94,912 816 1	10,3 m	beta-	None
+40	Zr	89	88,908 881 4	78,41 h	beta+	None
+None	None	90	89,904 697 7	stable	None	51,45
+None	None	91	90,905 639 6	stable	None	11,22
+None	None	92	91,905 034 7	stable	None	17,15
+None	None	93	92,906 469 9	1,61E+6 years	beta-	None
+None	None	94	93,906 310 8	stable	None	17,38
+None	None	95	94,908 038 5	64,032 d	beta-	None
+None	None	96	95,908 271 4	2,35E+19 years	2beta-	2,8
+41	Nb	90	89,911 258 4	14,60 h	beta+	None
+None	None	91	90,906 989 7	6,8E+2 years	epsilon	None
+None	None	92	91,907 188 1	3,47E+7 years	beta+ , beta-	None
+None	None	93	92,906 373	stable	None	100
+None	None	94	93,907 278 8	2,03E+4 years	beta-	None
+42	Mo	92	91,906 807 96	stable	None	14,53
+None	None	93	92,906 809 58	4,0E+3 years	epsilon	None
+None	None	94	93,905 084 9	stable	None	9,15
+None	None	95	94,905 838 77	stable	None	15,84
+None	None	96	95,904 676 12	stable	None	16,67
+None	None	97	96,906 018 12	stable	None	9,6
+None	None	98	97,905 404 82	stable	None	24,39
+None	None	99	98,907 708 51	65,976 h	beta-	None
+None	None	100	99,907 471 8	7,3E+18 years	2beta-	9,82
+43	Tc	96	95,907 868	4,28 d	beta+	None
+None	None	97	96,906 366 7	4,21E+6 years	epsilon	None
+None	None	98	97,907 212 4	4,2E+6 years	beta-	None
+None	None	99	98,906 250 8	2,111E+5 years	beta-	None
+None	None	100	99,907 653 9	15,46 s	beta-, epsilon	None
+44	Ru	95	94,910 406	1,643 h	beta+	None
+None	None	96	95,907 590 25	stable	None	5,54
+None	None	97	96,907 547 1	2,83 d	beta+	None
+None	None	98	97,905 286 8	stable	None	1,87
+None	None	99	98,905 934 1	stable	None	12,76
+None	None	100	99,904 214 3	stable	None	12,6
+None	None	101	100,905 576 9	stable	None	17,06
+None	None	102	101,904 344 1	stable	None	31,55
+None	None	103	102,906 318 6	39,247 d	beta-	None
+None	None	104	103,905 427 5	stable	None	18,62
+None	None	105	104,907 747 6	4,44 h	beta-	None
+None	None	106	105,907 329 1	371,8 d	beta-	None
+45	Rh	101	100,906 160 6	3,3 years	epsilon	None
+None	None	102	101,906 837 4	207,3 d	beta+ , beta-	None
+None	None	103	102,905 498	stable	None	100,0
+None	None	104	103,906 649 2	42,3 s	beta-, beta+	None
+46	Pd	100	99,908 505	3,63 d	epsilon	None
+None	None	101	100,908 286 4	8,47 h	beta+	None
+None	None	102	101,905 602 2	stable	None	1,02
+None	None	103	102,906 080 9	16,991 d	epsilon	None
+None	None	104	103,904 030 5	stable	None	11,14
+None	None	105	104,905 079 6	stable	None	22,33
+None	None	106	105,903 480 4	stable	None	27,33
+None	None	107	106,905 128 2	6,5E+6 years	beta-	None
+None	None	108	107,903 891 6	stable	None	26,46
+None	None	109	108,905 950 4	13,7012 h	beta-	None
+None	None	110	109,905 172 2	stable	None	11,72
+47	Ag	105	104,906 525 6	41,29 d	beta+	None
+None	None	106	105,906 663 6	23,96 m	beta+ , beta-	None
+None	None	107	106,905 091 6	stable	None	51,839
+None	None	108	107,905 950 3	2,382 m	beta-, beta+	None
+None	None	109	108,904 755 3	stable	None	48,161
+None	None	110	109,906 110 2	24,6 s	beta-, epsilon	None
+48	Cd	105	104,909 463 9	55,5 m	beta+	None
+None	None	106	105,906 459 9	3,6E+20 years	2beta+	1,25
+None	None	107	106,906 612 1	6,50 h	beta+	None
+None	None	108	107,904 183 4	1,9E+18 years	2beta+	0,89
+None	None	109	108,904 986 7	461,4 d	epsilon	None
+None	None	110	109,903 006 61	stable	None	12,49
+None	None	111	110,904 182 87	stable	None	12,8
+None	None	112	111,902 762 87	stable	None	24,13
+None	None	113	112,904 408 13	8,00E15 years	beta-	12,22
+None	None	114	113,903 365 09	2,1E18 years	2beta-	28,73
+None	None	115	114,905 437 51	53,46 h	beta-	None
+None	None	116	115,904 763 15	3,3E+19 years	2beta-	7,49
+49	In	112	111,905 537 7	14,88 m	beta+ , beta-	None
+None	None	113	112,904 061 84	stable	None	4,29
+None	None	114	113,904 917 91	71,9 s	beta-, beta+	None
+None	None	115	114,903 878 776	4,41E+14 years	beta-	95,71
+50	Sn	112	111,904 823 87	1,3E+21 years	2beta+	0,97
+None	None	113	112,905 175 7	115,09 d	beta+	None
+None	None	114	113,902 782 7	stable	None	0,66
+None	None	115	114,903 344 699	stable	None	0,34
+None	None	116	115,901 742 8	stable	None	14,54
+None	None	117	116,902 953 98	stable	None	7,68
+None	None	118	117,901 606 57	stable	None	24,22
+None	None	119	118,903 311 17	stable	None	8,59
+None	None	120	119,902 201 63	stable	None	32,58
+None	None	121	120,904 242 6	27,03 h	beta-	None
+None	None	122	121,903 443 8	stable	None	4,63
+None	None	123	122,905 725 2	129,2 d	beta-	None
+None	None	124	123,905 276 6	1,2E+21 years	2beta-	5,79
+51	Sb	120	119,905 079 4	15,89 m	beta+	None
+None	None	121	120,903 812	stable	None	57,21
+None	None	122	121,905 169 9	2,7238 d	beta-, beta+	None
+None	None	123	122,904 213 2	stable	None	42,79
+None	None	124	123,905 935	60,20 d	beta-	None
+None	None	125	124,905 253	2,75856 years	beta-	None
+52	Te	120	119,904 059 3	stable	None	0,09
+None	None	121	120,904 944	19,17 d	beta+	None
+None	None	122	121,903 043 5	stable	None	2,55
+None	None	123	122,904 269 8	9,2E+16 years	epsilon	0,89
+None	None	124	123,902 817 1	stable	None	4,74
+None	None	125	124,904 429 9	stable	None	7,07
+None	None	126	125,903 310 9	stable	None	18,84
+None	None	127	126,905 225 7	9,35 h	beta-	None
+None	None	128	127,904 461 28	2,41E+24 years	2beta-	31,74
+None	None	129	128,906 596 46	69,9 m	beta-	None
+None	None	130	129,906 222 748	3,0E+24 years	2beta-	34,08
+53	I	125	124,904 629 4	59,407 d	epsilon	None
+None	None	126	125,905 623 3	12,93 d	beta+ , beta-	None
+None	None	127	126,904 471 9	stable	None	100,0
+None	None	128	127,905 808 6	24,99 m	beta-, beta+	None
+None	None	129	128,904 983 7	1,57E+7 years	beta-	None
+None	None	130	129,906 670 2	12,36 h	beta-	None
+None	None	131	130,906 126 3	8,0252 d	beta-	None
+None	None	132	131,907 993 5	2,295 h	beta-	None
+None	None	133	132,907 797	20,83 h	beta-	None
+None	None	134	133,909 758 8	52,5 m	beta-	None
+None	None	135	134,910 048 8	6,58 h	beta-	None
+None	None	136	135,914 604	83,4 s	beta-	None
+54	Xe	124	123,905 892	1,6E+14 years	2beta+	0,095 2
+None	None	125	124,906 394 4	16,9 h	beta+	None
+None	None	126	125,904 298 3	stable	None	0,089
+None	None	127	126,905 182 9	36,346 d	epsilon	None
+None	None	128	127,903 531	stable	None	1,910 2
+None	None	129	128,904 780 861 1	stable	None	26,400 6
+None	None	130	129,903 509 349	stable	None	4,071
+None	None	131	130,905 084 06	stable	None	21,232 4
+None	None	132	131,904 155 085 6	stable	None	26,908 6
+None	None	133	132,905 910 8	5,2475 d	beta-	None
+None	None	134	133,905 394 66	5,8E+22 years	2beta-	10,435 7
+None	None	135	134,907 227 8	9,14 h	beta-	None
+None	None	136	135,907 214 484	2,4E+21 years	2beta-	8,857 3
+55	Cs	132	131,906 433 9	6,480 d	beta+ , beta-	None
+None	None	133	132,905 451 961	stable	None	100,0
+None	None	134	133,906 718 503	2,0652 years	beta-, epsilon	None
+None	None	135	134,905 977	2,3E+6 years	beta-	None
+None	None	136	135,907 311 4	13,04 d	beta-	None
+None	None	137	136,907 089 23	30,08 years	beta-	None
+56	Ba	130	129,906 320 7	stable	2beta+	0,106
+None	None	131	130,906 941	11,50 d	beta+	None
+None	None	132	131,905 061 1	3,0E+21 years	2beta+	0,101
+None	None	133	132,906 007 4	10,551 years	epsilon	None
+None	None	134	133,904 508 18	stable	None	2,417
+None	None	135	134,905 688 38	stable	None	6,592
+None	None	136	135,904 575 73	stable	None	7,854
+None	None	137	136,905 827 14	stable	None	11,232
+None	None	138	137,905 247	stable	None	71,698
+None	None	139	138,908 841 1	83,06 m	beta-	None
+None	None	140	139,910 605 7	12,7527 d	beta-	None
+None	None	141	140,914 403 3	18,27 m	beta-	None
+None	None	142	141,916 432 4	10,6 m	beta-	None
+None	None	143	142,920 625 3	14,5 s	beta-	None
+57	La	137	136,906 450 4	6E+4 years	epsilon	None
+None	None	138	137,907 114 9	1,02E+11 years	beta+ , beta-	0,088 81
+None	None	139	138,906 356 3	stable	None	99,911 19
+None	None	140	139,909 480 6	1,67855 d	beta-	None
+58	Ce	136	135,907 129 21	0,7E+14 years	2beta+	0,185
+None	None	137	136,907 762 36	9,0 h	beta+	None
+None	None	138	137,905 991	0,9E+14 years	2beta+	0,251
+None	None	139	138,906 655 1	137,641 d	epsilon	None
+None	None	140	139,905 443 1	stable	None	88,45
+None	None	141	140,908 280 7	32,511 d	beta-	None
+None	None	142	141,909 250 4	5E+16 years	2beta-	11,114
+None	None	143	142,912 392 1	33,039 h	beta-	None
+59	Pr	140	139,909 080 3	3,39 m	beta+	None
+None	None	141	140,907 657 6	stable	None	100,0
+None	None	142	141,910 049 6	19,12 h	beta-, epsilon	None
+60	Nd	142	141,907 729	stable	None	27,152
+None	None	143	142,909 82	stable	None	12,174
+None	None	144	143,910 093	2,29E+15 years	alpha	23,798
+None	None	145	144,912 579 3	stable	None	8,293
+None	None	146	145,913 122 6	stable	None	17,189
+None	None	147	146,916 106 1	10,98 d	beta-	None
+None	None	148	147,916 899 3	stable	None	5,756
+None	None	149	148,920 154 8	1,728 h	beta-	None
+None	None	150	149,920 902 2	0,91E19 years	2beta-	5,638
+61	Pm	154	153,926 472	2,68 m	beta-	None
+None	None	155	154,928 137	41,5 s	beta-	None
+62	Sm	144	143,912 006 5	stable	None	3,07
+None	None	145	144,913 417 3	340 d	epsilon	None
+None	None	146	145,913 047	10,3E+7 years	alpha	None
+None	None	147	146,914 904 4	1,060E11 years	alpha	14,99
+None	None	148	147,914 829 2	7E+15 years	alpha	11,24
+None	None	149	148,917 192 1	stable	None	13,82
+None	None	150	149,917 282 9	stable	None	7,38
+None	None	151	150,919 939 8	90 years	beta-	None
+None	None	152	151,919 739 7	stable	None	26,75
+None	None	153	152,922 104 7	46,284 h	beta-	None
+None	None	154	153,922 216 9	stable	None	22,75
+63	Eu	150	149,919 707 7	36,9 years	beta+	None
+None	None	151	150,919 857 8	1,7E+18 years	alpha	47,81
+None	None	152	151,921 752 2	13,517 years	beta+ , beta-	None
+None	None	153	152,921 238	stable	None	52,19
+None	None	154	153,922 987	8,601 years	beta-, epsilon	None
+64	Gd	152	151,919 799 5	1,08E+14 years	alpha	0,2
+None	None	153	152,921 758	240,4 d	epsilon	None
+None	None	154	153,920 874 1	stable	None	2,18
+None	None	155	154,922 630 5	stable	None	14,8
+None	None	156	155,922 131 2	stable	None	20,47
+None	None	157	156,923 968 6	stable	None	15,65
+None	None	158	157,924 112 3	stable	None	24,84
+None	None	159	158,926 397	18,479 h	beta-	None
+None	None	160	159,927 062 4	3,1E+19 years	2beta-	21,86
+65	Tb	158	157,925 420 9	180 years	beta+ , beta-	None
+None	None	159	158,925 354 7	stable	None	100
+None	None	160	159,927 175 6	72,3 d	beta-	None
+66	Dy	156	155,924 284 7	stable	None	0,056
+None	None	157	156,925 470 7	8,14 h	beta+	None
+None	None	158	157,924 415 9	stable	None	0,095
+None	None	159	158,925 747	144,4 d	epsilon	None
+None	None	160	159,925 204 6	stable	None	2,329
+None	None	161	160,926 940 5	stable	None	18,889
+None	None	162	161,926 805 6	stable	None	25,475
+None	None	163	162,928 738 3	stable	None	24,896
+None	None	164	163,929 181 9	stable	None	28,26
+None	None	165	164,931 710 5	2,334 h	beta-	None
+67	Ho	164	163,930 240 3	29 m	epsilon, beta-	None
+None	None	165	164,930 328 8	stable	None	100
+None	None	166	165,932 290 9	26,824 h	beta-	None
+68	Er	162	161,928 788 4	stable	None	0,139
+None	None	163	162,930 040 8	75,0 m	beta+	None
+None	None	164	163,929 208 8	stable	None	1,601
+None	None	165	164,930 734 5	10,36 h	epsilon	None
+None	None	166	165,930 299 5	stable	None	33,503
+None	None	167	166,932 054 6	stable	None	22,869
+None	None	168	167,932 376 7	stable	None	26,978
+None	None	169	168,934 596 8	9,392 d	beta-	None
+None	None	170	169,935 470 2	stable	None	14,91
+69	Tm	168	167,934 177 4	93,1 d	beta+ , beta-	None
+None	None	169	168,934 217 9	stable	None	100
+None	None	170	169,935 806	128,6 d	beta-, epsilon	None
+70	Yb	168	167,933 889 6	stable	None	0,123
+None	None	169	168,935 182 5	32,018 d	epsilon	None
+None	None	170	169,934 766 4	stable	None	2,982
+None	None	171	170,936 330 2	stable	None	14,09
+None	None	172	171,936 385 9	stable	None	21,68
+None	None	173	172,938 215 1	stable	None	16,103
+None	None	174	173,938 866 4	stable	None	32,026
+None	None	175	174,941 280 8	4,185 d	beta-	None
+None	None	176	175,942 576 4	stable	None	12,996
+71	Lu	163	162,941 179	3,97 m	beta+	None
+None	None	164	163,941 339	3,14 m	beta+	None
+None	None	175	174,940 775 2	stable	None	97,401
+None	None	176	175,942 689 7	3,76E+10 years	beta-	2,599
+72	Hf	161	160,950 278	18,4 s	beta+ , alpha	None
+None	None	162	161,947 214 8	39,4 s	beta+ , alpha	None
+None	None	163	162,947 113	40,0 s	beta+ , alpha	None
+None	None	164	163,944 371	111 s	beta+	None
+None	None	165	164,944 567	76 s	beta+	None
+None	None	166	165,942 18	6,77 m	beta+	None
+None	None	174	173,940 046 1	2,0E+15 years	alpha	0,16
+None	None	175	174,941 509 2	70 d	epsilon	None
+None	None	176	175,941 407 6	stable	None	5,26
+None	None	177	176,943 227 7	stable	None	18,6
+None	None	178	177,943 705 8	stable	None	27,28
+None	None	179	178,945 823 2	stable	None	13,62
+None	None	180	179,946 557	stable	None	35,08
+73	Ta	180	179,947 464 8	8,154 h	epsilon, beta-	0,012 01
+None	None	181	180,947 995 8	stable	None	99,987 99
+None	None	182	181,950 151 9	114,74 d	beta-	None
+74	W	179	178,947 077	37,05 m	beta+	None
+None	None	180	179,946 710 8	6,6E+17 years	2beta+	0,12
+None	None	181	180,948 197 8	121,2 d	epsilon	None
+None	None	182	181,948 203 94	stable	None	26,5
+None	None	183	182,950 222 75	6,7E+20 years	alpha	14,31
+None	None	184	183,950 930 92	stable	None	30,64
+75	Re	183	182,950 819 6	70,0 d	epsilon	None
+None	None	184	183,952 522 8	35,4 d	beta+	None
+None	None	185	184,952 954 5	stable	None	37,4
+None	None	186	185,954 985 6	3,7186 d	beta-, epsilon	None
+None	None	187	186,955 750 1	4,33E+10 years	beta-, alpha	62,6
+76	Os	184	183,952 488 5	5,6E13 years	alpha	0,02
+None	None	185	184,954 041 7	93,6 d	epsilon	None
+None	None	186	185,953 835	2,0E+15 years	alpha	1,59
+None	None	187	186,955 747 4	stable	None	1,96
+None	None	188	187,955 835 2	stable	None	13,24
+None	None	189	188,958 144 2	stable	None	16,15
+None	None	190	189,958 443 7	stable	None	26,26
+None	None	191	190,960 926 4	15,4 d	beta-	None
+None	None	192	191,961 477	stable	None	40,78
+77	Ir	190	189,960 541 2	11,78 d	beta+	None
+None	None	191	190,960 589 3	stable	None	37,3
+None	None	192	191,962 600 2	73,829 d	beta-, epsilon	None
+None	None	193	192,962 921 6	stable	None	62,7
+78	Pt	190	189,959 929 7	6,5E+11 years	alpha	0,012
+None	None	191	190,961 672 9	2,83 d	epsilon	None
+None	None	192	191,961 038 7	stable	None	0,782
+None	None	193	192,962 982 4	50 years	epsilon	None
+None	None	194	193,962 680 9	stable	None	32,86
+None	None	195	194,964 791 7	stable	None	33,78
+None	None	196	195,964 952 09	stable	None	25,21
+None	None	197	196,967 340 69	19,8915 h	beta-	None
+None	None	198	197,967 894 9	stable	None	7,356
+79	Au	196	195,966 569 9	6,1669 d	beta+ , beta-	None
+None	None	197	196,966 568 79	stable	None	100,0
+None	None	198	197,968 242 42	2,6941 d	beta-	None
+80	Hg	196	195,965 832 6	stable	None	0,15
+None	None	197	196,967 212 8	64,14 h	epsilon	None
+None	None	198	197,966 768 6	stable	None	9,97
+None	None	199	198,968 280 64	stable	None	16,87
+None	None	200	199,968 326 59	stable	None	23,1
+None	None	201	200,970 302 84	stable	None	13,18
+None	None	202	201,970 643 4	stable	None	29,86
+None	None	203	202,972 872 8	46,594 d	beta-	None
+None	None	204	203,973 493 98	stable	None	6,87
+81	Tl	202	201,972 102	12,31 d	beta+	None
+None	None	203	202,972 344 6	stable	None	29,52
+None	None	204	203,973 863 9	3,783 years	beta-, epsilon	None
+None	None	205	204,974 427 8	stable	None	70,48
+82	Pb	203	202,973 391 1	51,92 h	epsilon	None
+None	None	204	203,973 044	1,4E+17 years	alpha	1,4
+None	None	205	204,974 482 2	1,73E+7 years	epsilon	None
+None	None	206	205,974 465 7	stable	None	24,1
+None	None	207	206,975 897 3	stable	None	22,1
+None	None	208	207,976 652 5	stable	None	52,4
+None	None	209	208,981 090 5	3,234 h	beta-	None
+None	None	210	209,984 188 9	22,20 years	beta-, alpha	None
+83	Bi	206	205,978 499 3	6,243 d	beta+	None
+None	None	207	206,978 471	31,55 years	beta+	None
+None	None	208	207,979 742 5	3,68E+5 years	beta+	None
+None	None	209	208,980 399 1	stable	None	100,0
+None	None	210	209,984 120 7	5,012 d	beta-, alpha	None
+None	None	211	210,987 269 7	2,14 m	alpha, beta-	None
+84	Po	207	206,981 593 8	5,80 h	beta+ , alpha	None
+None	None	208	207,981 246 1	2,898 years	alpha, beta+	None
+None	None	209	208,982 430 8	124 years	alpha, beta+	None
+None	None	210	209,982 874 1	138,376 d	alpha	None
+None	None	211	210,986 653 6	0,516 s	alpha	None
+None	None	212	211,988 868 4	0,299 µs	alpha	None
+None	None	213	212,992 857 6	3,72 µs	alpha	None
+None	None	214	213,995 201 7	163,6 µs	alpha	None
+None	None	215	214,999 420 1	1,781 ms	alpha, beta-	None
+None	None	216	216,001 915 2	0,145 s	alpha	None
+85	At	210	209,987 147 9	8,1 h	beta+ , alpha	None
+None	None	211	210,987 496 6	7,214 h	epsilon, alpha	None
+None	None	212	211,990 737 7	0,314 s	alpha, beta+ , beta-	None
+None	None	213	212,992 937	125 ns	alpha	None
+None	None	214	213,996 372 1	558 ns	alpha	None
+None	None	215	214,998 652 8	0,10 ms	alpha	None
+86	Rn	220	220,011 394 1	55,6 s	alpha	None
+None	None	221	221,015 537 1	25 m	beta-, alpha	None
+None	None	222	222,017 578 2	3,8235 d	alpha	None
+None	None	223	223,021 889 3	24,3 m	beta-	None
+87	Fr	221	221,014 255 2	286,1 s	alpha, beta-	None
+None	None	222	222,017 552	14,2 m	beta-	None
+None	None	223	223,019 736	22,00 m	beta-, alpha	None
+None	None	224	224,023 398	3,33 m	beta-	None
+None	None	225	225,025 573	3,95 m	beta-	None
+None	None	226	226,029 566	49 s	beta-	None
+88	Ra	222	222,015 374 8	38,0 s	alpha, 14C	None
+None	None	223	223,018 502 3	11,43 d	alpha, 14C	None
+None	None	224	224,020 212	3,6319 d	alpha, 14C	None
+None	None	225	225,023 611 9	14,9 d	beta-	None
+None	None	226	226,025 410 3	1600 years	alpha, 14C	None
+None	None	227	227,029 178 3	42,2 m	beta-	None
+None	None	228	228,031 070 7	5,75 years	beta-	None
+None	None	229	229,034 942	4,0 m	beta-	None
+89	Ac	224	224,021 723 2	2,78 h	beta+ , alpha	None
+None	None	225	225,023 23	10,0 d	alpha, 14C	None
+None	None	226	226,026 098 4	29,37 h	beta-, epsilon, alpha	None
+None	None	227	227,027 752 3	21,772 years	beta-, alpha	None
+None	None	228	228,031 021 5	6,15 h	beta-	None
+None	None	229	229,032 956	62,7 m	beta-	None
+90	Th	224	224,021 464	1,04 s	alpha	None
+None	None	225	225,023 951 4	8,75 m	alpha, epsilon	None
+None	None	226	226,024 903 4	30,57 m	alpha	None
+None	None	227	227,027 704 2	18,697 d	alpha	None
+None	None	228	228,028 741 3	1,9125 years	alpha, 20O	None
+None	None	229	229,031 762 7	7932 years	alpha	None
+None	None	230	230,033 134 1	7,54E+4 years	alpha, 24ne, SF	None
+None	None	231	231,036 304 6	25,52 h	beta-, alpha	None
+None	None	232	232,038 055 8	1,40E+10 years	alpha, SF	100,0
+None	None	233	233,041 582 3	21,83 m	beta-	None
+None	None	234	234,043 601 4	24,10 d	beta-	None
+None	None	235	235,047 255	7,1 m	beta-	None
+91	Pa	227	227,028 805 4	38,3 m	alpha, epsilon	None
+None	None	228	228,031 051 7	22 h	beta+ , alpha	None
+None	None	229	229,032 097 2	1,50 d	epsilon, alpha	None
+None	None	230	230,034 541	17,4 d	beta+ , beta-, alpha	None
+None	None	231	231,035 884 2	3,276E+4 years	alpha, SF	100,0
+None	None	232	232,038 591 7	1,32 d	beta-, epsilon	None
+None	None	233	233,040 247 3	27,0 d	beta-	None
+92	U	231	231,036 293 9	4,2 d	epsilon, alpha	None
+None	None	232	232,037 156 3	68,9 years	alpha, SF	None
+None	None	233	233,039 635 5	1,592E+5 years	alpha, SF	None
+None	None	234	234,040 952 3	2,455E+5 years	alpha, SF	0,005 4
+None	None	235	235,043 930 1	7,04E+8 years	alpha, SF	0,720 4
+None	None	236	236,045 568 2	2,342E+7 years	alpha, SF	None
+None	None	237	237,048 730 4	6,75 d	beta-	None
+None	None	238	238,050 788 4	4,468E+9 years	alpha, SF	99,274 2
+None	None	239	239,054 293 5	23,45 m	beta-	None
+None	None	240	240,056 593 4	14,1 h	beta-	None
+93	Np	234	234,042 895 3	4,4 d	beta+	None
+None	None	235	235,044 063 5	396,1 d	epsilon, alpha	None
+None	None	236	236,046 57	153000 years	epsilon, beta-, alpha	None
+None	None	237	237,048 173 6	2,144E+6 years	alpha, SF	None
+None	None	238	238,050 946 6	2,117 d	beta-	None
+None	None	239	239,052 939 2	2,356 d	beta-	None
+94	Pu	235	235,045 286	25,3 m	beta+ , alpha	None
+None	None	236	236,046 058 1	2,858 years	alpha, SF	None
+None	None	237	237,048 409 8	45,64 d	epsilon, alpha	None
+None	None	238	238,049 560 1	87,7 years	alpha, SF	None
+None	None	239	239,052 163 6	24110 years	alpha, SF	None
+None	None	240	240,053 813 8	6561 years	alpha, SF	None
+None	None	241	241,056 851 7	14,329 years	beta-, alpha, SF	None
+None	None	242	242,058 742 8	3,75E+5 years	alpha, SF	None
+None	None	243	243,062 003 6	4,956 h	beta-	None
+None	None	244	244,064 205 3	8,00E+7 years	alpha, SF	None
+None	None	245	245,067 826	10,5 h	beta-	None
+95	Am	240	240,055 3	50,8 h	beta+ , alpha	None
+None	None	241	241,056 829 3	432,6 years	alpha, SF	None
+None	None	242	242,059 549 4	16,02 h	beta-, epsilon	None
+None	None	243	243,061 381 3	7364 years	alpha, SF	None
+None	None	244	244,064 285 1	10,1 h	beta-, SF	None
+96	Cm	242	242,058 836	162,8 d	alpha, SF	None
+None	None	243	243,061 389 3	29,1 years	alpha, epsilon, SF	None
+None	None	244	244,062 752 8	18,1 years	alpha, SF	None
+None	None	245	245,065 491 5	8423 years	alpha, SF	None
+None	None	246	246,067 223 8	4706 years	alpha, SF	None
+None	None	247	247,070 354 1	1,56E+7 years	alpha	None
+None	None	248	248,072 349 9	3,48E+5 years	alpha, SF	None
+None	None	249	249,075 954 8	64,15 m	beta-	None
+None	None	250	250,078 358	8,3E+3 years	SF, alpha, beta-	None
+None	None	251	251,082 286	16,8 m	beta-	None
+97	Bk	246	246,068 673	1,80 d	beta+	None
+None	None	247	247,070 307 3	1380 years	alpha	None
+None	None	248	248,073 088	9 years	alpha	None
+None	None	249	249,074 987 7	330 d	beta-, alpha, SF	None
+None	None	250	250,078 316 7	3,212 h	beta-	None
+98	Cf	248	248,072 185 1	333,5 d	alpha, SF	None
+None	None	249	249,074 853 9	351 years	alpha, SF	None
+None	None	250	250,076 406 2	13,08 years	alpha, SF	None
+None	None	251	251,079 588 6	898 years	alpha, SF	None
+None	None	252	252,081 627 2	2,645 years	alpha, SF	None
+None	None	253	253,085 134 5	17,81 d	beta-, alpha	None
+99	Es	251	251,079 993 6	33 h	epsilon, alpha	None
+None	None	252	252,082 98	471,7 d	alpha, epsilon	None
+None	None	253	253,084 825 7	20,47 d	alpha, SF	None
+100	Fm	256	256,091 774 5	157,6 m	SF, alpha	None
+None	None	257	257,095 106 1	100,5 d	alpha, SF	None
+None	None	258	258,097 08	370 µs	SF	None
+101	Md	256	256,093 89	77 m	beta+ , alpha, SF	None
+None	None	257	257,095 542 4	5,52 h	epsilon, alpha, SF	None
+None	None	258	258,098 431 5	51,5 d	alpha, beta-, beta+	None
+None	None	259	259,100 51	1,6 h	SF, alpha	None
+102	No	258	258,098 21	1,2 ms	SF	None
+None	None	259	259,101 03	58 m	alpha, epsilon, SF	None
+103	Lr	261	261,106 88	39 m	SF	None
+None	None	262	262,109 61	4 h	epsilon, alpha, SF	None
+104	Rf	262	262,109 92	2,3 s	SF, alpha	None
+None	None	263	263,112 49	10 m	SF, alpha	None
+None	None	264	264,113 88	None	alpha	None
+105	Db	263	263,114 99	27 s	SF, alpha, beta+	None
+None	None	268	268,125 67	32 h	SF	None
+106	Sg	266	266,121 98	21 s	alpha	None
+None	None	271	271,133 93	2,4 m	alpha, SF	None
+107	Bh	264	264,124 59	0,44 s	alpha	None
+None	None	271	271,135 26	None	alpha	None
+None	None	272	272,138 26	10 s	alpha	None
+108	Hs	269	269,133 75	9,7 s	alpha	None
+None	None	276	276,148 46	None	alpha, SF	None
+None	None	277	277,151 9	3 ms	alpha	None
+109	Mt	268	268,138 65	21 ms	alpha	None
+None	None	276	276,151 59	0,72 s	alpha	None
+None	None	277	277,153 27	5 s	SF, alpha	None
+110	Ds	273	273,148 56	0,17 ms	alpha	None
+None	None	280	280,161 31	None	None	None
+None	None	281	281,164 51	13 s	alpha, SF	None
+111	Rg	280	280,165 14	3,6 s	alpha	None
+None	None	281	281,166 36	17 s	SF, alpha	None
+112	Cn	277	277,163 64	None	None	None
+None	None	285	285,177 12	30 s	alpha	None
