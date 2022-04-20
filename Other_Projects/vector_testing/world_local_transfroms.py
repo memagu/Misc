@@ -1,6 +1,6 @@
 import pygame
 import time
-from Math.melvec.melvec import *
+from Math.melutil.melvec import *
 
 pygame.init()
 
