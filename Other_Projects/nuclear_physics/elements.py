@@ -4,12 +4,22 @@ class Element:
         self.protons = protons
         self.nucleons = nucleons
         self.electrons = protons
+        self.neutrons = nucleons - protons
         self.mass = mass
         self.half_life = half_life
         self.decay = decay
 
     def __str__(self):
+        return f"{self.protons} {self.label}"
+
+    def __repr__(self):
         return str(self.__dict__)
+
+    def __add__(self, other):
+        return get_element(self.protons + other.protons, self.nucleons + other.nucleons)
+
+    def __sub__(self, other):
+        return get_element(self.protons - other.protons, self.nucleons - other.nucleons)
 
     @staticmethod
     def usage_help():
@@ -928,4 +938,5 @@ def get_element(protons, nucleons):
             return element
 
 print(get_element(U238.protons - He4.protons, U238.nucleons - He4.nucleons))
+print(U238 + He4)
 print(1E10+20)
