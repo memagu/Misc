@@ -62,7 +62,7 @@ None	None	27	26,984 340 624	9,458 m	beta-	None
 None	None	26	25,986 891 904	7,17E+05 years	beta+	None
 None	None	27	26,981 538 53	stable	None	100,0
 None	None	28	27,981 910 21	2,245 m	beta-	None
-14	Si	26	25,992 333 84	2,2453 S	beta+	None
+14	Si	26	25,992 333 84	2,2453 s	beta+	None
 None	None	27	26,986 704 81	4,15 s	beta+	None
 None	None	28	27,976 926 534 65	stable	None	92,223
 None	None	29	28,976 494 664 9	stable	None	4,685
@@ -572,9 +572,9 @@ None	None	208	207,981 246 1	2,898 years	alpha, beta+	None
 None	None	209	208,982 430 8	124 years	alpha, beta+	None
 None	None	210	209,982 874 1	138,376 d	alpha	None
 None	None	211	210,986 653 6	0,516 s	alpha	None
-None	None	212	211,988 868 4	0,299 µs	alpha	None
-None	None	213	212,992 857 6	3,72 µs	alpha	None
-None	None	214	213,995 201 7	163,6 µs	alpha	None
+None	None	212	211,988 868 4	0,299 micros	alpha	None
+None	None	213	212,992 857 6	3,72 micros	alpha	None
+None	None	214	213,995 201 7	163,6 micros	alpha	None
 None	None	215	214,999 420 1	1,781 ms	alpha, beta-	None
 None	None	216	216,001 915 2	0,145 s	alpha	None
 85	At	210	209,987 147 9	8,1 h	beta+ , alpha	None
@@ -684,7 +684,7 @@ None	None	252	252,082 98	471,7 d	alpha, epsilon	None
 None	None	253	253,084 825 7	20,47 d	alpha, SF	None
 100	Fm	256	256,091 774 5	157,6 m	SF, alpha	None
 None	None	257	257,095 106 1	100,5 d	alpha, SF	None
-None	None	258	258,097 08	370 µs	SF	None
+None	None	258	258,097 08	370 micros	SF	None
 101	Md	256	256,093 89	77 m	beta+ , alpha, SF	None
 None	None	257	257,095 542 4	5,52 h	epsilon, alpha, SF	None
 None	None	258	258,098 431 5	51,5 d	alpha, beta-, beta+	None

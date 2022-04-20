@@ -1,23 +1,36 @@
-# Below function will print the
-# all prime factor of given number
+def is_prime(num):
+    if num == 2:
+        return True
+
+    if num in [0, 1] or num % 2 == 0:
+        return False
+
+    sqrt_num = num ** 0.5
+
+    for i in range(3, int(sqrt_num) + 1, 2):
+        if num % i == 0:
+            return False
+    return True
+
+
 def prime_factors(num):
-    # Using the while loop, we will print the number of two's that divide n
-    while num % 2 == 0:
-        print(2, )
-        num = num / 2
+    if is_prime(num):
+        return [num]
 
-    for i in range(3, int(num ** 0.5) + 1, 2):
-
-        # while i divides n , print i ad divide n
-        while num % i == 0:
-            print(i, )
-            num = num / i
-    if num > 2:
-        print(num)
-    # calling function
+    for i in range(2, num // 2 + 1):
+        if num % i == 0:
+            return prime_factors(num // i) + prime_factors(i)
 
 
-# num = 200
-prime_factors(21)
-print()
-prime_factors(28)
+def factors(num): #TRASIG
+    base_factors = prime_factors(num) + [1]
+    factor_muls = set()
+    for i in range(len(base_factors)):
+        for j in range(len(base_factors)):
+            if i != j:
+                factor_muls.add(base_factors[i] * base_factors[j])
+    return list(factor_muls) + [1, num]
+
+
+print(prime_factors(720720))
+print(sorted(factors(720720)))
