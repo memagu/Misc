@@ -22,7 +22,7 @@ converter = {"Ys": 10**24,
                     "m": 60,
                     "h": 3600,
                     "d": 86400,
-                    "years": 30758400}
+                    "years": 31536000}
 
 with open("out.txt", "w") as f_out:
     with open("structured.txt", "r") as f:
@@ -47,9 +47,9 @@ with open("out.txt", "w") as f_out:
                 half_life = 0
             else:
                 half_life = half_life.split()
-                half_life = float(half_life[0].replace("e", "E")) * converter[half_life[1]]
+                half_life = float(half_life[0]) * converter[half_life[1]]
 
-            print(line_list[5])
+            #print(line_list[5])
             decay = f"'{line_list[5]}'" if line_list[5] != "None" else line_list[5]
 
             result = f"{current_label}{nucleons} = Element('{current_label}{nucleons}', {current_protons}, {nucleons}, {mass}, {half_life}, {decay})" + "\n"
@@ -57,5 +57,4 @@ with open("out.txt", "w") as f_out:
             f_out.write(result)
 
         f_out.write(str(elements).replace("'", ""))
-
 
