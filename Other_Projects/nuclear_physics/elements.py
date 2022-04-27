@@ -6,7 +6,6 @@ class Element:
         self.electrons = protons
         self.neutrons = nucleons - protons
         self.mass = mass
-        self.mass_kg = mass * (1.6605402 * 10 ** -27)
         self.half_life = half_life
         self.decay = decay
 
@@ -30,7 +29,6 @@ class Element:
         print("nuclear_mass = mass of element")
         print("half_life = time for half of the particles to decay")
         print("decay = decay method")
-
 
 
 # n = Element("n", 0, 1, 1.0086649158, 613.8, "β-")
@@ -934,24 +932,12 @@ elements = [H1, H2, H3, H4, He3, He4, He5, He6, Li5, Li6, Li7, Li8, Be7, Be8, Be
             Hs277, Mt268, Mt276, Mt277, Ds273, Ds280, Ds281, Rg280, Rg281, Cn277, Cn285]
 
 
-def get_element(protons, nucleons) -> Element:
+def get_element(protons, nucleons):
     for element in elements:
         if element.protons == protons and element.nucleons == nucleons:
             return element
 
-
-def alpha_decay(element: Element) -> Element:
-    return get_element(element.protons - He4.protons, element.nucleons - He4.nucleons)
-
-
-print(alpha_decay(U238))
-print(get_element(U238.protons - He4.protons, U238.nucleons - He4.nucleons))
-print(U238.mass)
-print(C14.half_life)
-print()
-print((Ba138.mass + 94.9398 + 3 * n.mass) - (U235.mass+n.mass), "mass")
-
-print(-((Ba138.mass + 94.9398 + 3 * n.mass) - (U235.mass+n.mass)) * (1.66054 * 10 ** -27) * 299792458 ** 2, "J")
-print(-((Ba138.mass + 94.9398 + 3 * n.mass) - (U235.mass+n.mass)) * 931.49, "MeV")
-
+print(f"{H3.mass=} - {He3.mass=} = {H3.mass - He3.mass}")
+print(f"{H3.mass - He3.mass} * 931.49 = {(H3.mass - He3.mass) * 931.49}MeV")
+print(f"Svar: {(H3.mass - He3.mass) * 931.49}MeV")
 
