@@ -4,7 +4,7 @@ from Math.melutil.melvec import *
 
 pygame.init()
 
-window_resolution = [400, 400]
+window_resolution = [800, 800]
 display = pygame.display.set_mode(window_resolution, pygame.RESIZABLE)
 pygame.display.set_caption(__file__.split("\\")[-1])
 
@@ -28,7 +28,7 @@ font = pygame.font.SysFont("leelawadeeuisemilight", window_resolution[1] // 32)
 
 ################################
 
-local_origin_in_worldspace = Vec2(200, 200)
+local_origin_in_worldspace = Vec2(window_resolution[0] / 2, window_resolution[1] / 2)
 i_hat = Vec2(20, 0)
 #i_hat = Vec2.from_angle(-math.pi / 6, 20)
 j_hat = Vec2(7, -18)
