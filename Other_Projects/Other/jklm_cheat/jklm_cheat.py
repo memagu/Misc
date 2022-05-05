@@ -1,21 +1,24 @@
-def setup() -> None:
-    ver = 1.0
-    prog_name = __file__.split('\\')[-1]
-
-    print(f"Initializing '{prog_name}' version {ver}\n")
-
-    words = []
-    used = []
+def initialize_words() -> [str]:
+    word_list = []
 
     with open("words_alpha.txt", "r") as f:
         lines = f.readlines()
         for line in lines:
-            words.append(line.strip())
+            word_list.append(line.strip())
 
-    print(f"Initiation complete! {len(words)} words loaded into memory.\n\n{'=' * 16}\n")
+    return word_list
 
 
 def main() -> None:
+    ver = 2.0
+    prog_name = __file__.split('\\')[-1]
+    print(f"Initializing '{prog_name}' version {ver}\n")
+
+    words = initialize_words()
+    print(f"Initiation complete! {len(words)} words loaded into memory.\n\n{'=' * 16}\n")
+
+    used = []
+
     while True:
         hint = input("Input hint: ")
         for word in words:
@@ -27,5 +30,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    setup()
     main()
