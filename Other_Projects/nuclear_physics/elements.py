@@ -6,7 +6,6 @@ class Element:
         self.electrons = protons
         self.neutrons = nucleons - protons
         self.mass = mass
-        self.mass_kg = mass * 1.6605402 * 10 ** -27
         self.half_life = half_life
         self.decay = decay
 
@@ -938,10 +937,66 @@ def get_element(protons, nucleons):
         if element.protons == protons and element.nucleons == nucleons:
             return element
 
-print(f"{H3.mass=} - {He3.mass=} = {H3.mass - He3.mass}")
-print(f"{H3.mass - He3.mass} * 931.49 = {(H3.mass - He3.mass) * 931.49}MeV")
-print(f"Svar: {(H3.mass - He3.mass) * 931.49}MeV")
 
-print()
-print(repr(K40))
+# Constants
+unit_to_kg = 1.6605402 * 10 ** -27
+MeV_to_Joule = 1.6022 * 10 ** -13
+lightspeed = 299792458
 
+
+def main():
+    import math
+
+    lambda_ = math.log(2) / K40.half_life
+    m = 16 / 1000000
+    N = m / (K40.mass * unit_to_kg)
+    A = lambda_ * N
+
+    print("a)", A, "Bq")
+
+    t = 3600 * 24 * 365
+    sonderfall = t * A
+    E = sonderfall * 0.39 * MeV_to_Joule
+    print("b)", E / 65, "Gy")
+
+    print()
+
+    print(((1 / 1000) / (Fe56.mass * unit_to_kg)) * 56 * 8.5 * MeV_to_Joule * 10 ** -12)
+
+    print()
+
+    print(((16000 * Cs137.mass * unit_to_kg) / (math.log(2) / Cs137.half_life)) * 10 ** 12)
+
+    print()
+
+    print(abs((23.00357 - 9 * e.mass) - (9 * p.mass + 14 * n.mass)) * 931.5 / 23, "MeV")
+    print(abs((22.98977 - 11 * e.mass) - (11 * p.mass + 12 * n.mass)) * 931.5 / 23, "MeV")
+    print(abs((22.99412 - 12 * e.mass) - (12 * p.mass + 11 * n.mass)) * 931.5 / 23, "MeV")
+
+    #  |((nuklid_massa - elektroner_massa) - (protoner_massa + neutroner_massa)) * 931.5 / antalet_nukleoner|
+
+    print()
+
+    E = (U234.mass - (Th230.mass + He4.mass)) * 931.5
+    print(E, "MeV")
+    print((E * MeV_to_Joule * 2 / ((He4.mass - 2 * e.mass) * unit_to_kg)) ** 0.5)
+    print((8.98 * 10 ** 16 * 2 / 70) ** 0.5)
+
+    print()
+
+    print((He4.mass - 2 * e.mass) * unit_to_kg)
+
+    print()
+
+    print(C14.mass * unit_to_kg)
+    print(C14.half_life)
+
+    print()
+
+    E = ((65.928869 + e.mass) * unit_to_kg - 67.931869 * unit_to_kg) * lightspeed ** 2
+
+    print(E * 931.5)
+
+
+if __name__ == "__main__":
+    main()
