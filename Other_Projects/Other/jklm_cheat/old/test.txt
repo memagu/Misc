@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport"/>
+<title>JKLM.FUN: Party games — PC &amp; Smartphone. BombParty, Master of the Grid, PopSauce &amp; co.</title>
+<meta content="Chill multiplayer minigames: trivia quiz, word, guessing, drawing games and more. Great for streams and hangouts!" name="description"/>
+<link href="/common/fonts/fonts.css" rel="stylesheet"/>
+<link href="/common/base.css" rel="stylesheet"/>
+<link href="/room/room.css" rel="stylesheet"/>
+<link href="/manifest.json" rel="manifest"/>
+<meta content="JKLM.FUN: Party games — PC &amp; Smartphone" property="og:title"/>
+<meta content="Fun online browser games to play with friends or strangers. Free and easy. Great for streams and hangouts!" property="og:description"/>
+<meta content="https://jklm.fun/images/icon512.png" property="og:image"/>
+<meta content="https://jklm.fun/" property="og:url"/>
+<meta content="noindex" name="robots"/>
+</head>
+<body>
+<div class="top">
+<div class="info">
+<span class="url">JKLM.FUN/<span class="roomCode"></span> <span class="icon"></span></span>
+<span class="room"> <span class="playerCount">?</span> <span class="roomName"></span></span>
+</div>
+<div class="spacer"></div>
+<div class="volume"><button class="toggleMute">🔊</button> <input max="100" min="0" step="5" type="range" value="50"/></div>
+<div class="mainBadge"></div>
+<button class="sidebarToggle" hidden="">◀</button>
+</div>
+<div class="pages">
+<div class="loading page">
+<div data-text="loading">Loading…</div>
+</div>
+<div class="disconnected page" hidden="">
+<div class="title" data-text="disconnected">Disconnected 🔌</div>
+<div class="reason"></div>
+<div><a data-text="reload" href="">Reload</a> <span data-text="or">or</span> <a data-text="goHome" href="/">Go
+          home</a></div>
+</div>
+<div class="setNickname page" hidden="">
+<form class="setNickname box">
+<div data-text="enterYourNickname">Enter your nickname:</div>
+<div class="line">
+<input autocapitalize="off" autocomplete="off" autocorrect="off" class="styled nickname" data-placeholder-text="yourName" maxlength="20" minlength="2" placeholder="Your name" required="" spellcheck="false" type="text"/>
+<button class="styled">OK</button>
+</div>
+</form>
+</div>
+<div class="main page" hidden="">
+<div class="game"></div>
+<div class="sidebar" hidden="">
+<div class="tabs">
+<a class="chat active" data-title-text="chat" href="#" title="Chat">💬️</a>
+<a class="room" data-title-text="room" href="#" title="Room">👨‍👩‍👧‍👦</a>
+<a class="changeGame" data-title-text="changeGame" hidden="" href="#" title="Change game">🕹️</a>
+<a class="leaveRoom" data-title-text="leaveRoom" href="#" title="Leave room">🏠</a>
+</div>
+<div class="chat pane">
+<div class="log darkScrollbar">
+<button class="setChatFilter" data-title-text="setChatFilter" title="Filter chat...">🧼</button>
+</div>
+<div class="input"><textarea data-placeholder-text="typeHereToChat" maxlength="300" placeholder="Type here to chat"></textarea></div>
+</div>
+<div class="room pane" hidden="">
+<div class="darkSettings">
+<fieldset disabled="">
+<div class="setting privacy">
+<div class="label" data-text="roomPrivacy">👓 Room privacy</div>
+<div class="field">
+<select>
+<option data-text="roomPrivacy.public" value="public">🌎 Public</option>
+<option data-text="roomPrivacy.private" value="private">🔒 Private</option>
+</select>
+</div>
+</div>
+</fieldset>
+</div>
+<div class="people">
+<div class="loading" data-text="loading">Loading…</div>
+<div class="content" hidden="">
+<div class="filter">
+<input class="styled" data-placeholder-text="searchPeople" placeholder="Search people…" type="search"/>
+</div>
+<div class="list darkScrollbar"></div>
+</div>
+</div>
+</div>
+<div class="userProfile pane" hidden="">
+<div class="loading" data-text="loading">Loading…</div>
+<div class="content" hidden="">
+<div class="picture"><img height="64" width="64"/></div>
+<div class="nickname"></div>
+<div class="auth"></div>
+<div class="badges"></div>
+<div class="manage">
+<button class="styled toggleBan" data-text="ban">Ban</button>
+<button class="styled toggleMod" data-text="mod">Mod</button>
+<button class="styled toggleMute" data-text="mute">Mute</button>
+<button class="styled makeLeader" data-text="makeLeader">Make leader</button>
+</div>
+<div class="ipAddress" hidden=""></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/common/dom.js"></script>
+<script src="/common/settings.js"></script>
+<script src="/common/getPostJson.js"></script>
+<script src="/common/text.js"></script>
+<script src="/room/room.js"></script>
+</body>
+</html>
