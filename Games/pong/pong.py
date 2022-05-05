@@ -60,7 +60,7 @@ score_p2 = 0
 
 player_1 = Paddle([x_padding, WINDOW_RESOLUTION[1] >> 1],
                   512,
-                  1 / 3,
+                  1/3,
                   [x_padding >> 1, (WINDOW_RESOLUTION[1] >> 3) * 1.5],
                   "w",
                   "s",
@@ -69,7 +69,7 @@ player_1 = Paddle([x_padding, WINDOW_RESOLUTION[1] >> 1],
 player_2 = Paddle([WINDOW_RESOLUTION[0] - 1.5 * x_padding,
                    WINDOW_RESOLUTION[1] >> 1],
                   512,
-                  1 / 3,
+                  1/3,
                   [x_padding >> 1, (WINDOW_RESOLUTION[1] >> 3) * 1.5],
                   "UP",
                   "DOWN",
@@ -110,10 +110,10 @@ while run:
             if event.key == pygame.K_SPACE:
                 new_ball = Ball([WINDOW_RESOLUTION[0] >> 1,
                                    WINDOW_RESOLUTION[1] >> 1],
-                                  [256 * random.choice([1, -1]), 0],
+                                  [1024 * random.choice([1, -1]), 0],
                                   x_padding >> 1,
                                   color_white)
-                new_ball.reset(WINDOW_RESOLUTION, -256, 256)
+                new_ball.reset(WINDOW_RESOLUTION, -1024, 1024)
                 balls.append(new_ball)
 
             if event.key == pygame.K_q and len(balls) > 0:
@@ -161,11 +161,11 @@ while run:
             ball.update_position(dt)
 
         if ball.x <= 0:
-            ball.reset(WINDOW_RESOLUTION, -256, 256)
+            ball.reset(WINDOW_RESOLUTION, -1024, 1024)
             score_p2 += 1
 
         if ball.x >= WINDOW_RESOLUTION[0]:
-            ball.reset(WINDOW_RESOLUTION, -256, 256)
+            ball.reset(WINDOW_RESOLUTION, -1024, 1024)
             score_p1 += 1
 
         ball.update_position(dt)

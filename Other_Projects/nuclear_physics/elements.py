@@ -6,6 +6,7 @@ class Element:
         self.electrons = protons
         self.neutrons = nucleons - protons
         self.mass = mass
+        self.mass_kg = mass * 1.6605402 * 10 ** -27
         self.half_life = half_life
         self.decay = decay
 
@@ -940,4 +941,7 @@ def get_element(protons, nucleons):
 print(f"{H3.mass=} - {He3.mass=} = {H3.mass - He3.mass}")
 print(f"{H3.mass - He3.mass} * 931.49 = {(H3.mass - He3.mass) * 931.49}MeV")
 print(f"Svar: {(H3.mass - He3.mass) * 931.49}MeV")
+
+print()
+print(repr(K40))
 

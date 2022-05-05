@@ -12,7 +12,7 @@ TRANSFORM_RESOLUTION_X = WINDOW_RESOLUTION[0] // GAME_RESOLUTION[0]
 TRANSFORM_RESOLUTION_Y = WINDOW_RESOLUTION[1] // GAME_RESOLUTION[1]
 display = pygame.display.set_mode(WINDOW_RESOLUTION, 0, 32)
 count = 0
-drawn_graphics = True
+drawn_graphics = False
 framerate = 30
 
 pygame.transform.scale(pygame.image.load("snake head.png"), (TRANSFORM_RESOLUTION_X, TRANSFORM_RESOLUTION_Y))
@@ -23,7 +23,7 @@ image_apple = pygame.transform.scale(pygame.image.load("apple.png"), (TRANSFORM_
 
 
 snake_length = 2
-snake_length_add = 200
+snake_length_add = 1
 snake_head = GAME_RESOLUTION[0] // 2 * TRANSFORM_RESOLUTION_X, GAME_RESOLUTION[1] // 2 * TRANSFORM_RESOLUTION_X
 snake_body = []
 direction = (0, 0)
@@ -104,19 +104,19 @@ while run:
         temp = (0, 0)
         if snake_head[1] // TRANSFORM_RESOLUTION_Y % 2 == 1 and snake_head[0] != WINDOW_RESOLUTION[0] - TRANSFORM_RESOLUTION_X and snake_head[0] != 0:
             direction = directions[3]
-            print("right")
+            # print("right")
         elif snake_head[1] // TRANSFORM_RESOLUTION_Y % 2 == 0 and snake_head[0] != TRANSFORM_RESOLUTION_X and snake_head[0] != 0:
             direction = directions[1]
-            print("left")
+            # print("left")
         elif snake_head[0] == WINDOW_RESOLUTION[0] - TRANSFORM_RESOLUTION_X or snake_head[0] == TRANSFORM_RESOLUTION_X and direction != directions[0] and snake_head[1] != 0:
             direction = directions[0]
-            print("up")
+            # print("up")
         elif snake_head[0] == 0 and snake_head[1] == WINDOW_RESOLUTION[1] - TRANSFORM_RESOLUTION_Y:
             direction = directions[3]
-            print("right")
+            # print("right")
         elif snake_head[0] == 0 and snake_head[1] != WINDOW_RESOLUTION[0] - TRANSFORM_RESOLUTION_X:
             direction = directions[2]
-            print("down")
+            # print("down")
 
 
 
@@ -190,6 +190,6 @@ while run:
         lose()
 
 
-    print(0 + TRANSFORM_RESOLUTION_X, WINDOW_RESOLUTION[0] - TRANSFORM_RESOLUTION_X, snake_head, direction,snake_head[1] // GAME_RESOLUTION[1] , snake_head[1] // GAME_RESOLUTION[1] % 2)
+    # print(0 + TRANSFORM_RESOLUTION_X, WINDOW_RESOLUTION[0] - TRANSFORM_RESOLUTION_X, snake_head, direction,snake_head[1] // GAME_RESOLUTION[1] , snake_head[1] // GAME_RESOLUTION[1] % 2)
     pygame.display.update()
-    time.sleep(1 / framerate)
+    # time.sleep(1 / framerate)
