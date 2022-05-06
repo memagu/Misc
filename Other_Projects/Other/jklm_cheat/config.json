@@ -1,10 +1,10 @@
 {
   "wordlist": "jklm_wordlist.txt",
-  "min_word_length": 5,
+  "min_word_length": 0,
   "max_word_length": 999,
   "syllable_poll_rate": 0.25,
-  "sort_by_word_length": "decreasing",
+  "sort_by_word_length": "not",
   "scramble_word_list": true,
   "autotype": true,
-  "autotype_wpm": 300
+  "autotype_wpm": 400
 }
