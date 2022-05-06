@@ -1,7 +1,5 @@
 import time
 import json
-import keyword
-
 import keyboard
 
 with open("config.json", "r") as cfg:
@@ -66,9 +64,9 @@ def main() -> None:
                 if syllable in word and word not in used and min_word_length < len(word) < max_word_length:
                     used.append(word)
                     keyboard.write(word)
+                    keyboard.send('enter')
                     word = word.split(syllable, maxsplit=1)
                     print(f"Unused word containing {syllable_out} = {syllable_out.join(word)}")
-                    keyboard.send('enter')
                     break
             print("\n")
         time.sleep(settings["syllable_poll_rate"])
