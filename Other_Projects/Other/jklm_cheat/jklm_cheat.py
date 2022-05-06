@@ -33,7 +33,7 @@ def initialize_words() -> [str]:
 def keyboard_write(string: str, wpm: float) -> None:
     for char in string:
         keyboard.write(char)
-        time.sleep(1 / (wpm / 60) * random.randint(0, 200) / 100)
+        time.sleep(1 / (wpm * 5 * (random.randint(1, 150) / 100)))
     keyboard.send("enter")
 
 

@@ -6,6 +6,6 @@
   "sort_by_word_length": "not",
   "scramble_word_list": true,
   "autotype": true,
-  "autotype_wpm": 400,
+  "autotype_wpm": 10,
   "autotype_activation_key": "enter"
 }
