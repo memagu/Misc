@@ -7,7 +7,6 @@ import time
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 
-
 def connect(url) -> None:
     driver.get(url)
     s1 = time.perf_counter()
@@ -26,7 +25,7 @@ def connect(url) -> None:
 
 
 def get_syllable() -> str:
-    syllable = WebDriverWait(driver, 10).until(EC.visibility_of_element_located(("xpath", "//div[@class='syllable']")))
+    syllable = WebDriverWait(driver, 120).until(EC.visibility_of_element_located(("xpath", "//div[@class='syllable']")))
     return syllable.text
 
 
@@ -35,9 +34,4 @@ def enter_word(word: str) -> None:
 
 
 if __name__ == "__main__":
-    from selenium.webdriver.common.keys import Keys
-
-    connect("https://jklm.fun/QFXK")
-    while True:
-        if driver.find_element("xpath", "//input[@class='styled']"):
-            driver.find_element("xpath", "//input[@class='styled']").send_keys("test" + Keys.ENTER)
+    pass
