@@ -36,7 +36,7 @@ def keyboard_write(string: str, wpm: float, accuracy: float) -> None:
             keyboard.write(chr(random.randint(97, 122)))
             keyboard.send("backspace")
         keyboard.write(char)
-        time.sleep((random.randint(50, 150) / 100) / (wpm * 5))
+        time.sleep((random.randint(1, 1250) / 1000) / (wpm * 5))
     keyboard.send("enter")
 
 
