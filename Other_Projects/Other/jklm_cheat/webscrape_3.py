@@ -3,7 +3,6 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.keys import Keys
 import time
 
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
@@ -36,6 +35,8 @@ def enter_word(word: str) -> None:
 
 
 if __name__ == "__main__":
+    from selenium.webdriver.common.keys import Keys
+
     connect("https://jklm.fun/QFXK")
     while True:
         if driver.find_element("xpath", "//input[@class='styled']"):
