@@ -79,7 +79,7 @@ def main() -> None:
                     break
             print("\n")
 
-        if settings["autotype"] and keyboard.is_pressed("down"):
+        if settings["autotype"] and keyboard.is_pressed(settings["autotype_activation_key"]):
             keyboard_write(to_write[0], settings["autotype_wpm"])
 
         time.sleep(settings["syllable_poll_rate"])

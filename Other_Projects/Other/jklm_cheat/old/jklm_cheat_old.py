@@ -14,7 +14,7 @@ def main() -> None:
     prog_name = __file__.split('\\')[-1]
     print(f"Initializing '{prog_name}' version {ver}\n")
 
-    words = initialize_words()
+    words = initialize_words("jklm_wordlist.txt")
     print(f"Initiation complete! {len(words)} words loaded into memory.\n\n{'=' * 64}\n")
 
     print("Input settings:\n")
@@ -26,7 +26,7 @@ def main() -> None:
     while True:
         hint = input("Input hint: ")
         for word in words:
-            if hint in word and word not in used and len(word) < 7:
+            if hint in word and word not in used and len(word) < max_word_length:
                 used.append(word)
                 print(f"Unused word containing {hint} = {word}")
                 break
