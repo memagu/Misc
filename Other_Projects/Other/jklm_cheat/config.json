@@ -1,5 +1,5 @@
 {
-  "wordlist": "jklm_wordlist.txt",
+  "wordlist_path": "wordlists\\jklm_wordlist.txt",
   "min_word_length": 0,
   "max_word_length": 999,
   "syllable_poll_rate": 0.25,
