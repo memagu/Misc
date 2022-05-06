@@ -3,6 +3,6 @@
         pip install webdriver_manager
         pip install keyboard
 
-1.5. (optional) | Edit settings in config.json.
+1.5. Configure settings in config.json. (optional)
 
 2. Run "jklm_cheat.py" and enjoy.
