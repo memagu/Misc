@@ -7,11 +7,11 @@ with open("config.json", "r") as cfg:
     settings = json.load(cfg)
 
 
-def initialize_words() -> [str]:
+def initialize_words(wordlist_path: str) -> [str]:
     import random
     word_list = []
 
-    with open(settings['wordlist'], "r") as f:
+    with open(wordlist_path, "r") as f:
         lines = f.readlines()
         for line in lines:
             word_list.append(line.strip())
@@ -42,7 +42,7 @@ def main() -> None:
     prog_name = __file__.split('\\')[-1]
     print(f"Initializing '{prog_name}' version {ver}\n")
 
-    words = initialize_words()
+    words = initialize_words(settings['wordlist_path'])
     print(f"Initiation complete! {len(words)} words loaded into memory.\n\n{'=' * 64}\n")
 
     token = input("Input game code or url: ")
@@ -51,7 +51,7 @@ def main() -> None:
 
     import webscrape_3
     webscrape_3.connect(token)
-    print(f"{'=' * 31}\n")
+    print(f"{'=' * 31}")
 
     used = set()
 
