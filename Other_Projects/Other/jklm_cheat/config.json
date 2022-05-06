@@ -6,5 +6,5 @@
   "sort_by_word_length": "decreasing",
   "scramble_word_list": true,
   "autotype": true,
-  "autotype_wpm": true
+  "autotype_wpm": 300
 }
