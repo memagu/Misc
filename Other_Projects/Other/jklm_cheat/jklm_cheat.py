@@ -29,6 +29,13 @@ def initialize_words() -> [str]:
     return word_list
 
 
+def keyboard_write(string: str, wpm: float) -> None:
+    for char in string:
+        keyboard.write(char)
+        time.sleep(1/(wpm/60))
+    keyboard.send("enter")
+
+
 def main() -> None:
     ver = 3.0
     prog_name = __file__.split('\\')[-1]
@@ -73,4 +80,6 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    # main()
+    time.sleep(5)
+    keyboard_write("teststräng", 60)
