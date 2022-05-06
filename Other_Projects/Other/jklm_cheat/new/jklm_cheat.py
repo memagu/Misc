@@ -39,7 +39,7 @@ def keyboard_write(string: str, wpm: float, accuracy: float) -> None:
             time.sleep((random.randint(50, 200) / 50) / (wpm * 5 / 60))
 
         keyboard.write(char)
-        time.sleep((random.randint(50, 200) / 100) / (wpm * 5/60))
+        time.sleep((random.randint(50, 200) / 100) / (wpm * 5 / 60))
     keyboard.send("enter")
 
 
@@ -93,7 +93,7 @@ def main() -> None:
 
             word = find_word(syllable)
 
-        time.sleep(settings["syllable_poll_rate"])
+        time.sleep(1 / settings["syllable_poll_rate"])
 
 
 if __name__ == "__main__":
