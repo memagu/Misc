@@ -1,3 +1,4 @@
+import random
 import time
 import json
 import keyboard
@@ -32,7 +33,7 @@ def initialize_words() -> [str]:
 def keyboard_write(string: str, wpm: float) -> None:
     for char in string:
         keyboard.write(char)
-        time.sleep(1/(wpm/60))
+        time.sleep(1/(wpm/60) * random.randint(0, 200) / 100)
     keyboard.send("enter")
 
 
@@ -52,12 +53,14 @@ def main() -> None:
     webscrape_3.connect(token)
     print(f"{'='*31}\n")
 
-    used = []
+    used = set()
 
     last_syllable = ""
 
     min_word_length = settings["min_word_length"]
     max_word_length = settings["max_word_length"]
+
+    to_write = [""]
 
     while True:
         temp = webscrape_3.get_syllable().lower()
@@ -69,17 +72,18 @@ def main() -> None:
 
             for word in words:
                 if syllable in word and word not in used and min_word_length < len(word) < max_word_length:
-                    used.append(word)
-                    keyboard.write(word)
-                    keyboard.send('enter')
+                    used.add(word)
+                    to_write[0] = word
                     word = word.split(syllable, maxsplit=1)
                     print(f"Unused word containing {syllable_out} = {syllable_out.join(word)}")
                     break
             print("\n")
+
+        if settings["autotype"] and keyboard.is_pressed("down"):
+            keyboard_write(to_write[0], settings["autotype_wpm"])
+
         time.sleep(settings["syllable_poll_rate"])
 
 
 if __name__ == "__main__":
-    # main()
-    time.sleep(5)
-    keyboard_write("teststräng", 60)
+    main()
