@@ -33,7 +33,7 @@ def initialize_words() -> [str]:
 def keyboard_write(string: str, wpm: float) -> None:
     for char in string:
         keyboard.write(char)
-        time.sleep(1/(wpm/60) * random.randint(0, 200) / 100)
+        time.sleep(1 / (wpm / 60) * random.randint(0, 200) / 100)
     keyboard.send("enter")
 
 
@@ -51,36 +51,41 @@ def main() -> None:
 
     import webscrape_3
     webscrape_3.connect(token)
-    print(f"{'='*31}\n")
+    print(f"{'=' * 31}\n")
 
     used = set()
-
-    last_syllable = ""
 
     min_word_length = settings["min_word_length"]
     max_word_length = settings["max_word_length"]
 
-    to_write = [""]
+    syllable = ""
+    last_syllable = ""
+    syllable_out = f"\033[92m{syllable}\033[0m"
+    word = ""
+
+    def find_word(syllable: str, do_print=True) -> str:
+        for word in words:
+            if syllable in word and word not in used and min_word_length < len(word) < max_word_length:
+                used.add(word)
+                to_print = word.split(syllable, maxsplit=1)
+                if do_print:
+                    print(f"Unused word containing {syllable_out} = {syllable_out.join(to_print)}")
+                return word
 
     while True:
         temp = webscrape_3.get_syllable().lower()
         if temp != last_syllable:
             syllable = temp
             syllable_out = f"\033[92m{syllable}\033[0m"
-            print(f"syllable = {syllable_out}")
+            print(f"\n\nsyllable = {syllable_out}")
             last_syllable = syllable
 
-            for word in words:
-                if syllable in word and word not in used and min_word_length < len(word) < max_word_length:
-                    used.add(word)
-                    to_write[0] = word
-                    word = word.split(syllable, maxsplit=1)
-                    print(f"Unused word containing {syllable_out} = {syllable_out.join(word)}")
-                    break
-            print("\n")
+            word = find_word(syllable)
 
         if settings["autotype"] and keyboard.is_pressed(settings["autotype_activation_key"]):
-            keyboard_write(to_write[0], settings["autotype_wpm"])
+            keyboard_write(word, settings["autotype_wpm"])
+
+            word = find_word(syllable)
 
         time.sleep(settings["syllable_poll_rate"])
 
