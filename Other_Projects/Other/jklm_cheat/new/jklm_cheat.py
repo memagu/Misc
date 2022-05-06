@@ -34,6 +34,7 @@ def keyboard_write(string: str, wpm: float, accuracy: float) -> None:
     for char in string:
         if random.randint(0, 1000) / 1000 > accuracy:
             keyboard.write(chr(random.randint(97, 122)))
+            time.sleep((random.randint(50, 200) / 50) / (wpm * 5 / 60))
             keyboard.send("backspace")
         keyboard.write(char)
         time.sleep((random.randint(50, 200) / 100) / (wpm * 5/60))
@@ -41,7 +42,7 @@ def keyboard_write(string: str, wpm: float, accuracy: float) -> None:
 
 
 def main() -> None:
-    ver = 3.0
+    ver = 3.1
     prog_name = __file__.split('\\')[-1]
     print(f"Initializing '{prog_name}' version {ver}\n")
 

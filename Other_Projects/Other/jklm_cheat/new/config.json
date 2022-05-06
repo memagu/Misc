@@ -6,7 +6,7 @@
   "sort_by_word_length": "not",
   "scramble_word_list": true,
   "autotype": true,
-  "autotype_wpm": 70,
-  "autotype_accuracy": 0.95,
+  "autotype_wpm": 100,
+  "autotype_accuracy": 0.90,
   "autotype_activation_key": "enter"
 }
