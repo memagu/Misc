@@ -30,10 +30,13 @@ def initialize_words(wordlist_path: str) -> [str]:
     return word_list
 
 
-def keyboard_write(string: str, wpm: float) -> None:
+def keyboard_write(string: str, wpm: float, accuracy: float) -> None:
     for char in string:
+        if random.randint(0, 1000) / 1000 > accuracy:
+            keyboard.write(chr(random.randint(97, 122)))
+            keyboard.send("backspace")
         keyboard.write(char)
-        time.sleep(1 / (wpm * 5 * (random.randint(1, 150) / 100)))
+        time.sleep((random.randint(50, 150) / 100) / (wpm * 5))
     keyboard.send("enter")
 
 
@@ -83,7 +86,7 @@ def main() -> None:
             word = find_word(syllable)
 
         if settings["autotype"] and keyboard.is_pressed(settings["autotype_activation_key"]):
-            keyboard_write(word, settings["autotype_wpm"])
+            keyboard_write(word, settings["autotype_wpm"], settings["autotype_accuracy"])
 
             word = find_word(syllable)
 
