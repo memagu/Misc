@@ -93,7 +93,7 @@ def main() -> None:
 
             word = find_word(syllable)
 
-        time.sleep(1 / settings["syllable_poll_rate"])
+        time.sleep(1 / settings["syllable_poll_freq"])
 
 
 if __name__ == "__main__":
