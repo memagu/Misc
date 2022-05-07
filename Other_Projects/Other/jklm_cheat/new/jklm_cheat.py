@@ -7,7 +7,8 @@ with open("config.json", "r") as cfg:
     settings = json.load(cfg)
 
 
-def initialize_words(wordlist_path: str) -> [str]:
+def initialize_words(wordlist_path: str, sorting_mode: str) -> [str]:
+    print(f"{sorting_mode=}")
     import random
     word_list = []
 
@@ -19,13 +20,27 @@ def initialize_words(wordlist_path: str) -> [str]:
     if settings["scramble_word_list"]:
         random.shuffle(word_list)
 
-    if settings["sort_by_word_length"]:
-        if settings["sort_by_word_length"] == "increasing":
+    if sorting_mode != "alphabetical":
+        if sorting_mode == "increasing":
             word_list.sort(key=lambda x: len(x))
             return word_list
 
-        if settings["sort_by_word_length"] == "decreasing":
+        if sorting_mode == "decreasing":
             word_list.sort(key=lambda x: len(x), reverse=True)
+            return word_list
+
+        if sorting_mode == "uniqueness":
+            temp = []
+            for word in word_list:
+                temp.append((word, len(set(word))))
+
+            temp.sort(key=lambda x: x[1], reverse=True)
+
+            word_list = []
+
+            for word_tuple in temp:
+                word_list.append(word_tuple[0])
+            return word_list
 
     return word_list
 
@@ -48,7 +63,7 @@ def main() -> None:
     prog_name = __file__.split('\\')[-1]
     print(f"Initializing '{prog_name}' version {ver}\n")
 
-    words = initialize_words(settings['wordlist_path'])
+    words = initialize_words(settings['wordlist_path'], settings["wordlist_sorting_mode"])
     print(f"Initiation complete! {len(words)} words loaded into memory.\n\n{'=' * 64}\n")
 
     token = input("Input game code or url: ")

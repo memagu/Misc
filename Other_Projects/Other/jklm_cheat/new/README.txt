@@ -4,5 +4,10 @@
         pip install keyboard
 
 1.5. Configure settings in config.json. (optional)
+        wordlist sorting modes:
+            "alphabetical" = sort words alphabetically
+            "increasing" - sort by word length in increasing order
+            "decreasing" - sort by word length in decreasing order
+            "uniqueness" - sort by number of unique letters in a word
 
 2. Run "jklm_cheat.py" and enjoy.
