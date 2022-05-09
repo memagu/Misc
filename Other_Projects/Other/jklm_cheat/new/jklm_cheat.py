@@ -92,6 +92,9 @@ def main() -> None:
                     print(f"Unused word containing {syllable_out} = {syllable_out.join(to_print)}")
                 return word
 
+        print(f"no words containing \033[92m{syllable}\033[0m in {settings['wordlist_path']}")
+        return "none found"
+
     while True:
         temp = webscrape_3.get_syllable().lower()
         if temp != last_syllable:

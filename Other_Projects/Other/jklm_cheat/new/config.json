@@ -1,9 +1,9 @@
 {
-  "wordlist_path": "wordlists\\jklm_wordlist.txt",
+  "wordlist_path": "wordlists\\test_wordlist.txt",
   "min_word_length": 0,
   "max_word_length": 999,
   "scramble_word_list": true,
-  "wordlist_sorting_mode": "uniqueness",
+  "wordlist_sorting_mode": "alphabetical",
   "syllable_poll_freq": 4,
   "autotype": true,
   "autotype_wpm": 120,
