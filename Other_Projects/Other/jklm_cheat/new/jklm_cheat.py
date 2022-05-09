@@ -87,7 +87,6 @@ def main() -> None:
     def find_word(syllable: str, do_print=True) -> str:
         for word in words:
             if syllable in word and word not in used and min_word_length < len(word) < max_word_length:
-                used.add(word)
                 to_print = word.split(syllable, maxsplit=1)
                 if do_print:
                     print(f"Unused word containing {syllable_out} = {syllable_out.join(to_print)}")
@@ -104,6 +103,7 @@ def main() -> None:
             word = find_word(syllable)
 
         if settings["autotype"] and keyboard.is_pressed(settings["autotype_activation_key"]):
+            used.add(word)
             keyboard_write(word, settings["autotype_wpm"], settings["autotype_accuracy"])
 
             word = find_word(syllable)
