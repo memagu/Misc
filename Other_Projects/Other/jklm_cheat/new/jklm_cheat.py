@@ -64,7 +64,7 @@ def main() -> None:
     print(f"Initializing '{prog_name}' version {ver}\n")
 
     words = initialize_words(settings['wordlist_path'], settings["wordlist_sorting_mode"])
-    print(f"Initiation complete! {len(words)} words loaded into memory.\n\n{'=' * 64}\n")
+    print(f"Initiation complete! {len(words)} words loaded into memory from {settings['wordlist_path']}.\n\n{'=' * 64}\n")
 
     token = input("Input game code or url: ")
     if len(token) == 4:
