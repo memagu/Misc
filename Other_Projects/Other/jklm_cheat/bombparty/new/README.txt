@@ -5,7 +5,7 @@
 
 1.5. Configure settings in config.json. (optional)
         wordlist sorting modes:
-            "alphabetical" = sort words alphabetically
+            "alphabetical" = sort words alphabetically | Won't sort alphabetically if "scramble_word_list" is set to true
             "increasing" - sort by word length in increasing order
             "decreasing" - sort by word length in decreasing order
             "uniqueness" - sort by number of unique letters in a word
