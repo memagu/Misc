@@ -1,4 +1,4 @@
-from melvec import *
+from melvec2 import *
 from abc import ABC, abstractmethod
 
 class Coordsys(ABC):
