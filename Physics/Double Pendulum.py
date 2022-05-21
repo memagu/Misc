@@ -98,8 +98,8 @@ while run:
     a1_v += a1_a * dt
     a2_v += a2_a * dt
 
-    a1 += a1_v
-    a2 += a2_v
+    a1 += a1_v * dt
+    a2 += a2_v * dt
 
     mousepos = pygame.mouse.get_pos()
 
@@ -128,8 +128,8 @@ while run:
         pygame.draw.aaline(display, trail_segment[2], (trail_segment[0][0], trail_segment[0][1]),
                            (trail_segment[1][0], trail_segment[1][1]))
 
-    pygame.draw.line(display, color, [*center], [x1, y1])
-    pygame.draw.line(display, color, [x1, y1], [x2, y2])
+    pygame.draw.aaline(display, color, [*center], [x1, y1])
+    pygame.draw.aaline(display, color, [x1, y1], [x2, y2])
     pygame.draw.circle(display, color, [x1, y1], m1)
     pygame.draw.circle(display, color, [x2, y2], m2)
 

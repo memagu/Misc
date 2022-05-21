@@ -17,7 +17,7 @@ frame_buttons = tk.Frame(root, bg=BG, padx=pad_amt, pady=pad_amt)
 frame_buttons.pack(side=tk.TOP)
 frame_buttons.grid_columnconfigure("all", uniform="column")
 
-display = tk.Entry(frame_display, width=16, border=False, font=FONT, bg=BG, fg=FG, highlightcolor=FG, highlightbackground=FG, highlightthickness=2, justify=tk.CENTER)
+display = tk.Entry(frame_display, width=16, border=False, font=FONT, bg=BG, fg=FG, highlightcolor=FG, highlightbackground=FG, highlightthickness=2, justify=tk.CENTER, insertontime=0)
 display.pack(padx=1, pady=10)
 
 
