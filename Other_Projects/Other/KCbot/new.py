@@ -136,6 +136,7 @@ async def on_message(message):
         guild = message.guild
         for role in guild.roles:
             pass
+        return
 
 keep_alive()
 client.run(TOKEN)
