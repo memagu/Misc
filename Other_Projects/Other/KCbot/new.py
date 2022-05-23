@@ -68,7 +68,7 @@ async def on_message(message):
         return
 
     if command == "clear":
-        amount = max(50, abs(int(args[0])))
+        amount = min(50, abs(int(args[0])))
         await message.channel.purge(limit=(amount + 1))
         return
 
