@@ -64,7 +64,6 @@ async def on_message(message):
             await message.channel.send(content)
             await message.channel.purge(limit=1)
 
-        await message.channel.purge(limit=1)
         return
 
     if command == "clear":
