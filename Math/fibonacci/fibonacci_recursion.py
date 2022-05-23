@@ -9,4 +9,4 @@ def fib_n(n, calls):
     return fib_n(n-1, calls)[0] + fib_n(n-2, calls)[0], calls
 
 
-print(fib_n(10, calls))
+print(fib_n(1000, calls))

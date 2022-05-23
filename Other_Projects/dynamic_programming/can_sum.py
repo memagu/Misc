@@ -16,3 +16,4 @@ def can_sum(target, arr, memo={}):
 
 
 print(can_sum(9, [5, 3, 4, 7]))
+print(can_sum(9, [1, 3, 4, 7]))

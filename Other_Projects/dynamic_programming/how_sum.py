@@ -9,7 +9,9 @@ def how_sum(target, arr, memo={}):
         return None
 
     for num in arr:
-        result = how_sum(target - num, arr)
+        temp = arr.copy()
+        temp.remove(num)
+        result = how_sum(target - num, temp)
 
         if result != None:
             memo[target] = [*result, num]
@@ -19,6 +21,7 @@ def how_sum(target, arr, memo={}):
 
 
 print(how_sum(9, [5, 3, 4, 7]))
+print(how_sum(9, [1, 3, 4, 7]))
 print(how_sum(7, [5, 3, 4, 7]))
 print(how_sum(5, [5, 3, 4, 7]))
 print(how_sum(16, [5, 3, 4, 7]))

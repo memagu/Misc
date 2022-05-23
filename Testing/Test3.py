@@ -18,3 +18,5 @@ def test(n):
 
 test(1000000)
 
+print([1,2,3].remove(1))
+
