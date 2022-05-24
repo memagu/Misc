@@ -1,6 +1,6 @@
 import requests
 import tkinter as tk
-from Misc.Other_Projects.my_secrets import Faceit
+from Other_Projects.my_secrets import Faceit
 
 
 class FaceitGame:
@@ -97,15 +97,15 @@ class FaceitMapTool:
         self.root.config(bg=self.BG)
 
     def run(self):
-        input_frame = tk.Frame(self.root, bg=self.FG, padx=self.pad_amt, pady=self.pad_amt)
-        input_frame.pack(side=tk.TOP, anchor="nw")
+        input_frame = tk.Frame(self.root, bg=self.BG, padx=self.pad_amt, pady=self.pad_amt)
+        input_frame.pack(side=tk.TOP, anchor="nw", expand=True, fill="x")
         result_frame = tk.Frame(self.root, bg=self.BG, padx=self.pad_amt, pady=self.pad_amt)
         result_frame.pack(side=tk.BOTTOM)
 
 
         url_input_field = tk.Entry(input_frame, font=self.FONT, bg=self.BG, fg=self.FG, highlightcolor=self.FG, highlightbackground=self.FG, justify=tk.CENTER, insertbackground=self.FG)
         url_input_button = tk.Button(input_frame, text="submit", font=self.FONT, bg=self.BG, fg=self.FG, highlightcolor=self.FG, highlightbackground=self.FG)
-        url_input_field.pack(side=tk.LEFT, expand=True, fill="both", padx=2)
+        url_input_field.pack(side=tk.LEFT, expand=True, fill="x", padx=2)
         url_input_button.pack(side=tk.RIGHT, padx=2)
 
 
