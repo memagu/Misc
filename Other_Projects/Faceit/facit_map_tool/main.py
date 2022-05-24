@@ -1,5 +1,5 @@
 import requests
-import tkinter
+import tkinter as tk
 from Misc.Other_Projects.my_secrets import Faceit
 
 
@@ -85,19 +85,42 @@ class FaceitGame:
 
 
 class FaceitMapTool:
-    def __init__
+    def __init__(self):
+        self.root = tk.Tk()
+        self.root.title("Faceit Map Tool")
+        self.root.geometry("800x600")
+        self.root.resizable(False, False)
+        self.FONT = "Monoton 12"
+        self.BG = "#1d1d1d"
+        self.FG = "#E8E8E8"
+        self.pad_amt = 8
+        self.root.config(bg=self.BG)
+
+    def run(self):
+        input_frame = tk.Frame(self.root, bg=self.FG, padx=self.pad_amt, pady=self.pad_amt)
+        input_frame.pack(side=tk.TOP, anchor="nw")
+        result_frame = tk.Frame(self.root, bg=self.BG, padx=self.pad_amt, pady=self.pad_amt)
+        result_frame.pack(side=tk.BOTTOM)
 
 
+        url_input_field = tk.Entry(input_frame, font=self.FONT, bg=self.BG, fg=self.FG, highlightcolor=self.FG, highlightbackground=self.FG, justify=tk.CENTER, insertbackground=self.FG)
+        url_input_button = tk.Button(input_frame, text="submit", font=self.FONT, bg=self.BG, fg=self.FG, highlightcolor=self.FG, highlightbackground=self.FG)
+        url_input_field.pack(side=tk.LEFT, expand=True, fill="both", padx=2)
+        url_input_button.pack(side=tk.RIGHT, padx=2)
 
 
+        self.root.mainloop()
 
-
-# url = "https://www.faceit.com/en/csgo/room/1-0b733a04-ae80-40dd-a281-fa8ad987aa37"
-url = "https://www.faceit.com/en/csgo/room/1-e4d30a6a-b26b-45ff-8f9d-fda277729781"
-match = FaceitGame(url, Faceit.API_SECRET_KEY)
-
-# print(match.team_level_stats())
-print(match.compile_data())
 
 if __name__ == "__main__":
-    FaceitMapTool()
+    app = FaceitMapTool()
+    app.run()
+
+# # url = "https://www.faceit.com/en/csgo/room/1-0b733a04-ae80-40dd-a281-fa8ad987aa37"
+# url = "https://www.faceit.com/en/csgo/room/1-e4d30a6a-b26b-45ff-8f9d-fda277729781"
+# match = FaceitGame(url, Faceit.API_SECRET_KEY)
+#
+# # print(match.team_level_stats())
+# print(match.compile_data())
+
+
