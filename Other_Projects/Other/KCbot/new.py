@@ -39,7 +39,13 @@ async def on_message(message):
     except IndexError:
         args = []
 
-    print(f"{time.time()} [{message.guild}]: {message.author} issued {prefix} {command} with the following arguments: {args}")
+    log_text = f"{time.ctime(time.time() + 7200)} [{message.guild}]: {message.author} issued {prefix} {command} with the following arguments: {args}"
+
+    print(log_text)
+
+    with open("log.log", "a") as f:
+        f.write(log_text + "\n")
+
     try:
         if command == "help":
             result = "Existing commands:\n"
@@ -85,7 +91,7 @@ async def on_message(message):
             d = 60
 
             angle = 0
-            angle_velocity = math.pi/10
+            angle_velocity = math.pi / 10
 
             while angle < (2 * math.pi / b) * periods:
                 segment = f"{filler * int((a * math.sin(b * (angle + c)) + d))}{content}"
@@ -141,6 +147,7 @@ async def on_message(message):
     except Exception as e:
         print(e)
         return
+
 
 keep_alive()
 client.run(TOKEN)
