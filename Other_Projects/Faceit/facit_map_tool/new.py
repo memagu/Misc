@@ -89,7 +89,7 @@ class FaceitMapTool:
     def __init__(self):
         self.root = tk.Tk()
         self.root.title("Faceit Map Tool")
-        self.root.geometry("1280x480")
+        # self.root.geometry("1280x480")
         # self.root.resizable(False, False)
         self.FONT = "Calibri 14"
         self.text_color = "#ffffff"
@@ -127,23 +127,23 @@ class FaceitMapTool:
             self.team_0 = teams[0]
             self.team_1 = teams[1]
 
-            self.team_0_stat_table = Table(["map", "win probability", "win percentage", "matches played"])
+            self.team_0_stat_table = Table(["Map", "Win Probability", "Win Percentage", "Matches Played"])
             self.team_0_stat_table.append_row(len(data.keys()))
             for i, (level, teams_stats) in enumerate(data.items()):
-                self.team_0_stat_table.insert_value("map", i, level)
-                self.team_0_stat_table.insert_value("win probability", i, f"{round(teams_stats[self.team_0][0] * 100, 2)}%")
-                self.team_0_stat_table.insert_value("win percentage", i, f"{round(teams_stats[self.team_0][1] * 100, 2)}%")
-                self.team_0_stat_table.insert_value("matches played", i, teams_stats[self.team_0][2])
-            self.team_0_stat_table.sort("win probability", True)
+                self.team_0_stat_table.insert_value("Map", i, level)
+                self.team_0_stat_table.insert_value("Win Probability", i, f"{round(teams_stats[self.team_0][0] * 100, 2)}%")
+                self.team_0_stat_table.insert_value("Win Percentage", i, f"{round(teams_stats[self.team_0][1] * 100, 2)}%")
+                self.team_0_stat_table.insert_value("Matches Played", i, teams_stats[self.team_0][2])
+            self.team_0_stat_table.sort("Win Probability", True)
 
-            self.team_1_stat_table = Table(["map", "win probability", "win percentage", "matches played"])
+            self.team_1_stat_table = Table(["Map", "Win Probability", "Win Percentage", "Matches Played"])
             self.team_1_stat_table.append_row(len(data.keys()))
             for i, (level, teams_stats) in enumerate(data.items()):
-                self.team_1_stat_table.insert_value("map", i, level)
-                self.team_1_stat_table.insert_value("win probability", i, f"{round(teams_stats[self.team_1][0] * 100, 2)}%")
-                self.team_1_stat_table.insert_value("win percentage", i, f"{round(teams_stats[self.team_1][1] * 100, 2)}%")
-                self.team_1_stat_table.insert_value("matches played", i, teams_stats[self.team_1][2])
-            self.team_1_stat_table.sort("win probability", True)
+                self.team_1_stat_table.insert_value("Map", i, level)
+                self.team_1_stat_table.insert_value("Win Probability", i, f"{round(teams_stats[self.team_1][0] * 100, 2)}%")
+                self.team_1_stat_table.insert_value("Win Percentage", i, f"{round(teams_stats[self.team_1][1] * 100, 2)}%")
+                self.team_1_stat_table.insert_value("Matches Played", i, teams_stats[self.team_1][2])
+            self.team_1_stat_table.sort("Win Probability", True)
 
         def render_tables():
             for widgets in result_frame.winfo_children():
