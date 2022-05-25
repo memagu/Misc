@@ -4,7 +4,7 @@ from table import Table
 from Other_Projects.my_secrets import Faceit
 
 
-class FaceitGame:
+class FaceitGrabber:
     def __init__(self, game_url, api_key):
         self.game_url = game_url
         self.api_key = api_key
@@ -91,7 +91,7 @@ class FaceitMapTool:
         self.root.title("Faceit Map Tool")
         self.root.geometry("1280x480")
         # self.root.resizable(False, False)
-        self.FONT = "Monoton 14"
+        self.FONT = "Calibri 14"
         self.text_color = "#ffffff"
         self.BG = "#1d1d1d"
         self.FG = "#2d2d2d"
@@ -108,13 +108,15 @@ class FaceitMapTool:
             label.grid_rowconfigure(0, weight=1)
 
         def stat_button(frame, text, pos):
-            button = tk.Button(frame, text=text, command=lambda: render_tables(*generate_tables(text, text)), font=self.FONT, bg=self.FG, fg=self.text_color, highlightcolor=self.FG, highlightthickness=self.border_thickness, border=False)
+            button = tk.Button(frame, text=text, command=lambda: render_tables(*generate_tables(text, text)),
+                               font=self.FONT, bg=self.FG, fg=self.text_color, highlightcolor=self.FG,
+                               highlightthickness=self.border_thickness)
             button.grid(column=pos[0], row=pos[1], sticky="ew", pady=2)
             button.grid_columnconfigure(0, weight=1)
             button.grid_rowconfigure(0, weight=1)
 
         def generate_tables(team_0_sort_mode="win probability", team_1_sort_mode="win probability"):
-            faceit_match = FaceitGame(url_input_field.get(), Faceit.API_SECRET_KEY)
+            faceit_match = FaceitGrabber(url_input_field.get(), Faceit.API_SECRET_KEY)
             data = faceit_match.compile_data()
             teams = list(data[list(data.keys())[0]].keys())
             team_0 = teams[0]
@@ -166,9 +168,11 @@ class FaceitMapTool:
             team_1_stats_frame.grid_columnconfigure(0, weight=1, uniform="all")
             team_1_stats_frame.grid_rowconfigure(0, weight=0, uniform="all")
 
-            team_0_label = tk.Label(team_0_frame, text=team_0, font=self.FONT, background=self.FG, foreground=self.text_color)
+            team_0_label = tk.Label(team_0_frame, text=team_0, font=self.FONT, background=self.FG,
+                                    foreground=self.text_color)
             team_0_label.pack(side=tk.TOP)
-            team_1_label = tk.Label(team_1_frame, text=team_1, font=self.FONT, background=self.FG, foreground=self.text_color)
+            team_1_label = tk.Label(team_1_frame, text=team_1, font=self.FONT, background=self.FG,
+                                    foreground=self.text_color)
             team_1_label.pack(side=tk.TOP)
 
             for i, column in enumerate(team_0_stat_table.columns):
@@ -189,9 +193,13 @@ class FaceitMapTool:
                                highlightthickness=self.frame_border_thickness)
         input_frame.pack(side=tk.TOP, anchor="n", fill="x")
 
-        url_input_field = tk.Entry(input_frame, font=self.FONT, bg=self.BG, fg=self.text_color, highlightcolor=self.FG, highlightbackground=self.FG, justify=tk.CENTER, insertbackground=self.text_color, highlightthickness=self.border_thickness * 3, border=False)
+        url_input_field = tk.Entry(input_frame, font=self.FONT, bg=self.BG, fg=self.text_color, highlightcolor=self.FG,
+                                   highlightbackground=self.FG, justify=tk.CENTER, insertbackground=self.text_color,
+                                   highlightthickness=self.border_thickness * 4, border=False)
         url_input_field.pack(side=tk.LEFT, expand=True, fill="x", padx=self.pad_amt)
-        url_input_button = tk.Button(input_frame, text="submit", command=lambda: render_tables(*generate_tables()), font=self.FONT, bg=self.FG, fg=self.text_color, highlightcolor=self.FG, highlightthickness=self.border_thickness, border=False)
+        url_input_button = tk.Button(input_frame, text="submit", command=lambda: render_tables(*generate_tables()),
+                                     font=self.FONT, bg=self.FG, fg=self.text_color, highlightcolor=self.FG,
+                                     highlightthickness=self.border_thickness)
         url_input_button.pack(side=tk.RIGHT, padx=2)
 
         result_frame = tk.Frame(self.root, bg=self.BG, padx=self.pad_amt, pady=self.pad_amt, highlightcolor=self.FG,
