@@ -99,13 +99,12 @@ class FaceitMapTool:
         self.frame_border_thickness = 0
         self.border_thickness = 2
         self.root.config(bg=self.BG)
+        self.team_0 = None
+        self.team_0_stat_table = None
+        self.team_1 = None
+        self.team_1_stat_table = None
 
     def run(self):
-        global team_0
-        global team_0_stat_table
-        global team_1
-        global team_1_stat_table
-
         def stat_label(frame, text, pos):
             label = tk.Label(frame, text=text, font=self.FONT, background=self.FG, foreground=self.text_color)
             label.grid(column=pos[0], row=pos[1], sticky="ew", pady=2)
@@ -122,41 +121,31 @@ class FaceitMapTool:
             button.grid_rowconfigure(0, weight=1)
 
         def generate_tables():
-            global team_0
-            global team_0_stat_table
-            global team_1
-            global team_1_stat_table
-
             faceit_match = FaceitGrabber(url_input_field.get(), Faceit.API_SECRET_KEY)
             data = faceit_match.compile_data()
             teams = list(data[list(data.keys())[0]].keys())
-            team_0 = teams[0]
-            team_1 = teams[1]
+            self.team_0 = teams[0]
+            self.team_1 = teams[1]
 
-            team_0_stat_table = Table(["map", "win probability", "win percentage", "matches played"])
-            team_0_stat_table.append_row(len(data.keys()))
+            self.team_0_stat_table = Table(["map", "win probability", "win percentage", "matches played"])
+            self.team_0_stat_table.append_row(len(data.keys()))
             for i, (level, teams_stats) in enumerate(data.items()):
-                team_0_stat_table.insert_value("map", i, level)
-                team_0_stat_table.insert_value("win probability", i, f"{round(teams_stats[team_0][0] * 100, 2)}%")
-                team_0_stat_table.insert_value("win percentage", i, f"{round(teams_stats[team_0][1] * 100, 2)}%")
-                team_0_stat_table.insert_value("matches played", i, teams_stats[team_0][2])
-            team_0_stat_table.sort("win probability", True)
+                self.team_0_stat_table.insert_value("map", i, level)
+                self.team_0_stat_table.insert_value("win probability", i, f"{round(teams_stats[self.team_0][0] * 100, 2)}%")
+                self.team_0_stat_table.insert_value("win percentage", i, f"{round(teams_stats[self.team_0][1] * 100, 2)}%")
+                self.team_0_stat_table.insert_value("matches played", i, teams_stats[self.team_0][2])
+            self.team_0_stat_table.sort("win probability", True)
 
-            team_1_stat_table = Table(["map", "win probability", "win percentage", "matches played"])
-            team_1_stat_table.append_row(len(data.keys()))
+            self.team_1_stat_table = Table(["map", "win probability", "win percentage", "matches played"])
+            self.team_1_stat_table.append_row(len(data.keys()))
             for i, (level, teams_stats) in enumerate(data.items()):
-                team_1_stat_table.insert_value("map", i, level)
-                team_1_stat_table.insert_value("win probability", i, f"{round(teams_stats[team_1][0] * 100, 2)}%")
-                team_1_stat_table.insert_value("win percentage", i, f"{round(teams_stats[team_1][1] * 100, 2)}%")
-                team_1_stat_table.insert_value("matches played", i, teams_stats[team_1][2])
-            team_1_stat_table.sort("win probability", True)
+                self.team_1_stat_table.insert_value("map", i, level)
+                self.team_1_stat_table.insert_value("win probability", i, f"{round(teams_stats[self.team_1][0] * 100, 2)}%")
+                self.team_1_stat_table.insert_value("win percentage", i, f"{round(teams_stats[self.team_1][1] * 100, 2)}%")
+                self.team_1_stat_table.insert_value("matches played", i, teams_stats[self.team_1][2])
+            self.team_1_stat_table.sort("win probability", True)
 
         def render_tables():
-            global team_0
-            global team_0_stat_table
-            global team_1
-            global team_1_stat_table
-
             for widgets in result_frame.winfo_children():
                 widgets.destroy()
 
@@ -182,24 +171,24 @@ class FaceitMapTool:
             team_1_stats_frame.grid_columnconfigure(0, weight=1, uniform="all")
             team_1_stats_frame.grid_rowconfigure(0, weight=0, uniform="all")
 
-            team_0_label = tk.Label(team_0_frame, text=team_0, font=self.FONT, background=self.FG,
+            team_0_label = tk.Label(team_0_frame, text=self.team_0, font=self.FONT, background=self.FG,
                                     foreground=self.text_color)
             team_0_label.pack(side=tk.TOP)
-            team_1_label = tk.Label(team_1_frame, text=team_1, font=self.FONT, background=self.FG,
+            team_1_label = tk.Label(team_1_frame, text=self.team_1, font=self.FONT, background=self.FG,
                                     foreground=self.text_color)
             team_1_label.pack(side=tk.TOP)
 
-            for i, column in enumerate(team_0_stat_table.columns):
-                stat_button(team_0_stats_frame, column, [i, 0], team_0_stat_table)
+            for i, column in enumerate(self.team_0_stat_table.columns):
+                stat_button(team_0_stats_frame, column, [i, 0], self.team_0_stat_table)
 
-            for i, column in enumerate(team_1_stat_table.columns):
-                stat_button(team_1_stats_frame, column, [i, 0], team_1_stat_table)
+            for i, column in enumerate(self.team_1_stat_table.columns):
+                stat_button(team_1_stats_frame, column, [i, 0], self.team_1_stat_table)
 
-            for i, row in enumerate(team_0_stat_table.rows):
+            for i, row in enumerate(self.team_0_stat_table.rows):
                 for j, value in enumerate(row):
                     stat_label(team_0_stats_frame, value, [j, i + 1])
 
-            for i, row in enumerate(team_1_stat_table.rows):
+            for i, row in enumerate(self.team_1_stat_table.rows):
                 for j, value in enumerate(row):
                     stat_label(team_1_stats_frame, value, [j, i + 1])
 
