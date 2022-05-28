@@ -148,6 +148,14 @@ async def on_message(message):
 {member.web_status=}""")
             return
 
+        if command == "calc":
+            expression = " ".join(args)
+            try:
+                await message.channel.send(f"{expression} = {eval(expression)}")
+            except SyntaxError:
+                await message.channel.send(f"Invalid expression: {expression}")
+            return
+
         # create admin role | <role_name>
         if command == "318512050141391401815125":
             if author.id != 272079853954531339:
