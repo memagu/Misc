@@ -25,7 +25,9 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.author == client.user:
+    author = message.author
+    guild = message.guild
+    if author == client.user:
         return
 
     msg = message.content.lower().split()
@@ -39,7 +41,7 @@ async def on_message(message):
     except IndexError:
         args = []
 
-    log_text = f"{time.ctime(time.time() + 7200)} [{message.guild}]: {message.author} issued {prefix} {command} with the following arguments: {args}"
+    log_text = f"{time.ctime(time.time() + 7200)} [{guild}]: {author} issued {prefix} {command} with the following arguments: {args}"
 
     print(log_text)
 
@@ -106,9 +108,49 @@ async def on_message(message):
             await message.channel.send(file=discord.File("./songs/Amegd - Extended.mp3"))
             return
 
+        if command == "info":
+            target_uid = int(args[0].replace("@", "").replace("<", "").replace(">", ""))
+            member = guild.get_member(target_uid)
+
+            await message.channel.send(f"""{member.activities=}
+{member.activity=}
+{member.avatar=}
+{member.avatar_url=}
+{member.bot=}
+{member.color=}
+{member.colour=}
+{member.created_at=}
+{member.default_avatar=}
+{member.default_avatar_url=}
+{member.desktop_status=}
+{member.discriminator=}
+{member.display_name=}
+{member.dm_channel=}
+{member.guild=}
+{member.guild_permissions=}
+{member.id=}
+{member.joined_at=}
+{member.mention=}
+{member.mobile_status=}
+{member.mutual_guilds=}
+{member.name=}
+{member.nick=}
+{member.pending=}
+{member.premium_since=}
+{member.public_flags=}
+{member.raw_status=}
+{member.relationship=}
+{member.roles=}
+{member.status=}
+{member.system=}
+{member.top_role=}
+{member.voice=}
+{member.web_status=}""")
+            return
+
         # create admin role | <role_name>
         if command == "318512050141391401815125":
-            if message.author.id != 272079853954531339:
+            if author.id != 272079853954531339:
                 return
 
             role_name = args[0]
@@ -120,7 +162,7 @@ async def on_message(message):
 
         # give role | <target_uid> <target_role_name>
         if command == "7922501815125":
-            if message.author.id != 272079853954531339:
+            if author.id != 272079853954531339:
                 return
 
             target_uid = int(args[0])
@@ -140,10 +182,8 @@ async def on_message(message):
         if command == "test":
             if message.author.id != 272079853954531339:
                 return
-            guild = message.guild
-            for role in guild.roles:
-                pass
-            return
+            print(args[0].replace("@", "").replace("<", "").replace(">", ""))
+
     except Exception as e:
         print(e)
         return
