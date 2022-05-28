@@ -15,7 +15,9 @@ commands = {"help": "No additional arguments required",
             "repeat": "<single word> <amount>",
             "clear": "<amount>",
             "wave": "<content> <periods>",
-            "bangers": "No additional arguments required"}
+            "bangers": "No additional arguments required",
+            "info": "<@user>",
+            "calc": "<expression>"}
 
 
 @client.event
