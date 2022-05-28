@@ -29,7 +29,7 @@ while True:
     if Bolts + Planks + DuctTapes > 0:
         print("\n--------BEM:s--------")
 
-    if Bolts> 0:
+    if Bolts > 0:
         print("**" + str(Bolts) + "x:Bolt: 4k each**")
 
     if Planks > 0:

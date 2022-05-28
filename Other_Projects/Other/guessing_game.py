@@ -1,8 +1,10 @@
-TARGET = 45
+import random
+
 MIN = 0
 MAX = 100
+TARGET = random.randint(MIN, MAX)
 
-guesses = 0
+guesses = 1
 
 while True:
     num = input(f"Enter your guess (a number between {MIN}-{MAX}): ")
