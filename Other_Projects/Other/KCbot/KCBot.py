@@ -17,7 +17,7 @@ commands = {"help": "No additional arguments required",
             "wave": "<content> <periods>",
             "bangers": "No additional arguments required",
             "info": "<@user>",
-            "calc": "<expression>"}
+            "eval": "<expression>"}
 
 
 @client.event
@@ -150,7 +150,7 @@ async def on_message(message):
 {member.web_status=}""")
             return
 
-        if command == "calc":
+        if command == "eval":
             expression = " ".join(args)
             try:
                 await message.channel.send(f"{expression} = {eval(expression)}")
