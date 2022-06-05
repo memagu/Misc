@@ -1,6 +1,4 @@
 import requests
-from dataclasses import dataclass
-
 
 class FaceitAPI:
     def __init__(self, api_key):
@@ -69,25 +67,70 @@ class FaceitAPI:
                       data["infractions"])
 
 
-@dataclass(frozen=True)
+class Match:
+    def __init__(self, match_id, version, game, region, competition_id, competition_type, competition_name,
+                 organizer_id, teams, voting, calculate_elo, configured_at, finished_at, demo_url, chat_room_id,
+                 best_of,
+                 results, status, faceit_url):
+        self.match_id = match_id
+        self.version = version
+        self.game = game
+        self.region = region
+        self.competition_id = competition_id
+        self.competition_type = competition_type
+        self.competition_name = competition_name
+        self.organizer_id = organizer_id
+        self.teams = teams
+        self.voting = voting
+        self.calculate_elo = calculate_elo
+        self.configured_at = configured_at
+        self.finished_at = finished_at
+        self.demo_url = demo_url
+        self.chat_room_id = chat_room_id
+        self.best_of = best_of
+        self.results = results
+        self.status = status
+        self.faceit_url = faceit_url
+
+    def __str__(self):
+        return f"Match({self.teams[0].nickname} vs {self.teams[1].nickname})"
+
+
+class Team:
+    def __init__(self, team_id, leader, avatar, roster, substituted, name, team_type):
+        self.team_id = team_id
+        self.leader = leader
+        self.avatar = avatar
+        self.roster = roster
+        self.substituted = substituted
+        self.name = name
+        self.type = team_type
+
+    def __str__(self):
+        return f"Team({[str(player) for player in self.roster]})"
+
+
 class Player:
-    player_id: str
-    nickname: str
-    avatar: str
-    country: str
-    cover_image: str
-    platforms: str
-    games: dict
-    settings: dict
-    friends_ids: list
-    new_steam_id: str
-    steam_id_64: str
-    steam_nickname: str
-    memberships: list
-    faceit_url: str
-    membership_type: str
-    cover_featured_image: str
-    infractions: dict
+    def __init__(self, player_id, nickname, avatar, country, cover_image, platforms, games, settings, friends_ids,
+                 new_steam_id, steam_id_64, steam_nickname, memberships, faceit_url, membership_type,
+                 cover_featured_image, infractions):
+        self.player_id = player_id
+        self.nickname = nickname
+        self.avatar = avatar
+        self.country = country
+        self.cover_image = cover_image
+        self.platforms = platforms
+        self.games = games
+        self.settings = settings
+        self.friends_ids = friends_ids
+        self.new_steam_id = new_steam_id
+        self.steam_id_64 = steam_id_64
+        self.steam_nickname = steam_nickname
+        self.memberships = memberships
+        self.faceit_url = faceit_url
+        self.membership_type = membership_type
+        self.cover_featured_image = cover_featured_image
+        self.infractions = infractions
 
     def __str__(self):
         return f"Player({self.nickname}, {self.player_id})"
@@ -144,94 +187,60 @@ class Player:
                                 map_statistics)
 
 
-@dataclass(frozen=True)
-class Team:
-    team_id: str
-    leader: str
-    avatar: str
-    roster: list[Player]
-    substituted: bool
-    name: str
-    type: str
-
-    def __str__(self):
-        return f"Team({[str(player) for player in self.roster]})"
-
-
-@dataclass(frozen=True)
-class Match:
-    match_id: str
-    version: float
-    game: str
-    region: str
-    competition_id:  str
-    competition_type: str
-    competition_name: str
-    organizer_id: str
-    teams: list[Team]
-    voting: dict
-    calculate_elo: bool
-    configured_at: float
-    finished_at: int
-    demo_url: int
-    chat_room_id: str
-    best_of: int
-    results: dict
-    status: str
-    faceit_url: str
-
-    def __str__(self):
-        return f"Match({' vs '.join([team.name for team in self.teams])})"
-
-
-@dataclass(frozen=True)
-class MapStatistics:
-    stat_type: str
-    mode: str
-    label: str
-    kr_ratio: float
-    avrage_mvps: float
-    avrage_penta_kills: float
-    avrage_kills: float
-    mvps: float
-    avrage_quadro_kills: float
-    deaths: float
-    headshots: float
-    quadro_kills: float
-    avrage_kd_ratio: float
-    avrage_headshots_percentage: float
-    penta_kills: float
-    wins: float
-    total_headshots: float
-    rounds: float
-    win_rate_percentage: float
-    avrage_assists: float
-    avrage_kr_ratio: float
-    tripple_kills: float
-    assists: float
-    avrage_tripple_kills: float
-    avrage_deaths: float
-    kd_ratio: float
-    matches: float
-    kills: float
-    headshots_per_match: float
-
-
-@dataclass(frozen=True)
 class PlayerStatistics:
-    player_id: str
-    game_id: str
-    current_win_streak: float
-    recent_results: list
-    lifetime_longest_win_streak: float
-    lifetime_win_rate_percentage: float
-    lifetime_avrage_kd_ratio: float
-    lifetime_wins: float
-    lifetime_total_headshots: float
-    lifetime_kd_ratio: float
-    lifetime_matches: float
-    lifetime_avrage_headshots_percentage: float
-    map_statistics: list[MapStatistics]
+    def __init__(self, player_id, game_id, current_win_streak, recent_results, lifetime_longest_win_streak,
+                 lifetime_win_rate_percentage, lifetime_avrage_kd_ratio, lifetime_wins, lifetime_total_headshots,
+                 lifetime_kd_ratio, lifetime_matches, lifetime_avrage_headshots_percentage, map_statistics):
+        self.player_id = player_id
+        self.game_id = game_id
+        self.current_win_streak = current_win_streak
+        self.recent_results = recent_results
+        self.lifetime_longest_win_streak = lifetime_longest_win_streak
+        self.lifetime_win_rate_percentage = lifetime_win_rate_percentage
+        self.lifetime_avrage_kd_ratio = lifetime_avrage_kd_ratio
+        self.lifetime_wins = lifetime_wins
+        self.lifetime_total_headshots = lifetime_total_headshots
+        self.lifetime_kd_ratio = lifetime_kd_ratio
+        self.lifetime_matches = lifetime_matches
+        self.lifetime_avrage_headshots_percentage = lifetime_avrage_headshots_percentage
+        self.map_statistics = map_statistics
+
+
+class MapStatistics:
+    def __init__(self, stat_type, mode, label, kr_ratio, avrage_mvps, avrage_penta_kills, avrage_kills, mvps,
+                 avrage_quadro_kills, deaths, headshots, quadro_kills, avrage_kd_ratio, avrage_headshots_percentage,
+                 penta_kills, wins,
+                 total_headshots, rounds, win_rate_percentage, avrage_assists, avrage_kr_ratio, tripple_kills,
+                 assists, avrage_tripple_kills, avrage_deaths, kd_ratio, matches, kills, headshots_per_match):
+        self.stat_type = stat_type
+        self.mode = mode
+        self.label = label
+        self.kr_ratio = kr_ratio
+        self.avrage_mvps = avrage_mvps
+        self.avrage_penta_kills = avrage_penta_kills
+        self.avrage_kills = avrage_kills
+        self.mvps = mvps
+        self.avrage_quadro_kills = avrage_quadro_kills
+        self.deaths = deaths
+        self.headshots = headshots
+        self.quadro_kills = quadro_kills
+        self.avrage_kd_ratio = avrage_kd_ratio
+        self.avrage_headshots_percentage = avrage_headshots_percentage
+        self.penta_kills = penta_kills
+        self.wins = wins
+        self.total_headshots = total_headshots
+        self.rounds = rounds
+        self.win_rate_percentage = win_rate_percentage
+        self.avrage_assists = avrage_assists
+        self.avrage_kr_ratio = avrage_kr_ratio
+        self.tripple_kills = tripple_kills
+        self.assists = assists
+        self.avrage_tripple_kills = avrage_tripple_kills
+        self.avrage_deaths = avrage_deaths
+        self.kd_ratio = kd_ratio
+        self.matches = matches
+        self.kills = kills
+        self.headshots_per_match = headshots_per_match
 
 
 if __name__ == "__main__":
@@ -254,5 +263,11 @@ if __name__ == "__main__":
     for mapstat, value in memagu_stats.map_statistics[0].__dict__.items():
         print(mapstat, value, sep=": ")
 
-    print()
-    print(match)
+    # with open("match.json", "w") as m:
+    #     m.write(str(API.api_request(f"matches/{match.match_id}")))
+    #
+    # with open("team.json", "w") as t:
+    #     t.write(str(API.api_request(f"teams/{team.team_id}")))
+    #
+    # with open("player.json", "w") as p:
+    #     p.write(str(API.api_request(f"players/{player.player_id}")))
