@@ -70,7 +70,8 @@ class FaceitAPI:
 
 class Match:
     def __init__(self, match_id, version, game, region, competition_id, competition_type, competition_name,
-                 organizer_id, teams, voting, calculate_elo, configured_at, finished_at, demo_url, chat_room_id, best_of,
+                 organizer_id, teams, voting, calculate_elo, configured_at, finished_at, demo_url, chat_room_id,
+                 best_of,
                  results, status, faceit_url):
         self.match_id = match_id
         self.version = version
@@ -144,45 +145,46 @@ class Player:
         map_statistics = [MapStatistics(statdata["type"],
                                         statdata["mode"],
                                         statdata["label"],
-                                        statdata["stats"]["K/R Ratio"],
-                                        statdata["stats"]["Average MVPs"],
-                                        statdata["stats"]["Average Penta Kills"],
-                                        statdata["stats"]["Average Kills"],
-                                        statdata["stats"]["MVPs"],
-                                        statdata["stats"]["Average Quadro Kills"],
-                                        statdata["stats"]["Deaths"],
-                                        statdata["stats"]["Headshots"],
-                                        statdata["stats"]["Quadro Kills"],
-                                        statdata["stats"]["Average K/D Ratio"],
-                                        statdata["stats"]["Average Headshots %"],
-                                        statdata["stats"]["Penta Kills"],
-                                        statdata["stats"]["Wins"],
-                                        statdata["stats"]["Total Headshots %"],
-                                        statdata["stats"]["Rounds"],
-                                        statdata["stats"]["Win Rate %"],
-                                        statdata["stats"]["Average Assists"],
-                                        statdata["stats"]["Average K/R Ratio"],
-                                        statdata["stats"]["Triple Kills"],
-                                        statdata["stats"]["Assists"],
-                                        statdata["stats"]["Average Triple Kills"],
-                                        statdata["stats"]["Average Deaths"],
-                                        statdata["stats"]["K/D Ratio"],
-                                        statdata["stats"]["Matches"],
-                                        statdata["stats"]["Kills"],
-                                        statdata["stats"]["Headshots per Match"]) for statdata in data["segments"]]
+                                        float(statdata["stats"]["K/R Ratio"]),
+                                        float(statdata["stats"]["Average MVPs"]),
+                                        float(statdata["stats"]["Average Penta Kills"]),
+                                        float(statdata["stats"]["Average Kills"]),
+                                        float(statdata["stats"]["MVPs"]),
+                                        float(statdata["stats"]["Average Quadro Kills"]),
+                                        float(statdata["stats"]["Deaths"]),
+                                        float(statdata["stats"]["Headshots"]),
+                                        float(statdata["stats"]["Quadro Kills"]),
+                                        float(statdata["stats"]["Average K/D Ratio"]),
+                                        float(statdata["stats"]["Average Headshots %"]),
+                                        float(statdata["stats"]["Penta Kills"]),
+                                        float(statdata["stats"]["Wins"]),
+                                        float(statdata["stats"]["Total Headshots %"]),
+                                        float(statdata["stats"]["Rounds"]),
+                                        float(statdata["stats"]["Win Rate %"]),
+                                        float(statdata["stats"]["Average Assists"]),
+                                        float(statdata["stats"]["Average K/R Ratio"]),
+                                        float(statdata["stats"]["Triple Kills"]),
+                                        float(statdata["stats"]["Assists"]),
+                                        float(statdata["stats"]["Average Triple Kills"]),
+                                        float(statdata["stats"]["Average Deaths"]),
+                                        float(statdata["stats"]["K/D Ratio"]),
+                                        float(statdata["stats"]["Matches"]),
+                                        float(statdata["stats"]["Kills"]),
+                                        float(statdata["stats"]["Headshots per Match"]))
+                          for statdata in data["segments"]]
 
         return PlayerStatistics(data["player_id"],
                                 data["game_id"],
-                                data["lifetime"]["Current Win Streak"],
+                                float(data["lifetime"]["Current Win Streak"]),
                                 data["lifetime"]["Recent Results"],
-                                data["lifetime"]["Longest Win Streak"],
-                                data["lifetime"]["Win Rate %"],
-                                data["lifetime"]["Average K/D Ratio"],
-                                data["lifetime"]["Wins"],
-                                data["lifetime"]["Total Headshots %"],
-                                data["lifetime"]["K/D Ratio"],
-                                data["lifetime"]["Matches"],
-                                data["lifetime"]["Average Headshots %"],
+                                float(data["lifetime"]["Longest Win Streak"]),
+                                float(data["lifetime"]["Win Rate %"]),
+                                float(data["lifetime"]["Average K/D Ratio"]),
+                                float(data["lifetime"]["Wins"]),
+                                float(data["lifetime"]["Total Headshots %"]),
+                                float(data["lifetime"]["K/D Ratio"]),
+                                float(data["lifetime"]["Matches"]),
+                                float(data["lifetime"]["Average Headshots %"]),
                                 map_statistics)
 
 
@@ -207,7 +209,8 @@ class PlayerStatistics:
 
 class MapStatistics:
     def __init__(self, stat_type, mode, label, kr_ratio, avrage_mvps, avrage_penta_kills, avrage_kills, mvps,
-                 avrage_quadro_kills, deaths, headshots, quadro_kills, avrage_kd_ratio, avrage_headshots_percentage, penta_kills, wins,
+                 avrage_quadro_kills, deaths, headshots, quadro_kills, avrage_kd_ratio, avrage_headshots_percentage,
+                 penta_kills, wins,
                  total_headshots, rounds, win_rate_percentage, avrage_assists, avrage_kr_ratio, tripple_kills,
                  assists, avrage_tripple_kills, avrage_deaths, kd_ratio, matches, kills, headshots_per_match):
         self.stat_type = stat_type
@@ -259,7 +262,7 @@ if __name__ == "__main__":
     memagu_stats = memagu.get_stats()
 
     for mapstat, value in memagu_stats.map_statistics[0].__dict__.items():
-        print(mapstat, value)
+        print(mapstat, value, sep=": ")
 
     # with open("match.json", "w") as m:
     #     m.write(str(API.api_request(f"matches/{match.match_id}")))
@@ -269,4 +272,3 @@ if __name__ == "__main__":
     #
     # with open("player.json", "w") as p:
     #     p.write(str(API.api_request(f"players/{player.player_id}")))
-
