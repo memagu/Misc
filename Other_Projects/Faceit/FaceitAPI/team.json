@@ -1,0 +1,50 @@
+{
+  'team_id': '8137b84c-5749-4490-8d97-80696cb25d57',
+  'nickname': 'team_Tjuboi',
+  'name': 'team_Tjuboi',
+  'description': '',
+  'avatar': '',
+  'cover_image': '',
+  'game': '',
+  'team_type': 'mix',
+  'members': [
+    {
+      'user_id': 'f1fbd6e3-0e92-4c08-93a8-a1dd6e59c6f5',
+      'nickname': 'picxell',
+      'avatar': 'https://distribution.faceit-cdn.net/images/4f7e1f33-1a4b-45de-bf8a-5de361055507.jpeg',
+      'country': 'se',
+      'faceit_url': 'https://www.faceit.com/{lang}/players/picxell'
+    },
+    {
+      'user_id': 'eca06373-cf72-48e8-aee0-88ad52ec27e9',
+      'nickname': 'Dragaan69',
+      'avatar': 'https://distribution.faceit-cdn.net/images/29431ac5-7b7a-4952-adbe-00e63d3ab02b.jpeg',
+      'country': 'se',
+      'faceit_url': 'https://www.faceit.com/{lang}/players/Dragaan69'
+    },
+    {
+      'user_id': 'cd333896-85f4-457e-a0a6-f336c21fdd6e',
+      'nickname': 'Tjuboi',
+      'avatar': 'https://distribution.faceit-cdn.net/images/a6959306-6025-4ffb-9631-53949ae5996e.jpeg',
+      'country': 'se',
+      'memberships': [
+        'csgo'
+      ],
+      'faceit_url': 'https://www.faceit.com/{lang}/players/Tjuboi'
+    },
+    {
+      'user_id': '4b7c873b-539a-49ab-afb3-7b94fe1a62d8',
+      'nickname': 'Fat_Farmer',
+      'avatar': 'https://distribution.faceit-cdn.net/images/dffcebc4-91e3-4758-894c-e61ae31e25a5.jpeg',
+      'country': 'se',
+      'faceit_url': 'https://www.faceit.com/{lang}/players/Fat_Farmer'
+    }
+  ],
+  'leader': 'cd333896-85f4-457e-a0a6-f336c21fdd6e',
+  'website': '',
+  'facebook': '',
+  'twitter': '',
+  'youtube': '',
+  'chat_room_id': 'team-8137b84c-5749-4490-8d97-80696cb25d57',
+  'faceit_url': 'https://www.faceit.com/{lang}/teams/8137b84c-5749-4490-8d97-80696cb25d57'
+}
