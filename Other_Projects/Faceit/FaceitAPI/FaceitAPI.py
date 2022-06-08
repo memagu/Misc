@@ -12,6 +12,7 @@ class FaceitAPI:
 
     def get_match(self, match_id):
         data = self.api_request(f"matches/{match_id}")
+        print(data)
         team1 = Team(data["teams"]["faction1"]["faction_id"],
                      data["teams"]["faction1"]["leader"],
                      data["teams"]["faction1"]["avatar"],
@@ -238,21 +239,5 @@ if __name__ == "__main__":
     from Other_Projects.my_secrets import Faceit
 
     API = FaceitAPI(Faceit.API_SECRET_KEY)
-    match = API.get_match("1-67dd18ae-0781-46f7-9201-6d1b7b24d946")
-    team1 = match.teams[0]
-    team2 = match.teams[1]
-    player11 = team1.roster[0]
-    player21 = team2.roster[0]
-    memagu = team2.roster[4]
-
-    print(player11)
-    print(player21)
-    print(memagu)
-
-    memagu_stats = memagu.get_stats()
-
-    for mapstat, value in memagu_stats.map_statistics[0].__dict__.items():
-        print(mapstat, value, sep=": ")
-
-    print()
-    print(match)
+    match = API.get_match("1-31646cb4-d305-48d7-acc4-38a88f8d3a4f")
+    # print(match.teams[0].roster[1].avatar)
