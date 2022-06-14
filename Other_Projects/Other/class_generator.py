@@ -6,3 +6,4 @@ def generate_class(name: str, *args: str):
 
 
 generate_class("TestClass", "name", "size", "color", "tag", "id", "pos", "velocity", "acceleration", "direction")
+generate_class("PendulumArm", "length", "mass", "angle", "angle_velocity", "angle_acceleration")
