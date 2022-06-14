@@ -120,6 +120,10 @@ while True:
     dp.draw(display)
     trail.append()
 
+    """
+    FIXA TRAIL
+    """
+
     ###########################################
 
     pygame.display.update()
