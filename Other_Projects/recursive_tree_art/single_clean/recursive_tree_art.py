@@ -30,7 +30,7 @@ seed = 1
 
 sliders = []
 vertical_separation = 88
-sliders.append(Slider([32, 40 + vertical_separation * 0], "tree depth", min_value=0, max_value=14, value=tree_depth))
+sliders.append(Slider([32, 40 + vertical_separation * 0], "tree depth", min_value=0, max_value=20, value=tree_depth))
 sliders.append(Slider([32, 40 + vertical_separation * 1], "branch length coefficient", min_value=0, max_value=1, value=branch_length_coefficient))
 sliders.append(Slider([32, 40 + vertical_separation * 2], "left branch angle", min_value=-math.pi * 2, max_value=math.pi * 2, value=left_branch_angle))
 sliders.append(Slider([32, 40 + vertical_separation * 3], "right branch angle", min_value=-math.pi * 2, max_value=math.pi * 2, value=right_branch_angle))

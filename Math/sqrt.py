@@ -1,31 +1,39 @@
-def slow_sqrt(num, *, upper_limit=0, lower_limit=0, max_depth=942, depth=0):
-    if depth == 0:
-        upper_limit = num * 2
-    current = (upper_limit + lower_limit) / 2
+def sqrt(num, *, upper: float = 0, lower: float = 0, depth: int = 50):
+    if not upper:
+        upper = num * 2
 
-    if depth == max_depth:
-        return current
+    mid = (upper + lower) / 2
 
-    current_sq = current ** 2
+    if not depth:
+        return mid
 
-    if current_sq == num:
-        return current
+    mid_sq = mid ** 2
 
-    if current_sq > num:
-        return slow_sqrt(num, upper_limit=current, lower_limit=lower_limit, depth=depth+1)
+    if mid_sq == num:
+        return mid
 
-    if current_sq < num:
-        return slow_sqrt(num, upper_limit=upper_limit, lower_limit=current, depth=depth+1)
+    if mid_sq > num:
+        return sqrt(num, upper=mid, lower=lower, depth=depth-1)
+
+    # if mid_sq < num:
+    return sqrt(num, upper=upper, lower=mid, depth=depth-1)
 
 
 def test():
     import math
+    import random
+
     decimals = 20
-    for i in range(9800, 9900):
-        print(f"slow_sqrt({i/1000})={slow_sqrt(i/1000):.{decimals}f}\tmath.sqrt({i/1000})={math.sqrt(i/1000):.{decimals}f}\tdiff={abs(math.sqrt(i/100)-slow_sqrt(i/100)):.{decimals}f}")
+    for _ in range(9800, 9900):
+        num = random.randint(0, 10000) / 1000
+        sqrt_o = sqrt(num)
+        math_sqrt_o = math.sqrt(num)
+        print(f"sqrt({num})={sqrt_o:.{decimals}f}\tmath.sqrt({num})={math_sqrt_o:.{decimals}f}\tdiff={abs(math_sqrt_o - sqrt_o):.{decimals}f}")
+
+
+def main():
+    test()
 
 
 if __name__ == "__main__":
-    import math
-    print(f"{math.pi ** 2:.100f}")
-    print(slow_sqrt(9.869604401089357992304940125904977321624755859375) - math.pi)
+    main()

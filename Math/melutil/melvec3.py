@@ -1,4 +1,4 @@
-import melvec
+from melvec import Vector
 
 
 class Vec3(Vector):
