@@ -45,8 +45,8 @@ def construct_binary_tree(root: Node, depth: int) -> Node:
 
 def construct_random_binary_tree(root: Node, depth: int, probability: float) -> Node:
     if depth != 0:
-        root.left = construct_random_binary_tree(Node(root.value + 'l'), depth - 1, probability * 0.99) if random.randint(0, 100) / 100 <= probability else None
-        root.right = construct_random_binary_tree(Node(root.value + 'r'), depth - 1, probability * 0.99) if random.randint(0, 100) / 100 <= probability else None
+        root.left = construct_random_binary_tree(Node(root.value + 'l'), depth - 1, probability * 1) if random.randint(0, 100) / 100 <= probability else None
+        root.right = construct_random_binary_tree(Node(root.value + 'r'), depth - 1, probability * 1) if random.randint(0, 100) / 100 <= probability else None
         return root
 
 
@@ -89,6 +89,8 @@ def draw_binary_tree(root: Node, tree_depth, window_resolution, surface):
                          color_white,
                          string_to_position(root.value, tree_depth, window_resolution),
                          string_to_position(root.left.value, tree_depth, window_resolution))
+        pygame.display.update()
+        time.sleep(0.02)
         draw_binary_tree(root.left, tree_depth, window_resolution, surface)
 
     if root.right:
@@ -96,6 +98,8 @@ def draw_binary_tree(root: Node, tree_depth, window_resolution, surface):
                          color_white,
                          string_to_position(root.value, tree_depth, window_resolution),
                          string_to_position(root.right.value, tree_depth, window_resolution))
+        pygame.display.update()
+        time.sleep(0.02)
         draw_binary_tree(root.right, tree_depth, window_resolution, surface)
 
 

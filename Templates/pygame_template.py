@@ -15,14 +15,16 @@ fps = 480  # 0 for unlimited
 time_prev = time.time()
 clock = pygame.time.Clock()
 
-# Colors
-color_black = (0, 0, 0)
-color_white = (255, 255, 255)
-color_red = (255, 0, 0)
-color_yellow = (255, 255, 0)
-color_green = (0, 255, 0)
-color_cyan = (0, 255, 255)
-color_blue = (0, 0, 255)
+
+class Color:
+    black = (0, 0, 0)
+    white = (255, 255, 255)
+    red = (255, 0, 0)
+    yellow = (255, 255, 0)
+    green = (0, 255, 0)
+    cyan = (0, 255, 255)
+    blue = (0, 0, 255)
+
 
 # Text
 pygame.font.init()

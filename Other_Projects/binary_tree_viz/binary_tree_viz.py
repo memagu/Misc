@@ -8,7 +8,7 @@ display = pygame.display.set_mode(window_resolution, pygame.RESIZABLE)
 pygame.display.set_caption(__file__.split("\\")[-1])
 
 run = True
-fps = 480  # 0 for unlimited
+fps = 30  # 0 for unlimited
 prev_time = time.time()
 clock = pygame.time.Clock()
 
@@ -16,7 +16,7 @@ tree_depth = 7
 
 root = Node('s')
 # tree = construct_binary_tree(root, tree_depth)
-tree = construct_random_binary_tree(root, tree_depth, 0.7)
+tree = construct_random_binary_tree(root, tree_depth, 1)
 print_binary_tree(tree)
 position_list = binary_tree_position_list(tree)
 
@@ -54,8 +54,8 @@ while run:
             if event.key == pygame.K_DOWN:
                 tree_depth -= 1
             # tree = construct_binary_tree(root, tree_depth)
-            tree = construct_random_binary_tree(root, tree_depth, 0.7)
-            stats_font = pygame.font.SysFont('leelawadeeuisemilight', int(window_resolution[1] / (tree_depth + 1)) >> 1)
+            tree = construct_random_binary_tree(root, tree_depth, 1)
+            stats_font = pygame.font.SysFont('leelawadeeuisemilight', int(window_resolution[1] / (max(5, tree_depth + 1))) >> 1)
 
     # Draw
     display.fill(color_black)
