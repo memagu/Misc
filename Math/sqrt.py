@@ -21,6 +21,18 @@ def sqrt(num, *, upper: float = 0, lower: float = 0, depth: int = 50):
 
 def test():
     import math
+
+    decimals = 20
+    for i in range(0, 10000):
+        num = i / 1000
+        sqrt_o = sqrt(num)
+        math_sqrt_o = math.sqrt(num)
+        print(
+            f"sqrt({num})={sqrt_o:.{decimals}f}\tmath.sqrt({num})={math_sqrt_o:.{decimals}f}\tdiff={abs(math_sqrt_o - sqrt_o):.{decimals}f}")
+
+
+def test_random_values():
+    import math
     import random
 
     decimals = 20
