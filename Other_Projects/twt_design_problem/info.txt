@@ -1,0 +1,38 @@
+Address
+    country: string
+    state: string
+    city: string
+    street: string
+    street: string
+    street: number
+    postal_code: string
+
+
+Person
+    first_name: string
+    middle_name: string
+    last_name: string
+    date_of_birth: date
+    phone_number: string
+
+Student(Person)
+    international: bool
+    is_part_time(): bool
+    is_on_probation(): bool
+
+Professor(Person)
+    Salary: float
+
+Course
+    name: string
+    code: string
+    min_students: int
+    max_students: int
+    start: date
+    end: date
+    is_cancelled(): bool
+
+Enroll
+    date: date
+    grade: float
+

@@ -34,16 +34,24 @@
 # print(result)
 
 
-def fib(n):
-    if n < 2:
-        return 1
+# def fib(n):
+#     if n < 2:
+#         return 1
+#
+#     return fib(n-1) + fib(n-2)
+#
+#
+# # 1 1 2 3 5 8 13 21
+#
+#
+# for i in range(10):
+#     print(fib(i))
 
-    return fib(n-1) + fib(n-2)
+import math
 
-
-# 1 1 2 3 5 8 13 21
-
-
-for i in range(10):
-    print(fib(i))
+num = 1
+for i in range(1, 1_000_000_000):
+    num += math.sin(i) / i
+    num += math.sin(-i) / -i
+    print(num, end="\r")
 
