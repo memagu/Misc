@@ -53,7 +53,7 @@ async def on_message(message):
   #print(client)
 
   if msg.startswith("!kc help"):
-    await message.channel.send("""
+    await message.channel.send_message("""
     !kc ping <single word> <amount>
     !kc clear <amount>
     !kc wave <phrase> <amount> <filler>
@@ -61,7 +61,7 @@ async def on_message(message):
     """)
 
   if msg.startswith("!kc hello"):
-    await message.channel.send("hello")
+    await message.channel.send_message("hello")
 
   if msg.startswith("!kc ping"):
     amount = int(msg.split(maxsplit=3)[-1])
@@ -70,16 +70,16 @@ async def on_message(message):
       amount = 20
     if msg.split(maxsplit=3)[-2] != "@everyone":
       for i in range(amount):
-        await message.channel.send(msg.split(maxsplit=3)[-2])
+        await message.channel.send_message(msg.split(maxsplit=3)[-2])
         await message.channel.purge(limit=1)
     else:
       await message.channel.purge(limit=1)
-      await message.channel.send("Please don't ping everyone.")
+      await message.channel.send_message("Please don't ping everyone.")
 
   if msg.startswith("!kc clear"):
     amount = int(msg.split(maxsplit=2)[-1])
     if 0 > amount or amount > 100:
-      await message.channel.send("You must clear at least no messages and at most 100.")
+      await message.channel.send_message("You must clear at least no messages and at most 100.")
     else:
       await message.channel.purge(limit=(amount + 1))
 
@@ -96,12 +96,12 @@ async def on_message(message):
 
     for x in range(amount):
         y = math.sin(x/frequenzy) + 1
-        await message.channel.send(filler * math.ceil(y*amplitude) + phrase)
+        await message.channel.send_message(filler * math.ceil(y * amplitude) + phrase)
 
   if msg.startswith("!kc bangers"):
-    await message.channel.send(file=discord.File("./songs/McFlurry_The_Void.mp3"))
-    await message.channel.send(file=discord.File("./songs/Amegd.mp3"))
-    await message.channel.send(file=discord.File("./songs/Amegd - Extended.mp3"))
+    await message.channel.send_message()
+    await message.channel.send_message()
+    await message.channel.send_message()
 
   if msg.startswith("!kc c4r1"):
     global carl_nick

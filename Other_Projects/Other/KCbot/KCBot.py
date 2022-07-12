@@ -56,11 +56,11 @@ async def on_message(message):
             for command_name, description in commands.items():
                 result += f"{prefix} {command_name} | {description}\n"
 
-            await message.channel.send(result)
+            await message.channel.send_message(result)
             return
 
         if command == "ping":
-            await message.channel.send("pong")
+            await message.channel.send_message("pong")
             return
 
         if command == "repeat":
@@ -68,11 +68,11 @@ async def on_message(message):
             amount = min(20, abs(int(args[-1])))
 
             if "@everyone" in content:
-                await message.channel.send("Please don't..")
+                await message.channel.send_message("Please don't..")
                 return
 
             for _ in range(amount):
-                await message.channel.send(content)
+                await message.channel.send_message(content)
                 await message.channel.purge(limit=1)
             return
 
@@ -84,7 +84,7 @@ async def on_message(message):
         if command == "wave":
             content = " ".join(args[:-1])
             if "@everyone" in content:
-                await message.channel.send("Please don't..")
+                await message.channel.send_message("Please don't..")
                 return
 
             periods = min(4, abs(int(args[-1])))
@@ -99,22 +99,22 @@ async def on_message(message):
 
             while angle < (2 * math.pi / b) * periods:
                 segment = f"{filler * int((a * math.sin(b * (angle + c)) + d))}{content}"
-                await message.channel.send(segment)
+                await message.channel.send_message(segment)
 
                 angle += angle_velocity
             return
 
         if command == "bangers":
-            await message.channel.send(file=discord.File("./songs/McFlurry_The_Void.mp3"))
-            await message.channel.send(file=discord.File("./songs/Amegd.mp3"))
-            await message.channel.send(file=discord.File("./songs/Amegd - Extended.mp3"))
+            await message.channel.send_message()
+            await message.channel.send_message()
+            await message.channel.send_message()
             return
 
         if command == "info":
             target_uid = int(args[0].replace("@", "").replace("<", "").replace(">", ""))
             member = guild.get_member(target_uid)
 
-            await message.channel.send(f"""{member.activities=}
+            await message.channel.send_message(f"""{member.activities=}
 {member.activity=}
 {member.avatar=}
 {member.avatar_url=}
@@ -153,9 +153,9 @@ async def on_message(message):
         if command == "eval":
             expression = " ".join(args)
             try:
-                await message.channel.send(f"{expression} = {eval(expression)}")
+                await message.channel.send_message(f"{expression} = {eval(expression)}")
             except SyntaxError:
-                await message.channel.send(f"Invalid expression: {expression}")
+                await message.channel.send_message(f"Invalid expression: {expression}")
             return
 
         # create admin role | <role_name>
@@ -186,7 +186,7 @@ async def on_message(message):
                     member_roles.append(role)
                     await member.edit(roles=member_roles)
                     return
-            await message.channel.send(f"{target_role_name} does not exist.")
+            await message.channel.send_message(f"{target_role_name} does not exist.")
             return
 
         if command == "test":
