@@ -145,6 +145,11 @@ class Server:
                 self.send_message(connection, "command " + " ".join(arguments[1:]))
                 return
 
+            if instruction == "disconnect":
+                if arguments[0] in self.active_connections:
+                    self.disconnect_client(self.active_connections[arguments[0]])
+                return
+
             raise Exception
         except Exception as e:
             self.debug_message("WARNING", "Invalid command")
