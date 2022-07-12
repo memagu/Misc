@@ -3,9 +3,7 @@ import datetime
 import socket
 import string
 import subprocess
-import sys
 import threading
-import winreg
 
 
 class Client:
@@ -173,62 +171,6 @@ class Client:
         self.stop = True
 
 
-class WindowsRegistryEditor:
-    @staticmethod
-    def enum_key(key: int):
-        sub_keys = []
-        try:
-            i = 1
-            while True:
-                sub_keys.append(winreg.EnumKey(key, i))
-                i += 1
-        except OSError:
-            return sub_keys
-
-    @staticmethod
-    def enum_value(key: int, sub_key: str):
-        with winreg.OpenKey(key, sub_key, 0, winreg.KEY_READ) as open_key:
-            values = []
-            try:
-                i = 1
-                while True:
-                    values.append(winreg.EnumValue(open_key, i))
-                    i += 1
-            except OSError:
-                return values
-
-    @classmethod
-    def value_exists(cls, key: int, sub_key: str, value_name: str):
-        for value in cls.enum_value(key, sub_key):
-            if value[0] == value_name:
-                return True
-        return False
-
-    @classmethod
-    def add_value(cls, key: int, sub_key: str, value_name: str, value: str):
-        if cls.value_exists(key, sub_key, value_name):
-            return
-
-        with winreg.OpenKey(key, sub_key, 0, winreg.KEY_ALL_ACCESS) as open_key:
-            winreg.SetValueEx(open_key, value_name, 0, winreg.REG_SZ, value)
-
-    @classmethod
-    def edit_value(cls, key: int, sub_key: str, value_name: str, value: str):
-        if not cls.value_exists(key, sub_key, value_name):
-            raise Exception(f"{value_name=} does not exist at {key=} {sub_key=}")
-
-        with winreg.OpenKey(key, sub_key, 0, winreg.KEY_ALL_ACCESS) as open_key:
-            winreg.SetValueEx(open_key, value_name, 0, winreg.REG_SZ, value)
-
-    @classmethod
-    def remove_value(cls, key: int, sub_key: str, value_name: str):
-        if not cls.value_exists(key, sub_key, value_name):
-            return
-
-        with winreg.OpenKey(key, sub_key, 0, winreg.KEY_ALL_ACCESS) as open_key:
-            winreg.DeleteValue(open_key, value_name)
-
-
 class PackageManager:
     @staticmethod
     def package_is_installed(package: str):
@@ -258,17 +200,9 @@ class PackageManager:
 @atexit.register
 def disconnect():
     client.disconnect()
-    client.debug_message("RESPAWNING", "Respawning client script")
-    subprocess.Popen([sys.executable, file_path], shell=True)
 
 
 if __name__ == "__main__":
-    file_path = __file__
-    file_name = __file__.split("\\")[-1]
-    WindowsRegistryEditor.add_value(winreg.HKEY_CURRENT_USER,
-                                    r"Software\Microsoft\Windows\CurrentVersion\Run",
-                                    f"{file_name}",
-                                    rf'"{sys.executable}" "{file_path}"')
     PackageManager.install_package("keyboard")
     import keyboard
 
