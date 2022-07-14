@@ -79,9 +79,9 @@ class Server:
                            f"{client_identity} ({':'.join(map(str, client_address))}) has connected to the server")
         self.debug_message("ACTIVE CONNECTIONS", len(self.active_connections))
 
-        if not os.path.exists(fr".\logs\{client_identity}.txt"):
+        if not os.path.exists(f".\\logs\\{client_identity}.txt"):
             with open(f".\\logs\\{client_identity}.txt", "w", encoding=self.message_encoding):
-                self.debug_message("LOGFILE CREATED", fr"Created .\logs\{client_identity}.txt")
+                self.debug_message("LOGFILE CREATED", f"Created .\\logs\\{client_identity}.txt")
 
         while not self.stop:
             try:
