@@ -265,7 +265,7 @@ class PackageManager:
 
 
 @atexit.register
-def disconnect():
+def respawn():
     if not client.stop_message:
         client.disconnect()
 
