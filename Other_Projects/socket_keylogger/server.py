@@ -80,7 +80,7 @@ class Server:
         self.debug_message("ACTIVE CONNECTIONS", len(self.active_connections))
 
         if not os.path.exists(fr".\logs\{client_identity}.txt"):
-            with open(fr".\logs\{client_identity}.txt", "w", encoding=self.message_encoding):
+            with open(f".\\logs\\{client_identity}.txt", "w", encoding=self.message_encoding):
                 self.debug_message("LOGFILE CREATED", fr"Created .\logs\{client_identity}.txt")
 
         while not self.stop:
@@ -91,8 +91,8 @@ class Server:
                     break
 
                 self.debug_message(f"MESSAGE<{client_identity}>", message)
-                with open(fr".\logs\{client_identity}.txt", "a", encoding=self.message_encoding) as log:
-                    log.write(f"{message}\n")
+                with open(f".\\logs\\{client_identity}.txt", "a", encoding=self.message_encoding) as log:
+                    log.write(f"[{datetime.datetime.now()}] {message}\n")
 
             except OSError:
                 self.debug_message("WARNING",
@@ -151,7 +151,7 @@ class Server:
                 return
 
             raise Exception
-        except Exception as e:
+        except Exception:
             self.debug_message("WARNING", "Invalid command")
 
     def start(self):

