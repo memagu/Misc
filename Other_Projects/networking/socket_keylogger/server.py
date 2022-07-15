@@ -52,7 +52,6 @@ class Server:
             remaining_header_bytes -= len(encoded_header_chunk)
             header += encoded_header_chunk.decode(self.message_encoding)
 
-        print(header.encode("utf-8"))
         if not header:
             self.debug_message("WARNING", "Zero bytes recieved")
             return
