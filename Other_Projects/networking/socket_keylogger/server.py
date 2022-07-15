@@ -165,6 +165,10 @@ class Server:
                     self.disconnect_client(self.active_connections[arguments[0]])
                 return
 
+            if instruction in ["cls", "clear"]:
+                os.system("cls")
+                return
+
             raise Exception
         except Exception:
             self.debug_message("WARNING", "Invalid command")
