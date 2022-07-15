@@ -45,10 +45,24 @@ class Server:
         connection.send(encoded_message)
 
     def receive_message(self, connection: socket.socket):
-        header = connection.recv(self.header_length).decode(self.message_encoding)
+        remaining_header_bytes = self.header_length
+        header = ""
+        while remaining_header_bytes:
+            encoded_header_chunk = connection.recv(remaining_header_bytes)
+            remaining_header_bytes -= len(encoded_header_chunk)
+            header += encoded_header_chunk.decode(self.message_encoding)
+
+        print(header.encode("utf-8"))
         if not header:
+            self.debug_message("WARNING", "Zero bytes recieved")
             return
-        message = connection.recv(int(header)).decode(self.message_encoding)
+
+        remaining_message_bytes = int(header)
+        message = ""
+        while remaining_message_bytes:
+            encoded_message = connection.recv(remaining_message_bytes)
+            remaining_message_bytes -= len(encoded_message)
+            message += encoded_message.decode(self.message_encoding)
         return message
 
     def disconnect_client(self, connection: socket.socket):
@@ -143,6 +157,8 @@ class Server:
                     return
                 connection = self.active_connections[arguments[0]]
                 self.send_message(connection, "command " + " ".join(arguments[1:]))
+                self.debug_message("CLIENT EXECUTION",
+                                   f"Executing '{' '.join(arguments[1:])}' on {arguments[0]} ({':'.join(map(str, connection.getpeername()))})")
                 return
 
             if instruction == "disconnect":
@@ -157,7 +173,7 @@ class Server:
     def start(self):
         self.debug_message("STARTING", "Server is starting...")
         self.server.listen()
-        self.debug_message("LISTENING", f"Server is listening on {self.host}")
+        self.debug_message("LISTENING", f"Server is listening on {self.host}:{self.port}")
 
         td_connection_handler = threading.Thread(target=self.connection_handler, daemon=True)
         td_connection_handler.start()
