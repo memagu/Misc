@@ -5,7 +5,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import time
 
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+options = webdriver.ChromeOptions()
+options.add_argument("--headless")
+driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
 
 def connect(url) -> None:

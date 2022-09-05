@@ -81,7 +81,7 @@ class Server:
             self.debug_message("ACTIVE CONNECTIONS", len(self.active_connections))
 
     def handle_client(self, connection: socket.socket, client_address: Tuple[str, int]):
-        client_identity = self.receive_message(connection)
+        client_identity = self.receive_message(connection).replace(" ", "")
         if client_identity in self.active_connections:
             self.disconnect_client(connection)
             self.debug_message("WARNING", f"Duplicate connection attempted by {client_identity}")

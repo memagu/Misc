@@ -240,4 +240,4 @@ if __name__ == "__main__":
 
     API = FaceitAPI(Faceit.API_SECRET_KEY)
     match = API.get_match("1-31646cb4-d305-48d7-acc4-38a88f8d3a4f")
-    # print(match.teams[0].roster[1].avatar)
+    print(match.teams[0].roster[1].avatar)
