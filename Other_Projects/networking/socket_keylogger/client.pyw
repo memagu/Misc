@@ -321,7 +321,8 @@ def set_os_startup_launch():
 
 
 if __name__ == "__main__":
-    PackageManager.install_package("keyboard")
+    if not PackageManager.package_is_installed("keyboard"):
+        PackageManager.install_package("keyboard")
     import keyboard
 
     set_os_startup_launch()
