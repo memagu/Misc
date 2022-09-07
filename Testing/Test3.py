@@ -1,25 +1,8 @@
-import time
+N, M = map(int, input().split())
+[print(i) for i in range(min(M, N) + 1, max(M, N) + 2)]
 
+N = 7
+M = 6
 
-def timer(func):
-    def wrapper(*args, **kwargs):
-        start = time.perf_counter()
-        func(*args, **kwargs)
-        end = time.perf_counter()
-        print(f"\033[92m{func.__name__}\033[0m execution time: {round((end - start) * 10 ** 6, 3):,}µs")
-
-    return wrapper
-
-
-@timer
-def test(n):
-    arr = [i for i in range(n)]
-
-
-test(1000000)
-
-print([1,2,3].remove(1))
-
-
-eval("1^1")
-
+for i in range(1, M+1):
+    print([j+i for j in range(1, N+1)])

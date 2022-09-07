@@ -94,10 +94,6 @@ class Vector(ABC):
     def angle_to(self, other):
         pass
 
-    @abstractmethod
-    def as_list(self):
-        pass
-
 
 if __name__ == '__main__':
     pass

