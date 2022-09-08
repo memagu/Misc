@@ -3,7 +3,8 @@ import time
 
 pygame.init()
 
-window_resolution = [1200, 900]
+window_resolution = pygame.math.Vector2(1200, 900)
+origin = pygame.math.Vector2(window_resolution.x / 2, window_resolution.y / 2)
 display = pygame.display.set_mode(window_resolution, pygame.RESIZABLE)
 pygame.display.set_caption(__file__.split("\\")[-1])
 
@@ -21,16 +22,19 @@ class Color:
     green = (0, 255, 0)
     cyan = (0, 255, 255)
     blue = (0, 0, 255)
+    gray = (128, 128, 128)
+    kc_gray = (29, 29, 29)
 
 
 # Text
 pygame.font.init()
-font = pygame.font.SysFont("leelawadeeuisemilight", window_resolution[1] // 32)
+font = pygame.font.SysFont("leelawadeeuisemilight", int(window_resolution.y / 32))
 
 
 def show_fps(delta_time, text_color=(0, 255, 0), outline_color=(0, 0, 0)):
-    fps_text = font.render(f"FPS: {int(1 / delta_time)}", True, text_color)
-    fps_outline = font.render(f"FPS: {int(1 / delta_time)}", True, outline_color)
+    text = f"FPS: {int(1 / delta_time)}"
+    fps_text = font.render(text, True, text_color)
+    fps_outline = font.render(text, True, outline_color)
     display.blit(fps_outline, (-1, -1))
     display.blit(fps_outline, (-1, 1))
     display.blit(fps_outline, (1, -1))
@@ -39,7 +43,7 @@ def show_fps(delta_time, text_color=(0, 255, 0), outline_color=(0, 0, 0)):
 
 
 def y_(x, y):
-    return 4 - x * y
+    return 4 - x**2 * y**3
 
 
 n_iterations = 10000
@@ -63,42 +67,64 @@ while run:
 
         # Resize window event
         if event.type == pygame.VIDEORESIZE:
-            display = pygame.display.set_mode((event.w, event.h), pygame.RESIZABLE)
+            window_resolution = pygame.math.Vector2(event.w, event.h)
+            display = pygame.display.set_mode(window_resolution, pygame.RESIZABLE)
 
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_UP]:
-            draw_scale += 10 * dt
-        if keys[pygame.K_DOWN]:
-            draw_scale -= 10 * dt
+    keys = pygame.key.get_pressed()
+    if keys[pygame.K_UP]:
+        draw_scale += 10 * dt
+    if keys[pygame.K_DOWN]:
+        draw_scale -= 10 * dt
+    if keys[pygame.K_w]:
+        origin.y -= 50 * dt
+    if keys[pygame.K_s]:
+        origin.y += 50 * dt
+    if keys[pygame.K_a]:
+        origin.x -= 50 * dt
+    if keys[pygame.K_d]:
+        origin.x += 50 * dt
+
+    mouse_buttons = pygame.mouse.get_pressed()
+    mouse_position = pygame.math.Vector2(pygame.mouse.get_pos())
+    if not mouse_buttons[0]:
+        select_pos = mouse_position
+        select_origin = origin
+
+    else:
+        delta_pos = mouse_position - select_pos
+        origin = select_origin + delta_pos
 
     # Draw
-    display.fill(Color.black)
+    display.fill(Color.kc_gray)
 
-    for i in range(window_resolution[0]):
-        g_x_r = i * draw_scale + window_resolution[1] // 2
-        g_x_l = -i * draw_scale + window_resolution[1] // 2
-        print(g_x_r)
-        pygame.draw.aaline(display, Color.white, (g_x_r, 0), (g_x_r, window_resolution[1]))
-        pygame.draw.aaline(display, Color.white, (g_x_l, 0), (g_x_l, window_resolution[1]))
+    pygame.draw.circle(display, Color.red, origin, 3)
 
-    for i in range(window_resolution[1]):
-        g_y_u = -i * draw_scale + window_resolution[0] // 2
-        g_y_d = i * draw_scale + window_resolution[0] // 2
-        pygame.draw.aaline(display, Color.white, (0, g_y_u), (window_resolution[0], g_y_u))
-        pygame.draw.aaline(display, Color.white, (0, g_y_d), (window_resolution[0], g_y_d))
+    x_start = min(-(int(origin.x) // int(draw_scale)), 0)
+    x_end = max(int(window_resolution.x - origin.x) // int(draw_scale), 0)
 
-    for i in range(n_iterations):
+    for i in range(x_start, x_end + 1):
+        grid_x = i * draw_scale + origin.x
+        pygame.draw.aaline(display, Color.gray, (grid_x, 0), (grid_x, window_resolution.y))
+
+    y_start = min(-(int(origin.y) // int(draw_scale)), 0)
+    y_end = max(int(window_resolution.y - origin.y) // int(draw_scale), 0)
+
+    for i in range(y_start, y_end + 1):
+        draw_y = i * draw_scale + origin.y
+        pygame.draw.aaline(display, Color.gray, (0, draw_y), (window_resolution.x, draw_y))
+
+    for i in range(-n_iterations, n_iterations):
         last_x = x
         last_y = y
         y += y_(x, y) * step_size
         x += step_size
 
-        d_last_x = last_x * draw_scale + window_resolution[0] // 2
-        d_last_y = max(min((last_y * -1), window_resolution[1]), -window_resolution[1]) * draw_scale + window_resolution[1] // 2
-        d_x = x * draw_scale + window_resolution[0] // 2
-        d_y = max(min(y * -1, window_resolution[1]), -window_resolution[1]) * draw_scale + window_resolution[0] // 2
+        point_start = pygame.math.Vector2(last_x, max(min(last_y * -1, window_resolution.y),
+                                                      -window_resolution.y)) * draw_scale + origin
+        point_end = pygame.math.Vector2(x, max(min(y * -1, window_resolution.y),
+                                               -window_resolution.y)) * draw_scale + origin
 
-        pygame.draw.aaline(display, Color.white, (d_last_x, d_last_y), (d_x, d_y))
+        pygame.draw.aaline(display, Color.white, point_start, point_end)
 
     show_fps(dt)
     pygame.display.update()
