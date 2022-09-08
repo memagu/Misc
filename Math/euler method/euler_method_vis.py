@@ -128,7 +128,7 @@ while run:
     # Draw
     display.fill(Color.kc_gray)
 
-    pygame.draw.circle(display, Color.red, origin, 3)
+    pygame.draw.circle(display, Color.red, origin, 4)
 
     x_start = min(-(int(origin.x) // int(draw_scale)), 0)
     x_end = max(int(window_resolution.x - origin.x) // int(draw_scale), 0)
