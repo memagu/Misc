@@ -46,7 +46,7 @@ class Curve:
         self.x = x
         self.y = y
 
-    def draw(self, n_iterations, step_size, draw_scale):
+    def draw(self, n_iterations, step_size):
         right_x, left_x = self.x, self.x
         right_y, left_y = self.y, self.y
 
@@ -73,6 +73,22 @@ class Curve:
 
             pygame.draw.aaline(display, Color.white, right_point_start, right_point_end)
             pygame.draw.aaline(display, Color.white, left_point_start, left_point_end)
+
+
+def draw_grid():
+    x_start = min(-(int(origin.x) // int(draw_scale)), 0)
+    x_end = max(int(window_resolution.x - origin.x) // int(draw_scale), 0)
+
+    for i in range(x_start, x_end + 1):
+        grid_x = i * draw_scale + origin.x
+        pygame.draw.aaline(display, Color.gray, (grid_x, 0), (grid_x, window_resolution.y))
+
+    y_start = min(-(int(origin.y) // int(draw_scale)), 0)
+    y_end = max(int(window_resolution.y - origin.y) // int(draw_scale), 0)
+
+    for i in range(y_start, y_end + 1):
+        draw_y = i * draw_scale + origin.y
+        pygame.draw.aaline(display, Color.gray, (0, draw_y), (window_resolution.x, draw_y))
 
 
 def y_(x, y):
@@ -130,21 +146,9 @@ while run:
 
     pygame.draw.circle(display, Color.red, origin, 4)
 
-    x_start = min(-(int(origin.x) // int(draw_scale)), 0)
-    x_end = max(int(window_resolution.x - origin.x) // int(draw_scale), 0)
+    draw_grid()
 
-    for i in range(x_start, x_end + 1):
-        grid_x = i * draw_scale + origin.x
-        pygame.draw.aaline(display, Color.gray, (grid_x, 0), (grid_x, window_resolution.y))
-
-    y_start = min(-(int(origin.y) // int(draw_scale)), 0)
-    y_end = max(int(window_resolution.y - origin.y) // int(draw_scale), 0)
-
-    for i in range(y_start, y_end + 1):
-        draw_y = i * draw_scale + origin.y
-        pygame.draw.aaline(display, Color.gray, (0, draw_y), (window_resolution.x, draw_y))
-
-    c1.draw(n_iterations, step_size, draw_scale)
+    c1.draw(n_iterations, step_size)
 
     show_fps(dt)
     pygame.display.update()

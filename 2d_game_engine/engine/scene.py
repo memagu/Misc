@@ -25,7 +25,7 @@ class Scene:
         try:
             cls._active_scene.load_game_object(game_object)
         except AttributeError as e:
-            print("\033[91mAttributeError: No active scene available.")
+            print("\033[91mAttributeError: No active scene in.")
 
     def load_game_object(self, game_object):
         self._new_objects.add(game_object)
