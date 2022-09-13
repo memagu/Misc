@@ -182,8 +182,8 @@ def draw_branch_polygon(root: Branch, surface: pygame.surface, base_width_ratio:
 
     pygame.draw.circle(surface, color, root.end, half_top_width)
 
-    # if not (root.right or root.left):
-    #     pygame.draw.circle(surface, color, root.end, 5)
+    if not (root.right or root.left):
+        pygame.draw.circle(surface, color, root.end, 5)
 
 
 if __name__ == "__main__":

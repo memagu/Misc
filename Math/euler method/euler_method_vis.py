@@ -92,12 +92,13 @@ def draw_grid():
 
 
 def y_(x, y):
-    return min(max(4 - x * y, -2 ** 31), 2 ** 31 - 1)
+    result = 4 - x * y
+    return min(max(result, -2 ** 31), 2 ** 31 - 1)
 
 
-n_iterations = 10000
-step_size = 0.01
-draw_scale = 1 / step_size
+n_iterations = 1000
+step_size = 0.5
+draw_scale = 100
 
 c1 = Curve(y_, 0, 1)
 
@@ -123,13 +124,13 @@ while run:
     if keys[pygame.K_DOWN]:
         draw_scale = max(draw_scale - 10 * dt, 1)
     if keys[pygame.K_w]:
-        origin.y -= 50 * dt
-    if keys[pygame.K_s]:
         origin.y += 50 * dt
+    if keys[pygame.K_s]:
+        origin.y -= 50 * dt
     if keys[pygame.K_a]:
-        origin.x -= 50 * dt
-    if keys[pygame.K_d]:
         origin.x += 50 * dt
+    if keys[pygame.K_d]:
+        origin.x -= 50 * dt
 
     mouse_buttons = pygame.mouse.get_pressed()
     mouse_position = pygame.math.Vector2(pygame.mouse.get_pos())

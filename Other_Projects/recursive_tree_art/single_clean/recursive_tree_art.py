@@ -6,7 +6,7 @@ from helpers import *
 
 pygame.init()
 
-window_resolution = [1600, 1200]
+window_resolution = [1920, 1080]
 display = pygame.display.set_mode(window_resolution, pygame.RESIZABLE)
 pygame.display.set_caption(__file__.split("\\")[-1])
 
