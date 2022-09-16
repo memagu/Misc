@@ -32,7 +32,7 @@ color_blue = (0, 0, 255)
 player_move_velocity = 20
 player_rotation_velocity = 5
 
-number_of_rays = 900
+number_of_rays = 50
 field_of_view = math.pi / 3
 
 bounces = 8
