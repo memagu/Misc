@@ -2,7 +2,7 @@ def y_(x, y):
     return 4 - x * y
 
 
-n_iterations = 10
+n_iterations = 25
 step_size = 0.25
 
 x = 0
@@ -14,5 +14,3 @@ for i in range(n_iterations):
     y += y_(x, y) * step_size
     print(f"y_next={y:.2f}")
     x += step_size
-
-

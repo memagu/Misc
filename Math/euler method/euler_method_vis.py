@@ -97,7 +97,7 @@ def y_(x, y):
 
 
 n_iterations = 1000
-step_size = 0.5
+step_size = 0.01
 draw_scale = 100
 
 c1 = Curve(y_, 0, 1)
