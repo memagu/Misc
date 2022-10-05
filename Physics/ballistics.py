@@ -13,6 +13,10 @@ framerate = 480
 time_prev = time.perf_counter()
 clock = pygame.time.Clock()
 run = True
+show_velocity = False
+show_velocity_x = False
+show_velocity_y = False
+show_acceleration = False
 
 BACKGROUND = Vector3(29, 29, 29)
 FOREGROUND = Vector3(255, 255, 0)
@@ -71,6 +75,14 @@ while run:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
                 projectiles.append(Projectile(Vector2() + projectile_origin, Vector2() + projectile_velocity))
+            if event.key == pygame.K_a:
+                show_acceleration = not show_acceleration
+            if event.key == pygame.K_v:
+                show_velocity = not show_velocity
+            if event.key == pygame.K_x:
+                show_velocity_x = not show_velocity_x
+            if event.key == pygame.K_y:
+                show_velocity_y = not show_velocity_y
 
     if pygame.key.get_pressed()[pygame.K_c]:
         projectiles.append(Projectile(Vector2() + projectile_origin, Vector2() + projectile_velocity))
@@ -93,10 +105,16 @@ while run:
     for projectile in projectiles:
         projectile.update(dt)
         projectile.draw(display)
-        UIArrow(projectile.position, projectile.velocity).draw(display)
-        UIArrow(projectile.position, Vector2(projectile.velocity.x, 0)).draw(display, color=Vector3(255, 0, 0))
-        UIArrow(projectile.position, Vector2(0, projectile.velocity.y)).draw(display, color=Vector3(0, 255, 0))
-        UIArrow(projectile.position, g).draw(display, color=Vector3(0, 255, 255))
+
+        if show_velocity:
+            UIArrow(projectile.position, projectile.velocity).draw(display)
+        if show_velocity_x:
+            UIArrow(projectile.position, Vector2(projectile.velocity.x, 0)).draw(display, color=Vector3(255, 0, 0))
+        if show_velocity_y:
+            UIArrow(projectile.position, Vector2(0, projectile.velocity.y)).draw(display, color=Vector3(0, 255, 0))
+
+        if show_acceleration:
+            UIArrow(projectile.position, g).draw(display, color=Vector3(0, 255, 255))
 
         if not 0 - projectile.radius < projectile.position.x < window_resolution.x + projectile.radius:
             pop_list.append(projectile)
