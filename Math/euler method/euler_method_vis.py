@@ -92,15 +92,16 @@ def draw_grid():
 
 
 def y_(x, y):
-    result = 4 - x * y
-    return min(max(result, -2 ** 31), 2 ** 31 - 1)
+    # equation = 4 - x * y
+    equation = x + y
+    return min(max(equation, -2 ** 31), 2 ** 31 - 1)
 
 
 n_iterations = 1000
-step_size = 0.01
+step_size = 0.1
 draw_scale = 100
 
-c1 = Curve(y_, 0, 1)
+c1 = Curve(y_, 0, -1)
 
 while run:
     # Calculate dt

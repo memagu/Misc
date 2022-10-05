@@ -3,20 +3,23 @@ import time
 
 from flask import Flask, request, render_template, redirect, send_from_directory
 
+# DOWNLOAD_DIR = r"C:/Users/melke/AppData/Local/FactoryGame/Saved/SaveGames/f494e05699ca41b090c172f7cc70163f"
+DOWNLOAD_DIR = r"C:\Users\melke\Desktop"
+
 app = Flask(__name__)
 # app.config['DEBUG'] = True
 
 
 @app.route('/')
 def home():
-    return render_template("index.html", files=os.listdir("C:/Users/melke/AppData/Local/FactoryGame/Saved/SaveGames/f494e05699ca41b090c172f7cc70163f"))
+    return render_template("index.html", files=os.listdir(DOWNLOAD_DIR))
 
 
 # TODO redirect to home
 @app.route('/<file>')
 def download(file):
     print(file)
-    return send_from_directory(r"C:/Users/melke/AppData/Local/FactoryGame/Saved/SaveGames/f494e05699ca41b090c172f7cc70163f", file, as_attachment=True)
+    return send_from_directory(DOWNLOAD_DIR, file, as_attachment=True)
 
 
 @app.route('/', methods=['POST'])
