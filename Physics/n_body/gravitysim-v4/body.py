@@ -18,7 +18,6 @@ class Body:
         self.pos += self.vel * dt
 
     def draw(self, surface: Surface, scale_distance: float, scale_radius: float, center: Vector3 = Vector3()):
-        print(center + self.pos * scale_distance)
         pygame.draw.circle(surface, self.color, (center + self.pos * scale_distance).xy, self.radius * scale_radius)
 
 
