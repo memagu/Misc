@@ -2,6 +2,8 @@ import time
 
 
 def fib(n, memo={}):
+    if not n:
+        return 0
     memo_value = memo.get(n)
     if memo_value:
         return memo_value
@@ -35,4 +37,4 @@ def fib(n, memo={}):
 #    return fib(n - 1) + fib(n - 2)
 
 
-print(fib(900))
+print(fib(2))

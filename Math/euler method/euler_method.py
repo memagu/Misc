@@ -1,12 +1,15 @@
+# def y_(x, y):
+#     return 4 - x * y
+
 def y_(x, y):
-    return 4 - x * y
+    return 9.82 - 0.0025*y**2
 
 
-n_iterations = 25
-step_size = 0.25
+n_iterations = 1000
+step_size = 0.01
 
 x = 0
-y = 1
+y = 0
 y_next = y + y_(x, y) * step_size
 
 for i in range(n_iterations):

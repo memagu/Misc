@@ -84,7 +84,7 @@ class Server:
         client_identity = self.receive_message(connection).replace(" ", "")
         if client_identity in self.active_connections:
             self.disconnect_client(connection)
-            self.debug_message("WARNING", f"Duplicate connection attempted by {client_identity}")
+            # self.debug_message("WARNING", f"Duplicate connection attempted by {client_identity}")
             return
 
         self.active_connections[client_identity] = connection
