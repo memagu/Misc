@@ -36,11 +36,10 @@ def dijkstras(graph, start_node):
 
             infomap[graph[current_node][child_index][1]] = [new_path, current_node]
 
-        key = min(((key, infomap[key][0]) for key in unvisited), key=lambda x: x[1])[0]
-        print(key, unvisited)
-        current_node = key
-        unvisited.remove(key)
-        visited.append(key)
+        current_node = min(((key, infomap[key][0]) for key in unvisited), key=lambda x: x[1])[0]
+        unvisited.remove(current_node)
+        visited.append(current_node)
+        print(current_node, unvisited)
 
     return infomap
 
