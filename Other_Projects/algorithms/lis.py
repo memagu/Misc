@@ -68,7 +68,7 @@ def lis_recursive(nums: List[float]) -> int:
     return max([1] + [_lis_recursive(nums, i) for i in range(len(nums))])
 
 
-def binary_search(arr: List[float], target: float):
+def binary_search(arr: List[float], target: float) -> int:
     left = 0
     right = len(arr) - 1
     result = float("inf")
