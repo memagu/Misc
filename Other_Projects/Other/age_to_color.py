@@ -1,7 +1,7 @@
 import os
 
 
-dob = input("Enter date of birth (YYYY/MM/DD): ")
+dob = input("Enter date of birth (YYYYMMDD): ")
 year = int(dob[:4])
 month = int(dob[4:6])
 day = int(dob[6:])
