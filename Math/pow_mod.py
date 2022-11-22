@@ -21,6 +21,7 @@ def pow_mod(base: int, exponent: int, mod: int):
 
     return base ** exponent % mod
 
+
 def test(base: int, exponent: int, mod: int):
     pow_ = pow(base, exponent, mod)
     pow_mod_ = pow_mod(base, exponent, mod)
@@ -29,9 +30,15 @@ def test(base: int, exponent: int, mod: int):
 
 
 if __name__ == "__main__":
-    print(test(7, 9634, 5))
-    print(test(7, 9634, 343))
-    print(test(7, 123, 11))
-    from random import randint
-    for i in range(100):
-        print("False" in test(randint(0, 1000), randint(0, 10000), randint(1, 200)))
+    print(pow_mod(6, 90, 4))
+
+    for i in range(1, 1_000_000):
+        print(pow_mod(6, 90, i))
+
+    # print(test(7, 9634, 5))
+    # print(test(7, 9634, 343))
+    # print(test(7, 123, 11))
+    # from random import randint
+    #
+    # for i in range(100):
+    #     print("False" in test(randint(0, 1000), randint(0, 10000), randint(1, 200)))

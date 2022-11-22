@@ -1,3 +1,5 @@
+print("Paste PGN sequence and submit by entering a blank line: ")
+
 data_raw = []
 while True:
     raw_input = input()
@@ -38,7 +40,10 @@ for white_move, black_move in data:
 
     moves["pawn"][1] += 1
 
-print(f"move{:>20}move_count")
+print(f"Game result: {result}")
+print(f"rounds: {len(data)}\n")
+print(f"{'piece/action:':<20}{'count:':>10}")
 for move, move_count in moves.values():
-    pass
-print([(move, move_count) for move, move_count in moves.values()])
+    print(f"{move:<20}{move_count:>10}")
+
+input("\n\nDone! Press ENTER to exit.")
