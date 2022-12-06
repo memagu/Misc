@@ -155,6 +155,14 @@ def hangman() -> None:
 
 
 def main():
+    if not os.path.exists("./word_lists/"):
+        os.mkdir("./word_lists/")
+        with open("./word_lists/example_wordlist.txt", 'w') as f:
+            f.write("word\nanother_word\n")
+
+        print("In order to play you must put wordlists in the word_lists folder. Wordlists must be .txt files.\n\nDone!. Press enter to exit!")
+        return
+
     while True:
         hangman()
         response = input("\n\nDo you want to play again [Y/n]?: ").strip().lower()
