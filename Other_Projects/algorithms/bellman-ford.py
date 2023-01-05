@@ -1,40 +1,4 @@
-from collections import defaultdict, deque
 from typing import Dict, List, Tuple
-
-"""
-def bellman_ford(graph: Dict[int, List[Tuple[int, int]]], source: int) -> Dict[int, int]:
-    edges = []
-
-    queue = [source]
-    visited = {source}
-    while queue:
-        vertex = queue.pop()
-        children = graph[vertex]
-        if not children:
-            continue
-
-        for child, weight in children:
-            edges.append((vertex, child, weight))
-            if child not in visited:
-                queue.append(child)
-                visited.add(child)
-
-    vertex_costs = {vertex: float("inf") for vertex in graph}
-    vertex_costs[source] = 0
-
-    for i in range(len(edges)):
-        for edge_source, edge_destination, edge_weight in edges:
-            if vertex_costs[edge_source] + edge_weight < vertex_costs[edge_destination]:
-                queue.append(edge_destination)
-
-                if not i or i < len(edges) - 1:
-                    vertex_costs[edge_destination] = vertex_costs[edge_source] + edge_weight
-                    continue
-
-                vertex_costs[edge_destination] = float("-inf")
-
-    return vertex_costs
-"""
 
 
 def bellman_ford(graph: Dict[int, List[Tuple[int, int]]], source: int) -> Dict[int, int]:
@@ -55,8 +19,8 @@ def bellman_ford(graph: Dict[int, List[Tuple[int, int]]], source: int) -> Dict[i
                 visited.add(child)
 
     edge_queue = connected_edges
-    vertex_costs = {vertex: float("inf") for vertex in graph}
-    vertex_costs[source] = 0
+    vertex_dist = {vertex: float("inf") for vertex in graph}
+    vertex_dist[source] = 0
 
     for i in range(len(connected_edges)):
         if not edge_queue:
@@ -64,18 +28,18 @@ def bellman_ford(graph: Dict[int, List[Tuple[int, int]]], source: int) -> Dict[i
 
         for _ in range(len(edge_queue)):
             edge_source, edge_destination, edge_weight = edge_queue.pop()
-            if vertex_costs[edge_source] + edge_weight < vertex_costs[edge_destination]:
+            if vertex_dist[edge_source] + edge_weight < vertex_dist[edge_destination]:
                 if destination_children := graph[edge_destination]:
                     for child, weight in destination_children:
                         edge_queue.append((edge_destination, child, weight))
 
                 if not i or i < len(connected_edges) - 1:
-                    vertex_costs[edge_destination] = vertex_costs[edge_source] + edge_weight
+                    vertex_dist[edge_destination] = vertex_dist[edge_source] + edge_weight
                     continue
 
-                vertex_costs[edge_destination] = float("-inf")
+                vertex_dist[edge_destination] = float("-inf")
 
-    return vertex_costs
+    return vertex_dist
 
 
 if __name__ == "__main__":
