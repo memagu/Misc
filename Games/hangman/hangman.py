@@ -175,8 +175,7 @@ def main():
 
         os.system("clear")
 
-    input("\n\nDone! Press enter to exit.")
-
 
 if __name__ == "__main__":
     main()
+    os.system("pause")
