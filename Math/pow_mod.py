@@ -17,6 +17,8 @@ def pow_mod(base: int, exponent: int, mod: int):
             # result *= -1 if exponent // exp % 2 else 1
             result *= (not exponent // exp % 2) * 2 - 1
 
+        print(result, mod, exp)
+
         return result % mod
 
     return base ** exponent % mod
@@ -30,10 +32,8 @@ def test(base: int, exponent: int, mod: int):
 
 
 if __name__ == "__main__":
-    print(pow_mod(6, 90, 4))
+    print(pow_mod(3, 648, 103))
 
-    for i in range(1, 1_000_000):
-        print(pow_mod(6, 90, i))
 
     # print(test(7, 9634, 5))
     # print(test(7, 9634, 343))
