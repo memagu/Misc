@@ -9,13 +9,19 @@ def get_info(word: str) -> tuple[str, str]:
     response = requests.get(url, headers={"User-Agent": user_agent})
     soup = BeautifulSoup(response.content, "html.parser")
 
-    word_class = soup.find("a", class_="ordklass").text
+    word_class = soup.find("a", class_="ordklass")
     definition = soup.find("span", class_="def")
 
-    if definition:
-        return word_class, definition.text
+    if definition and word_class:
+        return word_class.text, definition.text
 
-    return word_class, "No definition found."
+    if definition:
+        return "N/A", definition.text
+
+    if word_class:
+        return word_class.text, "N/A"
+
+    return "N/A", "N/A"
 
 
 def main():
