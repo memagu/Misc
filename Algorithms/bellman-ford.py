@@ -43,5 +43,20 @@ if __name__ == "__main__":
     graph2 = {0: [(1, -100)],
               1: []}
 
-    print(bellman_ford(graph, 0))  # {0: 0, 1: -inf, 2: -inf, 3: 2, 4: inf}
+    graph3 = {0: [(1, 1)],
+              1: [(2, 1)],
+              2: [(3, 1)],
+              3: [(4, 1)],
+              4: [(5, 1)],
+              5: [(6, 1)],
+              6: [(7, 1)],
+              7: []}
+
+    graph4 = {0: [(1, 1)],
+              1: [(2, -3)],
+              2: [(0, 1)]}
+
+    print(bellman_ford(graph, 0))   # {0: 0, 1: -inf, 2: -inf, 3: 2, 4: inf}
     print(bellman_ford(graph2, 0))  # {0: 0, 1: -100}
+    print(bellman_ford(graph3, 0))  # {0: 0, 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7}
+    print(bellman_ford(graph4, 0))  # {0: -inf, 1: -inf, 2: -inf}
