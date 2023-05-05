@@ -32,7 +32,7 @@ a1_a = 0
 a2_a = 0
 x2 = 0
 y2 = 0
-g = 9.82
+g = 9.818
 
 trail = []
 trail_length = 2048
@@ -95,11 +95,11 @@ while run:
     a1_a = acc1()
     a2_a = acc2()
 
+    a1 += a1_a * 0.5 * dt ** 2 + a1_v * dt
     a1_v += a1_a * dt
-    a2_v += a2_a * dt
 
-    a1 += a1_v * dt
-    a2 += a2_v * dt
+    a2 += a2_a * 0.5 * dt ** 2 + a2_v * dt
+    a2_v += a2_a * dt
 
     mousepos = pygame.mouse.get_pos()
 

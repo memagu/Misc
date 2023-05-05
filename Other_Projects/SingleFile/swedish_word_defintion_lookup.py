@@ -1,4 +1,5 @@
 from bs4 import BeautifulSoup
+import os
 import requests
 
 
@@ -32,6 +33,9 @@ def main():
         word_class, definition = get_info(word)
         print(f"{word} [{word_class}]: {definition}")
 
+    os.system("pause")
+
 
 if __name__ == "__main__":
     main()
+

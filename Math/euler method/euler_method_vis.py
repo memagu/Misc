@@ -104,6 +104,7 @@ draw_scale = 100
 
 c1 = Curve(y_, 0, 0)
 
+
 while run:
     # Calculate dt
     time_now = time.time()

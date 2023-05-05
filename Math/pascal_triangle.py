@@ -17,5 +17,5 @@ def pascal_triangle(n: int) -> list[int]:
 
 
 if __name__ == "__main__":
-    for row in pascal_triangle(24):
-        print(" ".join(map(lambda x: str(x).center(8), row)).center(256))
+    for i, row in enumerate(pascal_triangle(24)):
+        print(i, " ".join(map(lambda x: str(x).center(8), row)).center(256))

@@ -108,7 +108,7 @@ class Conductor:
             pygame.draw.aaline(display, COLOR_WHITE,
                                *calculate_vertices(self.__class__._cross_ldru, self.center, self.radius / 4, 0))
 
-        for i in range(2, 20):
+        for i in range(2, 40):
             magnetic_field_radius = self.radius * i
             pygame.draw.circle(display, COLOR_GREEN, self.center, magnetic_field_radius, 1)
             for j in range(8):
@@ -125,10 +125,12 @@ time_prev = time.time()
 clock = pygame.time.Clock()
 run = True
 
-m = HorseshoeMagnet(Vector2(400, 400), 50, -90)
+m = HorseshoeMagnet(Vector2(400, 1400), 50, -90)
 m2 = HorseshoeMagnet(Vector2(800, 800), 50, 0)
-# a = Arrow(Vector2(400, 400), 100, 0, COLOR_ORANGE)
+m3 = HorseshoeMagnet(Vector2(1000, 1000), 50, -45)
+a = Arrow(Vector2(400, 400), 100, 0, COLOR_ORANGE)
 c = Conductor(Vector2(400, 400), 50, False, False)
+# c2 = Conductor(Vector2(800, 400), 50, False, True)
 
 while run:
 
@@ -167,8 +169,10 @@ while run:
     display.fill(COLOR_KC_GRAY)
 
     m.draw()
-    m2.draw()
+    # m2.draw()
+    # m3.draw()
     c.draw()
+    # c2.draw()
 
     pygame.display.update()
     if abs(FRAMERATE):

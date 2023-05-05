@@ -31,8 +31,8 @@ angle = 0
 r, g, b = 0, 0, 0
 
 while run:
-    r = (r + 2) % 256
-    g = (g + 1) % 256
+    # r = (r + 2) % 256
+    # g = (g + 1) % 256
     # Event loop
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -42,7 +42,9 @@ while run:
         if event.type == pygame.VIDEORESIZE:
             display = pygame.display.set_mode((event.w, event.h), pygame.RESIZABLE)
 
-    display.fill((r, g, b))
+    # display.fill((r, g, b))
+    display.fill(rainbow(angle))
+    angle += 0.1
     print(f"{r=}\t{g=}\t{b=}")
     pygame.display.update()
     time.sleep(0.2)
