@@ -41,7 +41,7 @@ def booking_code_generator() -> Generator[str, None, None]:
 
         next_booking_number += 1
 
-    raise Exception("Max amount if codes generated.")
+    raise Exception("Maximum amount of booking codes generated.")
 
 
 def main() -> None:
