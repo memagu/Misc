@@ -87,9 +87,9 @@ def main():
     top_files = sorted(files, key=lambda f: f.char_amount, reverse=True)[:min(TOP_FILE_AMOUNT, len(files))]
     max_path_length = max(len(str(f.path.absolute())) for f in top_files)
 
-    print(f"{'Path': ^{max_path_length + 8}}|{'SLOC': ^16}|{'Words': ^16}|{'Characters': ^16}")
+    print(f"{'Path': ^{max_path_length + 4}}|{'SLOC': ^16}|{'Words': ^16}|{'Characters': ^16}")
     for file in top_files:
-        print(f"{str(file.path.absolute()): <{max_path_length + 8}}|{file.line_amount: ^16,}|{file.word_amount: ^16,}|{file.char_amount: ^16,}")
+        print(f"{str(file.path.absolute()): <{max_path_length + 4}}|{file.line_amount: ^16,}|{file.word_amount: ^16,}|{file.char_amount: ^16,}")
 
 
 if __name__ == "__main__":
