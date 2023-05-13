@@ -1,12 +1,54 @@
+from dataclasses import dataclass
 import os
 from pathlib import Path
 import typing
 
-EXTENSIONS = [".rs", ".py", ".pyw", ".cpp", ".cs"]
+EXTENSIONS = [".rs", ".py", ".pyw", ".cpp", ".cs", ".java", ".js", ".cmd"]
 IGNORE = ["venv", ".idea", "obj", "Library", "target", "cmake-build-release", "cmake-build-debug", "Walnut"]
 
+TOP_FILE_AMOUNT = 10
 
-def files(root: Path, file_extensions: typing.Iterable[str], ignore_dirs: typing.Iterable[str]) -> Path:
+
+@dataclass
+class FileInfo:
+    path: Path
+    line_amount: int
+    word_amount: int
+    char_amount: int
+
+
+def get_words(s: str) -> list[str]:
+    return s \
+        .replace('.', ' ') \
+        .replace(':', ' ') \
+        .replace('(', ' ') \
+        .replace(')', ' ') \
+        .replace('[', ' ') \
+        .replace(']', ' ') \
+        .replace('{', ' ') \
+        .replace('}', ' ') \
+        .replace('_', "_ ") \
+        .replace("_ _ ", "__") \
+        .replace('=', "= ") \
+        .replace("= =", "==") \
+        .replace('\'', ' ') \
+        .replace('\"', ' ') \
+        .replace(';', ' ') \
+        .replace(',', ' ') \
+        .split()
+
+
+def get_file_info(file_path: Path) -> FileInfo:
+    with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
+        content = f.read()
+        line_amount = content.count('\n') - content.count("\n\n")
+        word_amount = len(get_words(content))
+        char_amount = len(content)
+
+    return FileInfo(file_path, line_amount, word_amount, char_amount)
+
+
+def file_paths(root: Path, file_extensions: typing.Iterable[str], ignore_dirs: typing.Iterable[str]) -> Path:
     queue = [root]
 
     while queue:
@@ -31,42 +73,23 @@ def files(root: Path, file_extensions: typing.Iterable[str], ignore_dirs: typing
 
 def main():
     root = Path(input("Enter root [PATH]: "))
+    files = []
+    for file_path in file_paths(root, EXTENSIONS, IGNORE):
+        files.append(get_file_info(file_path))
 
-    n_files = 0
-    n_lines = 0
-    n_words = 0
-    n_chars = 0
+    print(f"\nFiles: {len(files)}")
+    print(f"Total SLOC: {sum(file_info.line_amount for file_info in files):,}")
+    print(f"Total words: {sum(file_info.word_amount for file_info in files):,}")
+    print(f"Total characters: {sum(file_info.char_amount for file_info in files):,}")
 
-    for path in files(root, EXTENSIONS, IGNORE):
-        n_files += 1
+    print(f"\nTop {min(TOP_FILE_AMOUNT, len(files))} largest files (most characters):\n")
 
-        with open(path, "r", encoding="utf-8", errors="ignore") as f:
-            content = f.read()
-            n_lines += content.count('\n') - content.count("\n\n")
-            n_chars += len(content)
-            n_words += len(content
-                           .replace('.', ' ')
-                           .replace(':', ' ')
-                           .replace('(', ' ')
-                           .replace(')', ' ')
-                           .replace('[', ' ')
-                           .replace(']', ' ')
-                           .replace('{', ' ')
-                           .replace('}', ' ')
-                           .replace('_', "_ ")
-                           .replace("_ _", "__")
-                           .replace('=', "= ")
-                           .replace("= =", "==")
-                           .replace('\'', ' ')
-                           .replace('\"', ' ')
-                           .replace(';', ' ')
-                           .replace(',', ' ')
-                           .split())
+    top_files = sorted(files, key=lambda f: f.char_amount, reverse=True)[:min(TOP_FILE_AMOUNT, len(files))]
+    max_path_length = max(len(str(f.path.absolute())) for f in top_files)
 
-    print(f"{n_files=:,}")
-    print(f"{n_lines=:,}")
-    print(f"{n_words=:,}")
-    print(f"{n_chars=:,}")
+    print(f"{'Path': ^{max_path_length + 8}}|{'SLOC': ^16}|{'Words': ^16}|{'Characters': ^16}")
+    for file in top_files:
+        print(f"{str(file.path.absolute()): <{max_path_length + 8}}|{file.line_amount: ^16,}|{file.word_amount: ^16,}|{file.char_amount: ^16,}")
 
 
 if __name__ == "__main__":
