@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 import typing
 
-EXTENSIONS = [".rs", ".py", ".pyw", ".cpp", ".cs", ".java", ".js", ".cmd"]
+EXTENSIONS = [".rs", ".py", ".pyw", ".cpp", ".cs", ".java", ".js", ".cmd", ".bat", ".md"]
 IGNORE = ["venv", ".idea", "obj", "Library", "target", "cmake-build-release", "cmake-build-debug", "Walnut"]
 
 TOP_FILE_AMOUNT = 10
