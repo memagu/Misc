@@ -4,7 +4,6 @@ import os
 from pathlib import Path
 
 import numpy as np
-from PIL import Image
 
 
 def load_float_csv(path: Path, delimiter: str = ',') -> np.ndarray:
@@ -43,6 +42,7 @@ def data_to_rgba(data: np.ndarray, alpha: int = 192) -> np.ndarray:
     rgba_data = np.dstack((rgb_data, alpha_data))
 
     return rgba_data.astype(np.uint8)
+
 
 def scale_rgba(rgba_data: np.ndarray, r: float = 1, g: float = 1, b: float = 1, a: float = 1) -> np.ndarray:
     return (rgba_data * [r, g, b, a]).astype(np.uint8)
