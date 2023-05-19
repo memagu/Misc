@@ -15,7 +15,7 @@ def load_float_csv(path: Path, delimiter: str = ',') -> np.ndarray:
 
 
 def save_float_csv(data: np.ndarray, path: Path = None, delimiter: str = ',') -> None:
-    path = path or Path(f"../data_output/{datetime.now().strftime('%Y%m%d%H%M')}.data")
+    path = path or Path(f"../data_output/{datetime.now().timestamp()}.data")
 
     if not os.path.exists(path.parent):
         os.makedirs(path.parent, exist_ok=True)

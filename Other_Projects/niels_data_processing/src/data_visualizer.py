@@ -1,5 +1,6 @@
 import pygame as pg
 import data_processing as dp
+from functools import reduce
 
 import numpy as np
 
@@ -12,14 +13,9 @@ class DataVisualiser:
         self.data = data
         self.position = position or pg.Vector2()
 
-        pre_rgba_data = data.copy()
-        for function in rgba_data_preprocessing or []:
-            pre_rgba_data = function(pre_rgba_data)
+        pre_rgba_data = reduce(lambda x, f: f(x), rgba_data_preprocessing or [], data)
 
         self.rgba_data = dp.data_to_rgba(pre_rgba_data)
-
-        print(self.data.shape)
-        print(self.rgba_data.shape)
 
         self.surface = pg.image.frombuffer(self.rgba_data.tobytes(), self.data.shape, "RGBA")
 

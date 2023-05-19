@@ -22,7 +22,7 @@ blue = DataVisualiser(
 ).scale_rgba(0, 0, 1, 1)
 
 red = DataVisualiser(
-    dp.load_float_csv(Path("../data/blue.data"), '\t'),
+    dp.load_float_csv(Path("../data/red.data"), '\t'),
     Vector2(16),
     (dp.normalize, dp.filter_highpass)
 ).scale_rgba(1, 0, 0, 1)
