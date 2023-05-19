@@ -72,6 +72,8 @@ def file_paths(root: Path, file_extensions: typing.Iterable[str], ignore_dirs: t
 
 
 def main():
+    print("Welcome to Code-Stat!\n")
+
     root = Path(input("Enter root [PATH]: "))
     files = []
     for file_path in file_paths(root, EXTENSIONS, IGNORE):
