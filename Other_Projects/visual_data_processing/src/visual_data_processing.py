@@ -88,25 +88,25 @@ while run:
         speed = SPEED_SLOW
 
     if keys[pg.K_w]:
-        blue.position -= Vector2(0, 1) * speed * dt
+        blue.position += Vector2(0, -1) * speed * dt
 
     if keys[pg.K_s]:
         blue.position += Vector2(0, 1) * speed * dt
 
     if keys[pg.K_a]:
-        blue.position -= Vector2(1, 0) * speed * dt
+        blue.position += Vector2(-1, 0) * speed * dt
 
     if keys[pg.K_d]:
         blue.position += Vector2(1, 0) * speed * dt
 
     if keys[pg.K_UP]:
-        red.position -= Vector2(0, 1) * speed * dt
+        red.position += Vector2(0, -1) * speed * dt
 
     if keys[pg.K_DOWN]:
         red.position += Vector2(0, 1) * speed * dt
 
     if keys[pg.K_LEFT]:
-        red.position -= Vector2(1, 0) * speed * dt
+        red.position += Vector2(-1, 0) * speed * dt
 
     if keys[pg.K_RIGHT]:
         red.position += Vector2(1, 0) * speed * dt
