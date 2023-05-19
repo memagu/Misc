@@ -44,11 +44,6 @@ def data_to_rgba(data: np.ndarray, alpha: int = 192) -> np.ndarray:
 
     return rgba_data.astype(np.uint8)
 
-
-def show(rgba_data: np.ndarray) -> None:
-    Image.fromarray(rgba_data).show()
-
-
 def scale_rgba(rgba_data: np.ndarray, r: float = 1, g: float = 1, b: float = 1, a: float = 1) -> np.ndarray:
     return (rgba_data * [r, g, b, a]).astype(np.uint8)
 
@@ -62,6 +57,4 @@ def merge_data(data_1: np.ndarray, data_2: np.ndarray, data_1_indices: tuple[int
 
 
 if __name__ == "__main__":
-    data = load_float_csv(Path("../data/merged.data"), '\t')
-    data = normalize(filter_highpass(data))
-    show(data_to_rgba(data))
+    pass

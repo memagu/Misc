@@ -1,10 +1,11 @@
-import pygame as pg
-import data_processing as dp
 from functools import reduce
-
-import numpy as np
-
+from pathlib import Path
 from typing import Sequence, Callable
+
+import data_processing as dp
+import numpy as np
+from PIL import Image
+import pygame as pg
 
 
 class DataVisualiser:
@@ -24,6 +25,12 @@ class DataVisualiser:
         self.surface = pg.image.frombuffer(self.rgba_data.tobytes(), self.data.shape, "RGBA")
         return self
 
+    def intersects(self, other: "DataVisualiser") -> bool:
+        return not (self.position.x + self.data.shape[1] < other.position.x or
+                    self.position.y + self.data.shape[0] < other.position.y or
+                    self.position.x > other.position.x + other.data.shape[1] or
+                    self.position.y > other.position.y + other.data.shape[0])
+
     def data_intersection_indices(self, other: "DataVisualiser") -> tuple[int, int, int, int]:
         start_row = max(int(other.position.y) - int(self.position.y), 0)
         start_col = max(int(other.position.x) - int(self.position.x), 0)
@@ -32,8 +39,32 @@ class DataVisualiser:
 
         return start_row, start_col, end_row, end_col
 
+    def save_intersection(self, other: "DataVisualiser") -> None:
+        if not self.intersects(other):
+            print("Did not save as no data is overlapping.")
+            return
+
+        merged_data = dp.merge_data(
+            self.data,
+            other.data,
+            self.data_intersection_indices(other),
+            other.data_intersection_indices(self)
+        )
+        dp.save_float_csv(merged_data, delimiter='\t')
+        print(f"Saved data with shape: {merged_data.shape}.")
+
     def draw(self, surface: pg.Surface, scale: float = 1, blend_mode: int = pg.BLEND_RGBA_MAX) -> "DataVisualiser":
         scaled_surface = pg.transform.scale_by(self.surface, scale)
         scaled_position = self.position * scale
         surface.blit(scaled_surface, scaled_position, special_flags=blend_mode)
         return self
+
+
+def show(rgba_data: np.ndarray) -> None:
+    Image.fromarray(rgba_data).show()
+
+
+if __name__ == '__main__':
+    data = dp.load_float_csv(Path("../data/blue.data"), '\t')
+    data = dp.normalize(dp.filter_highpass(data))
+    show(dp.data_to_rgba(data))
