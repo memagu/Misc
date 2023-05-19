@@ -1,13 +1,13 @@
 from pathlib import Path
 import time
 
-import pygame
+import pygame as pg
 from pygame import Vector2, Vector3
 
 import data_processing as dp
 from data_visualizer import DataVisualiser
 
-pygame.init()
+pg.init()
 
 COLOR_BACKGROUND = Vector3()
 
@@ -28,8 +28,8 @@ red = DataVisualiser(
 ).scale_rgba(1, 0, 0, 1)
 
 window_resolution = Vector2(1200, 900)
-display = pygame.display.set_mode(window_resolution, pygame.RESIZABLE)
-pygame.display.set_caption(Path(__file__).name)
+display = pg.display.set_mode(window_resolution, pg.RESIZABLE)
+pg.display.set_caption(Path(__file__).name)
 
 time_prev = time.time()
 draw_scale = 4
@@ -42,28 +42,28 @@ while run:
     dt = time_now - time_prev
     time_prev = time_now
 
-    for event in pygame.event.get():
+    for event in pg.event.get():
         match event.type:
-            case pygame.QUIT:
+            case pg.QUIT:
                 run = False
                 break
 
-            case pygame.VIDEORESIZE:
+            case pg.VIDEORESIZE:
                 window_resolution.xy = event.w, event.h
-                display = pygame.display.set_mode(window_resolution, pygame.RESIZABLE)
+                display = pg.display.set_mode(window_resolution, pg.RESIZABLE)
 
-            case pygame.KEYDOWN:
+            case pg.KEYDOWN:
                 match event.key:
-                    case pygame.K_COMMA:
+                    case pg.K_COMMA:
                         draw_scale -= 0.5
 
-                    case pygame.K_PERIOD:
+                    case pg.K_PERIOD:
                         draw_scale += 0.5
 
-                    case pygame.K_MINUS:
+                    case pg.K_MINUS:
                         draw_scale = 1
 
-                    case pygame.K_SPACE:
+                    case pg.K_SPACE:
                         merged_data = dp.merge_data(
                             blue.data,
                             red.data,
@@ -79,36 +79,36 @@ while run:
             case _:
                 continue
 
-    keys = pygame.key.get_pressed()
+    keys = pg.key.get_pressed()
 
     speed = SPEED_NORMAL
-    if keys[pygame.K_LSHIFT]:
+    if keys[pg.K_LSHIFT]:
         speed = SPEED_FAST
-    if keys[pygame.K_LALT]:
+    if keys[pg.K_LALT]:
         speed = SPEED_SLOW
 
-    if keys[pygame.K_w]:
+    if keys[pg.K_w]:
         blue.position -= Vector2(0, 1) * speed * dt
 
-    if keys[pygame.K_s]:
+    if keys[pg.K_s]:
         blue.position += Vector2(0, 1) * speed * dt
 
-    if keys[pygame.K_a]:
+    if keys[pg.K_a]:
         blue.position -= Vector2(1, 0) * speed * dt
 
-    if keys[pygame.K_d]:
+    if keys[pg.K_d]:
         blue.position += Vector2(1, 0) * speed * dt
 
-    if keys[pygame.K_UP]:
+    if keys[pg.K_UP]:
         red.position -= Vector2(0, 1) * speed * dt
 
-    if keys[pygame.K_DOWN]:
+    if keys[pg.K_DOWN]:
         red.position += Vector2(0, 1) * speed * dt
 
-    if keys[pygame.K_LEFT]:
+    if keys[pg.K_LEFT]:
         red.position -= Vector2(1, 0) * speed * dt
 
-    if keys[pygame.K_RIGHT]:
+    if keys[pg.K_RIGHT]:
         red.position += Vector2(1, 0) * speed * dt
 
     display.fill(COLOR_BACKGROUND)
@@ -116,4 +116,4 @@ while run:
     blue.draw(display, draw_scale)
     red.draw(display, draw_scale)
 
-    pygame.display.update()
+    pg.display.update()
