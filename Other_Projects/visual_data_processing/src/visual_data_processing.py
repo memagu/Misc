@@ -11,9 +11,9 @@ pg.init()
 
 COLOR_BACKGROUND = Vector3()
 
-SPEED_SLOW = 1
-SPEED_NORMAL = 8
 SPEED_FAST = 64
+SPEED_NORMAL = 8
+SPEED_SLOW = 1
 
 
 def main() -> None:
