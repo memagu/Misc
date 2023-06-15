@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from hashlib import sha256
 import os
 from pathlib import Path
 import typing
@@ -50,6 +51,7 @@ def get_file_info(file_path: Path) -> FileInfo:
 
 def file_paths(root: Path, file_extensions: typing.Iterable[str], ignore_dirs: typing.Iterable[str]) -> Path:
     queue = [root]
+    visited = set()
 
     while queue:
         path = queue.pop()
@@ -68,6 +70,14 @@ def file_paths(root: Path, file_extensions: typing.Iterable[str], ignore_dirs: t
         if path.suffix not in file_extensions:
             continue
 
+        with open(path, "rb") as f:
+            file_hash = sha256(f.read()).hexdigest()
+
+        if file_hash in visited:
+            continue
+
+        visited.add(file_hash)
+
         yield path
 
 
@@ -76,6 +86,7 @@ def main():
 
     root = Path(input("Enter root [PATH]: "))
     files = []
+
     for file_path in file_paths(root, EXTENSIONS, IGNORE):
         files.append(get_file_info(file_path))
 
@@ -91,7 +102,8 @@ def main():
 
     print(f"{'Path': ^{max_path_length + 4}}|{'SLOC': ^16}|{'Words': ^16}|{'Characters': ^16}")
     for file in top_files:
-        print(f"{str(file.path.absolute()): <{max_path_length + 4}}|{file.line_amount: ^16,}|{file.word_amount: ^16,}|{file.char_amount: ^16,}")
+        print(
+            f"{str(file.path.absolute()): <{max_path_length + 4}}|{file.line_amount: ^16,}|{file.word_amount: ^16,}|{file.char_amount: ^16,}")
 
 
 if __name__ == "__main__":
