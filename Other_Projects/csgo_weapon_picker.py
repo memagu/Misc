@@ -181,7 +181,6 @@ def message_from_god() -> None:
     sleep(1.5)
     print("* AHEM *")
     sleep(2)
-
     print("Hear me, O my loyal warrior,")
     sleep(2.5)
     print("for I am the Eternal Creator thy God,")
