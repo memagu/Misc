@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from os import system
 from random import choice
 from time import sleep
 from typing import Optional
@@ -246,3 +247,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+    system("pause")
