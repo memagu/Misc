@@ -244,7 +244,8 @@ def main() -> None:
 
     display_item(weapon)
 
+    system("pause")
+
 
 if __name__ == "__main__":
     main()
-    system("pause")
