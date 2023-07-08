@@ -23,7 +23,7 @@ ITEMS_COMMON = Items(
         ("M249", 5200),
         ("Negev", 1700),
         ("MP7", 1500),
-        ("UMP-45", 1500),
+        ("UMP-45", 1200),
         ("P90", 2350),
         ("PP-Bizon", 1400),
         ("SSG08", 1700),
@@ -244,7 +244,10 @@ def main() -> None:
 
     display_item(weapon)
 
+    input("Press enter to rerun.")
+
 
 if __name__ == "__main__":
-    main()
-    system("pause")
+    while True:
+        main()
+        system("cls")
