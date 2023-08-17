@@ -66,5 +66,5 @@ def show(rgba_data: np.ndarray) -> None:
 
 if __name__ == '__main__':
     data = dp.load_float_csv(Path("../data/blue.data"), '\t')
-    data = dp.normalize(dp.filter_highpass(data))
+    # data = dp.normalize(dp.filter_highpass(data))
     show(dp.data_to_rgba(data))

@@ -53,8 +53,8 @@ class Element:
 # Be10 = Element("Be10", 4, 10, 10.0135347, 4.76509582*10**13, "β-")
 
 e = Element('e', -1, 0, 0.00054858, None, 'None')
-p = Element('e', 1, 1, 1.007276, None, 'None')
-n = Element('e', 0, 1, 1.0086649, 613.9, 'Beta-')
+p = Element('p', 1, 1, 1.007276, None, 'None')
+n = Element('n', 0, 1, 1.0086649, 613.9, 'Beta-')
 
 H1 = Element('H1', 1, 1, 1.00782503223, 0, None)
 H2 = Element('H2', 1, 2, 2.01410177812, 0, None)

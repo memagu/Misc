@@ -4,11 +4,11 @@ import time
 from flask import Flask, request, render_template, redirect, send_from_directory
 
 # DOWNLOAD_DIR = r"C:/Users/melke/AppData/Local/FactoryGame/Saved/SaveGames/f494e05699ca41b090c172f7cc70163f"
-DOWNLOAD_DIR = r"C:\Users\melke\Desktop"
+DOWNLOAD_DIR = r"C:\Users\melke\Desktop\Share"
 
 app = Flask(__name__)
-# app.config['DEBUG'] = True
 
+# app.config['DEBUG'] = True
 
 @app.route('/')
 def home():
@@ -33,4 +33,4 @@ def upload_file():
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5051, ssl_context=("./ssl/certificate.crt", "./ssl/private.key"))
+    app.run(host="0.0.0.0", port=443, ssl_context=("./ssl/certificate.pem", "./ssl/private.pem"))

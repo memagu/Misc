@@ -25,13 +25,13 @@ def main() -> None:
     blue = DataVisualiser(
         dp.load_float_csv(Path("../data/blue.data"), '\t'),
         pg.Vector2(16),
-        (dp.normalize, dp.filter_highpass)
+        (dp.filter_highpass, dp.normalize)
     ).scale_rgba(0, 0, 1, 1)
 
     red = DataVisualiser(
         dp.load_float_csv(Path("../data/red.data"), '\t'),
         pg.Vector2(16),
-        (dp.normalize, dp.filter_highpass)
+        (dp.filter_highpass, dp.normalize)
     ).scale_rgba(1, 0, 0, 1)
 
     draw_scale = 800 // (blue.data.shape[0])
