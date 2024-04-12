@@ -1,3 +1,4 @@
+from pathlib import Path
 import time
 
 import pygame
@@ -9,7 +10,7 @@ window_resolution = Vector2(1200, 900)
 image_resolution = Vector2(1200, 900)
 transform_resolution = (window_resolution.x / image_resolution.x, window_resolution.y / image_resolution.y)
 display = pygame.display.set_mode(window_resolution, pygame.RESIZABLE)
-pygame.display.set_caption(__file__.split("\\")[-1])
+pygame.display.set_caption(Path(__file__).name)
 
 framerate = 480  # 0 for unlimited
 time_prev = time.time()

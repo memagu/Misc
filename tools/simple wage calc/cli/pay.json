@@ -1,0 +1,43 @@
+{
+    "base_hourly_wage": 165,
+    "weekday": [
+        {
+            "start": "0000",
+            "end": "1815",
+            "pay_ratio": 1.0
+        },
+        {
+            "start": "1815",
+            "end": "2000",
+            "pay_ratio": 1.5
+        },
+        {
+            "start": "2000",
+            "end": "2359",
+            "pay_ratio": 1.7
+        }
+    ],
+    "saturday": [
+        {
+            "start": "0000",
+            "end": "1200",
+            "pay_ratio": 1.0
+        },
+        {
+            "start": "1200",
+            "end": "2359",
+            "pay_ratio": 2.0
+        }
+    ],
+    "sunday": [
+        {
+            "start": "0000",
+            "end": "2359",
+            "pay_ratio": 2.0
+        }
+    ]
+}
+
+
+
+

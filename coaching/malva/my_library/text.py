@@ -1,0 +1,1 @@
+BOKSTÄVER = "abcdefghijlkmnopqrstuvwxyzåäö"
