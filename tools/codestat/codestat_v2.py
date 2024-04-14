@@ -1,10 +1,22 @@
+import argparse
 from dataclasses import dataclass
 import hashlib
 import multiprocessing
 import os
 from pathlib import Path
-import tqdm
 from typing import Container, Generator, Iterable
+import warnings
+
+warnings.formatwarning = lambda message, category, *_: f"{category.__name__}: {message}\n"
+
+try:
+    import tqdm
+
+    TQDM_AVAILABLE = True
+except ImportError:
+    TQDM_AVAILABLE = False
+
+VERSION = "2.0.0"
 
 ALLOWED_EXTENSIONS = {
     ".rs",
@@ -14,9 +26,15 @@ ALLOWED_EXTENSIONS = {
     ".cs",
     ".java",
     ".js",
+    "html",
+    "css",
+    "scss",
+    ".go",
+    ".jl"
     ".cmd",
     ".bat",
-    ".md"}
+    ".md"
+}
 EXCLUDED_DIRNAMES = {
     "venv",
     ".idea",
@@ -25,9 +43,25 @@ EXCLUDED_DIRNAMES = {
     "target",
     "cmake-build-release",
     "cmake-build-debug",
+    "node_modules",
+    "__pycache__",
+    ".julia"
+    ".git",
+    ".vscode",
+    ".gradle",
+    "dist",
+    "build",
+    "debug",
+    "release",
+    "bin",
+    "out",
+    ".DS_Store"
+    "data",
+    "raw_data",
+    "dataset",
+    "datasets",
     "Walnut"
 }
-TOPLIST_size = 10
 
 
 @dataclass
@@ -37,7 +71,7 @@ class FileInfo:
     size: int
     n_sloc: int
     n_words: int
-    n_characters: int
+    n_chars: int
 
     def __hash__(self):
         return int(self.checksum, 16)
@@ -66,8 +100,7 @@ def extract_words(file_content: bytes) -> list[bytes]:
 
 
 def process_file(path: Path) -> FileInfo:
-    with open(path, "rb") as f:
-        content = f.read()
+    content = path.read_bytes()
 
     return FileInfo(
         path,
@@ -79,38 +112,110 @@ def process_file(path: Path) -> FileInfo:
     )
 
 
-def display_results(result: Iterable[FileInfo], top_n: int = 10) -> None:
-    result = tuple(result)
-    top_n = min(top_n, len(result))
+def display_results(results: Iterable[FileInfo], top_n: int = 10, sort_by: str = "sloc") -> None:
+    results = tuple(results)
+    unique_results = set(results)
+    top_n = min(top_n, len(results)) if top_n >= 0 else len(unique_results)
 
-    print(f"\nFiles: {len(result)}")
-    print(f"Total SLOC: {sum(file_info.n_sloc for file_info in result):,}")
-    print(f"Total words: {sum(file_info.n_words for file_info in result):,}")
-    print(f"Total characters: {sum(file_info.n_characters for file_info in result):,}")
+    sort_options = {
+        "size": lambda f: f.size,
+        "sloc": lambda f: f.n_sloc,
+        "words": lambda f: f.n_words,
+        "chars": lambda f: f.n_chars
+    }
 
-    print(f"\nTop {top_n} largest files (sloc):\n")
+    if sort_by not in sort_options:
+        raise ValueError(f"Invalid column for sorting: {sort_by}")
 
-    top_files = sorted(set(result), key=lambda f: f.n_sloc, reverse=True)[:top_n]
+    top_files = sorted(unique_results, key=sort_options[sort_by], reverse=True)[:top_n]
     max_path_length = max(len(str(f.path.absolute())) for f in top_files)
 
-    print(f"{'Path': ^{max_path_length + 4}}|{'Size (bytes)': ^16}|{'SLOC': ^16}|{'Words': ^16}|{'Characters': ^16}")
+    print(
+        "",
+        f"Files: {len(results)}",
+        f"Unique files {len(unique_results)}",
+        f"Totals (unique files):",
+        f"- SLOC: {sum(file_info.n_sloc for file_info in unique_results):,}",
+        f"- Words: {sum(file_info.n_words for file_info in unique_results):,}",
+        f"- Characters: {sum(file_info.n_chars for file_info in unique_results):,}",
+        "",
+        f"\nTop {top_n} largest files ({sort_by}):\n",
+        '|'.join((
+            "Path".center(max_path_length + 4),
+            "Size (bytes)".center(24),
+            "SLOC".center(24),
+            "Words".center(24),
+            "Characters".center(24)
+        )),
+        sep='\n'
+    )
     for file in top_files:
-        print(
-            f"{str(file.path.absolute()): <{max_path_length + 4}}|{file.size: ^16,}|{file.n_sloc: ^16,}|{file.n_words: ^16,}|{file.n_characters: ^16,}")
+        print('|'.join((
+            f"{str(file.path.absolute()): <{max_path_length + 4}}",
+            f"{file.size: ^24,}",
+            f"{file.n_sloc: ^24,}",
+            f"{file.n_words: ^24,}",
+            f"{file.n_chars: ^24,}"
+        )))
 
 
 def main() -> None:
-    workers = os.cpu_count()
-    root = Path(r"C:/Users/melke/Dev/")
+    parser = argparse.ArgumentParser(description="get statistics for all source code files in a directory")
+    parser.add_argument(
+        "-v",
+        "--version",
+        action="version",
+        version="%(prog)s 2.0.0",
+        help="show program's version number end exit"
+    )
+    parser.add_argument(
+        "path",
+        type=Path,
+        default=Path(),
+        nargs="?",
+        help="path to root search directory"
+    )
+    parser.add_argument(
+        "-t",
+        "--top",
+        type=int,
+        default=10,
+        help="display top n rows (use a negative value to display all rows)"
+    )
+    parser.add_argument(
+        "-s",
+        "--sort-by",
+        type=str,
+        choices=("size", "sloc", "words", "chars"),
+        default="sloc",
+        help="sort table by column."
+    )
+    parser.add_argument(
+        "-w",
+        "--workers",
+        type=int,
+        default=os.cpu_count(),
+        help="amount of worker threads"
+    )
+    args = parser.parse_args()
+
+    workers = args.workers
+    root_dir = args.path
 
     with multiprocessing.Pool(workers) as p:
-        file_data = set(tqdm.tqdm(
-            p.imap(process_file, filtered_walk(root, ALLOWED_EXTENSIONS, EXCLUDED_DIRNAMES)),
-            desc=f"Analyzing files in \"{root}\" using {workers} workers",
-            unit=" files"
-        ))
+        results = p.imap(process_file, filtered_walk(root_dir, ALLOWED_EXTENSIONS, EXCLUDED_DIRNAMES))
 
-    display_results(file_data)
+        if TQDM_AVAILABLE:
+            file_data = tqdm.tqdm(
+                results,
+                desc=f"Analyzing files in \"{root_dir}\" using {workers} workers",
+                unit=" files"
+            )
+        else:
+            file_data = results
+            warnings.warn("tqdm is not installed. Install tqdm using \"pip install tqdm\" to display a progress bar while processing.")
+
+        display_results(file_data, args.top, args.sort_by)
 
 
 if __name__ == "__main__":
