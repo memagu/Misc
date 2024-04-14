@@ -11,7 +11,6 @@ warnings.formatwarning = lambda message, category, *_: f"{category.__name__}: {m
 
 try:
     import tqdm
-
     TQDM_AVAILABLE = True
 except ImportError:
     TQDM_AVAILABLE = False
