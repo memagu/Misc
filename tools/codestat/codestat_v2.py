@@ -76,7 +76,7 @@ class FileInfo:
     n_words: int
     n_chars: int
 
-    def __hash__(self):
+    def __hash__(self) -> int:
         return int(self.checksum, 16)
 
 
