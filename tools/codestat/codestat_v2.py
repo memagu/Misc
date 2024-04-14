@@ -24,6 +24,10 @@ ALLOWED_EXTENSIONS = {
     ".cpp",
     ".cs",
     ".java",
+    ".asm",
+    ".S",
+    ".pl",
+    ".bf"
     ".js",
     "html",
     "css",
@@ -103,7 +107,7 @@ def process_file(path: Path) -> FileInfo:
         path,
         hashlib.md5(content).hexdigest(),
         path.stat().st_size,
-        content.count(b'\n') - (content.count(b"\n\n") or content.count(b"\r\n\r\n")),
+        content.count(b'\n') - (content.count(b"\n\n") or content.count(b"\r\n\r\n")) or bool(content),
         len(extract_words(content)),
         len(content)
     )
@@ -136,7 +140,7 @@ def display_results(results: Iterable[FileInfo], top_n: int = 10, sort_by: str =
         f"- Words: {sum(file_info.n_words for file_info in unique_results):,}",
         f"- Characters: {sum(file_info.n_chars for file_info in unique_results):,}",
         "",
-        f"\nTop {top_n} largest files ({sort_by}):\n",
+        f"\nTop {top_n} files ({sort_by}):\n",
         '|'.join((
             "Path".center(max_path_length + 4),
             "Size (bytes)".center(24),
