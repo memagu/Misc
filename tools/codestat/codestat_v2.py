@@ -80,9 +80,7 @@ def filtered_walk(root: Path, allowed_extensions: Container, excluded_dirnames: 
     Path, None, None]:
     for dirpath, dirnames, filenames in root.walk():
         dirnames[:] = [dirname for dirname in dirnames if dirname not in excluded_dirnames]
-        for filepath in map(dirpath.__truediv__, filenames):
-            if filepath.suffix in allowed_extensions:
-                yield filepath
+        yield from (filepath for filepath in map(dirpath.__truediv__, filenames) if filepath.suffix in allowed_extensions)
 
 
 def extract_words(file_content: bytes) -> list[bytes]:
