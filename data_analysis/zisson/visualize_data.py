@@ -87,7 +87,7 @@ def plot_average_calls_per_hour(hours: np.ndarray) -> tuple[Figure, Axes]:
     ax = fig.subplots()
 
     ax.set_title("Genomsnittligt antal samtal per timme under ett dygn (SE CSD All queues)")
-    ax.set_xlabel("Timme på dagen")
+    ax.set_xlabel("Timme på dygnet")
     ax.set_ylabel("Antal samtal")
 
     ax.grid()
@@ -107,7 +107,7 @@ def plot_share_of_calls_per_hour(hours: np.ndarray) -> tuple[Figure, Axes]:
     ax = fig.subplots()
 
     ax.set_title("Andel samtal per timme under ett dygn (SE CSD All queues)")
-    ax.set_xlabel("Timme på dagen")
+    ax.set_xlabel("Timme på dygnet")
     ax.set_ylabel("Andel samtal (%)")
 
     ax.grid()
