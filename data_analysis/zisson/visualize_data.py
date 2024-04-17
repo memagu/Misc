@@ -52,7 +52,7 @@ def plot_average_calls_per_day(days: np.ndarray) -> tuple[Figure, Axes]:
     ax.set_ylabel("Antal samtal")
 
     ax.grid()
-    ax.set_xticks(x, calendar.day_name)
+    ax.set_xticks(x, map(str.capitalize, calendar.day_name))
     ax.set_yticks(np.arange(0, np.ceil(y.max()), 5))
 
     ax.bar(x, y)
@@ -72,7 +72,7 @@ def plot_share_of_calls_per_day(days: np.ndarray) -> tuple[Figure, Axes]:
     ax.set_ylabel("Andel samtal (%)")
 
     ax.grid()
-    ax.set_xticks(x, calendar.day_name)
+    ax.set_xticks(x, map(str.capitalize, calendar.day_name))
     ax.yaxis.set_major_formatter(FuncFormatter(lambda n, _: f"{n:.1%}"))
     ax.bar(x, y)
 
@@ -81,7 +81,7 @@ def plot_share_of_calls_per_day(days: np.ndarray) -> tuple[Figure, Axes]:
 
 def plot_average_calls_per_hour(hours: np.ndarray) -> tuple[Figure, Axes]:
     x = np.arange(len(hours))
-    y = hours / 90
+    y = hours / 91
 
     fig = Figure((10, 8))
     ax = fig.subplots()
@@ -126,7 +126,7 @@ def plot_total_calls_per_minute(minutes: np.ndarray) -> tuple[Figure, Axes]:
     fig = Figure((10, 8))
     ax = fig.subplots()
 
-    ax.set_title("Totalt antal samtal per minut under de senaste 90 dygnen (SE CSD All queues)")
+    ax.set_title("Totalt antal samtal per minut under de senaste 91 dygnen (SE CSD All queues)")
     ax.set_xlabel("Tid")
     ax.set_ylabel("Antal samtal")
 
