@@ -32,7 +32,7 @@ def main() -> None:
     """
     usage: live_log.py [-h] file
 
-    A continuous log file monitor that reads and prints new entries in real-time.
+    A highly efficient continuous log file monitor that reads and prints new entries in real-time.
 
     positional arguments:
       file        The file to be monitored.
@@ -40,7 +40,7 @@ def main() -> None:
     options:
       -h, --help  show this help message and exit
     """
-    parser = argparse.ArgumentParser(description="A continuous log file monitor that reads and prints new entries in real-time.")
+    parser = argparse.ArgumentParser(description="A highly efficient continuous log file monitor that reads and prints new entries in real-time.")
     parser.add_argument("file", type=Path, help="The file to be monitored.")
     args = parser.parse_args()
 
