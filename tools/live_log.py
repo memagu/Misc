@@ -4,7 +4,7 @@ import time
 from typing import Never
 
 POLLING_INTERVAL_SECONDS = 0.1
-MAX_READ_SIZE = 1 << 18  # 256 KiB
+MAX_READ_SIZE = 1 << 17  # 128 KiB
 
 
 def monitor_file(file: Path, max_read_size: int = -1, polling_interval_seconds: float = 0.1) -> Never:
