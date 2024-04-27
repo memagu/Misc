@@ -1,8 +1,12 @@
 from datetime import datetime, timedelta
+import os
 from pathlib import Path
+import platform
 
 from call import Call, CallManager
 from menu import Menu, Option
+
+CLEAR_COMMAND = "cls" if platform.system() == "Windows" else "clear"
 
 DATETIME_FORMAT = "%Y-%m-%dT%H:%M:%S"
 REPORT_DIR = Path("./reports")
@@ -108,6 +112,7 @@ def main() -> None:
     while True:
         menu.show()
         menu.prompt_option().execute_action()
+        os.system(CLEAR_COMMAND)
 
 
 if __name__ == "__main__":
